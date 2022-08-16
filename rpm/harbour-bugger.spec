@@ -13,7 +13,8 @@ Version:    0.9.0
 Release:    0
 Group:      Applications
 License:    ASL 2.0
-URL:        
+BuildArch:  noarch
+URL:        https://github.com/nephros/harbour-bugger
 Source0:    %{name}-%{version}.tar.gz
 Source100:  harbour-bugger.yaml
 Source101:  harbour-bugger-rpmlintrc
@@ -59,9 +60,7 @@ Url:
 # >> build pre
 # << build pre
 
-%qmake5 
 
-make %{?_smp_mflags}
 
 # >> build post
 # << build post
@@ -72,7 +71,6 @@ rm -rf %{buildroot}
 # lrelease -silent -removeidentical translations/*
 lrelease -silent -removeidentical *.pro
 # << install pre
-%qmake5_install
 
 # >> install post
 
@@ -102,9 +100,6 @@ desktop-file-install --delete-original       \
 %defattr(-,root,root,-)
 %license LICENSE
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/*/*/apps/%{name}.png
-%{_datadir}/icons/*/*/apps/%{name}.svg
-%{_datadir}/themes/sailfish-default/meegotouch/*/icons/*.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*

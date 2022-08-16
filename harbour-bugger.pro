@@ -2,7 +2,7 @@
 # This is for translation ONLY, use build.sh for building
 ######################################################################
 
-TARGET = template-app
+TARGET = harbour-bugger
 CONFIG += sailfishapp sailfishapp_i18n
 INCLUDEPATH += .
 
@@ -21,4 +21,4 @@ SOURCES += \
 TRANSLATIONS += translations/$${TARGET}-en.ts \
                 translations/$${TARGET}-de.ts \
 
-include(icons/icons.pri)
+#include(icons/icons.pri)

@@ -4,7 +4,7 @@ Version: 0.9.0
 Release: 0
 Group: Applications
 License: ASL 2.0
-URL: ""
+URL: "https://github.com/nephros/harbour-bugger"
 SCM: "https://github.com/nephros/harbour-bugger"
 Sources:
     - '%{name}-%{version}.tar.gz'
@@ -59,17 +59,17 @@ PkgBR:
 #PkgConfigBR:
 #    - ^^^
 Configure: none
-Builder: qmake5
+Builder: none
 NoIconCache: true
-#BuildArch: noarch
+BuildArch: noarch
 #AutoSubPackages:
 #  - doc
 Files:
   - '%license LICENSE'
   - '%{_datadir}/applications/%{name}.desktop'
-  - '%{_datadir}/icons/*/*/apps/%{name}.png'
-  - '%{_datadir}/icons/*/*/apps/%{name}.svg'
-  - '%{_datadir}/themes/sailfish-default/meegotouch/*/icons/*.png'
+  # '%{_datadir}/icons/*/*/apps/%{name}.png'
+  # '%{_datadir}/icons/*/*/apps/%{name}.svg'
+  # '%{_datadir}/themes/sailfish-default/meegotouch/*/icons/*.png'
   - '%dir %{_datadir}/%{name}'
   - '%{_datadir}/%{name}/translations/*.qm'
   - '%{_datadir}/%{name}/qml/*'

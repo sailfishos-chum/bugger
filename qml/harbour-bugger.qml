@@ -29,10 +29,10 @@ ApplicationWindow {
     id: app
 
     //submit settings
-    //readonly property string postScheme:   "https"
-    readonly property string postScheme:   "sailfishos-bugreport-1" // for a custom Url handler
+    readonly property string postScheme:   "https"
+    //readonly property string postScheme:   "sailfishos-bugreport-1" // for a custom Url handler
     readonly property string postHost:     "forum.sailfishos.org"
-    readonly property string postUri:      "/topic/46/post"
+    readonly property string postUri:      "/new-topic?category_id=13"
     readonly property url postUrl:      postScheme + "://" + postHost + postUri
 
     // forum things:
