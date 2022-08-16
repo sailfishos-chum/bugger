@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Icon=template-app
+Exec=invoker --type=silica-qt5 sailfish-qml template-app
+Exec=sailjail -p template-app.desktop /usr/bin/sailfish-qml template-app
+Name=AppTemplate
+Name[de]=AppTemplate
+Name[en]=AppVorlage
+
+[X-Sailjail]
+ApplicationName=Bugger
+OrganizationName=SailfishOS-Chum
+Permissions=
+
+#[X-HarbourBackup]
+#BackupConfigList=/org/nephros/template-app
+#BackupPathList=.local/share/org.nephros.sailfish/TemplateApp/

@@ -1,0 +1,75 @@
+Name: harbour-bugger
+Summary: Bug reporting helper
+Version: 0.9.0
+Release: 0
+Group: Applications
+License: ASL 2.0
+URL: ""
+SCM: "https://github.com/nephros/harbour-bugger"
+Sources:
+    - '%{name}-%{version}.tar.gz'
+Description: |
+
+
+    %if "%{?vendor}" == "chum"
+    PackageName: Advanced Camera
+    Type: desktop-application
+    DeveloperName: Peter G.
+    DeveloperLogin: nephros
+    PackagerName: nephros
+    Categories:
+     - Utility
+    Custom:
+      Repo: https://github.com/nephros/template
+    Icon: https://raw.githubusercontent.com/nephros/harbour-template/master/icons/template.svg
+    Screenshots:
+     - https://github.com/nephros/nephros/raw/metadata/screenshots/screenshot1.png
+     - https://github.com/nephros/nephros/raw/metadata/screenshots/screenshot2.png
+     - https://github.com/nephros/nephros/raw/metadata/screenshots/screenshot3.png
+    Url:
+      Homepage: https://github.com/nephros/template
+      Help: https://github.com/nephros/template/discussions
+      Bugtracker: https://github.com/nephros/template/issues
+    %endif
+
+SetupOptions: -q -n %{name}-%{version}
+RpmLintIgnore:
+  - 'summary-too-long'
+  - 'no-changelogname-tag'
+  - 'invalid-url'
+#Macros:
+#  - 'foo;bar'
+#  - |
+#    spectacle_bug; hack_fix
+#    # Spectacular spectacle hack:
+#    #   abuse Macros to work around the Macro-deleting bug in 0.32
+#    #   also, add a conditional dep:
+#    %if 0%{?sailfishos_version} >= 30400
+#    BuildRequires: some-package
+#    %endif
+#Patches:
+#  - 'baz'
+Requires:
+  - libsailfishapp-launcher
+PkgBR:
+  - qt5-qttools-linguist
+  - qt5-qmake
+  - sailfish-svg2png
+  - qml-rpm-macros
+#PkgConfigBR:
+#    - ^^^
+Configure: none
+Builder: qmake5
+NoIconCache: true
+#BuildArch: noarch
+#AutoSubPackages:
+#  - doc
+Files:
+  - '%license LICENSE'
+  - '%{_datadir}/applications/%{name}.desktop'
+  - '%{_datadir}/icons/*/*/apps/%{name}.png'
+  - '%{_datadir}/icons/*/*/apps/%{name}.svg'
+  - '%{_datadir}/themes/sailfish-default/meegotouch/*/icons/*.png'
+  - '%dir %{_datadir}/%{name}'
+  - '%{_datadir}/%{name}/translations/*.qm'
+  - '%{_datadir}/%{name}/qml/*'
