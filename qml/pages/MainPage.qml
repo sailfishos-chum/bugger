@@ -118,33 +118,33 @@ Page {
         MenuItem { text: qsTr("Post Bugreport");
             onClicked: {
                 var payload =
-                    + "REPRODUCIBILITY: " + repro.value + "%" + "\n"
-                    + "OSVERSION: " + bugInfo.os.version_id + "\n"
-                    //+ "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + "\n"
-                    //+ "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (" + Qt.locale().name + " - " + languageModel.locale(languageModel.currentIndex) +")" + "\n"
+                    "REPRODUCIBILITY: " + repro.value + "%" + "  \n"
+                    + "OSVERSION: " + bugInfo.os.version_id + "  \n"
+                    + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + "  \n"
+                    + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " ( user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) +")" + "  \n"
                     + "REGRESSION: " + regsw.checked + "  \n"
                     + "\n\n"
                     + "DESCRIPTION:\n"
-                    + "===========\n\n" + text_desc.text
+                    + "========\n\n" + text_desc.text
                     + "\n\n"
                     + "PREREQUISITES:\n"
-                    + "=============\n\n" + text_prereq.text
+                    + "==========\n\n" + text_prereq.text
                     + "\n\n"
                     + "EXPECTED RESULTS:\n"
-                    + "================\n\n" + text_expres.text
+                    + "============\n\n" + text_expres.text
                     + "\n\n"
                     + "ACTUAL RESULTS:\n"
-                    + "==============\n\n" + text_actres.text
+                    + "===========\n\n" + text_actres.text
                     + "\n\n"
                     + "MODIFICATIONS:\n"
-                    + "==============\n\n"
+                    + "=============\n\n"
                     + " - Patchmanager: " + pmsw.checked + "  \n"
                     + " - OpenRepos: "    + orsw.checked + "  \n"
                     + " - Chum: "         + chsw.checked + "  \n"
                     + " - Other: "        + text_mod_other.text + "  \n"
                     + "\n\n";
                 var fullPostUrl = postUrl
-                    + "&title=" + encodeURI(text_title.text)
+                    + "&title=" + encodeURIComponent(text_title.text)
                     + "&body=" + encodeURIComponent(payload);
                 console.debug("Opening ", fullPostUrl)
                 Qt.openUrlExternally(fullPostUrl)
