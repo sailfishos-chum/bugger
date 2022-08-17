@@ -6,35 +6,27 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>About</source>
-        <translation>Über</translation>
-    </message>
-    <message>
-        <source>What&apos;s %1?</source>
-        <translation type="vanished">Was ist %1?</translation>
-    </message>
-    <message>
-        <source> </source>
-        <translation type="vanished"> </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="53"/>
         <source>Version:</source>
-        <translation>Version:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>Copyright:</source>
-        <translation>Urheberrecht:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>License:</source>
-        <translation>Lizenz:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Source Code:</source>
-        <translation>Quellcode:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -45,12 +37,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="105"/>
+        <location filename="../qml/pages/MainPage.qml" line="113"/>
         <source>About</source>
-        <translation type="unfinished">Über</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="107"/>
+        <location filename="../qml/pages/MainPage.qml" line="118"/>
         <source>Post Bugreport</source>
         <translation type="unfinished"></translation>
     </message>

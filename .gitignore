@@ -1,3 +1,4 @@
 *list
 build.log
 translations/*.qm
+Makefile
