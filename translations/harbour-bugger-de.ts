@@ -6,27 +6,35 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
+    </message>
+    <message>
+        <source>What&apos;s %1?</source>
+        <translation type="vanished">Was ist %1?</translation>
+    </message>
+    <message>
+        <source> </source>
+        <translation type="vanished"> </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="53"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Version:</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>Copyright:</source>
-        <translation type="unfinished"></translation>
+        <translation>Urheberrecht:</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>License:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lizenz:</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Source Code:</source>
-        <translation type="unfinished"></translation>
+        <translation>Quellcode:</translation>
     </message>
 </context>
 <context>
@@ -39,7 +47,7 @@
     <message>
         <location filename="../qml/pages/MainPage.qml" line="113"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Über</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="118"/>
