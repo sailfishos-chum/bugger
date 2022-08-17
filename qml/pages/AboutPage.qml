@@ -30,7 +30,7 @@ Page {
   readonly property string email: "mailto:sailfish@nephros.org?bcc=sailfish+app@nephros.org&subject=A%20message%20from%20a%20" + Qt.application.name + "%20user&body=Hello%20nephros%2C%0A"
   readonly property string license: "Apache-2.0"
   readonly property string licenseurl: "https://www.apache.org/licenses/LICENSE-2.0.html"
-  readonly property string source: "https://codeberg.org/nephros/template"
+  readonly property string source: "https://github.com/sailfishos-chum/bugger"
   readonly property string helpurl: "https://forum.sailfishos.org/t/10935"
 
   SilicaFlickable {

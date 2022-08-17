@@ -14,7 +14,7 @@ Release:    0
 Group:      Applications
 License:    ASL 2.0
 BuildArch:  noarch
-URL:        https://github.com/nephros/harbour-bugger
+URL:        https://github.com/sailfishos-chum/bugger
 Source0:    %{name}-%{version}.tar.gz
 Source100:  harbour-bugger.yaml
 Source101:  harbour-bugger-rpmlintrc

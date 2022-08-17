@@ -4,8 +4,8 @@ Version: 0.9.2
 Release: 0
 Group: Applications
 License: ASL 2.0
-URL: "https://github.com/nephros/harbour-bugger"
-SCM: "https://github.com/nephros/harbour-bugger"
+URL: https://github.com/sailfishos-chum/bugger
+SCM: https://github.com/sailfishos-chum/bugger
 Sources:
     - '%{name}-%{version}.tar.gz'
 Description: |
