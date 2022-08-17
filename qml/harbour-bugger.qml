@@ -28,27 +28,30 @@ import "cover"
 ApplicationWindow {
     id: app
 
-    //submit settings
-    readonly property string postScheme:   "https"
+    /* post submit settings */
+    readonly property string postScheme:    'https'
     //readonly property string postScheme:   "sailfishos-bugreport-1" // for a custom Url handler
-    readonly property string postHost:     "forum.sailfishos.org"
-    readonly property string postUri:      "/new-topic?category_id=13"
-    readonly property url postUrl:      postScheme + "://" + postHost + postUri
+    readonly property string postHost:      'forum.sailfishos.org'
+    readonly property string postUri:       '/new-topic?category_id=13'
+    readonly property url postUrl:          postScheme + '://' + postHost + postUri
 
-    // forum things:
-    //
-    // see docs.discourse.org
-    readonly property string bugtemplateHost: "forum.sailfishos.org"
-    readonly property string bugTemplateUri: "/c/13/show.json"
-    readonly property string bugTemplateCategory: "category.topic_template"
-    readonly property url    bugTemplateUrl: "https://" + bugTemplateHost + bugTemplateUri
+    /* forum things:
+     * see docs.discourse.org
+     */
+    //readonly property string bugTemplateHost: "forum.sailfishos.org"
+    //readonly property string bugTemplateUri: "/c/13/show.json"
+    //readonly property string bugTemplateCategory: "category.topic_template"
+    //readonly property url    bugTemplateUrl: "https://" + bugTemplateHost + bugTemplateUri
 
-    // info sources:
-    readonly property url osInfoFile: "file:///etc/sailfish-release"
-    readonly property url hwInfoFile: "file:///etc/hw-release"
-    readonly property url pmInfoFile: "file:///etc/patchmanager2.conf"
-    readonly property url ssuInfoFile: "file:///etc/ssu/ssu.ini"
+    /* info sources: */
+    readonly property url osInfoFile:  'file:///etc/sailfish-release'
+    readonly property url hwInfoFile:  'file:///etc/hw-release'
+    readonly property url pmInfoFile:  'file:///etc/patchmanager2.conf'
+    readonly property url ssuInfoFile: 'file:///etc/ssu/ssu.ini'
 
+    /* object to collect all the info read from files.
+     * we could use a proper QML type for this, but this works
+     */
     QtObject { id: bugInfo
         property var hw
         property var os
@@ -63,6 +66,8 @@ ApplicationWindow {
         function setSsu(o) { ssu = o }
         function setMod(s) { mods[s] = true }
     }
+
+    /* read fileUrl from filesystem, assign to bugInfo according to what */
     function getInfo(fileUrl, what) {
 
         var r = new XMLHttpRequest()
@@ -131,6 +136,7 @@ ApplicationWindow {
             ? Orientation.LandscapeInverted 
             : defaultAllowedOrientations
 
+        /* LOAD ALL THE THINGS */
         getInfo(osInfoFile, "os");
         getInfo(hwInfoFile, "hw");
         getInfo(pmInfoFile, "pm");

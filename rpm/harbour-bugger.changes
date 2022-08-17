@@ -1,2 +1,8 @@
+* Wed Aug 17 2022 Nephros <sailfish@nephros.org> - 0.9.2-0
+- alpha release 0.9.2
+- add verification of filled fields
+- make everything translatable
+- add welcome dialog and language hints
+
 * Fri Apr 23 2021 Nephros <sailfish@nephros.org> - 0.9.1-0
 - alpha release
