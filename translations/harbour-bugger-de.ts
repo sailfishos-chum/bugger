@@ -4,37 +4,67 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>What&apos;s %1?</source>
-        <translation type="vanished">Was ist %1?</translation>
+        <translation>Was ist %1?</translation>
     </message>
     <message>
         <source> </source>
         <translation type="vanished"> </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <source>%1 is little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
+Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>Version:</source>
         <translation>Version:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>Copyright:</source>
         <translation>Urheberrecht:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>License:</source>
         <translation>Lizenz:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="56"/>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Source Code:</source>
         <translation>Quellcode:</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
+        <source>Credits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
+        <source>Bug Coodination Team Lead: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="63"/>
+        <location filename="../qml/pages/AboutPage.qml" line="64"/>
+        <source>Contributions and Help: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutPage.qml" line="66"/>
+        <source>Translation: %1</source>
+        <comment>%1 is the native language name</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
