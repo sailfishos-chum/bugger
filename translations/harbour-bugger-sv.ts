@@ -596,6 +596,21 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
 </context>
 <context>
+    <name>VersionSelect</name>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Arch</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ViewUnitFile</name>
     <message>
         <source>Copy file path to Clipboard</source>

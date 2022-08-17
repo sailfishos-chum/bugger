@@ -222,6 +222,8 @@ Page {
             TextSwitch { id: regsw; checked: false;
                 text: qsTr("Regression (was working in a previous OS release)")
             }
+            VersionSelect { id: regver;  state: "version"; visible: regsw.checked}
+            VersionSelect { id: regarch; state: "arch";    visible: regsw.checked}
             Column {
                 width: parent.width - Theme.horizontalPageMargin
                 SectionHeader { text: qsTr("Modifications") }
@@ -253,8 +255,12 @@ Page {
                     "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
                     + "OSVERSION: " + bugInfo.os.version_id + "  \n"
                     + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
-                    + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " ( user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) +" )" + "  \n"
-                    + "REGRESSION: " + regsw.checked + "  \n"
+                    + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
+                    + "REGRESSION: " + regsw.checked + " (since: " + regver.value + " - " + regarch.value + ")"
+                    //+ "REGRESSION: " + regsw.checked + " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
+//                                                        ? " from: " + ((regver.currentIndex >=0) ? regver.currentItem.text : "n/a") + " - " + ((regarch.currentIndex >=0) ? regarch.currentItem.text : "n/a")
+//                                                        : ""
+                    + "  \n"
                     + "\n\n"
                     + "DESCRIPTION:\n"
                     + "=========\n\n" + text_desc.text

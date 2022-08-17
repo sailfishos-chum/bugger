@@ -104,7 +104,7 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="76"/>
-        <location filename="../qml/pages/MainPage.qml" line="248"/>
+        <location filename="../qml/pages/MainPage.qml" line="250"/>
         <source>Please fill in the required fields</source>
         <translation type="unfinished"></translation>
     </message>
@@ -277,45 +277,64 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="227"/>
+        <location filename="../qml/pages/MainPage.qml" line="229"/>
         <source>Modifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="228"/>
-        <location filename="../qml/pages/MainPage.qml" line="229"/>
         <location filename="../qml/pages/MainPage.qml" line="230"/>
+        <location filename="../qml/pages/MainPage.qml" line="231"/>
+        <location filename="../qml/pages/MainPage.qml" line="232"/>
         <source>(autodetected)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="231"/>
+        <location filename="../qml/pages/MainPage.qml" line="233"/>
         <source>Other (please specify)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="234"/>
+        <location filename="../qml/pages/MainPage.qml" line="236"/>
         <source>e.g. WayDroid and GApps installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="235"/>
+        <location filename="../qml/pages/MainPage.qml" line="237"/>
         <source>custom changes, installed packages etc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="243"/>
+        <location filename="../qml/pages/MainPage.qml" line="245"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="248"/>
+        <location filename="../qml/pages/MainPage.qml" line="250"/>
         <source>(marked with an asterisk (*))!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="249"/>
+        <location filename="../qml/pages/MainPage.qml" line="251"/>
         <source>Post Bug Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VersionSelect</name>
+    <message>
+        <location filename="../qml/components/VersionSelect.qml" line="35"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/VersionSelect.qml" line="35"/>
+        <location filename="../qml/components/VersionSelect.qml" line="38"/>
+        <source>Working Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/VersionSelect.qml" line="38"/>
+        <source>Arch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
