@@ -21,7 +21,7 @@ CoverBackground {
     CoverPlaceholder {
         text: Qt.application.name
         textColor: Theme.highlightColor
-        icon.source: "image://theme/icon-m-application"
+        icon.source: "image://theme/icon-splus-error"
         /*
         CoverActionList {
             CoverAction { iconSource: "image://theme/icon-m-sync";            onTriggered: {app.sheepModel.getNewData} }
