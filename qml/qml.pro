@@ -18,3 +18,4 @@ SOURCES += \
 # Input
 EXTRA_TRANSLATIONS += $${_PRO_FILE_PWD_}/../translations/$${TARGET}-en.ts \
                       $${_PRO_FILE_PWD_}/../translations/$${TARGET}-de.ts \
+                      $${_PRO_FILE_PWD_}/../translations/$${TARGET}-sv.ts \
