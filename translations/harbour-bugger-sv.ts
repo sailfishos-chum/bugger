@@ -231,10 +231,6 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Provide as much information as you have to reproduce the behavior</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>1.
 2.
 3.</source>
@@ -339,6 +335,14 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <source>Post Bug Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>How to reproduce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provide as much information as you have</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

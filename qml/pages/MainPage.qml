@@ -116,7 +116,11 @@ Page {
                 SectionHeader { text: qsTr("Steps to Reproduce") + "*" }
                 TextArea{id: text_steps;
                     width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
-                    description: qsTr("Provide as much information as you have to reproduce the behavior")
+                    // description wraps the text, label fades it out.
+                    //label: qsTr("Provide as much information as you have to reproduce the behavior")
+                    label: qsTr("How to reproduce");
+                    //description: qsTr("Provide as much information as you have to reproduce the behavior")
+                    description: qsTr("Provide as much information as you have")
                     text: qsTr("1.\n2.\n3.");
                     placeholderText: qsTr("1.\n2.\n3.");
                     onFocusChanged: validate()
@@ -125,9 +129,9 @@ Page {
            SectionHeader { text: qsTr("Preconditions") }
             TextArea{id: text_precons;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
-                placeholderText: qsTr("e.g. 'an email account is needed'.")
+                //placeholderText: qsTr("e.g. 'an email account is needed'.")
                 label: qsTr("Some Context information.")
-                description: qsTr("Some Context information.")
+                description: qsTr("e.g. 'an email account is needed'.")
             }
 
             SectionHeader { text: qsTr("Expected Results") }
@@ -226,6 +230,7 @@ Page {
                 TextSwitch { id: chsw; checked: bugInfo.mods.chum;         text: "Chum"+ " "    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
                 TextSwitch { id: othersw; checked: false; text: qsTr("Other (please specify)") }
                 TextField { id: text_mod_other; enabled: othersw.checked
+                    // this has no label...
                     placeholderText: qsTr("e.g. WayDroid and GApps installed")
                     description: qsTr("custom changes, installed packages etc.")
                 }
