@@ -60,8 +60,7 @@ Page {
         DetailItem { label: qsTr("Source Code:");  value: source;                               BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(source) } }
         SectionHeader { text: qsTr("Credits") }
         DetailItem { label: qsTr("Bug Coodination Team Lead: "); value: "pherjung" }
-        DetailItem { label: qsTr("Contributions and Help: "); value: "flypig" }
-        DetailItem { label: qsTr("Contributions and Help: "); value: "Thilo" }
+        DetailItem { label: qsTr("Contributions and Help: "); value: "thigg,\nflypig" }
         DetailItem { label: qsTr("Translation: %1",  "%1 is the native language name").arg(Qt.locale("de").nativeLanguageName); value: "nephros" }
         DetailItem { label: qsTr("Translation: %1",  "%1 is the native language name").arg(Qt.locale("sv").nativeLanguageName); value: "eson" }
     }

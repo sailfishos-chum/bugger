@@ -55,13 +55,12 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <location filename="../qml/pages/AboutPage.qml" line="64"/>
         <source>Contributions and Help: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="64"/>
         <location filename="../qml/pages/AboutPage.qml" line="65"/>
-        <location filename="../qml/pages/AboutPage.qml" line="66"/>
         <source>Translation: %1</source>
         <comment>%1 is the native language name</comment>
         <translation type="unfinished"></translation>
@@ -70,17 +69,47 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="36"/>
-        <source>Bug Info</source>
+        <location filename="../qml/pages/MainPage.qml" line="47"/>
+        <source>Bug Info (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="113"/>
+        <location filename="../qml/pages/MainPage.qml" line="47"/>
+        <source>complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="47"/>
+        <source>incomplete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="49"/>
+        <source>Ready for posting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="50"/>
+        <source>Please fill in the required fields</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="129"/>
         <source>About</source>
         <translation type="unfinished">Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="118"/>
+        <location filename="../qml/pages/MainPage.qml" line="134"/>
+        <source>Please fill in the required fields)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="134"/>
+        <source>(marked with an asterisk (*))!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="135"/>
         <source>Post Bugreport</source>
         <translation type="unfinished"></translation>
     </message>
