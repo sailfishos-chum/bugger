@@ -1,11 +1,13 @@
 [Desktop Entry]
 Type=Application
 Icon=harbour-bugger
-Exec=invoker --type=silica-qt5 sailfish-qml harbour-bugger
+X-Nemo-Application-Type=silica-qt5
+Exec=sailfish-qml harbour-bugger
 #Exec=sailjail -p template-app.desktop /usr/bin/sailfish-qml template-app
 Name=Bugger
 Name[de]=Bugger
 Name[en]=Bugger
+
 
 [X-Sailjail]
 ApplicationName=Bugger
