@@ -24,6 +24,7 @@ import Sailfish.Silica 1.0
 import Nemo.Configuration 1.0
 import "pages"
 import "cover"
+import "config/settings.js" as Settings
 
 ApplicationWindow {
     id: app
@@ -31,25 +32,26 @@ ApplicationWindow {
     property bool developerMode: false
 
     /* post submit settings */
-    readonly property string postScheme:    'https'
+    property var config
     //readonly property string postScheme:   "sailfishos-bugreport-1" // for a custom Url handler
-    readonly property string postHost:      'forum.sailfishos.org'
-    readonly property string postUri:       '/new-topic?category_id=13'
-    readonly property url postUrl:          postScheme + '://' + postHost + postUri
+    readonly property string postScheme:    config.submit.scheme
+    readonly property string postHost:      config.submit.host
+    readonly property string postUri:       config.submit.uri
+    readonly property url    postUrl:       postScheme + '://' + postHost + postUri
 
     /* forum things:
      * see docs.discourse.org
      */
-    //readonly property string bugTemplateHost: "forum.sailfishos.org"
-    //readonly property string bugTemplateUri: "/c/13/show.json"
-    //readonly property string bugTemplateCategory: "category.topic_template"
+    //readonly property string bugTemplateHost:     Settings.config.bugtemplate.host
+    //readonly property string bugTemplateUri:      Settings.config.bugtemplate.uri
+    //readonly property string bugTemplateCategory: Settings.config.bugtemplate.category
     //readonly property url    bugTemplateUrl: "https://" + bugTemplateHost + bugTemplateUri
 
     /* info sources: */
-    readonly property url osInfoFile:  'file:///etc/sailfish-release'
-    readonly property url hwInfoFile:  'file:///etc/hw-release'
-    readonly property url pmInfoFile:  'file:///etc/patchmanager2.conf'
-    readonly property url ssuInfoFile: 'file:///etc/ssu/ssu.ini'
+    readonly property url osInfoFile:  config.sources.os
+    readonly property url hwInfoFile:  config.sources.hw
+    readonly property url pmInfoFile:  config.sources.pm
+    readonly property url ssuInfoFile: config.sources.ssu
 
     /* object to collect all the info read from files.
      * we could use a proper QML type for this, but this works
@@ -135,14 +137,17 @@ ApplicationWindow {
         console.debug("Parameters: " + Qt.application.arguments.join(" "))
         // correct landscape for Gemini, set once on start
         allowedOrientations = (devicemodel === 'planetgemini')
-            ? Orientation.LandscapeInverted 
+            ? Orientation.LandscapeInverted
             : defaultAllowedOrientations
+
+        // bind the loaded file
+        config = Settings.config
 
         if (Qt.application.arguments.indexOf("-developermode") > -1) {
             developerMode = true
             console.info("testing/developer mode enabled!")
+            console.debug("Loaded settings:", JSON.stringify(Settings,null, 2))
         }
-
         /* LOAD ALL THE THINGS */
         getInfo(osInfoFile, "os");
         getInfo(hwInfoFile, "hw");

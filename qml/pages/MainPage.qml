@@ -23,40 +23,48 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import org.nemomobile.systemsettings 1.0
 import "../components"
+import "../config/settings.js" as Settings
 
 Page {
     id: page
 
     /* config constants: */
-    readonly property int minTitleLength:   12
-    readonly property int minDescLength:    20
-    readonly property int minStepsLength:   20
-    readonly property int goodLength:       70
+    readonly property int minTitleLength:   Settings.config.validation.minTitle
+    readonly property int minDescLength:    Settings.config.validation.minDesc
+    readonly property int minStepsLength:   Settings.config.validation.minSteps
+    readonly property int goodLength:       Settings.config.validation.good
 
-    property bool infoComplete: false
-    // more or less random heuristic
-    property int infoGoodCnt:
-        text_desc.text.length +
-        text_steps.text.length +
-        text_precons.text.length +
-        text_expres.text.length +
-        text_actres.text.length +
-        0
-    property bool infoGood: ((infoGoodCnt > goodLength) && (infoGoodCnt > infoFullCnt))
-    property int infoFullCnt:
-        text_precons.text.length +
-        text_expres.text.length +
-        text_actres.text.length +
-        0
-    property bool infoFull: infoFullCnt > goodLength
+    /* Conditions for minimum information required for posting */
+    property bool infoComplete: ( titleComplete && descComplete && stepsComplete )
     property bool titleComplete: text_title.acceptableInput
     property bool descComplete:  text_desc.acceptableInput
     property bool stepsComplete: text_steps.acceptableInput
+
+    /* Conditions (more or less random heuristics) to judge a report as "good" */
+    property bool infoGood: ((infoGoodCnt > goodLength) && (infoGoodCnt > infoFullCnt) && (repro.value != -1));
+    property bool infoFull: infoGood && (infoFullCnt > goodLength)
+    property int infoGoodCnt:
+        1 * text_desc.text.length +
+        1 * text_steps.text.length +
+        1 * text_precons.text.length +
+        1 * text_expres.text.length +
+        1 * text_actres.text.length +
+        0
+    property int infoFullCnt:
+        1 * text_precons.text.length +
+        1 * text_expres.text.length +
+        1 * text_actres.text.length +
+        0
     readonly property string infoFooter: '<!-- the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version + ' -->'
 
     /* handle different states of completeness */
     states: [
         // "" =  default  = incomplete
+        State { name: "incomplete";   when: (!infoCompletete)
+            PropertyChanges { target: header;
+                title:          qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report"))
+            }
+        },
         State { name: "titleMissing";   when: (!infoComplete && !titleComplete)
             PropertyChanges { target: header;
                 description: qsTr("%1 field is incomplete").arg(qsTr("Title"))
@@ -97,8 +105,6 @@ Page {
     // from org.nemomobile.systemsettings to determine Device Owner
     UserInfo{id: userInfo; uid: 100000}
 
-    /* only allow somewhat complete reports to be posted */
-    // TODO: do we need a function for this?
     function resetFields() {
         text_title.text         = "";
         text_desc.text          = "";
@@ -113,11 +119,6 @@ Page {
         regarch.currentIndex    = -1;
         othersw.checked         = false;
         repro.value             = -1;
-    }
-    function validate() {
-        ( titleComplete && descComplete && stepsComplete )
-            ? infoComplete = true
-            : infoComplete = false
     }
 
     /* show a welcome popup on launch */
@@ -138,7 +139,7 @@ Page {
         contentHeight: col.height
         Column { id: col
             width: parent.width
-            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete"), "State of completeness of a bug report") }
+            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report")) }
             WelcomeLabel{
                 width:  parent.width - Theme.horizontalPageMargin * 2
                 clip: true
@@ -176,7 +177,6 @@ Page {
                             text_title.text = "[Test] LoremIpsum Report"
                             text_desc.text = devCol.lorem
                             text_steps.text = devCol.lorem
-                            validate()
                         }
                     }
                     Button {
@@ -185,7 +185,6 @@ Page {
                             text_precons.text = devCol.lorem
                             text_expres.text = devCol.lorem
                             text_actres.text = devCol.lorem
-                            validate()
                         }
                     }
                 }
@@ -203,7 +202,6 @@ Page {
                 width: parent.width
                 SectionHeader { text: qsTr("Title") + "*" }
                 TextField{id: text_title; width: parent.width;
-                    onFocusChanged: validate()
                     placeholderText: qsTr("A New Bug Report");
                     description: qsTr("Please be brief but descriptive");
                     acceptableInput: text.length > minTitleLength
@@ -211,7 +209,6 @@ Page {
                 SectionHeader { text: qsTr("Description") + "*" }
                 TextArea{id: text_desc;
                     width: parent.width;
-                    onFocusChanged: validate()
                     description: qsTr("Describe what is not working");
                     // TextField has this, TextArea not:
                     property bool acceptableInput: text.length > minDescLength
@@ -226,7 +223,6 @@ Page {
                     description: qsTr("Provide as much information as you have")
                     text: " 1. \n 2. \n 3. ";
                     placeholderText: " 1. \n 2. \n 3. ";
-                    onFocusChanged: validate()
                     // TextField has this, TextArea not:
                     property bool acceptableInput: text.length > minStepsLength
                 }

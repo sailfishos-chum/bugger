@@ -15,6 +15,12 @@ var config = {
         "host": "forum.sailfishos.org",
         "uri": "/c/13/show.json",
         "category": "category.topic_template"
+    },
+    "validation": {
+        "minTitle":   20,
+        "minDesc":    30,
+        "minSteps":   30,
+        "good":       150
     }
 }
 
