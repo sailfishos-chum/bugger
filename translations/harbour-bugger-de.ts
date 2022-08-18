@@ -109,7 +109,7 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="76"/>
-        <location filename="../qml/pages/MainPage.qml" line="250"/>
+        <location filename="../qml/pages/MainPage.qml" line="257"/>
         <source>Please fill in the required fields</source>
         <translation>Bitte fülle die Pflichtfelder aus</translation>
     </message>
@@ -292,44 +292,44 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation>Regression (hat in einer älteren OS Version funktioniert)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="229"/>
+        <location filename="../qml/pages/MainPage.qml" line="236"/>
         <source>Modifications</source>
         <translation>Mods</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="230"/>
-        <location filename="../qml/pages/MainPage.qml" line="231"/>
-        <location filename="../qml/pages/MainPage.qml" line="232"/>
+        <location filename="../qml/pages/MainPage.qml" line="237"/>
+        <location filename="../qml/pages/MainPage.qml" line="238"/>
+        <location filename="../qml/pages/MainPage.qml" line="239"/>
         <source>(autodetected)</source>
         <translation>erkannt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="233"/>
+        <location filename="../qml/pages/MainPage.qml" line="240"/>
         <source>Other (please specify)</source>
         <translation>Sonstige (bitte angeben)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="236"/>
+        <location filename="../qml/pages/MainPage.qml" line="243"/>
         <source>e.g. WayDroid and GApps installed</source>
         <translation>z. B. WayDroid oder GApps installiert</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="237"/>
+        <location filename="../qml/pages/MainPage.qml" line="244"/>
         <source>custom changes, installed packages etc.</source>
         <translation>eigene Veränderungen, installierte Pakete usw.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="245"/>
+        <location filename="../qml/pages/MainPage.qml" line="252"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="250"/>
+        <location filename="../qml/pages/MainPage.qml" line="257"/>
         <source>(marked with an asterisk (*))!</source>
         <translation>(mit Strenchen (*) markiert!)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="251"/>
+        <location filename="../qml/pages/MainPage.qml" line="258"/>
         <source>Post Bug Report</source>
         <translation>Bugreport abschicken</translation>
     </message>
@@ -343,18 +343,18 @@ Software versions: Please indicate version number instead of current/latest, as 
     <message>
         <location filename="../qml/components/VersionSelect.qml" line="35"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <location filename="../qml/components/VersionSelect.qml" line="35"/>
         <location filename="../qml/components/VersionSelect.qml" line="38"/>
         <source>Working Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionierende Version</translation>
     </message>
     <message>
         <location filename="../qml/components/VersionSelect.qml" line="38"/>
         <source>Arch</source>
-        <translation type="unfinished"></translation>
+        <translation>Arch</translation>
     </message>
 </context>
 <context>
