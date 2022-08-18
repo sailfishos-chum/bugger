@@ -27,11 +27,70 @@ import "../components"
 Page {
     id: page
 
+    /* config constants: */
+    readonly property int minTitleLength:   12
+    readonly property int minDescLength:    20
+    readonly property int minStepsLength:   20
+    readonly property int goodLength:       70
+
     property bool infoComplete: false
-    property bool titleComplete: text_title.length > 7
-    property bool descComplete:  text_desc.text.length > 15
-    property bool stepsComplete: text_steps.text.length > 15
+    // more or less random heuristic
+    property int infoGoodCnt:
+        text_desc.text.length +
+        text_steps.text.length +
+        text_precons.text.length +
+        text_expres.text.length +
+        text_actres.text.length +
+        0
+    property bool infoGood: ((infoGoodCnt > goodLength) && (infoGoodCnt > infoFullCnt))
+    property int infoFullCnt:
+        text_precons.text.length +
+        text_expres.text.length +
+        text_actres.text.length +
+        0
+    property bool infoFull: infoFullCnt > goodLength
+    property bool titleComplete: text_title.acceptableInput
+    property bool descComplete:  text_desc.acceptableInput
+    property bool stepsComplete: text_steps.acceptableInput
     readonly property string infoFooter: '<!-- the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version + ' -->'
+
+    /* handle different states of completeness */
+    states: [
+        // "" =  default  = incomplete
+        State { name: "titleMissing";   when: (!infoComplete && !titleComplete)
+            PropertyChanges { target: header;
+                description: qsTr("%1 field is incomplete").arg(qsTr("Title"))
+            }
+        },
+        State { name: "descMissing";    when: (!infoComplete && !descComplete)
+            PropertyChanges { target: header;
+                description: qsTr("%1 field is incomplete").arg(qsTr("Description"))
+            }
+        },
+        State { name: "stepsMissing";   when: (!infoComplete && !stepsComplete)
+            PropertyChanges { target: header;
+                description: qsTr("%1 field is incomplete").arg(qsTr("Steps"))
+            }
+        },
+        State { name: "complete";       when: (infoComplete && !infoGood && !infoFull )
+            PropertyChanges { target: header;
+                title:          qsTr("Bug Info (%1)").arg(qsTr("ok"))
+                description:    qsTr("Ready for posting") + qsTr(", but please add more information")
+            }
+        },
+        State { name: "good";       when: (infoComplete && infoGood && !infoFull)
+            PropertyChanges { target: header;
+                title:          qsTr("Bug Info (%1)").arg(qsTr("good"))
+                description:    qsTr("Ready for posting")
+            }
+        },
+        State { name: "fill";       when: (infoComplete && infoFull)
+            PropertyChanges { target: header;
+                title:          qsTr("Bug Info (%1)").arg(qsTr("complete"))
+                description:    qsTr("Ready for posting")
+            }
+        }
+    ]
 
     // from org.nemomobile.systemsettings to determine OS language
     LanguageModel{id: languageModel}
@@ -79,11 +138,7 @@ Page {
         contentHeight: col.height
         Column { id: col
             width: parent.width
-            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(infoComplete ? qsTr("complete") : qsTr("incomplete"))
-                description: (infoComplete)
-                ? qsTr("Ready for posting")
-                : qsTr("Please fill in the required fields")
-            }
+            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete")) }
             WelcomeLabel{
                 width:  parent.width - Theme.horizontalPageMargin * 2
                 clip: true
@@ -141,19 +196,25 @@ Page {
                 }
             }
 
-            Column {
+            /*****************************
+             * Required fields at the top
+             *****************************/
+            Column { id: reqFieldCol
                 width: parent.width
                 SectionHeader { text: qsTr("Title") + "*" }
                 TextField{id: text_title; width: parent.width;
                     onFocusChanged: validate()
                     placeholderText: qsTr("A New Bug Report");
                     description: qsTr("Please be brief but descriptive");
+                    acceptableInput: text.length > minTitleLength
                 }
                 SectionHeader { text: qsTr("Description") + "*" }
                 TextArea{id: text_desc;
                     width: parent.width;
                     onFocusChanged: validate()
                     description: qsTr("Describe what is not working");
+                    // TextField has this, TextArea not:
+                    property bool acceptableInput: text.length > minDescLength
                 }
                 SectionHeader { text: qsTr("Steps to Reproduce") + "*" }
                 TextArea{id: text_steps;
@@ -163,9 +224,11 @@ Page {
                     label: qsTr("How to reproduce");
                     //description: qsTr("Provide as much information as you have to reproduce the behavior")
                     description: qsTr("Provide as much information as you have")
-                    text: qsTr("1.\n2.\n3.");
-                    placeholderText: qsTr("1.\n2.\n3.");
+                    text: " 1. \n 2. \n 3. ";
+                    placeholderText: " 1. \n 2. \n 3. ";
                     onFocusChanged: validate()
+                    // TextField has this, TextArea not:
+                    property bool acceptableInput: text.length > minStepsLength
                 }
             }
            SectionHeader { text: qsTr("Preconditions") }
