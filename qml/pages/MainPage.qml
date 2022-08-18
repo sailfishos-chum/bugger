@@ -28,6 +28,9 @@ Page {
     id: page
 
     property bool infoComplete: false
+    property bool titleComplete: text_title.length > 7
+    property bool descComplete:  text_desc.text.length > 15
+    property bool stepsComplete: text_steps.text.length > 15
     readonly property string infoFooter: '<!-- the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version + ' -->'
 
     // from org.nemomobile.systemsettings to determine OS language
@@ -37,20 +40,15 @@ Page {
 
     /* only allow somewhat complete reports to be posted */
     function validate() {
-        // for testing/debugging:
+        // Konami Code! for testing/debugging:
         if ( Qt.application.name == "QtQmlViewer") {
             console.debug("disabled validation during testing.")
             infoComplete = true;
             return
         }
-        if (text_title.length > 7
-            && text_desc.text.length > 15
-            && text_steps.text.length > 15
-        ) {
-            infoComplete = true
-        } else {
-            infoComplete = false
-        }
+        ( titleComplete && descComplete && stepsComplete )
+            ? infoComplete = true
+            : infoComplete = false
     }
 
     /* show a welcome popup on launch */
@@ -255,6 +253,9 @@ Page {
     PushUpMenu { id: pum
         flickable: flick
         MenuLabel { text: qsTr("Please fill in the required fields") + " " + qsTr("(marked with an asterisk (*))!"); visible: !infoComplete; }
+        MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Title"))       ; visible: ( !infoComplete && !titleComplete); }
+        MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Description")) ; visible: ( !infoComplete && !descComplete); }
+        MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Steps"))       ; visible: ( !infoComplete && !stepsComplete); }
         MenuItem { text: qsTr("Post Bug Report");
             enabled: infoComplete
             onClicked: {
