@@ -221,6 +221,13 @@ Page {
             }
             TextSwitch { id: regsw; checked: false;
                 text: qsTr("Regression (was working in a previous OS release)")
+                automaticCheck: false
+                onClicked: { checked = !checked;
+                    if (!checked) {
+                        regver.currentIndex=-1
+                        regarch.currentIndex=-1
+                    }
+                }
             }
             VersionSelect { id: regver;  state: "version"; visible: regsw.checked}
             VersionSelect { id: regarch; state: "arch";    visible: regsw.checked}
@@ -256,10 +263,12 @@ Page {
                     + "OSVERSION: " + bugInfo.os.version_id + "  \n"
                     + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
                     + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
-                    + "REGRESSION: " + regsw.checked + " (since: " + regver.value + " - " + regarch.value + ")"
-                    //+ "REGRESSION: " + regsw.checked + " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
-//                                                        ? " from: " + ((regver.currentIndex >=0) ? regver.currentItem.text : "n/a") + " - " + ((regarch.currentIndex >=0) ? regarch.currentItem.text : "n/a")
-//                                                        : ""
+                    //+ "REGRESSION: " + (regsw.checked?"yes":"no") + " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
+                    + "REGRESSION: " + (regsw.checked?"yes":"no") 
+                                + ( regsw.checked
+                                    ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
+                                    : ""
+                                )
                     + "  \n"
                     + "\n\n"
                     + "DESCRIPTION:\n"
@@ -276,9 +285,9 @@ Page {
                     + "\n\n"
                     + "MODIFICATIONS:\n"
                     + "==========\n\n"
-                    + " - Patchmanager: " + pmsw.checked + "  \n"
-                    + " - OpenRepos: "    + orsw.checked + "  \n"
-                    + " - Chum: "         + chsw.checked + "  \n"
+                    + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "  \n"
+                    + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
+                    + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
                     + " - Other: "        + text_mod_other.text + "  \n"
                     + "\n\n"
                     + "ADDITIONAL INFORMATION:\n"
