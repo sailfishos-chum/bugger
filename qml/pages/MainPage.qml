@@ -40,12 +40,6 @@ Page {
 
     /* only allow somewhat complete reports to be posted */
     function validate() {
-        // Konami Code! for testing/debugging:
-        if ( Qt.application.name == "QtQmlViewer") {
-            console.debug("disabled validation during testing.")
-            infoComplete = true;
-            return
-        }
         ( titleComplete && descComplete && stepsComplete )
             ? infoComplete = true
             : infoComplete = false
@@ -58,6 +52,7 @@ Page {
     }
     function showWelcomeDialog() {
         if (welcomeShown) return;
+        if (developerMode) return;
         var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
         dialog.done.connect(function() { page.welcomeShown = true })
     }
@@ -97,6 +92,39 @@ Page {
                     }
                 }
             }
+            /* Testing Helper */
+            Column { id: devCol
+                width: parent.width
+                visible: developerMode
+                readonly property string lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                ButtonLayout {
+                    width: parent.width
+                    Button {
+                        text: "Fill minumum"
+                        onClicked: {
+                            text_title.text = "[Test] LoremIpsum Report"
+                            text_desc.text = devCol.lorem
+                            text_steps.text = devCol.lorem
+                            validate()
+                        }
+                    }
+                    Button {
+                        text: "Fill the rest"
+                        onClicked: {
+                            text_precons.text = devCol.lorem
+                            text_expres.text = devCol.lorem
+                            text_actres.text = devCol.lorem
+                            validate()
+                        }
+                    }
+                }
+                Label {
+                    width: parent.width
+                    font.pixelSize: Theme.fontSizeSmall
+                    text: "gootcnt: " + infoGoodCnt + " fullcnt: " + infoFullCnt + " state: " + page.state
+                }
+            }
+
             Column {
                 width: parent.width
                 SectionHeader { text: qsTr("Title") + "*" }

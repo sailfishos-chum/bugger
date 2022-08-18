@@ -28,6 +28,8 @@ import "cover"
 ApplicationWindow {
     id: app
 
+    property bool developerMode: false
+
     /* post submit settings */
     readonly property string postScheme:    'https'
     //readonly property string postScheme:   "sailfishos-bugreport-1" // for a custom Url handler
@@ -135,6 +137,11 @@ ApplicationWindow {
         allowedOrientations = (devicemodel === 'planetgemini')
             ? Orientation.LandscapeInverted 
             : defaultAllowedOrientations
+
+        if (Qt.application.arguments.indexOf("-developermode") > -1) {
+            developerMode = true
+            console.info("testing/developer mode enabled!")
+        }
 
         /* LOAD ALL THE THINGS */
         getInfo(osInfoFile, "os");
