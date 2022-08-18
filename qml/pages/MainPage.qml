@@ -67,17 +67,17 @@ Page {
         },
         State { name: "titleMissing";   when: (!infoComplete && !titleComplete)
             PropertyChanges { target: header;
-                description: qsTr("%1 field is incomplete").arg(qsTr("Title"))
+                description: qsTr("%1 field is too short").arg(qsTr("Title"))
             }
         },
         State { name: "descMissing";    when: (!infoComplete && !descComplete)
             PropertyChanges { target: header;
-                description: qsTr("%1 field is incomplete").arg(qsTr("Description"))
+                description: qsTr("%1 field is too short").arg(qsTr("Description"))
             }
         },
         State { name: "stepsMissing";   when: (!infoComplete && !stepsComplete)
             PropertyChanges { target: header;
-                description: qsTr("%1 field is incomplete").arg(qsTr("Steps"))
+                description: qsTr("%1 field is too short").arg(qsTr("Steps"))
             }
         },
         State { name: "complete";       when: (infoComplete && !infoGood && !infoFull )
@@ -119,6 +119,7 @@ Page {
         regarch.currentIndex    = -1;
         othersw.checked         = false;
         repro.value             = -1;
+        text_title.focus         = true;
     }
 
     /* show a welcome popup on launch */
@@ -130,7 +131,7 @@ Page {
         if (welcomeShown) return;
         if (developerMode) return;
         var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
-        dialog.done.connect(function() { page.welcomeShown = true })
+        dialog.done.connect(function() { page.welcomeShown = true; text_title.focus = true; })
     }
     /* welcome over */
 

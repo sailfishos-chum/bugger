@@ -168,6 +168,28 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <source>incomplete</source>
+        <comment>State of completeness of a bug report</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 field is too short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Steps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -175,15 +197,21 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please fill in the required fields</source>
+        <source>, but please add more information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>good</source>
+        <comment>State of completeness of a bug report</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>complete</source>
+        <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You can tap this section to hide it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -195,19 +223,19 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Describe what is not working</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Device</source>
+        <source>Steps to Reproduce</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Operating System</source>
+        <source>How to reproduce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provide as much information as you have</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -215,15 +243,11 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>e.g. &apos;an email account is needed&apos;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Some Context information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Steps to Reproduce</source>
+        <source>e.g. &apos;an email account is needed&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -251,6 +275,18 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Device Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operating System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Additional Information</source>
         <translation type="unfinished"></translation>
     </message>
@@ -264,6 +300,11 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <source>Reproducibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <comment>Reproducibility</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -311,43 +352,6 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(marked with an asterisk (*))!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Device Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Post Bug Report</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>How to reproduce</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Provide as much information as you have</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 field is incomplete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Steps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>, but please add more information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>unknown</source>
-        <comment>Reproducibility</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Reset all to default</source>
         <translation type="unfinished"></translation>
     </message>
@@ -356,18 +360,19 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>ok</source>
-        <comment>State of completeness of a bug report</comment>
+        <source>Please fill in the required fields</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>good</source>
-        <comment>State of completeness of a bug report</comment>
+        <source>(marked with an asterisk (*))!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>complete</source>
-        <comment>State of completeness of a bug report</comment>
+        <source>%1 field is incomplete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Post Bug Report</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
