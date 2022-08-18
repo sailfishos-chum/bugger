@@ -62,7 +62,7 @@ BuildArch: noarch
 #AutoSubPackages:
 #  - doc
 Files:
-  - '%license LICENSE'
+  # '%license LICENSE'
   - '%{_datadir}/applications/%{name}.desktop'
   - '%{_datadir}/icons/*/*/apps/%{name}.png'
   - '%{_datadir}/icons/*/*/apps/%{name}.svg'

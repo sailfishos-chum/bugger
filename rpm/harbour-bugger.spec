@@ -97,7 +97,6 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
-%license LICENSE
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/*/apps/%{name}.png
 %{_datadir}/icons/*/*/apps/%{name}.svg
