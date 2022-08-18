@@ -1,5 +1,0 @@
-## Feature requests:
-
-- specify version in case of regression (pherjung)
-
-## Bugs
