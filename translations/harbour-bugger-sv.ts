@@ -167,10 +167,6 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>complete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>incomplete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -231,12 +227,6 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>1.
-2.
-3.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Expected Results</source>
         <translation type="unfinished"></translation>
     </message>
@@ -274,11 +264,6 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <source>Reproducibility</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>not specified</source>
-        <comment>Reproducibility</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -354,21 +339,35 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>ok</source>
+        <source>, but please add more information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>, but please add optional information</source>
+        <source>unknown</source>
+        <comment>Reproducibility</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset all to default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cleared.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>good</source>
+        <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> 1. 
- 2. 
- 3. </source>
+        <source>complete</source>
+        <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

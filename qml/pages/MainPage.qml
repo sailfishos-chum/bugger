@@ -74,19 +74,19 @@ Page {
         },
         State { name: "complete";       when: (infoComplete && !infoGood && !infoFull )
             PropertyChanges { target: header;
-                title:          qsTr("Bug Info (%1)").arg(qsTr("ok"))
+                title:          qsTr("Bug Info (%1)").arg(qsTr("ok", "State of completeness of a bug report"))
                 description:    qsTr("Ready for posting") + qsTr(", but please add more information")
             }
         },
         State { name: "good";       when: (infoComplete && infoGood && !infoFull)
             PropertyChanges { target: header;
-                title:          qsTr("Bug Info (%1)").arg(qsTr("good"))
+                title:          qsTr("Bug Info (%1)").arg(qsTr("good", "State of completeness of a bug report"))
                 description:    qsTr("Ready for posting")
             }
         },
         State { name: "fill";       when: (infoComplete && infoFull)
             PropertyChanges { target: header;
-                title:          qsTr("Bug Info (%1)").arg(qsTr("complete"))
+                title:          qsTr("Bug Info (%1)").arg(qsTr("complete", "State of completeness of a bug report"))
                 description:    qsTr("Ready for posting")
             }
         }
@@ -138,7 +138,7 @@ Page {
         contentHeight: col.height
         Column { id: col
             width: parent.width
-            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete")) }
+            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete"), "State of completeness of a bug report") }
             WelcomeLabel{
                 width:  parent.width - Theme.horizontalPageMargin * 2
                 clip: true
