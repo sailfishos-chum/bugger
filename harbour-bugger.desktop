@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Icon=icon-splus-error
+Icon=harbour-bugger
 Exec=invoker --type=silica-qt5 sailfish-qml harbour-bugger
 #Exec=sailjail -p template-app.desktop /usr/bin/sailfish-qml template-app
 Name=Bugger

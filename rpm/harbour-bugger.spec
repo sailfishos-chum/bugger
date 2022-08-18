@@ -54,6 +54,7 @@ Url:
 
 %build
 # >> build pre
+%qmake5
 # << build pre
 
 
@@ -66,6 +67,7 @@ rm -rf %{buildroot}
 # >> install pre
 # lrelease -silent -removeidentical translations/*
 lrelease -silent -removeidentical *.pro
+%qmake5_install
 # << install pre
 
 # >> install post
@@ -83,6 +85,7 @@ done
 #for s in 512 256 128 64 48; do
 #%%__install -m 644 -D icons/%%{name}-${s}.png %%{buildroot}%%{_datadir}/icons/hicolor/${s}x${s}/apps/%%{name}.png
 #done
+%__install -m 644 -D icons/svgs/%{name}.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 # mangle version info
 sed -i -e "s/unreleased/%{version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
@@ -96,6 +99,8 @@ desktop-file-install --delete-original       \
 %defattr(-,root,root,-)
 %license LICENSE
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/*/*/apps/%{name}.png
+%{_datadir}/icons/*/*/apps/%{name}.svg
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*

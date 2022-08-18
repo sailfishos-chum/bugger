@@ -23,4 +23,4 @@ TRANSLATIONS += translations/$${TARGET}-en.ts \
                 translations/$${TARGET}-de.ts \
                 translations/$${TARGET}-sv.ts \
 
-#include(icons/icons.pri)
+include(icons/icons.pri)
