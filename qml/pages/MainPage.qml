@@ -39,6 +39,22 @@ Page {
     UserInfo{id: userInfo; uid: 100000}
 
     /* only allow somewhat complete reports to be posted */
+    // TODO: do we need a function for this?
+    function resetFields() {
+        text_title.text         = "";
+        text_desc.text          = "";
+        text_steps.text         = " 1. \n 2. \n 3. ";
+        text_precons.text       = "";
+        text_expres.text        = "";
+        text_actres.text        = "";
+        text_add.text           = "";
+        text_mod_other.text     = "";
+        regsw.checked           = false;
+        regver.currentIndex     = -1;
+        regarch.currentIndex    = -1;
+        othersw.checked         = false;
+        repro.value             = -1;
+    }
     function validate() {
         ( titleComplete && descComplete && stepsComplete )
             ? infoComplete = true
@@ -276,6 +292,7 @@ Page {
     PullDownMenu { id: pdm
         flickable: flick
         MenuItem { text: qsTr("About"); onClicked: { pageStack.push(Qt.resolvedUrl("AboutPage.qml")) } }
+        MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Cleared."), function() { resetFields() }) } }
         //MenuItem { text: qsTr("Settings"); onClicked: { pageStack.push(Qt.resolvedUrl("SettingsPage.qml")) } }
     }
     PushUpMenu { id: pum
