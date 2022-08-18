@@ -345,6 +345,32 @@ Software versions: Please indicate version number instead of current/latest, as 
         <source>Provide as much information as you have</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 field is incomplete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Steps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>, but please add optional information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>good</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> 1. 
+ 2. 
+ 3. </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

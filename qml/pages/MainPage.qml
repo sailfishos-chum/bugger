@@ -309,28 +309,33 @@ Page {
                 label: qsTr("Reproducibility");
                 minimumValue: 0; maximumValue: 100; stepSize: 25 ; value: -1
                 valueText: qsTr(userTextL10N)
+                // this goes into the bug report
                 property string userText: {
-                    if (value <= 0) return "not specified"
+                    if (value == -1) return "not specified"
+                    if (value == 0)  return "unknown"
                     if (value <= 25) return "never"
                     if (value <= 50) return "sometimes"
                     if (value <= 75) return "often"
                     return "always"
                 }
+                // this is just for translation/presentation
                 property string userTextL10N: {
-                    if (value <= 0) return qsTr("not specified", "Reproducibility")
-                    if (value <= 25) return qsTr("never",         "Reproducibility")
-                    if (value <= 50) return qsTr("sometimes",     "Reproducibility")
-                    if (value <= 75) return qsTr("often",         "Reproducibility")
+                    if (value == -1) return ""
+                    if (value == 0)  return qsTr("unknown",        "Reproducibility")
+                    if (value <= 25) return qsTr("never",          "Reproducibility")
+                    if (value <= 50) return qsTr("sometimes",      "Reproducibility")
+                    if (value <= 75) return qsTr("often",          "Reproducibility")
                     return qsTr("always", "Reproducibility")
                 }
             }
             TextSwitch { id: regsw; checked: false;
                 text: qsTr("Regression (was working in a previous OS release)")
                 automaticCheck: false
-                onClicked: { checked = !checked;
+                onClicked: {
+                    checked = !checked;
                     if (!checked) {
-                        regver.currentIndex=-1
-                        regarch.currentIndex=-1
+                        regver.currentIndex  = -1
+                        regarch.currentIndex = -1
                     }
                 }
             }
