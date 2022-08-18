@@ -1,3 +1,10 @@
+* Wed Aug 18 2022 Nephros <sailfish@nephros.org> - 0.9.4
+- beta release 0.9.4
+- add developer mode
+- make MainPage stateful to better handle completeness (Issue #2)
+- add Reset/Clear menu entry
+- separate magic numbers/constants into top of the page
+
 * Wed Aug 18 2022 Nephros <sailfish@nephros.org> - 0.9.3
 - beta release 0.9.3
 - add selector for older version for regressions
