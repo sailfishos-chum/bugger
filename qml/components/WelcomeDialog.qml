@@ -24,6 +24,7 @@ import Sailfish.Silica 1.0
 
 Dialog {
     canAccept: false
+    forwardNavigation: false
     Column {
         anchors.fill: parent
 
