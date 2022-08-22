@@ -1,6 +1,7 @@
 Name: harbour-bugger
 Summary: Bug reporting helper
-Version: 0.9.5
+# x.y.z.0 the zero indicates harbour-compatible version
+Version: 0.9.5.0
 Release: 0
 Group: Applications
 License: ASL 2.0
