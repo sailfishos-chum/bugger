@@ -2,3 +2,4 @@
 build.log
 translations/*.qm
 Makefile
+icons/*x*
