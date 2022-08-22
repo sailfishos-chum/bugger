@@ -9,7 +9,7 @@ Name[en]=Bugger
 
 [X-Sailjail]
 ApplicationName=Bugger
-OrganizationName=SailfishOS-Chum
+OrganizationName=sailfishos-chum
 Permissions=Base
 
 #[X-HarbourBackup]
