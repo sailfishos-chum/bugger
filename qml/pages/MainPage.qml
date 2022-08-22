@@ -369,50 +369,56 @@ Page {
         MenuItem { text: qsTr("Post Bug Report");
             enabled: infoComplete
             onClicked: {
-                var payload =
-                    "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
-                    + "OSVERSION: " + bugInfo.os.version_id + "  \n"
-                    + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
-                    + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
-                    //+ "REGRESSION: " + (regsw.checked?"yes":"no") + " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
-                    + "REGRESSION: " + (regsw.checked?"yes":"no") 
-                                + ( regsw.checked
-                                    ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
-                                    : ""
-                                )
-                    + "  \n"
-                    + "\n\n"
-                    + "DESCRIPTION:\n"
-                    + "=========\n\n" + text_desc.text
-                    + "\n\n"
-                    + "PRECONDITIONS:\n"
-                    + "==========\n\n" + text_precons.text
-                    + "\n\n"
-                    + "EXPECTED RESULTS:\n"
-                    + "============\n\n" + text_expres.text
-                    + "\n\n"
-                    + "ACTUAL RESULTS:\n"
-                    + "===========\n\n" + text_actres.text
-                    + "\n\n"
-                    + "MODIFICATIONS:\n"
-                    + "==========\n\n"
-                    + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "  \n"
-                    + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
-                    + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
-                    + " - Other: "        + text_mod_other.text + "  \n"
-                    + "\n\n"
-                    + "ADDITIONAL INFORMATION:\n"
-                    + "=================\n\n" + text_add.text
-                    + "\n\n"
-                    + infoFooter + "\n"
-                    + "\n\n";
-                var fullPostUrl = postUrl
-                    + "&title=" + encodeURIComponent(text_title.text)
-                    + "&body=" + encodeURIComponent(payload);
-                console.debug("Opening ", fullPostUrl)
-                Qt.openUrlExternally(fullPostUrl)
+                var fullPostUrl = formToUrl();
+                console.debug("Opening ", fullPostUrl);
+                Qt.openUrlExternally(fullPostUrl);
             }
         }
+    }
+
+    /* convert the form fields into a bjg report post, return full URL for posting */
+    function formToUrl() {
+        var payload =
+            "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
+            + "OSVERSION: " + bugInfo.os.version_id + "  \n"
+            + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
+            + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
+        //+ "REGRESSION: " + (regsw.checked?"yes":"no") + " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
+            + "REGRESSION: " + (regsw.checked?"yes":"no") 
+            + ( regsw.checked
+                ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
+                : ""
+            )
+            + "  \n"
+            + "\n\n"
+            + "DESCRIPTION:\n"
+            + "=========\n\n" + text_desc.text
+            + "\n\n"
+            + "PRECONDITIONS:\n"
+            + "==========\n\n" + text_precons.text
+            + "\n\n"
+            + "EXPECTED RESULTS:\n"
+            + "============\n\n" + text_expres.text
+            + "\n\n"
+            + "ACTUAL RESULTS:\n"
+            + "===========\n\n" + text_actres.text
+            + "\n\n"
+            + "MODIFICATIONS:\n"
+            + "==========\n\n"
+            + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "  \n"
+            + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
+            + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
+            + " - Other: "        + text_mod_other.text + "  \n"
+            + "\n\n"
+            + "ADDITIONAL INFORMATION:\n"
+            + "=================\n\n" + text_add.text
+            + "\n\n"
+            + infoFooter + "\n"
+            + "\n\n";
+        var fullPostUrl = postUrl
+            + "&title=" + encodeURIComponent(text_title.text)
+            + "&body=" +  encodeURIComponent(payload);
+        return fullPostUrl
     }
 
 }
