@@ -21,7 +21,7 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import org.nemomobile.systemsettings 1.0
+//import org.nemomobile.systemsettings 1.0
 import "../components"
 import "../config/settings.js" as Settings
 
@@ -101,9 +101,9 @@ Page {
     ]
 
     // from org.nemomobile.systemsettings to determine OS language
-    LanguageModel{id: languageModel}
+    //LanguageModel{id: languageModel}
     // from org.nemomobile.systemsettings to determine Device Owner
-    UserInfo{id: userInfo; uid: 100000}
+    //UserInfo{id: userInfo; uid: 100000}
 
     function resetFields() {
         text_title.text         = "";
@@ -326,7 +326,8 @@ Page {
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
             + "OSVERSION: " + bugInfo.os.version_id + "  \n"
             + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
-            + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
+            + "UI LANGUAGE: " + Qt.locale().name
+         //   + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
             + "REGRESSION: " + (regsw.checked?"yes":"no")
             + ( regsw.checked
                 ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
