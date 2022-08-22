@@ -101,6 +101,7 @@ desktop-file-install --delete-original       \
 %defattr(-,root,root,-)
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/*/apps/%{name}.png
+%config %{_sysconfdir}/sailjail/permissions/%{name}.profile
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*
