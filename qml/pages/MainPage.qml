@@ -67,17 +67,17 @@ Page {
         },
         State { name: "titleMissing";   when: (!infoComplete && !titleComplete)
             PropertyChanges { target: header;
-                description: qsTr("%1 field is too short").arg(qsTr("Title"))
+                description: qsTr("%1 field is too short").arg(qsTr("Title")) + " (" + text_title.text.length + "/" + minTitleLength + ")"
             }
         },
         State { name: "descMissing";    when: (!infoComplete && !descComplete)
             PropertyChanges { target: header;
-                description: qsTr("%1 field is too short").arg(qsTr("Description"))
+                description: qsTr("%1 field is too short").arg(qsTr("Description")) + " (" + text_desc.text.length + "/" + minDescLength + ")"
             }
         },
         State { name: "stepsMissing";   when: (!infoComplete && !stepsComplete)
             PropertyChanges { target: header;
-                description: qsTr("%1 field is too short").arg(qsTr("Steps"))
+                description: qsTr("%1 field is too short").arg(qsTr("Steps")) + " (" + text_steps.text.length + "/" + minStepsLength + ")"
             }
         },
         State { name: "complete";       when: (infoComplete && !infoGood && !infoFull )
