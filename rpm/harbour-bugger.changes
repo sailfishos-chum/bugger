@@ -3,6 +3,7 @@
 - add SailJail configuration
 - add prelimnary icon (Issue #4)
 - add settings file for non-code config updates
+- add non-desctructive harbour compatability
 
 * Thu Aug 18 2022 Nephros <sailfish@nephros.org> - 0.9.4
 - beta release 0.9.4
