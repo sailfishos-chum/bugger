@@ -119,7 +119,7 @@ Page {
         regarch.currentIndex    = -1;
         othersw.checked         = false;
         repro.value             = -1;
-        text_title.focus         = true;
+        text_title.focus        = true;
     }
 
     /* show a welcome popup on launch */
@@ -131,7 +131,7 @@ Page {
         if (welcomeShown) return;
         if (developerMode) return;
         var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
-        dialog.done.connect(function() { page.welcomeShown = true; text_title.focus = true; })
+        dialog.done.connect(function() { page.welcomeShown = true; })
     }
     /* welcome over */
 
