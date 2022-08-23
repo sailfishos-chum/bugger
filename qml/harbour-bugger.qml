@@ -24,6 +24,7 @@ import Sailfish.Silica 1.0
 import Nemo.Configuration 1.0
 import "pages"
 import "cover"
+import "components"
 import "config/settings.js" as Settings
 
 ApplicationWindow {
@@ -53,23 +54,7 @@ ApplicationWindow {
     readonly property url pmInfoFile:  config.sources.pm
     readonly property url ssuInfoFile: config.sources.ssu
 
-    /* object to collect all the info read from files.
-     * we could use a proper QML type for this, but this works
-     */
-    QtObject { id: bugInfo
-        property var hw
-        property var os
-        property var ssu
-        property var mods: QtObject {
-            property bool patchmanager: false
-            property bool openrepos:    false
-            property bool chum:         false
-        }
-        function setOs(o) { os = o }
-        function setHw(o) { hw = o }
-        function setSsu(o) { ssu = o }
-        function setMod(s) { mods[s] = true }
-    }
+    BugInfo { id: bugInfo }
 
     /* read fileUrl from filesystem, assign to bugInfo according to what */
     function getInfo(fileUrl, what) {
