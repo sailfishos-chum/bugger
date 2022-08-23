@@ -5,10 +5,12 @@
 # x-sailjail-description = Bugger permissions
 # x-sailjail-translation-key-long-description = permission-la-data_description
 # x-sailjail-long-description = Access necessary resources for Bugger to work
-x-sailjail-permission = Secrets
 
-# we allow ourselves, and rpm (which we only use in -q mode anyway)
+# PERMISSIONS
+# x-sailjail-permission = Base
 
-# TODO: this ia a copy of the real thing an will not be sunched with it!
-# i.e. it will be out of date if repos change
+# we need a read-only copy to read "arch" from
 private-etc ssu/ssu.ini
+
+# patchmanager detection parses this for enabled patches
+private-etc patchmanager2.conf
