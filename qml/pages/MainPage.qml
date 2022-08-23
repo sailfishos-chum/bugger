@@ -376,7 +376,7 @@ Page {
         }
     }
 
-    /* convert the form fields into a bjg report post, return full URL for posting */
+    /* convert the form fields into a bug report post, return full URL for posting */
     function formToUrl() {
         var payload =
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
@@ -415,6 +415,8 @@ Page {
             + "\n\n"
             + infoFooter + "\n"
             + "\n\n";
+
+        // encode the payload:
         var fullPostUrl = postUrl
             + "&title=" + encodeURIComponent(text_title.text)
             + "&body=" +  encodeURIComponent(payload);

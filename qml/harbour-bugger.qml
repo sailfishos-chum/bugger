@@ -40,14 +40,6 @@ ApplicationWindow {
     readonly property string postUri:       config.submit.uri
     readonly property url    postUrl:       postScheme + '://' + postHost + postUri
 
-    /* forum things:
-     * see docs.discourse.org
-     */
-    //readonly property string bugTemplateHost:     Settings.config.bugtemplate.host
-    //readonly property string bugTemplateUri:      Settings.config.bugtemplate.uri
-    //readonly property string bugTemplateCategory: Settings.config.bugtemplate.category
-    //readonly property url    bugTemplateUrl: "https://" + bugTemplateHost + bugTemplateUri
-
     /* info sources: */
     readonly property url osInfoFile:  config.sources.os
     readonly property url hwInfoFile:  config.sources.hw
@@ -145,20 +137,6 @@ ApplicationWindow {
         id: devicemodel
         key: "/desktop/lipstick-jolla-home/model"
     }
-    /*
-    // application settings:
-    ConfigurationGroup  {
-        id: settings
-        path: "/org/nephros/" + Qt.application.name
-    }
-    ConfigurationGroup  {
-        id: config
-        scope: settings
-        path:  "app"
-        //property bool gravity: true // true: pull to bottom
-        //property int ordering: 1 // 1: top to bottom
-    }
-    */
 
     initialPage: Component { MainPage{} }
     cover: CoverPage{}

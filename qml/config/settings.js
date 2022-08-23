@@ -11,11 +11,6 @@ var config = {
         "host":      'forum.sailfishos.org',
         "uri":       '/new-topic?category_id=13'
     },
-    "bugtemplate": {
-        "host": "forum.sailfishos.org",
-        "uri": "/c/13/show.json",
-        "category": "category.topic_template"
-    },
     "validation": {
         "minTitle":   20,
         "minDesc":    30,
