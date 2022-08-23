@@ -55,7 +55,7 @@ Page {
         1 * text_expres.text.length +
         1 * text_actres.text.length +
         0
-    readonly property string infoFooter: '<!-- the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version + ' -->'
+    readonly property string infoFooter: 'the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version
 
     /* handle different states of completeness */
     states: [
@@ -190,7 +190,9 @@ Page {
                     }
                 }
                 Label {
-                    width: parent.width
+                    width:  parent.width - Theme.horizontalPageMargin * 2
+                    color: Theme.secondaryColor
+                    font.italic: true
                     font.pixelSize: Theme.fontSizeSmall
                     text: "gootcnt: " + infoGoodCnt + " fullcnt: " + infoFullCnt + " state: " + page.state
                 }
@@ -262,6 +264,8 @@ Page {
                     DetailItem { label: "HA Version" ;      value: bugInfo.hw.version_id;}
                     //DetailItem { label: "Build" ;           value: bugInfo.hw.sailfish_build;}
                     //DetailItem { label: "Flavour" ;         value: bugInfo.hw.sailfish_flavour;}
+
+                    DetailItem { label: "Owner" ;      value: userInfo.username }
                 }
                 Column {
                     width: parent.width/2
@@ -274,7 +278,6 @@ Page {
                     //DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
                     //DetailItem { label: "Flavour" ;         value: bugInfo.os.sailfish_flavour;}
 
-                    DetailItem { label: "Owner" ;      value: userInfo.username }
                 }
                 /*
                 Column {
@@ -362,6 +365,7 @@ Page {
     }
     PushUpMenu { id: pum
         flickable: flick
+        busy: infoComplete
         MenuLabel { text: qsTr("Please fill in the required fields") + " " + qsTr("(marked with an asterisk (*))!"); visible: !infoComplete; }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Title"))       ; visible: ( !infoComplete && !titleComplete); }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Description")) ; visible: ( !infoComplete && !descComplete); }
@@ -383,8 +387,7 @@ Page {
             + "OSVERSION: " + bugInfo.os.version_id + "  \n"
             + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
             + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
-        //+ "REGRESSION: " + (regsw.checked?"yes":"no") + " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
-            + "REGRESSION: " + (regsw.checked?"yes":"no") 
+            + "REGRESSION: " + (regsw.checked?"yes":"no")
             + ( regsw.checked
                 ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
                 : ""
@@ -412,9 +415,11 @@ Page {
             + "\n\n"
             + "ADDITIONAL INFORMATION:\n"
             + "=================\n\n" + text_add.text
-            + "\n\n"
-            + infoFooter + "\n"
-            + "\n\n";
+            + "\n\n\n\n"
+            // add footer:
+            + "----  \n" 
+            + "*" + infoFooter + "*\n"
+            + "";
 
         // encode the payload:
         var fullPostUrl = postUrl
