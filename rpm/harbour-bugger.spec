@@ -65,13 +65,11 @@ Url:
 %install
 rm -rf %{buildroot}
 # >> install pre
-# lrelease -silent -removeidentical translations/*
 lrelease -silent -removeidentical *.pro
 %qmake5_install
 # << install pre
 
 # >> install post
-
 %__install -m 644 -D %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 %__install -m 644 -D qml/%{name}.qml %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
 #for f in qml/cover/*.qml qml/components/qmldir qml/components/*/*.qml qml/components/*.qml qml/pages/*.qml; do
@@ -82,9 +80,11 @@ for f in translations/*.qm; do
 %__install -m 644 -D ${f} %{buildroot}%{_datadir}/%{name}/${f}
 done
 
-#for s in 512 256 128 64 48; do
-#%%__install -m 644 -D icons/%%{name}-${s}.png %%{buildroot}%%{_datadir}/icons/hicolor/${s}x${s}/apps/%%{name}.png
-#done
+pushd icons
+for f in $(find . -type f -name "*.png"); do
+%__install -m 644 -D ${f} %{buildroot}%{_datadir}/icons/hicolor/${f}
+done
+popd
 
 # harbour does not allow this:
 #%%__install -m 644 -D icons/svgs/%%{name}.svg %%{buildroot}%%{_datadir}/icons/hicolor/scalable/apps/%%{name}.svg
