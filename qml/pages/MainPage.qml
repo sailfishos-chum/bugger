@@ -131,7 +131,7 @@ Page {
         if (welcomeShown) return;
         if (developerMode) return;
         var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
-        dialog.done.connect(function() { page.welcomeShown = true; })
+        dialog.done.connect(function() { page.welcomeShown = true;})
     }
     /* welcome over */
 
@@ -181,6 +181,9 @@ Page {
                     placeholderText: qsTr("A New Bug Report");
                     description: qsTr("Please be brief but descriptive");
                     acceptableInput: text.length > minTitleLength
+                    EnterKey.enabled: text.length > 0
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: text_desc.focus = true
                 }
                 SectionHeader { text: qsTr("Description") + "*" }
                 TextArea{id: text_desc;
