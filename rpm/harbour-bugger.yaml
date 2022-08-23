@@ -24,6 +24,7 @@ Description: |
      - Utility
     Custom:
       Repo: https://github.com/sailfishos-chum/bugger
+    Icon: https://raw.githubusercontent.com/sailfishos-chum/bugger/master/icons/svgs/harbour-bugger.svg
     Url:
       Help: https://forum.sailfishos.org/t/10935
     %endif
@@ -33,6 +34,8 @@ RpmLintIgnore:
   - 'summary-too-long'
   - 'no-changelogname-tag'
   - 'invalid-url'
+  - 'desktopfile-without-binary'
+  - 'explicit-lib-dependency'
 #Macros:
 #  - 'foo;bar'
 #  - |
@@ -55,8 +58,7 @@ PkgBR:
 #PkgConfigBR:
 #    - ^^^
 Configure: none
-Builder: none
-#Builder: qmake5
+Builder: qmake5
 NoIconCache: true
 BuildArch: noarch
 #AutoSubPackages:

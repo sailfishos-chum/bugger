@@ -41,6 +41,7 @@ Categories:
  - Utility
 Custom:
   Repo: https://github.com/sailfishos-chum/bugger
+Icon: https://raw.githubusercontent.com/sailfishos-chum/bugger/master/icons/svgs/harbour-bugger.svg
 Url:
   Help: https://forum.sailfishos.org/t/10935
 %endif
@@ -54,10 +55,11 @@ Url:
 
 %build
 # >> build pre
-%qmake5
 # << build pre
 
+%qmake5 
 
+make %{?_smp_mflags}
 
 # >> build post
 # << build post
@@ -65,9 +67,9 @@ Url:
 %install
 rm -rf %{buildroot}
 # >> install pre
-lrelease -silent -removeidentical *.pro
-%qmake5_install
+lrelease -silent -removeidentical %{name}.pro
 # << install pre
+%qmake5_install
 
 # >> install post
 %__install -m 644 -D %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
@@ -76,18 +78,14 @@ lrelease -silent -removeidentical *.pro
 for f in $(find qml/ -type f -name "*.qml" -o -name "*.js" -o -name qmldir -o -name "*.png"); do
 %__install -m 644 -D ${f} %{buildroot}%{_datadir}/%{name}/${f}
 done
+
 for f in translations/*.qm; do
 %__install -m 644 -D ${f} %{buildroot}%{_datadir}/%{name}/${f}
 done
 
-pushd icons
-for f in $(find . -type f -name "*.png"); do
-%__install -m 644 -D ${f} %{buildroot}%{_datadir}/icons/hicolor/${f}
-done
-popd
-
-# harbour does not allow this:
-#%%__install -m 644 -D icons/svgs/%%{name}.svg %%{buildroot}%%{_datadir}/icons/hicolor/scalable/apps/%%{name}.svg
+#for s in 512 256 128 64 48; do
+#%%__install -m 644 -D icons/%%{name}-${s}.png %%{buildroot}%%{_datadir}/icons/hicolor/${s}x${s}/apps/%%{name}.png
+#done
 
 # mangle version info
 sed -i -e "s/unreleased/%{version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml

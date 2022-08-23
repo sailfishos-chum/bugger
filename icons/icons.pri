@@ -1,7 +1,7 @@
 TEMPLATE = aux
-# Configures svg to png
-THEMENAME = sailfish-default
-INSTALLS += svg appicon
+QMAKE_EXTRA_TARGETS += svg appicon
+#INSTALLS += svg appicon
+INSTALLS += appicon
 
 appicon.sizes = \
     86 \
@@ -14,11 +14,12 @@ appicon.sizes = \
 
 for(iconsize, appicon.sizes) {
     profile = $${iconsize}x$${iconsize}
+    system(mkdir -p $${_PRO_FILE_PWD_}/icons/$${profile})
 
     appicon.commands += /usr/bin/sailfish_svg2png \
         -z 1.0 -s 1 1 1 1 1 1 $${iconsize} \
         $${_PRO_FILE_PWD_}/icons/svgs \
-        $${_PRO_FILE_PWD_}/icons/$${profile}/apps &&
+        $${_PRO_FILE_PWD_}/icons/$${profile}/apps ;
 
     appicon.files += $${_PRO_FILE_PWD_}/icons/$${profile}
 }
@@ -27,4 +28,4 @@ appicon.path = /usr/share/icons/hicolor/
 
 # also install SVG:
 svg.path = /usr/share/icons/hicolor/scalable/apps
-svg.files = svgs/$${TARGET}.svg
+svg.files = icons/svgs/*.svg

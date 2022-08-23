@@ -1,5 +1,5 @@
 ######################################################################
-# This is for translation ONLY, use build.sh for building
+# This is for icons and translation ONLY, use build.sh for building
 ######################################################################
 
 TARGET = harbour-bugger
