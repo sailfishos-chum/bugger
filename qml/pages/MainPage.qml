@@ -210,7 +210,7 @@ Page {
             TextArea{id: text_precons;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 //placeholderText: qsTr("e.g. 'an email account is needed'.")
-                label: qsTr("Some Context information.")
+                label: qsTr("Some Context information")
                 description: qsTr("e.g. 'an email account is needed'.")
             }
 

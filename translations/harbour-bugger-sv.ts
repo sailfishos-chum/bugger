@@ -140,6 +140,17 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     </message>
 </context>
 <context>
+    <name>DeviceInfo</name>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operating System</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GuideLabel</name>
     <message>
         <source>
@@ -243,7 +254,7 @@ Software versions: Please indicate version number instead of current/latest, as 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Some Context information.</source>
+        <source>Some Context information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -276,14 +287,6 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <source>Device Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Operating System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
