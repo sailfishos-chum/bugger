@@ -166,38 +166,11 @@ Page {
                 }
             }
             /* Testing Helper */
-            Column { id: devCol
+            Loader {
                 width: parent.width
-                visible: developerMode
-                readonly property string lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                ButtonLayout {
-                    width: parent.width
-                    Button {
-                        text: "Fill minumum"
-                        onClicked: {
-                            text_title.text = "[Test] LoremIpsum Report"
-                            text_desc.text = devCol.lorem
-                            text_steps.text = devCol.lorem
-                        }
-                    }
-                    Button {
-                        text: "Fill the rest"
-                        onClicked: {
-                            text_precons.text = devCol.lorem
-                            text_expres.text = devCol.lorem
-                            text_actres.text = devCol.lorem
-                        }
-                    }
-                }
-                Label {
-                    width:  parent.width - Theme.horizontalPageMargin * 2
-                    color: Theme.secondaryColor
-                    font.italic: true
-                    font.pixelSize: Theme.fontSizeSmall
-                    text: "gootcnt: " + infoGoodCnt + " fullcnt: " + infoFullCnt + " state: " + page.state
-                }
+                active: developerMode
+                sourceComponent: DeveloperTool {}
             }
-
             /*****************************
              * Required fields at the top
              *****************************/
@@ -253,49 +226,16 @@ Page {
             }
             SectionHeader { text: qsTr("Device Information") }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
-            Flow { id: devflow
+            /* 
+             * bug info contents may be available later than this page is instantiated.
+             * So use a Loader to quiet the "undefined" errors in the log.
+             *
+             * TODO: I'm sure there is a more QMLy way of doing this buut I never quite understood Binding{}
+             */
+            Loader {
                 width: parent.width
-                Column {
-                    width: parent.width /2
-                    SectionHeader { text: qsTr("Device") }
-                    DetailItem { label: "Name" ;            value: bugInfo.hw.name;}
-                    DetailItem { label: "Device" ;          value: bugInfo.hw.id;}
-                    DetailItem { label: "HA Device" ;       value: bugInfo.hw.mer_ha_device;}
-                    DetailItem { label: "HA Version" ;      value: bugInfo.hw.version_id;}
-                    //DetailItem { label: "Build" ;           value: bugInfo.hw.sailfish_build;}
-                    //DetailItem { label: "Flavour" ;         value: bugInfo.hw.sailfish_flavour;}
-
-                    DetailItem { label: "Owner" ;      value: userInfo.username }
-                }
-                Column {
-                    width: parent.width/2
-                    SectionHeader { text: qsTr("Operating System") }
-                    DetailItem { label: "Name" ;            value: bugInfo.os.name;}
-                    DetailItem { label: "OS Version" ;      value: bugInfo.os.version_id;}
-                    DetailItem { label: "Code Name" ;            value: bugInfo.os.version.split("(")[1].replace(")","") }
-                    DetailItem { label: "Arch" ;                 value: bugInfo.ssu.arch;}
-                    //DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
-                    //DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
-                    //DetailItem { label: "Flavour" ;         value: bugInfo.os.sailfish_flavour;}
-
-                }
-                /*
-                Column {
-                    width: parent.width
-                    SectionHeader { text: qsTr("Other") }
-                    DetailItem { label: "Arch" ;            value: bugInfo.ssu.arch;}
-                    DetailItem { label: "Brand" ;           value: bugInfo.ssu.brand;}
-                    //DetailItem { label: "Domain" ;          value: bugInfo.ssu.domain;}
-                    //DetailItem { label: "Flavour" ;         value: bugInfo.ssu.flavour;}
-                    //DetailItem { label: "Initialized" ;     value: bugInfo.ssu.initialized;}
-                    //DetailItem { label: "Registered" ;      value: bugInfo.ssu.registered;}
-
-                    DetailItem { label: "Current Locale";   value: Qt.locale().name}
-                    DetailItem { label: "Current Language"; value: Qt.locale().nativeLanguageName}
-                    DetailItem { label: "System Locale";    value: languageModel.locale(languageModel.currentIndex)}
-                    DetailItem { label: "System Language";  value: languageModel.languageName(languageModel.currentIndex)}
-                }
-                */
+                active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
+                sourceComponent: DeviceInfo{}
             }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             SectionHeader { text: qsTr("Additional Information") }
