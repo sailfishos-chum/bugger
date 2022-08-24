@@ -21,8 +21,8 @@
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>%1 is little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
-        <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports auf https://forum.sailfishos.org helfen soll, indem ein mehr oder wenigre standardisiertes Format verwendet wird.
-Reports, die auf diese Weise erstellt werden, sollten Jollas Fähigkeit erhöhen, diese aufzunehmen und zu tracken. Weitere Informationen dazu gibts unter %2</translation>
+        <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehlermeldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
+Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgenommen und getrackt werden. Weitere Informationen hierzu unter %2</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
@@ -52,7 +52,7 @@ Reports, die auf diese Weise erstellt werden, sollten Jollas Fähigkeit erhöhen
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Bug Coodination Team Lead: </source>
-        <translation type="unfinished"></translation>
+        <translation>Bug Coordination Team Leitung:</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
@@ -95,7 +95,17 @@ General: https://forum.sailfishos.org/c/15
 
 Software versions: Please indicate version number instead of current/latest, as every version has been current or latest at some point in time!
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+Bitte stelle sicher, dass du die Richtlinien zum erstellen von Bug Reports kennst und verwende die Vorlage.
+
+Richtlinien: https://forum.sailfishos.org/c/15
+
+Wenn du dir unsicher beim ausfüllen bist, stelle deine Fragen im Forum in der Kategorie 'General'.
+
+General: https://forum.sailfishos.org/c/15
+
+Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die neuste oder aktuelle.    
+        </translation>
     </message>
 </context>
 <context>
@@ -115,14 +125,14 @@ Software versions: Please indicate version number instead of current/latest, as 
     </message>
     <message>
         <source>incomplete</source>
-        <translation type="vanished">unzureichend</translation>
+        <translation type="vanished">unvollständig</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="86"/>
         <location filename="../qml/pages/MainPage.qml" line="92"/>
         <location filename="../qml/pages/MainPage.qml" line="98"/>
         <source>Ready for posting</source>
-        <translation>Bereit zum Post</translation>
+        <translation>Bereit zum posten</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="267"/>
@@ -138,14 +148,14 @@ Software versions: Please indicate version number instead of current/latest, as 
     <message>
         <location filename="../qml/pages/MainPage.qml" line="154"/>
         <source>You can tap this section to hide it.</source>
-        <translation>Du kannst diesen Bereich antippen zum Verstecken</translation>
+        <translation>Klicke zum verstecken</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="65"/>
         <location filename="../qml/pages/MainPage.qml" line="143"/>
         <source>incomplete</source>
         <comment>State of completeness of a bug report</comment>
-        <translation>unzureichend</translation>
+        <translation>unvollständig</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="70"/>
@@ -159,7 +169,7 @@ Software versions: Please indicate version number instead of current/latest, as 
         <location filename="../qml/pages/MainPage.qml" line="75"/>
         <location filename="../qml/pages/MainPage.qml" line="80"/>
         <source>%1 field is too short</source>
-        <translation> %1 ist zu kurz</translation>
+        <translation>%1 ist zu kurz</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="85"/>
@@ -235,7 +245,7 @@ Software versions: Please indicate version number instead of current/latest, as 
     <message>
         <location filename="../qml/pages/MainPage.qml" line="202"/>
         <source>Provide as much information as you have</source>
-        <translation>Gib sie so genau als möglich an</translation>
+        <translation>So detalliert wie möglich</translation>
     </message>
     <message>
         <source>Device</source>
@@ -289,7 +299,7 @@ Software versions: Please indicate version number instead of current/latest, as 
     <message>
         <location filename="../qml/pages/MainPage.qml" line="220"/>
         <source>What outcome did you expect</source>
-        <translation>Welches ergebnis hättest du erwartet</translation>
+        <translation>Welches Ergebnis du erwartet hättest</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="221"/>
@@ -324,12 +334,12 @@ Software versions: Please indicate version number instead of current/latest, as 
     <message>
         <location filename="../qml/pages/MainPage.qml" line="247"/>
         <source>Add any other information</source>
-        <translation>Füge weiteres hinzu</translation>
+        <translation>Füge weitere Informationen hinzu</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="248"/>
         <source>e.g. links to logs or screenshots.</source>
-        <translation>Z. B. Links to Logdateien oder Screenshots.</translation>
+        <translation>Z. B. Links zu Logdateien oder Screenshots.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="252"/>
@@ -415,7 +425,7 @@ Software versions: Please indicate version number instead of current/latest, as 
     <message>
         <location filename="../qml/pages/MainPage.qml" line="312"/>
         <source>(marked with an asterisk (*))!</source>
-        <translation>(mit Strenchen (*) markiert!)</translation>
+        <translation>(mit Sternchen (*) markiert!)</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="316"/>
@@ -456,12 +466,12 @@ Software versions: Please indicate version number instead of current/latest, as 
     <message>
         <location filename="../qml/components/WelcomeDialog.qml" line="33"/>
         <source>Dismiss</source>
-        <translation>Weg da</translation>
+        <translation>Okay</translation>
     </message>
     <message>
         <location filename="../qml/components/WelcomeDialog.qml" line="37"/>
         <source>Welcome to the inofficial Sailfish OS bug reporting tool.</source>
-        <translation>Willkommen im inoffiziellen Sailfish OS bug reporting Werkzeug.</translation>
+        <translation>Willkommen im inoffiziellen Sailfish OS Bug Reporting Werkzeug.</translation>
     </message>
     <message>
         <source>Even though %1 offers localized versions, please keep your bug report contents in English if at all possible.</source>
@@ -484,7 +494,7 @@ We recommend having a browser window open and logged into the Sailfish OS Forum 
 Bitte fülle die Informationen zu deinem Bug in den Feldern auf der Hauptseite aus/
 Wenn das getan ist, kannst du im unteren Menü deinen Bugreport abschicken.
 
-Der Bugreport wird im Browser als Entwurf geöffnet, du kannst ihn also noch ergäznen oder verändern bevor du ihn abschickst.
+Der Bugreport wird im Browser als Entwurf geöffnet, du kannst ihn also noch ergänzen oder verändern bevor du ihn abschickst.
 
 Empfehlung: hab bereits ein Browserfenster offen, bei dem du im Sailfish OS Forum angemeldet bist, bevor du den Report von hier abschickst.
 </translation>
