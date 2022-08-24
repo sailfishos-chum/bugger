@@ -23,6 +23,7 @@ import Sailfish.Silica 1.0
 import org.nemomobile.systemsettings 1.0
 import "../components"
 import "../config/settings.js" as Settings
+import "../js/util.js" as Util
 
 Page {
     id: page
@@ -66,6 +67,39 @@ Page {
 
     onOslanguageChanged: console.info("Detected OS Language:", oslanguage)
     onOslocaleChanged:   console.info("Detected OS Locale:",   oslocale)
+
+    /*
+     * save input in regular intervals, and deactivation
+     *
+     * we could use just the timer, but the signal may be useful elsewhere.
+     */
+    signal shallSave()
+    Connections {
+        target: app
+        function onApplicationActiveChanged() {
+            if (!Qt.application.active) {
+                console.debug("shall save");
+                shallSave()
+            }
+        }
+    }
+    Timer { id: saveTimer
+        interval: 1000
+        running: Qt.application.active
+        repeat: true
+        onTriggered: {
+            console.debug("timer triggered");
+            shallSave()
+        }
+    }
+    onShallSave: {
+        console.debug("got shall save");
+        const post = {};
+        post.title = getTitle();
+        post.payload = getPayload();
+        Util.store(post);
+    }
+
 
     /* handle different states of completeness */
     states: [
@@ -334,8 +368,8 @@ Page {
         }
     }
 
-    /* convert the form fields into a bug report post, return full URL for posting */
-    function formToUrl() {
+    /* convert the form fields into a bug report post*/
+    function getPayload() {
         var payload =
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
             + "OSVERSION: " + bugInfo.os.version_id + "  \n"
@@ -374,11 +408,17 @@ Page {
             + "----  \n" 
             + "*" + infoFooter + "*\n"
             + "";
-
-        // encode the payload:
+        return payload;
+    }
+    /* just to be consistent */
+    function getTitle() {
+        return text_title.text;
+    }
+    /* encode the payload, return full URL for posting */
+    function formToUrl() {
         var fullPostUrl = postUrl
-            + "&title=" + encodeURIComponent(text_title.text)
-            + "&body=" +  encodeURIComponent(payload);
+            + "&title=" + encodeURIComponent(getTitle())
+            + "&body=" +  encodeURIComponent(getPayload());
         return fullPostUrl
     }
 
