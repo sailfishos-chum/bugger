@@ -6,8 +6,7 @@ Copyright (c) 2022 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
-You may obtain a copy of the
-License at
+You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
@@ -141,10 +140,22 @@ Page {
         Column { id: col
             width: parent.width
             PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report")) }
-            WelcomeLabel{
+            SilicaItem { id: hidetext
                 width:  parent.width - Theme.horizontalPageMargin * 2
+                anchors.horizontalCenter: parent.horizontalCenter
                 clip: true
-                Label {
+                property bool hide: false
+                height: hide ? 0 : (lblcol.height + dismisslbl.height)
+                opacity: hide ? 0 : 1.0
+                visible: height > 0
+                Behavior on opacity { FadeAnimation{ duration: 1000; easing.type: Easing.OutQuart} }
+                Behavior on height { PropertyAnimation{ duration: 600; easing.type: Easing.OutQuad} }
+                Column { id: lblcol
+                    width:  parent.width
+                WelcomeLabel { }
+                L10NNotice{ visible: (Qt.locale().name.search(/^en/) !== -1) }
+                }
+                Label { id: dismisslbl
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     anchors.rightMargin: Theme.horizontalPageMargin
@@ -153,12 +164,6 @@ Page {
                     font.pixelSize: Theme.fontSizeTiny
                     text: qsTr("You can tap this section to hide it.")
                 }
-                property bool hide: false
-                height: hide ? 0 : implicitHeight
-                opacity: hide ? 0 : 1.0
-                visible: height > 0
-                Behavior on opacity { FadeAnimation{ duration: 1000; easing.type: Easing.OutQuart} }
-                Behavior on height { PropertyAnimation{ duration: 600; easing.type: Easing.OutQuad} }
                 BackgroundItem { anchors.centerIn: parent; anchors.fill: parent;
                     onClicked: {
                         parent.hide = true;

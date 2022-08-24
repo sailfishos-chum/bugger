@@ -21,21 +21,9 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
-Label {
-    width: parent.width
-    anchors.horizontalCenter: parent.horizontalCenter
-    color: Theme.secondaryHighlightColor
-    font.pixelSize: Theme.fontSizeSmall
-    horizontalAlignment: Text.AlignJustify
-    wrapMode: Text.WordWrap
-    text: qsTr('
-Please fill out the information about your bug in the fields of the main page.
-After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
-
-Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
-
-We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
-')
+WelcomeLabel {
+    color: Theme.highlightColor
+    text: qsTr('Notice: Even though %1 offers localized versions, please keep your bug report contents in English if at all possible.').arg(Qt.application.name)
 }
 
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript

@@ -37,7 +37,8 @@ Dialog {
             WelcomeLabel{ width:  parent.width - Theme.horizontalPageMargin
                 text: qsTr('Welcome to the inofficial Sailfish OS bug reporting tool.') }
             WelcomeLabel{ width:  parent.width - Theme.horizontalPageMargin }
-            GuideLabel{   width:  parent.width - Theme.horizontalPageMargin }
+            L10NNotice{ width:  parent.width - Theme.horizontalPageMargin }
+            GuideLabel{ width:  parent.width - Theme.horizontalPageMargin }
         }
     }
 }
