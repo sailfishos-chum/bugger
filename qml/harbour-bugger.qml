@@ -21,7 +21,6 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import Nemo.Configuration 1.0
 import "pages"
 import "cover"
 import "components"
@@ -119,10 +118,6 @@ ApplicationWindow {
         Qt.application.version = "unreleased";
         console.info("Intialized", Qt.application.name, "version", Qt.application.version, "by", Qt.application.organization );
         console.debug("Parameters: " + Qt.application.arguments.join(" "))
-        // correct landscape for Gemini, set once on start
-        allowedOrientations = (devicemodel === 'planetgemini')
-            ? Orientation.LandscapeInverted
-            : defaultAllowedOrientations
 
         // bind the loaded file
         config = Settings.config
@@ -137,12 +132,6 @@ ApplicationWindow {
         getInfo(hwInfoFile, "hw");
         getInfo(pmInfoFile, "pm");
         getInfo(ssuInfoFile, "ssu");
-    }
-
-    // correct landscape for Gemini
-    ConfigurationValue {
-        id: devicemodel
-        key: "/desktop/lipstick-jolla-home/model"
     }
 
     initialPage: Component { MainPage{} }
