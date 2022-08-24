@@ -12,7 +12,7 @@ Name[en]=Bugger
 [X-Sailjail]
 ApplicationName=Bugger
 OrganizationName=sailfishos-chum
-Permissions=Base
+#Permissions=Base
 
 #[X-HarbourBackup]
 #BackupConfigList=/org/nephros/template-app

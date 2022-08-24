@@ -1,0 +1,4 @@
+allusers
+noblacklist /home
+noblacklist /home/.system/var/lib/environment/${UID}
+read-only /home/.system/var/lib/environment/${UID}/locale.conf

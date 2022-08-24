@@ -1,8 +1,12 @@
 OTHER_FILES += \
-    $$PWD/harbour-bugger.profile \
+    $$PWD/$${TARGET}.profile \
+    $$PWD/$${TARGET}.local \
 
-INSTALLS += sjprofile
+INSTALLS += sjprofile fjprofile
 
-sjprofile.files = $$PWD/harbour-bugger.profile
+sjprofile.files = $$PWD/$${TARGET}.profile
 sjprofile.path = $$INSTALL_ROOT/etc/sailjail/permissions
+
+fjprofile.files = $$PWD/$${TARGET}.local
+fjprofile.path = $$INSTALL_ROOT/etc/firejail
 

@@ -56,6 +56,17 @@ Page {
         0
     readonly property string infoFooter: 'the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version
 
+    // from org.nemomobile.systemsettings to determine Device Owner
+    UserInfo{id: userInfo; uid: 100000}
+    // from org.nemomobile.systemsettings to determine OS language
+    LanguageModel{id: languageModel}
+    property string oslanguage:  languageModel.languageName(languageModel.currentIndex)
+    property string uilocale:  Qt.locale().name
+    property string oslocale:    languageModel.locale(languageModel.currentIndex)
+
+    onOslanguageChanged: console.debug("Detected OS Language:", oslanguage)
+    onOslocaleChanged:   console.debug("Detected OS Locale:",   oslocale)
+
     /* handle different states of completeness */
     states: [
         // "" =  default  = incomplete
@@ -98,11 +109,6 @@ Page {
             }
         }
     ]
-
-    // from org.nemomobile.systemsettings to determine OS language
-    LanguageModel{id: languageModel}
-    // from org.nemomobile.systemsettings to determine Device Owner
-    UserInfo{id: userInfo; uid: 100000}
 
     function resetFields() {
         text_title.text         = "";
@@ -333,7 +339,7 @@ Page {
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
             + "OSVERSION: " + bugInfo.os.version_id + "  \n"
             + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
-            + "UI LANGUAGE: " + languageModel.languageName(languageModel.currentIndex) + " (user: " + Qt.locale().name + ", os: " + languageModel.locale(languageModel.currentIndex) + ")" + "  \n"
+            + "UI LANGUAGE: " + oslanguage + " (user: " + uilocale + ", os: " + oslocale + ")" + "  \n"
             + "REGRESSION: " + (regsw.checked?"yes":"no")
             + ( regsw.checked
                 ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"

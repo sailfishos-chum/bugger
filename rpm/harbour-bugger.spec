@@ -100,6 +100,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/*/apps/%{name}.png
 %config %{_sysconfdir}/sailjail/permissions/%{name}.profile
+%config %{_sysconfdir}/firejail/%{name}.local
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*

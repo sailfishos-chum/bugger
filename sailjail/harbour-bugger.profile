@@ -6,9 +6,27 @@
 # x-sailjail-translation-key-long-description = permission-la-data_description
 # x-sailjail-long-description = Access necessary resources for Bugger to work
 
-# PERMISSIONS
-# x-sailjail-permission = Base
-include /etc/sailjail/permissions/Base.permission
+# language detection
+
+# detect user settings
+# see https://github.com/sailfishos/nemo-qml-plugin-systemsettings/blob/master/src/localeconfig.cpp#L43
+# we need to be able to read
+# /home/.system/var/lib/environment/${UID}/locale.conf
+# but no stanza in sailjail will make it work.
+# but doing it in firejail config works
+#
+# use bare name without path here! it will look files in /etc/firejail
+include harbour-bugger.local
+
+# detect system settings
+# see https://github.com/sailfishos/nemo-qml-plugin-systemsettings/blob/master/src/localeconfig.cpp#L50
+private-etc locale.conf
+private-etc locale.preferred.conf
+
+# needed for LanguageModel
+# see https://github.com/sailfishos/nemo-qml-plugin-systemsettings/blob/master/src/languagemodel.cpp#L45
+whitelist /usr/share/jolla-supported-languages
+read-only /usr/share/jolla-supported-languages
 
 # we need a read-only copy to read "arch" from
 private-etc ssu/ssu.ini
@@ -16,6 +34,3 @@ private-etc ssu/ssu.ini
 # patchmanager detection parses this for enabled patches
 private-etc patchmanager2.conf
 
-# langua detection
-whitelist /usr/share/jolla-supported-languages
-read-only /usr/share/jolla-supported-languages
