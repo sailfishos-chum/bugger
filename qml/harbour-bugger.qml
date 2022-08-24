@@ -114,7 +114,6 @@ ApplicationWindow {
 
     Component.onCompleted: {
         // for sailjail
-        Qt.application.domain  = "sailfish.nephros.org";
         Qt.application.version = "unreleased";
         console.info("Intialized", Qt.application.name, "version", Qt.application.version, "by", Qt.application.organization );
         console.debug("Parameters: " + Qt.application.arguments.join(" "))

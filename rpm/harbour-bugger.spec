@@ -83,10 +83,6 @@ for f in translations/*.qm; do
 %__install -m 644 -D ${f} %{buildroot}%{_datadir}/%{name}/${f}
 done
 
-#for s in 512 256 128 64 48; do
-#%%__install -m 644 -D icons/%%{name}-${s}.png %%{buildroot}%%{_datadir}/icons/hicolor/${s}x${s}/apps/%%{name}.png
-#done
-
 # mangle version info
 sed -i -e "s/unreleased/%{version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
 # << install post

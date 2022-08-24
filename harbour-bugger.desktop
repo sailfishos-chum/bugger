@@ -3,7 +3,6 @@ Type=Application
 Icon=harbour-bugger
 X-Nemo-Application-Type=silica-qt5
 Exec=sailfish-qml harbour-bugger
-#Exec=sailjail -p template-app.desktop /usr/bin/sailfish-qml template-app
 Name=Bugger
 Name[de]=Bugger
 Name[en]=Bugger
@@ -13,7 +12,3 @@ Name[en]=Bugger
 ApplicationName=Bugger
 OrganizationName=sailfishos-chum
 #Permissions=Base
-
-#[X-HarbourBackup]
-#BackupConfigList=/org/nephros/template-app
-#BackupPathList=.local/share/org.nephros.sailfish/TemplateApp/

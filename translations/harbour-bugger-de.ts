@@ -152,7 +152,7 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
     <message>
         <location filename="../qml/pages/MainPage.qml" line="164"/>
         <source>You can tap this section to hide it.</source>
-        <translation>Klicke zum verstecken</translation>
+        <translation>Antippen zum verstecken</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="64"/>
