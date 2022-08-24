@@ -26,11 +26,12 @@ BuildRequires:  qml-rpm-macros
 BuildRequires:  desktop-file-utils
 
 %description
-Bugger is little tool to assist reporting bugs on
-https://forum.sailfishos.org, following a more or less standardized
-template.
+Bugger is little tool to assist reporting bugs on https://forum.sailfishos.org,
+following a more or less standardized template.
+
 Reporting bugs in this way should improve Jollas ability to pick them up
 and track them internally.
+
 For more information, see Help link in the description
 
 
@@ -67,7 +68,6 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 # >> install pre
-lrelease -silent -removeidentical %{name}.pro
 # << install pre
 %qmake5_install
 
@@ -76,10 +76,6 @@ lrelease -silent -removeidentical %{name}.pro
 %__install -m 644 -D qml/%{name}.qml %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
 #for f in qml/cover/*.qml qml/components/qmldir qml/components/*/*.qml qml/components/*.qml qml/pages/*.qml; do
 for f in $(find qml/ -type f -name "*.qml" -o -name "*.js" -o -name qmldir -o -name "*.png"); do
-%__install -m 644 -D ${f} %{buildroot}%{_datadir}/%{name}/${f}
-done
-
-for f in translations/*.qm; do
 %__install -m 644 -D ${f} %{buildroot}%{_datadir}/%{name}/${f}
 done
 

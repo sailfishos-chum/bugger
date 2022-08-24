@@ -23,5 +23,6 @@ TRANSLATIONS += translations/$${TARGET}-en.ts \
                 translations/$${TARGET}-de.ts \
                 translations/$${TARGET}-sv.ts \
 
+include(translations/translations.pri)
 include(icons/icons.pri)
 include(sailjail/sailjail.pri)
