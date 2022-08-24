@@ -491,7 +491,7 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
         <translation>
-Bitte fülle die Informationen zu deinem Bug in den Feldern auf der Hauptseite aus/
+Bitte fülle die Informationen zu deinem Bug in den Feldern auf der Hauptseite aus
 Wenn das getan ist, kannst du im unteren Menü deinen Bugreport abschicken.
 
 Der Bugreport wird im Browser als Entwurf geöffnet, du kannst ihn also noch ergänzen oder verändern bevor du ihn abschickst.
