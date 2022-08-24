@@ -6,8 +6,7 @@ Copyright (c) 2022 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
-You may obtain a copy of the
-License at
+You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
@@ -21,13 +20,13 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-//import "../components"
 
 Page {
   id: about
 
   readonly property string copyright: "Peter G. (nephros) and other Authors"
   readonly property string email: "mailto:sailfish@nephros.org?bcc=sailfish+app@nephros.org&subject=A%20message%20from%20a%20" + Qt.application.name + "%20user&body=Hello%20nephros%2C%0A"
+  readonly property string contriburl: "https://github.com/sailfishos-chum/bugger/graphs/contributors"
   readonly property string license: "Apache-2.0"
   readonly property string licenseurl: "https://www.apache.org/licenses/LICENSE-2.0.html"
   readonly property string source: "https://github.com/sailfishos-chum/bugger"
@@ -55,13 +54,13 @@ Page {
         }
 
         DetailItem { label: qsTr("Version:");      value: Qt.application.version }
-        DetailItem { label: qsTr("Copyright:");    value: copyright;                            BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(email) } }
-        DetailItem { label: qsTr("License:");      value: license + " (" + licenseurl + ")";    BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(licenseurl) } }
-        DetailItem { label: qsTr("Source Code:");  value: source;                               BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(source) } }
+        DetailItem { label: qsTr("Copyright:");    value: copyright;                    BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(email) } }
+        DetailItem { label: qsTr("License:");      value: license;                      BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(licenseurl) } }
+        DetailItem { label: qsTr("Source Code:");  value: source;                       BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(source) } }
         SectionHeader { text: qsTr("Credits") }
         DetailItem { label: qsTr("Bug Coordination Team Lead: "); value: "pherjung" }
-        DetailItem { label: qsTr("Contributions and Help: "); value: "thigg,\nflypig" }
-        DetailItem { label: qsTr("Translation: %1",  "%1 is the native language name").arg(Qt.locale("de").nativeLanguageName); value: "nephros" }
+        DetailItem { label: qsTr("Contributions and Help: "); value: "thigg,\nflypig"; BackgroundItem { anchors.fill: parent; onClicked: Qt.openUrlExternally(contriburl) }}
+        DetailItem { label: qsTr("Translation: %1",  "%1 is the native language name").arg(Qt.locale("de").nativeLanguageName); value: "nephros,\nthigg" }
         DetailItem { label: qsTr("Translation: %1",  "%1 is the native language name").arg(Qt.locale("sv").nativeLanguageName); value: "eson" }
     }
   }
