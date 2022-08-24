@@ -31,7 +31,8 @@ ApplicationWindow {
     property bool developerMode: false
 
     /* post submit settings */
-    property var config
+    property var config: Settings.config
+
     //readonly property string postScheme:   "sailfishos-bugreport-1" // for a custom Url handler
     readonly property string postScheme:    config.submit.scheme
     readonly property string postHost:      config.submit.host
@@ -117,9 +118,6 @@ ApplicationWindow {
         Qt.application.version = "unreleased";
         console.info("Intialized", Qt.application.name, "version", Qt.application.version, "by", Qt.application.organization );
         console.debug("Parameters: " + Qt.application.arguments.join(" "))
-
-        // bind the loaded file
-        config = Settings.config
 
         if (Qt.application.arguments.indexOf("-developermode") > -1) {
             developerMode = true
