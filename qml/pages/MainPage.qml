@@ -141,7 +141,7 @@ Page {
             width: parent.width
             PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report")) }
             SilicaItem { id: hidetext
-                width:  parent.width - Theme.horizontalPageMargin * 2
+                width:  parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
                 clip: true
                 property bool hide: false
@@ -158,7 +158,6 @@ Page {
                 Label { id: dismisslbl
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
-                    anchors.rightMargin: Theme.horizontalPageMargin
                     color: Theme.secondaryColor
                     font.italic: true
                     font.pixelSize: Theme.fontSizeTiny
@@ -287,10 +286,10 @@ Page {
                     }
                 }
             }
-            VersionSelect { id: regver;  state: "version"; visible: regsw.checked}
-            VersionSelect { id: regarch; state: "arch";    visible: regsw.checked}
+            VersionSelect { id: regver;  state: "version"; visible: regsw.checked; anchors.left: regsw.left ; anchors.leftMargin: Theme.itemSizeExtraSmall - Theme.paddingLarge }
+            VersionSelect { id: regarch; state: "arch";    visible: regsw.checked; anchors.left: regsw.left ; anchors.leftMargin: Theme.itemSizeExtraSmall - Theme.paddingLarge }
             Column {
-                width: parent.width - Theme.horizontalPageMargin
+                width: parent.width
                 SectionHeader { text: qsTr("Modifications") }
                 TextSwitch { id: pmsw; checked: bugInfo.mods.patchmanager; text: "Patchmanager" + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
                 TextSwitch { id: orsw; checked: bugInfo.mods.openrepos;    text: "OpenRepos"    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
