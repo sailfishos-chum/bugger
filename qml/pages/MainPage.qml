@@ -61,11 +61,11 @@ Page {
     // from org.nemomobile.systemsettings to determine OS language
     LanguageModel{id: languageModel}
     property string oslanguage:  languageModel.languageName(languageModel.currentIndex)
-    property string uilocale:  Qt.locale().name
+    property string uilocale:    Qt.locale().name
     property string oslocale:    languageModel.locale(languageModel.currentIndex)
 
-    onOslanguageChanged: console.debug("Detected OS Language:", oslanguage)
-    onOslocaleChanged:   console.debug("Detected OS Locale:",   oslocale)
+    onOslanguageChanged: console.info("Detected OS Language:", oslanguage)
+    onOslocaleChanged:   console.info("Detected OS Locale:",   oslocale)
 
     /* handle different states of completeness */
     states: [
@@ -146,6 +146,7 @@ Page {
         Column { id: col
             width: parent.width
             PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report")) }
+            /* tap-to-hide information */
             SilicaItem { id: hidetext
                 width:  parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -158,8 +159,8 @@ Page {
                 Behavior on height { PropertyAnimation{ duration: 600; easing.type: Easing.OutQuad} }
                 Column { id: lblcol
                     width:  parent.width
-                WelcomeLabel { }
-                L10NNotice{ visible: (Qt.locale().name.search(/^en/) !== -1) }
+                    WelcomeLabel { }
+                    L10NNotice{ visible: !(/^en/.test(uilocale)) }
                 }
                 Label { id: dismisslbl
                     anchors.right: parent.right
