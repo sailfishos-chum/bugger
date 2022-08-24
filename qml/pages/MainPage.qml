@@ -84,22 +84,67 @@ Page {
         }
     }
     Timer { id: saveTimer
-        interval: 1000
+        interval: 11000
         running: Qt.application.active
         repeat: true
         onTriggered: {
             console.debug("timer triggered");
             shallSave()
         }
+        onRunningChanged: console.debug("timer %1".arg(running ? "started" : "stopped"));
     }
+    // also save when the State changes
+    onStateChanged: shallSave()
+    // handle signal
     onShallSave: {
         console.debug("got shall save");
+        // don't overwrite old data with worse data
+        if (infoComplete || titleComplete || descComplete || stepsComplete ) {
+            saveFields();
+        } else {
+            console.debug("nothing worth saving");
+        }
+    }
+    function saveFields() {
         const post = {};
-        post.title = getTitle();
-        post.payload = getPayload();
-        Util.store(post);
+        //post.title = getTitle();
+        //post.payload = getPayload();
+        post.fields = {
+            "text_title":       text_title.text,
+            "text_desc":        text_desc.text,
+            "text_steps":       text_steps.text,
+            "text_precons":     text_precons.text,
+            "text_expres":      text_expres.text,
+            "text_actres":      text_actres.text,
+            "text_add":         text_add.text,
+            "text_mod_other":   text_mod_other.text,
+            "regsw":            regsw.checked,
+            "regver":           regver.currentIndex,
+            "regarch":          regarch.currentIndex,
+            "othersw":          othersw.checked,
+            "repro":            repro.sliderValue
+        };
+        Util.store(StandardPaths.cache, post);
     }
 
+    function loadFields() {
+        const data = Util.store(StandardPaths.cache);
+    }
+    function restoreFields(data) {
+        text_title.text         = data.text_title;
+        text_desc.text          = data.text_desc;
+        text_steps.text         = data.text_steps;
+        text_precons.text       = data.text_precons;
+        text_expres.text        = data.text_expres;
+        text_actres.text        = data.text_actres;
+        text_add.text           = data.text_add;
+        text_mod_other.text     = data.text_mod_other;
+        regsw.checked           = data.regsw;
+        regver.currentIndex     = data.regver;
+        regarch.currentIndex    = data.regarch;
+        othersw.checked         = data.othersw;
+        repro.value             = data.repro;
+    }
 
     /* handle different states of completeness */
     states: [

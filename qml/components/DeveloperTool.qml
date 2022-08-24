@@ -20,6 +20,7 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import "../js/util.js" as Util
 
 Column { id: devCol
     readonly property string lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
@@ -40,6 +41,12 @@ Column { id: devCol
                 text_expres.text    = "To sleep: perchance to dream: ay, there's the rub;\nFor in that sleep of death what dreams may come\nWhen we have shuffled off this mortal coil,\nMust give us pause:"
                 text_actres.text    = "Thus conscience does make cowards of us all;\n And thus the native hue of resolution\n Is sicklied o'er with the pale cast of thought,\n And enterprises of great pith and moment\n With this regard their currents turn awry,\n And lose the name of action.\n"
                 text_add.text       = "Hamlet. Act V, Scene II\nAct-I, Scene-IV\nAct III, Scene I"
+            }
+        }
+        Button {
+            text: "Load"
+            onClicked: {
+                Util.restore(StandardPaths.cache);
             }
         }
     }
