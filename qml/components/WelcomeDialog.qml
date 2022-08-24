@@ -6,8 +6,7 @@ Copyright (c) 2022 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
-You may obtain a copy of the
-License at
+You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
@@ -25,18 +24,21 @@ import Sailfish.Silica 1.0
 Dialog {
     canAccept: false
     forwardNavigation: false
-    Column {
+    SilicaFlickable {
         anchors.fill: parent
-
-        DialogHeader {
-            title: qsTr("Welcome")
-            cancelText: qsTr("Dismiss")
-            acceptText: ""
+        contentHeight: content.height
+        Column { id: content
+            width: parent.width
+            DialogHeader {
+                title: qsTr("Welcome")
+                cancelText: qsTr("Dismiss")
+                acceptText: ""
+            }
+            WelcomeLabel{ width:  parent.width - Theme.horizontalPageMargin
+                text: qsTr('Welcome to the inofficial Sailfish OS bug reporting tool.') }
+            WelcomeLabel{ width:  parent.width - Theme.horizontalPageMargin }
+            GuideLabel{   width:  parent.width - Theme.horizontalPageMargin }
         }
-        WelcomeLabel{ width:  parent.width - Theme.horizontalPageMargin * 2
-            text: qsTr('Welcome to the inofficial Sailfish OS bug reporting tool.') }
-        WelcomeLabel{ width:  parent.width - Theme.horizontalPageMargin * 2}
-        GuideLabel{   width:  parent.width - Theme.horizontalPageMargin * 2}
     }
 }
 

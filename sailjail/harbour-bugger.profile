@@ -8,9 +8,14 @@
 
 # PERMISSIONS
 # x-sailjail-permission = Base
+include /etc/sailjail/permissions/Base.permission
 
 # we need a read-only copy to read "arch" from
 private-etc ssu/ssu.ini
 
 # patchmanager detection parses this for enabled patches
 private-etc patchmanager2.conf
+
+# langua detection
+whitelist /usr/share/jolla-supported-languages
+read-only /usr/share/jolla-supported-languages
