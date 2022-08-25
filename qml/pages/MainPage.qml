@@ -127,10 +127,26 @@ Page {
         Util.store(StandardPaths.cache, post);
     }
 
-    function loadFields() {
-        const data = Util.store(StandardPaths.cache);
+    /* 
+     * As the loading Request is asynchronous, we need an object we can register
+     * at Util.js, and call a signal/signal handler hen the data is available
+     * */
+    QtObject { id: loadManager
+        /* we need a signal to get async request data back from the Util.js */
+        signal dataLoaded(var data)
+        onDataLoaded: {
+            console.debug("Handler called", data);
+            var fields = JSON.parse(data).fields
+            page.restoreFields(fields);
+        }
+        /* call the loading function, it's async so we use a signal to get the results */
+        function restore() {
+            Util.registerCaller(loadManager);
+            Util.restore(StandardPaths.cache);
+        }
     }
     function restoreFields(data) {
+        console.debug("Restoring fields from", data);
         text_title.text         = data.text_title;
         text_desc.text          = data.text_desc;
         text_steps.text         = data.text_steps;

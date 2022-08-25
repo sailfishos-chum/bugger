@@ -46,7 +46,7 @@ Column { id: devCol
         Button {
             text: "Load"
             onClicked: {
-                Util.restore(StandardPaths.cache);
+                loadManager.restore();
             }
         }
         Button {
