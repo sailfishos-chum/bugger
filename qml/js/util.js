@@ -82,8 +82,8 @@ function load(fileUrl){
             }
     }
     console.info("Read from: " + fileUrl + " into " + Qt.application.name );
-    return data;
 }
+
 /** Store an obfuscated JSON string of data to location.
  *
  * @param {url}    fileUrl      full url to storage location

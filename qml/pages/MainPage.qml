@@ -74,33 +74,57 @@ Page {
      * we could use just the timer, but the signal may be useful elsewhere.
      */
     signal shallSave()
+    property bool preventSave: false
     Connections {
         target: app
         function onApplicationActiveChanged() {
             if (!Qt.application.active) {
-                console.debug("shall save");
+                console.debug("deactivating, emitting shallSave");
                 shallSave()
             }
         }
     }
+    /* maybe save when the State changes */
+    onStateChanged: {
+        console.debug("state changed");
+        console.debug("emitting shallSave");
+        shallSave()
+    }
+
+    /* prevent write bursts */
+    Timer { id: backOffTimer
+        interval: 100
+        running: false
+        repeat: false
+    }
+    /*
     Timer { id: saveTimer
         interval: 11000
         running: Qt.application.active
         repeat: true
         onTriggered: {
             console.debug("timer triggered");
+            console.debug("emitting shallSave");
             shallSave()
         }
         onRunningChanged: console.debug("timer %1".arg(running ? "started" : "stopped"));
     }
-    // also save when the State changes
-    onStateChanged: shallSave()
+    */
     // handle signal
     onShallSave: {
         console.debug("got shall save");
+        if (preventSave) {
+            console.debug("saving disabled.");
+            return;
+        }
+        if (backOffTimer.running) {
+            console.debug("write within backoff period.");
+            return;
+        }
         // don't overwrite old data with worse data
         if (infoComplete || titleComplete || descComplete || stepsComplete ) {
             saveFields();
+            backOffTimer.start();
         } else {
             console.debug("nothing worth saving");
         }
@@ -127,7 +151,7 @@ Page {
         Util.store(StandardPaths.cache, post);
     }
 
-    /* 
+    /*
      * As the loading Request is asynchronous, we need an object we can register
      * at Util.js, and call a signal/signal handler hen the data is available
      * */
@@ -206,6 +230,7 @@ Page {
     ]
 
     function resetFields() {
+        preventSave = true;
         text_title.text         = "";
         text_desc.text          = "";
         text_steps.text         = " 1. \n 2. \n 3. ";
@@ -220,6 +245,7 @@ Page {
         othersw.checked         = false;
         repro.value             = -1;
         text_title.focus        = true;
+        preventSave = false;
     }
 
     /* show a welcome popup on launch */
