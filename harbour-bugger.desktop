@@ -4,8 +4,9 @@ Icon=harbour-bugger
 X-Nemo-Application-Type=silica-qt5
 Exec=sailfish-qml harbour-bugger
 Name=Bugger
-Name[de]=Bugger
-Name[en]=Bugger
+Name[en]=Bugger!
+Name[de]=Bugger!
+Name[sv]=Bugger!
 
 
 [X-Sailjail]
