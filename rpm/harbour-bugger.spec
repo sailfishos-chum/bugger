@@ -26,7 +26,7 @@ BuildRequires:  qml-rpm-macros
 BuildRequires:  desktop-file-utils
 
 %description
-Bugger is a little tool to assist reporting bugs on https://forum.sailfishos.org,
+Bugger! is a little tool to assist reporting bugs on https://forum.sailfishos.org,
 following a more or less standardized template.
 
 Reporting bugs in this way should improve Jollas ability to pick them up
@@ -36,7 +36,7 @@ For more information, see Help link in the description
 
 
 %if "%{?vendor}" == "chum"
-PackageName: Bugger
+PackageName: Bugger!
 Type: desktop-application
 Categories:
  - Utility

@@ -2,9 +2,9 @@
 
 # x-sailjail-translation-catalog = harbour-bugger
 # x-sailjail-translation-key-description = permission-la-data
-# x-sailjail-description = Bugger permissions
+# x-sailjail-description = Bugger! permissions
 # x-sailjail-translation-key-long-description = permission-la-data_description
-# x-sailjail-long-description = Access necessary resources for Bugger to work
+# x-sailjail-long-description = Access necessary resources for Bugger! to work
 
 # language detection
 
