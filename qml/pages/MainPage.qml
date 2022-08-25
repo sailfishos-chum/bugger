@@ -36,6 +36,8 @@ Page {
 
     /* IMPORTANT: remember to update this if any persisting UI elements are added on this page! */
     readonly property int fieldKeys:        Settings.config.persistence.fieldKeys
+    /* saveTimer timeout */
+    readonly property int saveInterval:     Settings.config.persistence.saveInterval
 
     /* Conditions for minimum information required for posting */
     property bool infoComplete: ( titleComplete && descComplete && stepsComplete )
@@ -417,21 +419,31 @@ Page {
     * ****** AUTOSAVE AND RESTORE *****
     *
     * save input on state changes, and when minimized/closed
+    *
+    * because some signals might arrive a lot, we use a restarting timer to do
+    * the actual saving to prevent bursts.
     */
     signal shallSave()
-    //property bool preventSave: true // prevent state changes triggering a save, e.g. a form reset
-    property bool preventSave: false // prevent state changes triggering a save, e.g. a form reset
+    property bool preventSave: true // prevent state changes triggering a save, e.g. a form reset
+    // listen for minimizing or closing, save more or less immediately then.
     Connections {
         target: app
         onApplicationActiveChanged: {
             if (Qt.application.state == Qt.ApplicationInactive) {
+                console.info("App minimized, saving.");
+                saveTimer.interval = 200;
                 shallSave()
+            } else {
+                saveTimer.triggeredOnStart = false;
+                saveTimer.interval = saveInterval;
             }
         }
         onWillQuit: {
             console.info("App quitting, emergency save!");
+            saveTimer.triggeredOnStart = true;
+            saveTimer.interval = 200;
             shallSave();
-            //preventSave = true;
+            preventSave = true; // this signal is emitted more than once
         }
     }
 
@@ -447,19 +459,17 @@ Page {
         running: false
         repeat: false
     }
-    /*
+    /* timer acts as queue, its restarted at each signal, and will save after that */
     Timer { id: saveTimer
-        interval: 11000
-        running: Qt.application.active
-        repeat: true
+        interval: saveInterval
+        running: false
+        repeat: false
         onTriggered: {
+            saveFields();
             console.debug("timer triggered");
-            console.debug("emitting shallSave");
-            shallSave()
         }
         onRunningChanged: console.debug("timer %1".arg(running ? "started" : "stopped"));
     }
-    */
     // Signal Handler for shallSave
     onShallSave: {
         console.debug("Signal Handler called");
@@ -473,8 +483,9 @@ Page {
         }
         // don't overwrite old data with worse data
         if (infoComplete || titleComplete || descComplete || stepsComplete ) {
-            saveFields();
-            backOffTimer.start();
+            //saveFields();
+            //backOffTimer.restart();
+            saveTimer.restart();
         } else {
             console.debug("Nothing worth saving");
         }
@@ -532,7 +543,7 @@ Page {
             resetFields();
             return;
         }
-        //preventSave = true;
+        preventSave = true;
         try {
             text_title.text         = data.text_title;
             text_desc.text          = data.text_desc;
