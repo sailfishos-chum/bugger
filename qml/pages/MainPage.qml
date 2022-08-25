@@ -132,7 +132,7 @@ Page {
     ]
 
     Component.onCompleted: {
-        loadManager.restore();
+        restoreSaved();
         preventSave = false;
     }
     /*
@@ -419,7 +419,8 @@ Page {
     * save input on state changes, and when minimized/closed
     */
     signal shallSave()
-    property bool preventSave: true // prevent state changes triggering a save, e.g. a form reset
+    //property bool preventSave: true // prevent state changes triggering a save, e.g. a form reset
+    property bool preventSave: false // prevent state changes triggering a save, e.g. a form reset
     Connections {
         target: app
         onApplicationActiveChanged: {
@@ -430,7 +431,7 @@ Page {
         onWillQuit: {
             console.info("App quitting, emergency save!");
             shallSave();
-            preventSave = true;
+            //preventSave = true;
         }
     }
 
@@ -496,42 +497,28 @@ Page {
             "othersw":          othersw.checked,
             "repro":            repro.sliderValue
         };
-        Util.store(StandardPaths.cache, post);
+        Util.store(post);
     }
     // clear persistent storage
     function clearSaved() {
-        Util.store(StandardPaths.cache, {});
+        Util.reset();
     }
     // to be called from Pulley Menu
     function resetFields() {
         restoreFields(defaultFieldContents);
     }
 
-    /*
-     * As the loading Request is asynchronous, we don't know when the data is ready.
-     *
-     * So we create an object we can register at Util.js, and call a
-     * signal/signal handler from there when the data is available
-     *
-     */
-    QtObject { id: loadManager
-        signal dataLoaded(var data)
-        onDataLoaded: {
-            console.debug("Signal Handler called");
-            if (!!data) {
-              var fields = JSON.parse(data).fields;
-              page.restoreFields(fields);
-              if (infoComplete || titleComplete || descComplete || stepsComplete ) {
+    function restoreSaved() {
+        var data = Util.restore();
+        if (!!data) {
+            console.debug("restoring:" , data);
+            var fields = JSON.parse(data).fields;
+            page.restoreFields(fields);
+            if (infoComplete || titleComplete || descComplete || stepsComplete ) {
                 app.popup(qsTr("Restored bug report contents from saved state."));
-              }
-            } else {
-                console.debug("No valid data received.");
             }
-        }
-        // regiter ourselves as the caller, and call the loading function
-        function restore() {
-            Util.registerCaller(loadManager);
-            Util.restore(StandardPaths.cache);
+        } else {
+            console.debug("No valid data received.");
         }
     }
     /*
@@ -545,7 +532,7 @@ Page {
             resetFields();
             return;
         }
-        preventSave = true;
+        //preventSave = true;
         try {
             text_title.text         = data.text_title;
             text_desc.text          = data.text_desc;

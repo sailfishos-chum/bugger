@@ -2,60 +2,29 @@
  * Utilities for loading and saving - form data in this case
  */
 .pragma library
+.import QtQuick.LocalStorage 2.0 as LS
 
-/** filename for field data storage */
-var filename = "store.dat";
+var db_initialized = false;
 
-/* 
- * **** PUBLIC FUNCTIONS ****
- */
-
-/** Register object to receive signals
+/** Save an object
  *
- * For loading, we use a signal in QML to give back the data.
- * use this register function to set the object which has the signal (and
- * handler).
- *
- * @param {var} who     Callee.
- */
-var calledBy;
-function registerCaller(who){
-    calledBy = who;
-}
-
-/** Save an object at location.
- *
- * @param {url}     loc path to storage location (cache)
  * @param {object}  obj object to store
  */
-function store(loc, obj) {
-    save(loc + "/" + filename,obj);
+function store(obj) {
+    save(obj);
 }
-/** Load an object from location.
+/** Load an object
  *
  * @param {url} loc         path to storage location (cache)
  */
 function restore(loc) {
-    load(loc + "/" + filename);
+    return load();
 }
+function reset() { resetDdefault() }
 
 /* 
  * **** INTERNAL FUNCTIONS ****
  */
-
-/**
- * Callback to receive data from load(), and signal the caller that it's ready.
- *
- * @param {string} data         JSON data
- */
-function handleData(data) {
-    if (!!data) {
-        var ddata = defuscate(JSON.parse(data).content);
-        //emit signal to caller:
-        calledBy.dataLoaded(ddata);
-    }
-    console.debug("Invalid data received.")
-}
 
 // TODO: do a proper de/obfuscation
 function obfuscate(data) {
@@ -65,49 +34,89 @@ function defuscate(data) {
     return decodeURIComponent(escape(Qt.atob(data)));
 }
 
-/** Load an obfuscated JSON string of data from location.
- *
- * @param {url}    fileUrl      full url to storage location
- */
-function load(fileUrl){
-    var r = new XMLHttpRequest();
-    r.open('GET', fileUrl);
-    r.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    r.send();
 
-    r.onreadystatechange = function(event) {
-            if (r.readyState == XMLHttpRequest.DONE) {
-                    //console.debug("request done.");
-                    handleData(r.response);
-            }
+function getDb() {
+    var db = LS.LocalStorage.openDatabaseSync("Storage", "0.1", "Persistent Storage", 10000);
+    if (!db_initialized) {
+        db_initialized = true;
+        initDb(db);
     }
-    //console.info("Read from: " + fileUrl + " into " + Qt.application.name );
+    return db;
+}
+function initDb(db) {
+    console.debug("Init DB");
+    try {
+        db.transaction(function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS SavedContent( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT, value TEXT)');
+            tx.executeSql('INSERT INTO SavedContent values (?,?,?) ', [ 0, 'Default', 'NULL' ]);
+        })
+    } catch (err) {
+        console.warn("Error creating or adding table in database: " + err);
+    }
+}
+function clearDb(db) {
+    try {
+        db.transaction(function(tx) {
+            tx.executeSql('DROP TABLE SavedContent');
+        })
+    } catch (err) {
+        console.warn("Error creating table in database: " + err);
+    }
+}
+function dropDb(db) {
+    try {
+        db.transaction(function(tx) {
+            tx.executeSql('DROP DATABASE');
+        })
+    } catch (err) {
+        console.warn("Error creating table in database: " + err);
+    }}
+
+function resetDefault(){
+    var db = getDb();
+    try {
+        db.transaction( function(tx) {
+                var rs = tx.executeSql('DELETE FROM SavedContent where id = 0');
+        })
+    } catch (err) {
+        console.warn("Error executing transaction: " + err);
+    }
 }
 
-/** Store an obfuscated JSON string of data to location.
+/** Load an obfuscated JSON string of data from database.
  *
- * @param {url}    fileUrl      full url to storage location
+ */
+function load(){
+    console.debug("Load from DB");
+    var db = getDb();
+    var ret = "";
+    try {
+        db.readTransaction(function(tx) {
+            var rs = tx.executeSql('SELECT value FROM SavedContent where id = 0');
+            var r = rs.rows.item(0).value;
+            ret = defuscate(r);
+        })
+    } catch (err) {
+        console.warn("Error executing transaction: " + err);
+    }
+    return ret;
+}
+
+/** Store an obfuscated JSON string of data to database.
+ *
  * @param {string} data         JSON data
  */
-function save(fileUrl,data){
-    var rdata =  { 
-        "content": obfuscate(JSON.stringify(data))
+function save(data){
+    console.debug("Saving to DB");
+    var odata = obfuscate(JSON.stringify(data))
+    var db = getDb();
+    try {
+        db.transaction( function(tx) {
+            tx.executeSql('UPDATE SavedContent SET value = ? WHERE id = 0', [ odata ]);
+        })
+    } catch (err) {
+        console.warn("Error executing transaction: " + err);
     }
-    rdata = JSON.stringify(rdata);
-    var r = new XMLHttpRequest();
-    r.open('PUT', fileUrl);
-    r.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    r.setRequestHeader('Content-length', rdata.length);
-    r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    r.send(rdata);
-
-    r.onreadystatechange = function(event) {
-        if (r.readyState == XMLHttpRequest.DONE) {
-            //console.debug("request done.");
-        }
-    }
-    //console.info("Wrote to :" + fileUrl + " from " + Qt.application.name );
 }
 
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript

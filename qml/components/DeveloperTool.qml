@@ -46,7 +46,7 @@ Column { id: devCol
         Button {
             text: "Load"
             onClicked: {
-                loadManager.restore();
+                restoreSaved();
             }
         }
         Button {
