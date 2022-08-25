@@ -102,7 +102,7 @@ Page {
                 description:    qsTr("Ready for posting")
             }
         },
-        State { name: "fill";       when: (infoComplete && infoFull)
+        State { name: "full";       when: (infoComplete && infoFull)
             PropertyChanges { target: header;
                 title:          qsTr("Bug Info (%1)").arg(qsTr("complete", "State of completeness of a bug report"))
                 description:    qsTr("Ready for posting")
