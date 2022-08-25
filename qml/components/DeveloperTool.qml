@@ -28,17 +28,18 @@ Column { id: devCol
         Button {
             text: "Fill minumum"
             onClicked: {
-                text_title.text = "[Test] LoremIpsum Report"
-                text_desc.text = devCol.lorem
-                text_steps.text = devCol.lorem
+                text_title.text = "Rosencrantz and Guildenstern are dead" 
+                text_desc.text =  "Something is rotten in the state of Denmark."
+                text_steps.text = "1. To be,\n 2. or not to be,\n 3. that is the question"
             }
         }
         Button {
             text: "Fill the rest"
             onClicked: {
-                text_precons.text = devCol.lorem
-                text_expres.text = devCol.lorem
-                text_actres.text = devCol.lorem
+                text_precons.text   = "take arms against a sea of troubles,\nAnd by opposing end them"
+                text_expres.text    = "To sleep: perchance to dream: ay, there's the rub;\nFor in that sleep of death what dreams may come\nWhen we have shuffled off this mortal coil,\nMust give us pause:"
+                text_actres.text    = "Thus conscience does make cowards of us all;\n And thus the native hue of resolution\n Is sicklied o'er with the pale cast of thought,\n And enterprises of great pith and moment\n With this regard their currents turn awry,\n And lose the name of action.\n"
+                text_add.text       = "Hamlet. Act V, Scene II\nAct-I, Scene-IV\nAct III, Scene I"
             }
         }
     }
