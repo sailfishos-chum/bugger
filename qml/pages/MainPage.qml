@@ -70,7 +70,7 @@ Page {
     /* handle different states of completeness */
     states: [
         // "" =  default  = incomplete
-        State { name: "incomplete";   when: (!infoCompletete)
+        State { name: "incomplete";   when: (!infoComplete)
             PropertyChanges { target: header;
                 title:          qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report"))
             }
