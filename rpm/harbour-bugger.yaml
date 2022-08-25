@@ -26,6 +26,9 @@ Description: |
     Custom:
       Repo: https://github.com/sailfishos-chum/bugger
     Icon: https://raw.githubusercontent.com/sailfishos-chum/bugger/master/icons/svgs/harbour-bugger.svg
+    Screenshots:
+      - https://github.com/sailfishos-chum/bugger/raw/master/Screenshot_001.png
+      - https://github.com/sailfishos-chum/bugger/raw/master/Screenshot_002.png
     Url:
       Help: https://forum.sailfishos.org/t/10935
     %endif
