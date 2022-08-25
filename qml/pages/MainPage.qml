@@ -68,125 +68,7 @@ Page {
     onOslanguageChanged: console.info("Detected OS Language:", oslanguage)
     onOslocaleChanged:   console.info("Detected OS Locale:",   oslocale)
 
-    /*
-     * save input in regular intervals, and deactivation
-     *
-     * we could use just the timer, but the signal may be useful elsewhere.
-     */
-    signal shallSave()
-    property bool preventSave: false
-    Connections {
-        target: app
-        function onApplicationActiveChanged() {
-            if (!Qt.application.active) {
-                console.debug("deactivating, emitting shallSave");
-                shallSave()
-            }
-        }
-    }
-    /* maybe save when the State changes */
-    onStateChanged: {
-        console.debug("state changed");
-        console.debug("emitting shallSave");
-        shallSave()
-    }
-
-    /* prevent write bursts */
-    Timer { id: backOffTimer
-        interval: 100
-        running: false
-        repeat: false
-    }
-    /*
-    Timer { id: saveTimer
-        interval: 11000
-        running: Qt.application.active
-        repeat: true
-        onTriggered: {
-            console.debug("timer triggered");
-            console.debug("emitting shallSave");
-            shallSave()
-        }
-        onRunningChanged: console.debug("timer %1".arg(running ? "started" : "stopped"));
-    }
-    */
-    // handle signal
-    onShallSave: {
-        console.debug("got shall save");
-        if (preventSave) {
-            console.debug("saving disabled.");
-            return;
-        }
-        if (backOffTimer.running) {
-            console.debug("write within backoff period.");
-            return;
-        }
-        // don't overwrite old data with worse data
-        if (infoComplete || titleComplete || descComplete || stepsComplete ) {
-            saveFields();
-            backOffTimer.start();
-        } else {
-            console.debug("nothing worth saving");
-        }
-    }
-    function saveFields() {
-        const post = {};
-        //post.title = getTitle();
-        //post.payload = getPayload();
-        post.fields = {
-            "text_title":       text_title.text,
-            "text_desc":        text_desc.text,
-            "text_steps":       text_steps.text,
-            "text_precons":     text_precons.text,
-            "text_expres":      text_expres.text,
-            "text_actres":      text_actres.text,
-            "text_add":         text_add.text,
-            "text_mod_other":   text_mod_other.text,
-            "regsw":            regsw.checked,
-            "regver":           regver.currentIndex,
-            "regarch":          regarch.currentIndex,
-            "othersw":          othersw.checked,
-            "repro":            repro.sliderValue
-        };
-        Util.store(StandardPaths.cache, post);
-    }
-
-    /*
-     * As the loading Request is asynchronous, we need an object we can register
-     * at Util.js, and call a signal/signal handler hen the data is available
-     * */
-    QtObject { id: loadManager
-        /* we need a signal to get async request data back from the Util.js */
-        signal dataLoaded(var data)
-        onDataLoaded: {
-            console.debug("Handler called", data);
-            var fields = JSON.parse(data).fields
-            page.restoreFields(fields);
-        }
-        /* call the loading function, it's async so we use a signal to get the results */
-        function restore() {
-            Util.registerCaller(loadManager);
-            Util.restore(StandardPaths.cache);
-        }
-    }
-    function restoreFields(data) {
-        console.debug("Restoring fields from", data);
-        text_title.text         = data.text_title;
-        text_desc.text          = data.text_desc;
-        text_steps.text         = data.text_steps;
-        text_precons.text       = data.text_precons;
-        text_expres.text        = data.text_expres;
-        text_actres.text        = data.text_actres;
-        text_add.text           = data.text_add;
-        text_mod_other.text     = data.text_mod_other;
-        regsw.checked           = data.regsw;
-        regver.currentIndex     = data.regver;
-        regarch.currentIndex    = data.regarch;
-        othersw.checked         = data.othersw;
-        repro.value             = data.repro;
-    }
-
-    /* handle different states of completeness */
+     /* handle different states of completeness */
     states: [
         // "" =  default  = incomplete
         State { name: "incomplete"
@@ -229,26 +111,11 @@ Page {
         }
     ]
 
-    function resetFields() {
-        preventSave = true;
-        text_title.text         = "";
-        text_desc.text          = "";
-        text_steps.text         = " 1. \n 2. \n 3. ";
-        text_precons.text       = "";
-        text_expres.text        = "";
-        text_actres.text        = "";
-        text_add.text           = "";
-        text_mod_other.text     = "";
-        regsw.checked           = false;
-        regver.currentIndex     = -1;
-        regarch.currentIndex    = -1;
-        othersw.checked         = false;
-        repro.value             = -1;
-        text_title.focus        = true;
-        preventSave = false;
-    }
-
-    /* show a welcome popup on launch */
+    /*
+     * ***** WELCOME DIALOG *****
+     *
+     * show a welcome popup on launch
+     */
     property bool welcomeShown: false
     onStatusChanged: {
         if (status == PageStatus.Active) showWelcomeDialog();
@@ -259,7 +126,7 @@ Page {
         var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
         dialog.done.connect(function() { page.welcomeShown = true;})
     }
-    /* welcome over */
+    /* END WELCOME DIALOG */
 
     SilicaFlickable { id: flick
         anchors.fill: parent
@@ -455,7 +322,12 @@ Page {
         }
     }
 
-    /* convert the form fields into a bug report post*/
+   /*
+    * ****** POSTING *****
+    *
+    * convert the form fields into a bug report post
+    *
+    * */
     function getPayload() {
         var payload =
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
@@ -508,6 +380,150 @@ Page {
             + "&body=" +  encodeURIComponent(getPayload());
         return fullPostUrl
     }
+   /* ****** END POSTING ***** */
+
+    // to be called from Pulley Menu
+    // TODO: we could construct an object with the default data, and use restoreFields() instead.
+    function resetFields() {
+        preventSave = true;
+        text_title.text         = "";
+        text_desc.text          = "";
+        text_steps.text         = " 1. \n 2. \n 3. ";
+        text_precons.text       = "";
+        text_expres.text        = "";
+        text_actres.text        = "";
+        text_add.text           = "";
+        text_mod_other.text     = "";
+        regsw.checked           = false;
+        regver.currentIndex     = -1;
+        regarch.currentIndex    = -1;
+        othersw.checked         = false;
+        repro.value             = -1;
+        text_title.focus        = true;
+        preventSave = false;
+    }
+
+   /*
+    * ****** AUTOSAVE AND RESTORE *****
+    *
+    * save input on state changes, and when minimized
+    */
+    signal shallSave()
+    property bool preventSave: false // prevent state changes triggering a save, e.g. a form reset
+    Connections {
+        target: app
+        function onApplicationActiveChanged() {
+            if (!Qt.application.active) {
+                console.debug("deactivating, emitting shallSave");
+                shallSave()
+            }
+        }
+    }
+    /* maybe save when the State changes */
+    onStateChanged: {
+        console.debug("state changed, emitting shallSave");
+        shallSave()
+    }
+
+    /* prevent write bursts */
+    Timer { id: backOffTimer
+        interval: 100
+        running: false
+        repeat: false
+    }
+    /*
+    Timer { id: saveTimer
+        interval: 11000
+        running: Qt.application.active
+        repeat: true
+        onTriggered: {
+            console.debug("timer triggered");
+            console.debug("emitting shallSave");
+            shallSave()
+        }
+        onRunningChanged: console.debug("timer %1".arg(running ? "started" : "stopped"));
+    }
+    */
+    // Signal Handler for shallSave
+    onShallSave: {
+        console.debug("got shall save");
+        if (preventSave) {
+            console.debug("saving disabled.");
+            return;
+        }
+        if (backOffTimer.running) {
+            console.debug("write within backoff period.");
+            return;
+        }
+        // don't overwrite old data with worse data
+        if (infoComplete || titleComplete || descComplete || stepsComplete ) {
+            saveFields();
+            backOffTimer.start();
+        } else {
+            console.debug("nothing worth saving");
+        }
+    }
+    function saveFields() {
+        const post = {};
+        post.fields = {
+            "text_title":       text_title.text,
+            "text_desc":        text_desc.text,
+            "text_steps":       text_steps.text,
+            "text_precons":     text_precons.text,
+            "text_expres":      text_expres.text,
+            "text_actres":      text_actres.text,
+            "text_add":         text_add.text,
+            "text_mod_other":   text_mod_other.text,
+            "regsw":            regsw.checked,
+            "regver":           regver.currentIndex,
+            "regarch":          regarch.currentIndex,
+            "othersw":          othersw.checked,
+            "repro":            repro.sliderValue
+        };
+        Util.store(StandardPaths.cache, post);
+    }
+
+    /*
+     * As the loading Request is asynchronous, we don't know when the data is ready.
+     *
+     * So we create an object we can register at Util.js, and call a
+     * signal/signal handler from there when the data is available
+     *
+     */
+    QtObject { id: loadManager
+        signal dataLoaded(var data)
+        onDataLoaded: {
+            console.debug("Handler called", data);
+            var fields = JSON.parse(data).fields
+            page.restoreFields(fields);
+        }
+        // regiter ourselves as the caller, and call the loading function
+        function restore() {
+            Util.registerCaller(loadManager);
+            Util.restore(StandardPaths.cache);
+        }
+    }
+    /*
+     * set the form fields from an object
+     */
+    function restoreFields(data) {
+        console.debug("Restoring fields");
+        text_title.text         = data.text_title;
+        text_desc.text          = data.text_desc;
+        text_steps.text         = data.text_steps;
+        text_precons.text       = data.text_precons;
+        text_expres.text        = data.text_expres;
+        text_actres.text        = data.text_actres;
+        text_add.text           = data.text_add;
+        text_mod_other.text     = data.text_mod_other;
+        regsw.checked           = data.regsw;
+        regver.currentIndex     = data.regver;
+        regarch.currentIndex    = data.regarch;
+        othersw.checked         = data.othersw;
+        repro.value             = data.repro;
+    }
+   /* ****** END AUTOSAVE AND RESTORE ***** */
+
 
 }
 
