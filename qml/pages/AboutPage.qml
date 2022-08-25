@@ -50,7 +50,7 @@ Page {
             font.pixelSize: Theme.fontSizeSmall
             horizontalAlignment: Text.AlignJustify
             wrapMode: Text.WordWrap
-            plainText: qsTr( '%1 is little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.\nReporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2').arg(qsTr(Qt.application.name)).arg(helpurl)
+            plainText: qsTr( '%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.\nReporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2').arg(qsTr(Qt.application.name)).arg(helpurl)
         }
 
         DetailItem { label: qsTr("Version:");      value: Qt.application.version }

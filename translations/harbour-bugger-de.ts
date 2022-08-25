@@ -15,7 +15,7 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
-        <source>%1 is little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
+        <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
         <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehlermeldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
 Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgenommen und getrackt werden. Weitere Informationen hierzu unter %2</translation>
