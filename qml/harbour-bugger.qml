@@ -20,6 +20,7 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Nemo.Notifications 1.0
 import "pages"
 import "cover"
 import "components"
@@ -29,6 +30,10 @@ ApplicationWindow {
     id: app
 
     property bool developerMode: false
+
+    /* detect closing of app, so can trigger a save */
+    signal willQuit()
+    Connections { target: __quickWindow; onClosing: willQuit() }
 
     /* post submit settings */
     property var config: Settings.config
@@ -120,7 +125,7 @@ ApplicationWindow {
 
         if (Qt.application.arguments.indexOf("-developermode") > -1) {
             developerMode = true
-            console.info("testing/developer mode enabled!")
+            console.info("Developer mode enabled!")
             console.debug("Loaded settings:", JSON.stringify(Settings,null, 2))
         }
         /* LOAD ALL THE THINGS */
@@ -128,6 +133,14 @@ ApplicationWindow {
         getInfo(hwInfoFile, "hw");
         getInfo(pmInfoFile, "pm");
         getInfo(ssuInfoFile, "ssu");
+    }
+
+    // Popup messages:
+    Notification { id: smessage; isTransient: true; }
+    function popup(s) {
+        smessage.previewSummary = s
+        smessage.urgency = 0;
+        smessage.publish();
     }
 
     initialPage: Component { MainPage{} }

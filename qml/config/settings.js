@@ -16,6 +16,9 @@ var config = {
         "minDesc":    30,
         "minSteps":   30,
         "good":       150
+    },
+    "persistence": {
+        "fieldKeys":    13
     }
 }
 

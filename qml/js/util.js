@@ -29,7 +29,6 @@ function registerCaller(who){
  * @param {object}  obj object to store
  */
 function store(loc, obj) {
-    console.debug("storing:\n");
     save(loc + "/" + filename,obj);
 }
 /** Load an object from location.
@@ -37,7 +36,6 @@ function store(loc, obj) {
  * @param {url} loc         path to storage location (cache)
  */
 function restore(loc) {
-    console.debug("restoring:\n");
     load(loc + "/" + filename);
 }
 
@@ -51,9 +49,12 @@ function restore(loc) {
  * @param {string} data         JSON data
  */
 function handleData(data) {
-    var ddata = defuscate(JSON.parse(data).content);
-    //emit signal to caller:
-    calledBy.dataLoaded(ddata);
+    if (!!data) {
+        var ddata = defuscate(JSON.parse(data).content);
+        //emit signal to caller:
+        calledBy.dataLoaded(ddata);
+    }
+    console.debug("Invalid data received.")
 }
 
 // TODO: do a proper de/obfuscation
@@ -77,11 +78,11 @@ function load(fileUrl){
 
     r.onreadystatechange = function(event) {
             if (r.readyState == XMLHttpRequest.DONE) {
-                    console.debug("request done.");
+                    //console.debug("request done.");
                     handleData(r.response);
             }
     }
-    console.info("Read from: " + fileUrl + " into " + Qt.application.name );
+    //console.info("Read from: " + fileUrl + " into " + Qt.application.name );
 }
 
 /** Store an obfuscated JSON string of data to location.
@@ -90,13 +91,12 @@ function load(fileUrl){
  * @param {string} data         JSON data
  */
 function save(fileUrl,data){
-    var r = new XMLHttpRequest();
-    r.open('PUT', fileUrl);
-    //var rdata = JSON.stringify(data, null, 4);
     var rdata =  { 
         "content": obfuscate(JSON.stringify(data))
     }
-    rdata = JSON.stringify(rdata, null, 2);
+    rdata = JSON.stringify(rdata);
+    var r = new XMLHttpRequest();
+    r.open('PUT', fileUrl);
     r.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     r.setRequestHeader('Content-length', rdata.length);
     r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
@@ -104,10 +104,10 @@ function save(fileUrl,data){
 
     r.onreadystatechange = function(event) {
         if (r.readyState == XMLHttpRequest.DONE) {
-            console.debug("request done.");
+            //console.debug("request done.");
         }
     }
-    console.info("Wrote to :" + fileUrl + " from " + Qt.application.name );
+    //console.info("Wrote to :" + fileUrl + " from " + Qt.application.name );
 }
 
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript

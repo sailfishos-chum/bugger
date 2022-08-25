@@ -34,6 +34,9 @@ Page {
     readonly property int minStepsLength:   Settings.config.validation.minSteps
     readonly property int goodLength:       Settings.config.validation.good
 
+    /* IMPORTANT: remember to update this if any persisting UI elements are added on this page! */
+    readonly property int fieldKeys:        Settings.config.persistence.fieldKeys
+
     /* Conditions for minimum information required for posting */
     property bool infoComplete: ( titleComplete && descComplete && stepsComplete )
     property bool titleComplete: text_title.acceptableInput
@@ -56,6 +59,23 @@ Page {
         1 * text_actres.text.length +
         0
     readonly property string infoFooter: 'the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version
+
+    // used to clear this form, and the persistent storage
+    property var defaultFieldContents: {
+        "text_title":       "",
+        "text_desc":        "",
+        "text_steps":       " 1. \n 2. \n 3. ",
+        "text_precons":     "",
+        "text_expres":      "",
+        "text_actres":      "",
+        "text_add":         "",
+        "text_mod_other":   "",
+        "regsw":            false,
+        "regver":           -1,
+        "regarch":          -1,
+        "othersw":          false,
+        "repro":            -1
+    }
 
     // from org.nemomobile.systemsettings to determine Device Owner
     UserInfo{id: userInfo; uid: 100000}
@@ -111,6 +131,10 @@ Page {
         }
     ]
 
+    Component.onCompleted: {
+        loadManager.restore();
+        preventSave = false;
+    }
     /*
      * ***** WELCOME DIALOG *****
      *
@@ -183,6 +207,7 @@ Page {
                     EnterKey.enabled: text.length > 0
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: text_desc.focus = true
+                    onFocusChanged: shallSave();
                 }
                 SectionHeader { text: qsTr("Description") + "*" }
                 TextArea{id: text_desc;
@@ -190,6 +215,7 @@ Page {
                     description: qsTr("Describe what is not working");
                     // TextField has this, TextArea not:
                     property bool acceptableInput: text.length > minDescLength
+                    onFocusChanged: shallSave();
                 }
                 SectionHeader { text: qsTr("Steps to Reproduce") + "*" }
                 TextArea{id: text_steps;
@@ -203,6 +229,7 @@ Page {
                     placeholderText: " 1. \n 2. \n 3. ";
                     // TextField has this, TextArea not:
                     property bool acceptableInput: text.length > minStepsLength
+                    onFocusChanged: shallSave();
                 }
             }
            SectionHeader { text: qsTr("Preconditions") }
@@ -211,6 +238,7 @@ Page {
                 //placeholderText: qsTr("e.g. 'an email account is needed'.")
                 label: qsTr("Some Context information")
                 description: qsTr("e.g. 'an email account is needed'.")
+                onFocusChanged: shallSave();
             }
 
             SectionHeader { text: qsTr("Expected Results") }
@@ -218,6 +246,7 @@ Page {
                 width: parent.width;
                 label: qsTr("What outcome did you expect")
                 description: qsTr("e.g. 'an error notification', 'a message is shown'")
+                onFocusChanged: shallSave();
             }
             SectionHeader { text: qsTr("Actual Results") }
             TextArea{id: text_actres;
@@ -225,6 +254,7 @@ Page {
                 //placeholderText: qsTr("What was the outcome")
                 label: qsTr("What was the outcome")
                 description: qsTr("e.g. 'the app closed', 'a message was not shown'")
+                onFocusChanged: shallSave();
             }
             SectionHeader { text: qsTr("Device Information") }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
@@ -245,6 +275,7 @@ Page {
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
                 description: qsTr("e.g. links to logs or screenshots.")
+                onFocusChanged: shallSave();
             }
             Slider { id: repro;
                 width: parent.width;
@@ -382,43 +413,27 @@ Page {
     }
    /* ****** END POSTING ***** */
 
-    // to be called from Pulley Menu
-    // TODO: we could construct an object with the default data, and use restoreFields() instead.
-    function resetFields() {
-        preventSave = true;
-        text_title.text         = "";
-        text_desc.text          = "";
-        text_steps.text         = " 1. \n 2. \n 3. ";
-        text_precons.text       = "";
-        text_expres.text        = "";
-        text_actres.text        = "";
-        text_add.text           = "";
-        text_mod_other.text     = "";
-        regsw.checked           = false;
-        regver.currentIndex     = -1;
-        regarch.currentIndex    = -1;
-        othersw.checked         = false;
-        repro.value             = -1;
-        text_title.focus        = true;
-        preventSave = false;
-    }
-
    /*
     * ****** AUTOSAVE AND RESTORE *****
     *
-    * save input on state changes, and when minimized
+    * save input on state changes, and when minimized/closed
     */
     signal shallSave()
-    property bool preventSave: false // prevent state changes triggering a save, e.g. a form reset
+    property bool preventSave: true // prevent state changes triggering a save, e.g. a form reset
     Connections {
         target: app
-        function onApplicationActiveChanged() {
-            if (!Qt.application.active) {
-                console.debug("deactivating, emitting shallSave");
+        onApplicationActiveChanged: {
+            if (Qt.application.state == Qt.ApplicationInactive) {
                 shallSave()
             }
         }
+        onWillQuit: {
+            console.info("App quitting, emergency save!");
+            shallSave();
+            preventSave = true;
+        }
     }
+
     /* maybe save when the State changes */
     onStateChanged: {
         console.debug("state changed, emitting shallSave");
@@ -446,13 +461,13 @@ Page {
     */
     // Signal Handler for shallSave
     onShallSave: {
-        console.debug("got shall save");
+        console.debug("Signal Handler called");
         if (preventSave) {
-            console.debug("saving disabled.");
+            console.debug("Saving currently disabled");
             return;
         }
         if (backOffTimer.running) {
-            console.debug("write within backoff period.");
+            console.debug("Trying to write within backoff period");
             return;
         }
         // don't overwrite old data with worse data
@@ -460,9 +475,10 @@ Page {
             saveFields();
             backOffTimer.start();
         } else {
-            console.debug("nothing worth saving");
+            console.debug("Nothing worth saving");
         }
     }
+    // save to persistent storage
     function saveFields() {
         const post = {};
         post.fields = {
@@ -482,6 +498,14 @@ Page {
         };
         Util.store(StandardPaths.cache, post);
     }
+    // clear persistent storage
+    function clearSaved() {
+        Util.store(StandardPaths.cache, {});
+    }
+    // to be called from Pulley Menu
+    function resetFields() {
+        restoreFields(defaultFieldContents);
+    }
 
     /*
      * As the loading Request is asynchronous, we don't know when the data is ready.
@@ -493,9 +517,16 @@ Page {
     QtObject { id: loadManager
         signal dataLoaded(var data)
         onDataLoaded: {
-            console.debug("Handler called", data);
-            var fields = JSON.parse(data).fields
-            page.restoreFields(fields);
+            console.debug("Signal Handler called");
+            if (!!data) {
+              var fields = JSON.parse(data).fields;
+              page.restoreFields(fields);
+              if (infoComplete || titleComplete || descComplete || stepsComplete ) {
+                app.popup(qsTr("Restored bug report contents from saved state."));
+              }
+            } else {
+                console.debug("No valid data received.");
+            }
         }
         // regiter ourselves as the caller, and call the loading function
         function restore() {
@@ -508,19 +539,30 @@ Page {
      */
     function restoreFields(data) {
         console.debug("Restoring fields");
-        text_title.text         = data.text_title;
-        text_desc.text          = data.text_desc;
-        text_steps.text         = data.text_steps;
-        text_precons.text       = data.text_precons;
-        text_expres.text        = data.text_expres;
-        text_actres.text        = data.text_actres;
-        text_add.text           = data.text_add;
-        text_mod_other.text     = data.text_mod_other;
-        regsw.checked           = data.regsw;
-        regver.currentIndex     = data.regver;
-        regarch.currentIndex    = data.regarch;
-        othersw.checked         = data.othersw;
-        repro.value             = data.repro;
+        const dataKeys  = Object.keys(data).length;
+        if (dataKeys !== fieldKeys) {
+            console.assert(( dataKeys == fieldKeys), ("Loaded field value count (%1) differs from known field count (%2), not restoring!").arg(fieldKeys).arg(dataKeys));
+            resetFields();
+            return;
+        }
+        preventSave = true;
+        try {
+            text_title.text         = data.text_title;
+            text_desc.text          = data.text_desc;
+            text_steps.text         = data.text_steps;
+            text_precons.text       = data.text_precons;
+            text_expres.text        = data.text_expres;
+            text_actres.text        = data.text_actres;
+            text_add.text           = data.text_add;
+            text_mod_other.text     = data.text_mod_other;
+            regsw.checked           = data.regsw;
+            regver.currentIndex     = data.regver;
+            regarch.currentIndex    = data.regarch;
+            othersw.checked         = data.othersw;
+            repro.value             = data.repro;
+        } finally {
+            preventSave = false;
+        }
     }
    /* ****** END AUTOSAVE AND RESTORE ***** */
 
