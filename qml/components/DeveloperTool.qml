@@ -49,6 +49,12 @@ Column { id: devCol
                 Util.restore(StandardPaths.cache);
             }
         }
+        Button {
+            text: "Save"
+            onClicked: {
+                shallSave()
+            }
+        }
     }
     Label {
         width:  parent.width - Theme.horizontalPageMargin * 2
