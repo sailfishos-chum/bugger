@@ -45,10 +45,11 @@ Column { id: devCol
     }
     Label {
         width:  parent.width - Theme.horizontalPageMargin * 2
+        anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.secondaryColor
         font.italic: true
         font.pixelSize: Theme.fontSizeSmall
-        text: "gootcnt: " + infoGoodCnt + " fullcnt: " + infoFullCnt + " state: " + page.state
+        text: "goodcnt: " + infoGoodCnt + " fullcnt: " + infoFullCnt + " state: " + page.state
     }
 }
 
