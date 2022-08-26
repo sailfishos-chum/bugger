@@ -61,7 +61,11 @@ Page {
         1 * text_expres.text.length +
         1 * text_actres.text.length +
         0
-    readonly property string infoFooter: 'the initial version of this bug report was created using ' + Qt.application.name + " v" + Qt.application.version
+
+    /* just to add something of ours to the report */
+    readonly property string infoFooter: 'the initial version of this bug report was created using' +
+        + ' [' + Qt.application.name + ' v' + Qt.application.version + ']'
+        + '(' + 'https://github.com/sailfishos-chum/bugger/releases/' + Qt.application.version + ')'
 
     // used to clear this form, and the persistent storage
     property var defaultFieldContents: {
@@ -80,6 +84,12 @@ Page {
         "repro":            -1
     }
 
+
+    /*
+     * ***** DATA SOURCES *****
+     *
+     * to autodetect some values for the report
+     */
     // from Sailfish.Encryption to determine Home Encryption
     HomeInfo{id: homeInfo}
     // from org.nemomobile.systemsettings to determine Device Owner
@@ -92,8 +102,21 @@ Page {
 
     onOslanguageChanged: console.info("Detected OS Language:", oslanguage)
     onOslocaleChanged:   console.info("Detected OS Locale:",   oslocale)
+    /* ***** END DATA SOURCES ***** */
 
-     /* handle different states of completeness */
+
+    /*
+     * ***** PAGE INITIALIZATION *****
+     *
+     */
+
+    /* load persistent store of form data */
+    Component.onCompleted: {
+        restoreSaved();
+        preventSave = false;
+    }
+
+    /* handle different states of completeness */
     states: [
         // "" =  default  = incomplete
         State { name: "incomplete"
@@ -136,10 +159,7 @@ Page {
         }
     ]
 
-    Component.onCompleted: {
-        restoreSaved();
-        preventSave = false;
-    }
+
     /*
      * ***** WELCOME DIALOG *****
      *
@@ -156,6 +176,7 @@ Page {
         dialog.done.connect(function() { page.welcomeShown = true;})
     }
     /* END WELCOME DIALOG */
+
 
     SilicaFlickable { id: flick
         anchors.fill: parent
@@ -263,11 +284,11 @@ Page {
             }
             SectionHeader { text: qsTr("Device Information") }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
-            /* 
+            /*
              * bug info contents may be available later than this page is instantiated.
              * So use a Loader to quiet the "undefined" errors in the log.
              *
-             * TODO: I'm sure there is a more QMLy way of doing this buut I never quite understood Binding{}
+             * TODO: I'm sure there is a more QMLy way of doing this but I never quite understood Binding{}
              */
             Loader {
                 width: parent.width
@@ -402,7 +423,7 @@ Page {
             + "Home Encryption: " + ((homeInfo.type == "LUKS") ? "enabled" : "n/a") + "  \n"
             + "\n\n\n\n"
             // add footer:
-            + "----  \n" 
+            + "----  \n"
             + "*" + infoFooter + "*\n"
             + "";
         return payload;
@@ -477,7 +498,7 @@ Page {
     }
     // Signal Handler for shallSave
     onShallSave: {
-        console.debug("Signal Handler called");
+        //console.debug("Signal Handler called");
         if (preventSave) {
             console.debug("Saving currently disabled");
             return;
@@ -488,8 +509,6 @@ Page {
         }
         // don't overwrite old data with worse data
         if (infoComplete || titleComplete || descComplete || stepsComplete ) {
-            //saveFields();
-            //backOffTimer.restart();
             saveTimer.restart();
         } else {
             console.debug("Nothing worth saving");
@@ -521,6 +540,7 @@ Page {
     }
     // to be called from Pulley Menu
     function resetFields() {
+        console.info("Resetting field values");
         restoreFields(defaultFieldContents);
     }
 
@@ -529,24 +549,24 @@ Page {
         if (!!data) {
             console.debug("restoring:" , data);
             var fields = JSON.parse(data).fields;
-            page.restoreFields(fields);
-            if (infoComplete || titleComplete || descComplete || stepsComplete ) {
+            if(page.restoreFields(fields)) {
                 app.popup(qsTr("Restored bug report contents from saved state."));
+            } else {
+                console.warn("Could not restore fields")
             }
         } else {
-            console.debug("No valid data received.");
+            console.debug("No valid data received");
         }
     }
     /*
      * set the form fields from an object
      */
     function restoreFields(data) {
-        console.debug("Restoring fields");
         const dataKeys  = Object.keys(data).length;
         if (dataKeys !== fieldKeys) {
             console.assert(( dataKeys == fieldKeys), ("Loaded field value count (%1) differs from known field count (%2), not restoring!").arg(fieldKeys).arg(dataKeys));
             resetFields();
-            return;
+            return false;
         }
         preventSave = true;
         try {
@@ -566,6 +586,7 @@ Page {
         } finally {
             preventSave = false;
         }
+        return true
     }
    /* ****** END AUTOSAVE AND RESTORE ***** */
 
