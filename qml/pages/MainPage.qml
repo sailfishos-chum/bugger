@@ -63,8 +63,8 @@ Page {
         0
 
     /* just to add something of ours to the report */
-    readonly property string infoFooter: 'the initial version of this bug report was created using' +
-        + ' [' + Qt.application.name + ' v' + Qt.application.version + ']'
+    readonly property string infoFooter: 'the initial version of this bug report was created using'
+        + ' [' + Qt.application.name + ' ' + Qt.application.version + ']'
         + '(' + 'https://github.com/sailfishos-chum/bugger/releases/' + Qt.application.version + ')'
 
     // used to clear this form, and the persistent storage
@@ -388,10 +388,10 @@ Page {
     function getPayload() {
         var payload =
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
-            + "OSVERSION: " + bugInfo.os.version_id + "  \n"
-            + "HARDWARE: " + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
-            + "UI LANGUAGE: " + oslanguage + " (user: " + uilocale + ", os: " + oslocale + ")" + "  \n"
-            + "REGRESSION: " + (regsw.checked?"yes":"no")
+            + "OSVERSION: "     + bugInfo.os.version_id + "  \n"
+            + "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
+            + "UI LANGUAGE: "   + oslanguage + " (user: " + uilocale + ", os: " + oslocale + ")" + "  \n"
+            + "REGRESSION: "    + (regsw.checked?"yes":"no")
             + ( regsw.checked
                 ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
                 : ""
@@ -415,16 +415,17 @@ Page {
             + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "  \n"
             + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
             + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
-            + " - Other: "        + text_mod_other.text + "  \n"
+            + " - Other: "        + (othersw.checked?"yes":"no") + ":  \n"+ text_mod_other.text + "  \n"
             + "\n\n"
             + "ADDITIONAL INFORMATION:\n"
             + "=================\n\n" + text_add.text
-            + "Device Owner: " + userInfo.username + "  \n"
+            + "\n"
+            + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + ((homeInfo.type == "LUKS") ? "enabled" : "n/a") + "  \n"
             + "\n\n\n\n"
             // add footer:
             + "----  \n"
-            + "*" + infoFooter + "*\n"
+            + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
             + "";
         return payload;
     }
