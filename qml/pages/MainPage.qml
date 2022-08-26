@@ -479,12 +479,6 @@ Page {
         shallSave()
     }
 
-    /* prevent write bursts */
-    Timer { id: backOffTimer
-        interval: 100
-        running: false
-        repeat: false
-    }
     /* timer acts as queue, its restarted at each signal, and will save after that */
     Timer { id: saveTimer
         interval: saveInterval
@@ -494,17 +488,13 @@ Page {
             saveFields();
             console.debug("timer triggered");
         }
-        onRunningChanged: console.debug("timer %1".arg(running ? "started" : "stopped"));
+        //onRunningChanged: console.debug("timer %1".arg(running ? "started" : "stopped"));
     }
     // Signal Handler for shallSave
     onShallSave: {
         //console.debug("Signal Handler called");
         if (preventSave) {
             console.debug("Saving currently disabled");
-            return;
-        }
-        if (backOffTimer.running) {
-            console.debug("Trying to write within backoff period");
             return;
         }
         // don't overwrite old data with worse data
