@@ -159,8 +159,18 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/DeviceInfo.qml" line="39"/>
+        <location filename="../qml/components/DeviceInfo.qml" line="38"/>
         <source>Operating System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DeviceInfo.qml" line="51"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DeviceInfo.qml" line="57"/>
+        <source>Locale</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -193,284 +203,284 @@ Software versions: Please indicate version number instead of current/latest, as 
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="337"/>
+        <location filename="../qml/pages/MainPage.qml" line="361"/>
         <source>About</source>
         <translation type="unfinished">Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="98"/>
-        <location filename="../qml/pages/MainPage.qml" line="118"/>
         <location filename="../qml/pages/MainPage.qml" line="124"/>
-        <location filename="../qml/pages/MainPage.qml" line="130"/>
-        <location filename="../qml/pages/MainPage.qml" line="162"/>
+        <location filename="../qml/pages/MainPage.qml" line="144"/>
+        <location filename="../qml/pages/MainPage.qml" line="150"/>
+        <location filename="../qml/pages/MainPage.qml" line="156"/>
+        <location filename="../qml/pages/MainPage.qml" line="186"/>
         <source>Bug Info (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="98"/>
-        <location filename="../qml/pages/MainPage.qml" line="162"/>
+        <location filename="../qml/pages/MainPage.qml" line="124"/>
+        <location filename="../qml/pages/MainPage.qml" line="186"/>
         <source>incomplete</source>
         <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="103"/>
-        <location filename="../qml/pages/MainPage.qml" line="108"/>
-        <location filename="../qml/pages/MainPage.qml" line="113"/>
+        <location filename="../qml/pages/MainPage.qml" line="129"/>
+        <location filename="../qml/pages/MainPage.qml" line="134"/>
+        <location filename="../qml/pages/MainPage.qml" line="139"/>
         <source>%1 field is too short</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="103"/>
-        <location filename="../qml/pages/MainPage.qml" line="204"/>
-        <location filename="../qml/pages/MainPage.qml" line="345"/>
+        <location filename="../qml/pages/MainPage.qml" line="129"/>
+        <location filename="../qml/pages/MainPage.qml" line="228"/>
+        <location filename="../qml/pages/MainPage.qml" line="369"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="108"/>
-        <location filename="../qml/pages/MainPage.qml" line="214"/>
-        <location filename="../qml/pages/MainPage.qml" line="346"/>
+        <location filename="../qml/pages/MainPage.qml" line="134"/>
+        <location filename="../qml/pages/MainPage.qml" line="238"/>
+        <location filename="../qml/pages/MainPage.qml" line="370"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="113"/>
-        <location filename="../qml/pages/MainPage.qml" line="347"/>
+        <location filename="../qml/pages/MainPage.qml" line="139"/>
+        <location filename="../qml/pages/MainPage.qml" line="371"/>
         <source>Steps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="118"/>
+        <location filename="../qml/pages/MainPage.qml" line="144"/>
         <source>ok</source>
         <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="119"/>
-        <location filename="../qml/pages/MainPage.qml" line="125"/>
-        <location filename="../qml/pages/MainPage.qml" line="131"/>
+        <location filename="../qml/pages/MainPage.qml" line="145"/>
+        <location filename="../qml/pages/MainPage.qml" line="151"/>
+        <location filename="../qml/pages/MainPage.qml" line="157"/>
         <source>Ready for posting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="119"/>
+        <location filename="../qml/pages/MainPage.qml" line="145"/>
         <source>, but please add more information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="124"/>
+        <location filename="../qml/pages/MainPage.qml" line="150"/>
         <source>good</source>
         <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="130"/>
+        <location filename="../qml/pages/MainPage.qml" line="156"/>
         <source>complete</source>
         <comment>State of completeness of a bug report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="185"/>
+        <location filename="../qml/pages/MainPage.qml" line="209"/>
         <source>You can tap this section to hide it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="206"/>
+        <location filename="../qml/pages/MainPage.qml" line="230"/>
         <source>A New Bug Report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="207"/>
+        <location filename="../qml/pages/MainPage.qml" line="231"/>
         <source>Please be brief but descriptive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="217"/>
+        <location filename="../qml/pages/MainPage.qml" line="241"/>
         <source>Describe what is not working</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="222"/>
+        <location filename="../qml/pages/MainPage.qml" line="246"/>
         <source>Steps to Reproduce</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="227"/>
+        <location filename="../qml/pages/MainPage.qml" line="251"/>
         <source>How to reproduce</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="229"/>
+        <location filename="../qml/pages/MainPage.qml" line="253"/>
         <source>Provide as much information as you have</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="237"/>
+        <location filename="../qml/pages/MainPage.qml" line="261"/>
         <source>Preconditions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="241"/>
+        <location filename="../qml/pages/MainPage.qml" line="265"/>
         <source>Some Context information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="242"/>
+        <location filename="../qml/pages/MainPage.qml" line="266"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="246"/>
+        <location filename="../qml/pages/MainPage.qml" line="270"/>
         <source>Expected Results</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="249"/>
+        <location filename="../qml/pages/MainPage.qml" line="273"/>
         <source>What outcome did you expect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="250"/>
+        <location filename="../qml/pages/MainPage.qml" line="274"/>
         <source>e.g. &apos;an error notification&apos;, &apos;a message is shown&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="253"/>
+        <location filename="../qml/pages/MainPage.qml" line="277"/>
         <source>Actual Results</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="257"/>
+        <location filename="../qml/pages/MainPage.qml" line="281"/>
         <source>What was the outcome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="258"/>
+        <location filename="../qml/pages/MainPage.qml" line="282"/>
         <source>e.g. &apos;the app closed&apos;, &apos;a message was not shown&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="261"/>
+        <location filename="../qml/pages/MainPage.qml" line="285"/>
         <source>Device Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="275"/>
+        <location filename="../qml/pages/MainPage.qml" line="299"/>
         <source>Additional Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="278"/>
+        <location filename="../qml/pages/MainPage.qml" line="302"/>
         <source>Add any other information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="279"/>
+        <location filename="../qml/pages/MainPage.qml" line="303"/>
         <source>e.g. links to logs or screenshots.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="284"/>
+        <location filename="../qml/pages/MainPage.qml" line="308"/>
         <source>Reproducibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="299"/>
+        <location filename="../qml/pages/MainPage.qml" line="323"/>
         <source>unknown</source>
         <comment>Reproducibility</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="300"/>
+        <location filename="../qml/pages/MainPage.qml" line="324"/>
         <source>never</source>
         <comment>Reproducibility</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="301"/>
+        <location filename="../qml/pages/MainPage.qml" line="325"/>
         <source>sometimes</source>
         <comment>Reproducibility</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="302"/>
+        <location filename="../qml/pages/MainPage.qml" line="326"/>
         <source>often</source>
         <comment>Reproducibility</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="303"/>
+        <location filename="../qml/pages/MainPage.qml" line="327"/>
         <source>always</source>
         <comment>Reproducibility</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="307"/>
+        <location filename="../qml/pages/MainPage.qml" line="331"/>
         <source>Regression (was working in a previous OS release)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="321"/>
+        <location filename="../qml/pages/MainPage.qml" line="345"/>
         <source>Modifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="322"/>
-        <location filename="../qml/pages/MainPage.qml" line="323"/>
-        <location filename="../qml/pages/MainPage.qml" line="324"/>
+        <location filename="../qml/pages/MainPage.qml" line="346"/>
+        <location filename="../qml/pages/MainPage.qml" line="347"/>
+        <location filename="../qml/pages/MainPage.qml" line="348"/>
         <source>(autodetected)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="325"/>
+        <location filename="../qml/pages/MainPage.qml" line="349"/>
         <source>Other (please specify)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="328"/>
+        <location filename="../qml/pages/MainPage.qml" line="352"/>
         <source>e.g. WayDroid and GApps installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="329"/>
+        <location filename="../qml/pages/MainPage.qml" line="353"/>
         <source>custom changes, installed packages etc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="338"/>
+        <location filename="../qml/pages/MainPage.qml" line="362"/>
         <source>Reset all to default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="338"/>
+        <location filename="../qml/pages/MainPage.qml" line="362"/>
         <source>Cleared.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="344"/>
+        <location filename="../qml/pages/MainPage.qml" line="368"/>
         <source>Please fill in the required fields</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="344"/>
+        <location filename="../qml/pages/MainPage.qml" line="368"/>
         <source>(marked with an asterisk (*))!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="345"/>
-        <location filename="../qml/pages/MainPage.qml" line="346"/>
-        <location filename="../qml/pages/MainPage.qml" line="347"/>
+        <location filename="../qml/pages/MainPage.qml" line="369"/>
+        <location filename="../qml/pages/MainPage.qml" line="370"/>
+        <location filename="../qml/pages/MainPage.qml" line="371"/>
         <source>%1 field is incomplete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="348"/>
+        <location filename="../qml/pages/MainPage.qml" line="372"/>
         <source>Post Bug Report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="529"/>
+        <location filename="../qml/pages/MainPage.qml" line="544"/>
         <source>Restored bug report contents from saved state.</source>
         <translation type="unfinished"></translation>
     </message>
