@@ -47,8 +47,10 @@ Page {
     property bool stepsComplete: text_steps.acceptableInput
 
     /* Conditions (more or less random heuristics) to judge a report as "good" */
-    property bool infoGood: ((infoGoodCnt > goodLength) && (infoGoodCnt > infoFullCnt) && (repro.value != -1));
-    property bool infoFull: infoGood && (infoFullCnt > goodLength)
+    // good: sum of all fields greater than good limit
+    // full: sum of optional fields greater than good limit, and repro specified
+    property bool infoGood: infoComplete && (infoGoodCnt > goodLength)
+    property bool infoFull: infoGood && (infoFullCnt > goodLength) && (repro.value != -1)
     property int infoGoodCnt:
         1 * text_desc.text.length +
         1 * text_steps.text.length +
@@ -61,6 +63,9 @@ Page {
         1 * text_expres.text.length +
         1 * text_actres.text.length +
         0
+    property string qualityString//: qsTr("incomplete", "State of completeness of a bug report")
+    property bool goodPopupShown: false
+    property bool fullPopupShown: false
 
     /* just to add something of ours to the report */
     readonly property string infoFooter: 'the initial version of this bug report was created using'
@@ -118,47 +123,61 @@ Page {
 
     /* handle different states of completeness */
     states: [
-        // "" =  default  = incomplete
-        State { name: "incomplete"
+        // "" =  default = incomplete
+        State { name: "incomplete";  when: (!infoComplete && !titleComplete && !descComplete && !stepsComplete)
             PropertyChanges { target: header;
-                title:          qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report"))
+                description: qsTr("Please fill in the required fields")
             }
+            PropertyChanges { target: page; qualityString: qsTr("incomplete", "State of completeness of a bug report") }
         },
         State { name: "titleMissing";   when: (!infoComplete && !titleComplete)
             PropertyChanges { target: header;
                 description: qsTr("%1 field is too short").arg(qsTr("Title")) + " (" + text_title.text.length + "/" + minTitleLength + ")"
             }
+            PropertyChanges { target: page; qualityString: qsTr("incomplete", "State of completeness of a bug report") }
         },
         State { name: "descMissing";    when: (!infoComplete && !descComplete)
             PropertyChanges { target: header;
                 description: qsTr("%1 field is too short").arg(qsTr("Description")) + " (" + text_desc.text.length + "/" + minDescLength + ")"
             }
+            PropertyChanges { target: page; qualityString: qsTr("incomplete", "State of completeness of a bug report") }
         },
         State { name: "stepsMissing";   when: (!infoComplete && !stepsComplete)
             PropertyChanges { target: header;
                 description: qsTr("%1 field is too short").arg(qsTr("Steps")) + " (" + text_steps.text.length + "/" + minStepsLength + ")"
             }
+            PropertyChanges { target: page; qualityString: qsTr("incomplete", "State of completeness of a bug report") }
         },
         State { name: "complete";       when: (infoComplete && !infoGood && !infoFull )
             PropertyChanges { target: header;
-                title:          qsTr("Bug Info (%1)").arg(qsTr("ok", "State of completeness of a bug report"))
                 description:    qsTr("Ready for posting") + qsTr(", but please add more information")
             }
+            PropertyChanges { target: page; qualityString: qsTr("ok", "State of completeness of a bug report") }
         },
-        State { name: "good";       when: (infoComplete && infoGood && !infoFull)
+        State { name: "good";       when: (infoGood && !infoFull)
             PropertyChanges { target: header;
-                title:          qsTr("Bug Info (%1)").arg(qsTr("good", "State of completeness of a bug report"))
                 description:    qsTr("Ready for posting")
             }
+            PropertyChanges { target: page; qualityString: qsTr("good", "State of completeness of a bug report") }
         },
-        State { name: "full";       when: (infoComplete && infoFull)
+        State { name: "full";       when: (infoFull)
             PropertyChanges { target: header;
-                title:          qsTr("Bug Info (%1)").arg(qsTr("complete", "State of completeness of a bug report"))
                 description:    qsTr("Ready for posting")
             }
+            PropertyChanges { target: page; qualityString: qsTr("excellent", "State of completeness of a bug report") }
         }
     ]
-
+    onStateChanged: {
+        /* maybe save when the State changes. actual saving is determined in the signal handler */
+        console.debug("state changed, emitting shallSave");
+        shallSave();
+    }
+    onQualityStringChanged: {
+        console.debug("state is:", state, "quality is:", qualityString);
+        if ( state === "good" || state === "full" ) {
+            app.popup(qsTr("Achievement unlocked! The quality of your bug report is %1!").arg(page.qualityString));
+        }
+    }
 
     /*
      * ***** WELCOME DIALOG *****
@@ -183,7 +202,7 @@ Page {
         contentHeight: col.height
         Column { id: col
             width: parent.width
-            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qsTr("incomplete", "State of completeness of a bug report")) }
+            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qualityString) }
             /* tap-to-hide information */
             SilicaItem { id: hidetext
                 width:  parent.width - Theme.horizontalPageMargin
@@ -228,6 +247,7 @@ Page {
                 SectionHeader { text: qsTr("Title") + "*" }
                 TextField{id: text_title; width: parent.width;
                     placeholderText: qsTr("A New Bug Report");
+                    // description wraps the text, label fades it out.
                     description: qsTr("Please be brief but descriptive");
                     acceptableInput: text.length > minTitleLength
                     EnterKey.enabled: text.length > 0
@@ -238,6 +258,7 @@ Page {
                 SectionHeader { text: qsTr("Description") + "*" }
                 TextArea{id: text_desc;
                     width: parent.width;
+                    // description wraps the text, label fades it out.
                     description: qsTr("Describe what is not working");
                     // TextField has this, TextArea not:
                     property bool acceptableInput: text.length > minDescLength
@@ -261,7 +282,6 @@ Page {
            SectionHeader { text: qsTr("Preconditions") }
             TextArea{id: text_precons;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
-                //placeholderText: qsTr("e.g. 'an email account is needed'.")
                 label: qsTr("Some Context information")
                 description: qsTr("e.g. 'an email account is needed'.")
                 onFocusChanged: shallSave();
@@ -277,7 +297,6 @@ Page {
             SectionHeader { text: qsTr("Actual Results") }
             TextArea{id: text_actres;
                 width: parent.width;
-                //placeholderText: qsTr("What was the outcome")
                 label: qsTr("What was the outcome")
                 description: qsTr("e.g. 'the app closed', 'a message was not shown'")
                 onFocusChanged: shallSave();
@@ -365,6 +384,7 @@ Page {
     PushUpMenu { id: pum
         flickable: flick
         busy: infoComplete
+        MenuLabel { text: qsTr("Bug quality is: %1 ").arg(qualityString) }
         MenuLabel { text: qsTr("Please fill in the required fields") + " " + qsTr("(marked with an asterisk (*))!"); visible: !infoComplete; }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Title"))       ; visible: ( !infoComplete && !titleComplete); }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Description")) ; visible: ( !infoComplete && !descComplete); }
@@ -474,13 +494,9 @@ Page {
         }
     }
 
-    /* maybe save when the State changes */
-    onStateChanged: {
-        console.debug("state changed, emitting shallSave");
-        shallSave()
-    }
-
-    /* timer acts as queue, its restarted at each signal, and will save after that */
+    /* timer acts as queue, it's restarted at each signal, and will save after
+     * that. This is to prevent write bursts.
+     */
     Timer { id: saveTimer
         interval: saveInterval
         running: false

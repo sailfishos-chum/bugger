@@ -62,7 +62,7 @@ Column { id: devCol
         color: Theme.secondaryColor
         font.italic: true
         font.pixelSize: Theme.fontSizeSmall
-        text: "goodcnt: " + infoGoodCnt + " fullcnt: " + infoFullCnt + " state: " + page.state
+        text: "goodcnt: " + infoGoodCnt + " fullcnt: " + infoFullCnt + " state: " + page.state + " q: " + page.qualityString
     }
 }
 
