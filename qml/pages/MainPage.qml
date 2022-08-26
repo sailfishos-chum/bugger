@@ -64,8 +64,6 @@ Page {
         1 * text_actres.text.length +
         0
     property string qualityString//: qsTr("incomplete", "State of completeness of a bug report")
-    property bool goodPopupShown: false
-    property bool fullPopupShown: false
 
     /* just to add something of ours to the report */
     readonly property string infoFooter: 'the initial version of this bug report was created using'
