@@ -1,8 +1,9 @@
-* Wed Aug 24 2022 Nephros <sailfish@nephros.org> - 0.9.7
+* Fri Aug 26 2022 Nephros <sailfish@nephros.org> - 0.9.7
 - Bugger! Release 0.9.7
 - remove boring Lorem from Developer Tool
 - Add autosave/restore feature
 - Display and post additional information (owner, encryption)
+- Achievements: provide better quality feedback
 
 * Wed Aug 24 2022 Nephros <sailfish@nephros.org> - 0.9.6
 - bug fix release 0.9.6
