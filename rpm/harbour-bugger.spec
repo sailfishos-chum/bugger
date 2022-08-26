@@ -75,13 +75,6 @@ rm -rf %{buildroot}
 %qmake5_install
 
 # >> install post
-%__install -m 644 -D %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-%__install -m 644 -D qml/%{name}.qml %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
-#for f in qml/cover/*.qml qml/components/qmldir qml/components/*/*.qml qml/components/*.qml qml/pages/*.qml; do
-for f in $(find qml/ -type f -name "*.qml" -o -name "*.js" -o -name qmldir -o -name "*.png"); do
-%__install -m 644 -D ${f} %{buildroot}%{_datadir}/%{name}/${f}
-done
-
 # mangle version info
 sed -i -e "s/unreleased/%{version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
 # << install post
