@@ -4,60 +4,60 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>What&apos;s %1?</source>
         <translation>Was ist %1?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <location filename="../qml/pages/AboutPage.qml" line="53"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
         <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehlermeldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
 Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgenommen und getrackt werden. Weitere Informationen hierzu unter %2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="57"/>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Version:</source>
         <translation>Version:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>Copyright:</source>
         <translation>Urheberrecht:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="59"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>License:</source>
         <translation>Lizenz:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="60"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Source Code:</source>
         <translation>Quellcode:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="61"/>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Credits</source>
         <translation>Danksagungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
         <source>Bug Coordination Team Lead: </source>
         <translation>Bug Coordination Team Leitung:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="63"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Contributions and Help: </source>
         <translation>Beiträge und Hilfe:</translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="63"/>
         <location filename="../qml/pages/AboutPage.qml" line="64"/>
-        <location filename="../qml/pages/AboutPage.qml" line="65"/>
         <source>Translation: %1</source>
         <comment>%1 is the native language name</comment>
         <translation>%1e Übersetzung</translation>
@@ -115,11 +115,11 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="64"/>
-        <location filename="../qml/pages/MainPage.qml" line="84"/>
-        <location filename="../qml/pages/MainPage.qml" line="90"/>
-        <location filename="../qml/pages/MainPage.qml" line="96"/>
-        <location filename="../qml/pages/MainPage.qml" line="142"/>
+        <location filename="../qml/pages/MainPage.qml" line="98"/>
+        <location filename="../qml/pages/MainPage.qml" line="118"/>
+        <location filename="../qml/pages/MainPage.qml" line="124"/>
+        <location filename="../qml/pages/MainPage.qml" line="130"/>
+        <location filename="../qml/pages/MainPage.qml" line="162"/>
         <source>Bug Info (%1)</source>
         <translation>Bugreport (%1)</translation>
     </message>
@@ -132,99 +132,99 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
         <translation type="vanished">unvollständig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="85"/>
-        <location filename="../qml/pages/MainPage.qml" line="91"/>
-        <location filename="../qml/pages/MainPage.qml" line="97"/>
+        <location filename="../qml/pages/MainPage.qml" line="119"/>
+        <location filename="../qml/pages/MainPage.qml" line="125"/>
+        <location filename="../qml/pages/MainPage.qml" line="131"/>
         <source>Ready for posting</source>
         <translation>Bereit zum posten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="271"/>
+        <location filename="../qml/pages/MainPage.qml" line="299"/>
         <source>unknown</source>
         <comment>Reproducibility</comment>
         <translation>Reproduzierbarkeit</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="316"/>
+        <location filename="../qml/pages/MainPage.qml" line="344"/>
         <source>Please fill in the required fields</source>
         <translation>Bitte fülle die Pflichtfelder aus</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="164"/>
+        <location filename="../qml/pages/MainPage.qml" line="185"/>
         <source>You can tap this section to hide it.</source>
         <translation>Antippen zum verstecken</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="64"/>
-        <location filename="../qml/pages/MainPage.qml" line="142"/>
+        <location filename="../qml/pages/MainPage.qml" line="98"/>
+        <location filename="../qml/pages/MainPage.qml" line="162"/>
         <source>incomplete</source>
         <comment>State of completeness of a bug report</comment>
         <translation>unvollständig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="69"/>
-        <location filename="../qml/pages/MainPage.qml" line="183"/>
-        <location filename="../qml/pages/MainPage.qml" line="317"/>
+        <location filename="../qml/pages/MainPage.qml" line="103"/>
+        <location filename="../qml/pages/MainPage.qml" line="204"/>
+        <location filename="../qml/pages/MainPage.qml" line="345"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="69"/>
-        <location filename="../qml/pages/MainPage.qml" line="74"/>
-        <location filename="../qml/pages/MainPage.qml" line="79"/>
+        <location filename="../qml/pages/MainPage.qml" line="103"/>
+        <location filename="../qml/pages/MainPage.qml" line="108"/>
+        <location filename="../qml/pages/MainPage.qml" line="113"/>
         <source>%1 field is too short</source>
         <translation>%1 ist zu kurz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="84"/>
+        <location filename="../qml/pages/MainPage.qml" line="118"/>
         <source>ok</source>
         <comment>State of completeness of a bug report</comment>
         <translation>i.O.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="85"/>
+        <location filename="../qml/pages/MainPage.qml" line="119"/>
         <source>, but please add more information</source>
         <translation>, aber bitte füge mehr hinzu</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="90"/>
+        <location filename="../qml/pages/MainPage.qml" line="124"/>
         <source>good</source>
         <comment>State of completeness of a bug report</comment>
         <translation>gut</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="96"/>
+        <location filename="../qml/pages/MainPage.qml" line="130"/>
         <source>complete</source>
         <comment>State of completeness of a bug report</comment>
         <translation>perfekt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="185"/>
+        <location filename="../qml/pages/MainPage.qml" line="206"/>
         <source>A New Bug Report</source>
         <translation>Neuer Bugreport</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="186"/>
+        <location filename="../qml/pages/MainPage.qml" line="207"/>
         <source>Please be brief but descriptive</source>
         <translation>Bitte kurz aber aussagekräftig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="74"/>
-        <location filename="../qml/pages/MainPage.qml" line="192"/>
-        <location filename="../qml/pages/MainPage.qml" line="318"/>
+        <location filename="../qml/pages/MainPage.qml" line="108"/>
+        <location filename="../qml/pages/MainPage.qml" line="214"/>
+        <location filename="../qml/pages/MainPage.qml" line="346"/>
         <source>Description</source>
         <translation>Beschreibung</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="317"/>
-        <location filename="../qml/pages/MainPage.qml" line="318"/>
-        <location filename="../qml/pages/MainPage.qml" line="319"/>
+        <location filename="../qml/pages/MainPage.qml" line="345"/>
+        <location filename="../qml/pages/MainPage.qml" line="346"/>
+        <location filename="../qml/pages/MainPage.qml" line="347"/>
         <source>%1 field is incomplete</source>
         <translation>Feld %1 ist unvollständig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="79"/>
-        <location filename="../qml/pages/MainPage.qml" line="319"/>
+        <location filename="../qml/pages/MainPage.qml" line="113"/>
+        <location filename="../qml/pages/MainPage.qml" line="347"/>
         <source>Steps</source>
         <translation>Schritte</translation>
     </message>
@@ -237,17 +237,17 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
         <translation type="vanished">gut</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="195"/>
+        <location filename="../qml/pages/MainPage.qml" line="217"/>
         <source>Describe what is not working</source>
         <translation>Beschreibe, was nicht funktioniert</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="204"/>
+        <location filename="../qml/pages/MainPage.qml" line="227"/>
         <source>How to reproduce</source>
         <translation>Wie man das Problem hervorrufen kann</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="206"/>
+        <location filename="../qml/pages/MainPage.qml" line="229"/>
         <source>Provide as much information as you have</source>
         <translation>So detalliert wie möglich</translation>
     </message>
@@ -260,22 +260,22 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
         <translation type="vanished">Betriebssystem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="213"/>
+        <location filename="../qml/pages/MainPage.qml" line="237"/>
         <source>Preconditions</source>
         <translation>Vorbedingungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="218"/>
+        <location filename="../qml/pages/MainPage.qml" line="242"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
         <translation>z. B.  &apos;ein E-Mailkonto wird benötigt&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="217"/>
+        <location filename="../qml/pages/MainPage.qml" line="241"/>
         <source>Some Context information</source>
         <translation>Ein wenig Information zum Kontext.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="199"/>
+        <location filename="../qml/pages/MainPage.qml" line="222"/>
         <source>Steps to Reproduce</source>
         <translation>Erforderliche Schritte</translation>
     </message>
@@ -296,57 +296,57 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
 3.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="221"/>
+        <location filename="../qml/pages/MainPage.qml" line="246"/>
         <source>Expected Results</source>
         <translation>Erwartetes Ergebnis</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="224"/>
+        <location filename="../qml/pages/MainPage.qml" line="249"/>
         <source>What outcome did you expect</source>
         <translation>Welches Ergebnis du erwartet hättest</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="225"/>
+        <location filename="../qml/pages/MainPage.qml" line="250"/>
         <source>e.g. &apos;an error notification&apos;, &apos;a message is shown&apos;</source>
         <translation>z. B.  &apos;eine Felhermeldung&apos;,  &apos;eine Meldung wird angezeigt&apos;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="227"/>
+        <location filename="../qml/pages/MainPage.qml" line="253"/>
         <source>Actual Results</source>
         <translation>Tatsächliches Ergebnis</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="231"/>
+        <location filename="../qml/pages/MainPage.qml" line="257"/>
         <source>What was the outcome</source>
         <translation>Was war das Resultat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="232"/>
+        <location filename="../qml/pages/MainPage.qml" line="258"/>
         <source>e.g. &apos;the app closed&apos;, &apos;a message was not shown&apos;</source>
         <translation>z.B. &apos;die App ist abgestürztapos;, &apos;keine Meldung wurde angezeigt&apos;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="234"/>
+        <location filename="../qml/pages/MainPage.qml" line="261"/>
         <source>Device Information</source>
         <translation>Geräteinformationen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="248"/>
+        <location filename="../qml/pages/MainPage.qml" line="275"/>
         <source>Additional Information</source>
         <translation>Weitere Details</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="251"/>
+        <location filename="../qml/pages/MainPage.qml" line="278"/>
         <source>Add any other information</source>
         <translation>Füge weitere Informationen hinzu</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="252"/>
+        <location filename="../qml/pages/MainPage.qml" line="279"/>
         <source>e.g. links to logs or screenshots.</source>
         <translation>Z. B. Links zu Logdateien oder Screenshots.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="256"/>
+        <location filename="../qml/pages/MainPage.qml" line="284"/>
         <source>Reproducibility</source>
         <translation>Reproduzierbarkeit</translation>
     </message>
@@ -356,85 +356,90 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
         <translation type="vanished">keine Angabe</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="272"/>
+        <location filename="../qml/pages/MainPage.qml" line="300"/>
         <source>never</source>
         <comment>Reproducibility</comment>
         <translation>nie</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="273"/>
+        <location filename="../qml/pages/MainPage.qml" line="301"/>
         <source>sometimes</source>
         <comment>Reproducibility</comment>
         <translation>manchmal</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="274"/>
+        <location filename="../qml/pages/MainPage.qml" line="302"/>
         <source>often</source>
         <comment>Reproducibility</comment>
         <translation>oft</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="275"/>
+        <location filename="../qml/pages/MainPage.qml" line="303"/>
         <source>always</source>
         <comment>Reproducibility</comment>
         <translation>immer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="279"/>
+        <location filename="../qml/pages/MainPage.qml" line="307"/>
         <source>Regression (was working in a previous OS release)</source>
         <translation>Regression (hat in einer älteren OS Version funktioniert)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="293"/>
+        <location filename="../qml/pages/MainPage.qml" line="321"/>
         <source>Modifications</source>
         <translation>Mods</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="294"/>
-        <location filename="../qml/pages/MainPage.qml" line="295"/>
-        <location filename="../qml/pages/MainPage.qml" line="296"/>
+        <location filename="../qml/pages/MainPage.qml" line="322"/>
+        <location filename="../qml/pages/MainPage.qml" line="323"/>
+        <location filename="../qml/pages/MainPage.qml" line="324"/>
         <source>(autodetected)</source>
         <translation>erkannt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="297"/>
+        <location filename="../qml/pages/MainPage.qml" line="325"/>
         <source>Other (please specify)</source>
         <translation>Sonstige (bitte angeben)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="300"/>
+        <location filename="../qml/pages/MainPage.qml" line="328"/>
         <source>e.g. WayDroid and GApps installed</source>
         <translation>z. B. WayDroid oder GApps installiert</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="301"/>
+        <location filename="../qml/pages/MainPage.qml" line="329"/>
         <source>custom changes, installed packages etc.</source>
         <translation>eigene Veränderungen, installierte Pakete usw.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="309"/>
+        <location filename="../qml/pages/MainPage.qml" line="337"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="310"/>
+        <location filename="../qml/pages/MainPage.qml" line="338"/>
         <source>Reset all to default</source>
         <translation>Auf Default zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="310"/>
+        <location filename="../qml/pages/MainPage.qml" line="338"/>
         <source>Cleared.</source>
         <translation>Gelöscht.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="316"/>
+        <location filename="../qml/pages/MainPage.qml" line="344"/>
         <source>(marked with an asterisk (*))!</source>
         <translation>(mit Sternchen (*) markiert!)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="320"/>
+        <location filename="../qml/pages/MainPage.qml" line="348"/>
         <source>Post Bug Report</source>
         <translation>Bugreport abschicken</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="529"/>
+        <source>Restored bug report contents from saved state.</source>
+        <translation>Gespeicherte Inhalte wurden geladen.</translation>
     </message>
     <message>
         <source>Post Bugreport</source>
