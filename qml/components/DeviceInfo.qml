@@ -32,19 +32,31 @@ Flow {
         //DetailItem { label: "Build" ;           value: bugInfo.hw.sailfish_build;}
         //DetailItem { label: "Flavour" ;         value: bugInfo.hw.sailfish_flavour;}
 
-        DetailItem { label: "Owner" ;      value: userInfo.username }
     }
     Column {
         width: parent.width/2
         SectionHeader { text: qsTr("Operating System") }
         DetailItem { label: "Name" ;            value: bugInfo.os.name;}
         DetailItem { label: "OS Version" ;      value: bugInfo.os.version_id;}
-        DetailItem { label: "Code Name" ;            value: bugInfo.os.version.split("(")[1].replace(")","") }
-        DetailItem { label: "Arch" ;                 value: bugInfo.ssu.arch;}
+        DetailItem { label: "Code Name" ;       value: bugInfo.os.version.split("(")[1].replace(")","") }
+        DetailItem { label: "Arch" ;            value: bugInfo.ssu.arch;}
         //DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
         //DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
         //DetailItem { label: "Flavour" ;         value: bugInfo.os.sailfish_flavour;}
 
+
+    }
+    Column {
+        width: parent.width/2
+        SectionHeader { text: qsTr("Other") }
+        DetailItem { label: "Owner" ;           value: userInfo.username }
+        DetailItem { label: "Encryption" ;      value: (homeInfo.type == "LUKS") ? "enabled" : "n/a" ;}
+    }
+    Column {
+        width: parent.width/2
+        SectionHeader { text: qsTr("Locale") }
+        DetailItem { label: "Current";   value: Qt.locale().name}
+        DetailItem { label: "System";    value: languageModel.locale(languageModel.currentIndex)}
     }
     /*
     Column {
