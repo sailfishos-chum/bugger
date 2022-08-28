@@ -450,7 +450,7 @@ Page {
             + "=================\n\n" + text_add.text
             + "\n"
             + "Device Owner User: " + userInfo.username + "  \n"
-            + "Home Encryption: " + ((encryption) ? "enabled" : "n/a") + "  \n"
+            + "Home Encryption: " + encStr + "  \n"
             + "\n\n\n\n"
             // add footer:
             + "----  \n"
