@@ -95,6 +95,8 @@ Page {
      */
     // from Sailfish.Encryption to determine Home Encryption
     HomeInfo{id: homeInfo}
+    propery alias encryptionType: homeInfo.type
+    propery bool encryption: !(encryptionType != "LUKS") // double negative, er only know about "LUKS" atm.
     // from org.nemomobile.systemsettings to determine Device Owner
     UserInfo{id: userInfo; uid: 100000}
     // from org.nemomobile.systemsettings to determine OS language
@@ -439,7 +441,7 @@ Page {
             + "=================\n\n" + text_add.text
             + "\n"
             + "Device Owner User: " + userInfo.username + "  \n"
-            + "Home Encryption: " + ((homeInfo.type == "LUKS") ? "enabled" : "n/a") + "  \n"
+            + "Home Encryption: " + ((encryption) ? "enabled" : "n/a") + "  \n"
             + "\n\n\n\n"
             // add footer:
             + "----  \n"
