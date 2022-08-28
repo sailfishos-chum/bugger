@@ -50,7 +50,7 @@ Flow {
         width: parent.width/2
         SectionHeader { text: qsTr("Other") }
         DetailItem { label: "Owner" ;           value: userInfo.username }
-        DetailItem { label: "Encryption" ;      value: (homeInfo.type == "LUKS") ? "enabled" : "n/a" ;}
+        DetailItem { label: "Encryption" ;      value: encStr ;}
     }
     Column {
         width: parent.width/2

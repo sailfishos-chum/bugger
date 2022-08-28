@@ -20,7 +20,7 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import Sailfish.Encryption 1.0
+import org.nemomobile.devicelock 1.0
 import org.nemomobile.systemsettings 1.0
 import "../components"
 import "../config/settings.js" as Settings
@@ -93,8 +93,19 @@ Page {
      *
      * to autodetect some values for the report
      */
-    // from Sailfish.Encryption to determine Home Encryption
-    HomeInfo{id: homeInfo}
+    /* from org.nemomobile.devicelock  to determine Home Encryption */
+    EncryptionSettings{id: enc}
+    property bool encryption: enc.homeEncrypted
+    property string encStr: "not supported"
+    onEncryptionChanged: {
+        console.info("Detected encryption:",   encryption)
+        if (typeof encryption !== "undefined") {
+            encStr = encryption ? "enabled" : "disabled";
+        } else {
+            encStr = "not detected";
+        }
+    }
+
     // from org.nemomobile.systemsettings to determine Device Owner
     UserInfo{id: userInfo; uid: 100000}
     // from org.nemomobile.systemsettings to determine OS language
@@ -439,7 +450,7 @@ Page {
             + "=================\n\n" + text_add.text
             + "\n"
             + "Device Owner User: " + userInfo.username + "  \n"
-            + "Home Encryption: " + ((homeInfo.type == "LUKS") ? "enabled" : "n/a") + "  \n"
+            + "Home Encryption: " + ((encryption) ? "enabled" : "n/a") + "  \n"
             + "\n\n\n\n"
             // add footer:
             + "----  \n"

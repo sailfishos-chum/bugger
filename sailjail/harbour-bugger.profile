@@ -28,6 +28,13 @@ private-etc locale.preferred.conf
 whitelist /usr/share/jolla-supported-languages
 read-only /usr/share/jolla-supported-languages
 
+dbus-system.talk org.nemomobile.devicelock
+dbus-system.call org.nemomobile.devicelock=org.nemomobile.lipstick.devicelock.state@/org/nemomobile/devicelock
+whitelist /usr/share/lipstick/devicelock/devicelock_settings.conf
+read-only /usr/share/lipstick/devicelock/devicelock_settings.conf
+
+#whitelist /run/nemo-devicelock/socket
+
 # we need a read-only copy to read "arch" from
 private-etc ssu/ssu.ini
 
