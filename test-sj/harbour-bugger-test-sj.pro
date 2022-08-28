@@ -14,4 +14,4 @@ qml.path = /usr/share/$${TARGET}
 INSTALLS += qml
 
 OTHER_FILES += $$files(rpm/*)
-include(sailjail/sailjail.pri)
+# include(sailjail/sailjail.pri)

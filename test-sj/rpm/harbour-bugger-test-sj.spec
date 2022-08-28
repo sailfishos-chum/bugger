@@ -86,6 +86,5 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/qml/*
-%config %{_sysconfdir}/sailjail/permissions/%{name}.profile
 # >> files
 # << files
