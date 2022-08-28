@@ -1,3 +1,7 @@
+firejail-dbus.log
+firejail-stderr.log
+firejail-stderr.log.?
+firejail-trace.log
 *list
 build.log
 translations/*.qm
