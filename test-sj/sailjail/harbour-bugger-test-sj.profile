@@ -16,25 +16,15 @@
 # but doing it in firejail config works
 #
 # use bare name without path here! it will look files in /etc/firejail
-include harbour-bugger.local
-
-# detect system settings
-# see https://github.com/sailfishos/nemo-qml-plugin-systemsettings/blob/master/src/localeconfig.cpp#L50
-private-etc locale.conf
-private-etc locale.preferred.conf
-
-# needed for LanguageModel
-# see https://github.com/sailfishos/nemo-qml-plugin-systemsettings/blob/master/src/languagemodel.cpp#L45
-whitelist /usr/share/jolla-supported-languages
-read-only /usr/share/jolla-supported-languages
+# include harbour-bugger.local
 
 # for encrpytion detection, see Sailfish.Encryption/EncryptionService
-whitelist /var/lib/sailfish-device-encryption/encrypt-home
-read-only /var/lib/sailfish-device-encryption/encrypt-home
+whitelist /var/lib/sailfish-device-encryption/
+read-only /var/lib/sailfish-device-encryption/
 
-# we need a read-only copy to read "arch" from
-private-etc ssu/ssu.ini
+dbus-system.talk: org.sailfishos.EncryptionService
+dbus-system.call: org.sailfishos.EncryptionService=org.sailfishos.EncryptionService.*@/*
+dbus-system.broadcast: org.sailfishos.EncryptionService=org.sailfishos.EncryptionService.*@/*
 
-# patchmanager detection parses this for enabled patches
-private-etc patchmanager2.conf
+dbus-system.call org.freedesktop.EncryptionService=org.freedesktop.DBus.Introspectable.Introspect@/*
 

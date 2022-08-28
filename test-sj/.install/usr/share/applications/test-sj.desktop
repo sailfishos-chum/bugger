@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Icon=harbour-bugger
+X-Nemo-Application-Type=silica-qt5
+Exec=sailfish-qml test-sj
+Name=Bugger!
+Name[en]=Bugger!
+Name[de]=Bugger!
+Name[sv]=Bugger!
+
+
+[X-Sailjail]
+ApplicationName=Bugger
+OrganizationName=sailfishos-chum
+#Permissions=Base

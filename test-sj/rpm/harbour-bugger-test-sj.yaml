@@ -1,0 +1,76 @@
+Name:  harbour-bugger-test-sj
+Summary: Bug reporting helper
+Version: 1.0.0
+Release: 0
+Group: Applications
+License: ASL 2.0
+URL: https://github.com/sailfishos-chum/bugger
+SCM: https://github.com/sailfishos-chum/bugger
+Sources:
+    - '%{name}-%{version}.tar.gz'
+Description: |
+    Bugger! is a little tool to assist reporting bugs on https://forum.sailfishos.org,
+    following a more or less standardized template.
+
+    Reporting bugs in this way should improve Jollas ability to pick them up
+    and track them internally.
+
+    For more information, see Help link in the description
+
+
+    %if "%{?vendor}" == "chum"
+    PackageName: Bugger!
+    Type: desktop-application
+    Categories:
+     - Utility
+    Custom:
+      Repo: https://github.com/sailfishos-chum/bugger
+    Icon: https://raw.githubusercontent.com/sailfishos-chum/bugger/master/icons/svgs/harbour-bugger.svg
+    Screenshots:
+      - https://github.com/sailfishos-chum/bugger/raw/master/Screenshot_001.png
+      - https://github.com/sailfishos-chum/bugger/raw/master/Screenshot_002.png
+    Url:
+      Help: https://forum.sailfishos.org/t/10935
+    %endif
+
+SetupOptions: -q -n %{name}-%{version}
+RpmLintIgnore:
+  - 'summary-too-long'
+  - 'no-changelogname-tag'
+  - 'invalid-url'
+  - 'desktopfile-without-binary'
+  - 'explicit-lib-dependency'
+#Macros:
+#  - 'foo;bar'
+#  - |
+#    spectacle_bug; hack_fix
+#    # Spectacular spectacle hack:
+#    #   abuse Macros to work around the Macro-deleting bug in 0.32
+#    #   also, add a conditional dep:
+#    %if 0%{?sailfishos_version} >= 30400
+#    BuildRequires: some-package
+#    %endif
+#Patches:
+#  - 'baz'
+Requires:
+  - libsailfishapp-launcher
+PkgBR:
+  - qt5-qttools-linguist
+  - qt5-qmake
+  - sailfish-svg2png
+  - qml-rpm-macros
+#PkgConfigBR:
+#    - ^^^
+Configure: none
+Builder: qmake5
+NoIconCache: true
+BuildArch: noarch
+#AutoSubPackages:
+#  - doc
+Files:
+  # '%license LICENSE'
+  - '%{_datadir}/applications/%{name}.desktop'
+  - '%dir %{_datadir}/%{name}'
+  - '%{_datadir}/%{name}/qml/*'
+  - '%config %{_sysconfdir}/sailjail/permissions/%{name}.profile'
+
