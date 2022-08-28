@@ -22,9 +22,9 @@
 whitelist /var/lib/sailfish-device-encryption/
 read-only /var/lib/sailfish-device-encryption/
 
-dbus-system.talk: org.sailfishos.EncryptionService
-dbus-system.call: org.sailfishos.EncryptionService=org.sailfishos.EncryptionService.*@/*
-dbus-system.broadcast: org.sailfishos.EncryptionService=org.sailfishos.EncryptionService.*@/*
+dbus-system.talk org.sailfishos.EncryptionService
+dbus-system.call org.sailfishos.EncryptionService=org.sailfishos.EncryptionService.*@/*
+dbus-system.broadcast org.sailfishos.EncryptionService=org.sailfishos.EncryptionService.*@/*
 
 dbus-system.call org.freedesktop.EncryptionService=org.freedesktop.DBus.Introspectable.Introspect@/*
 

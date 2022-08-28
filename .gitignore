@@ -3,3 +3,7 @@ build.log
 translations/*.qm
 Makefile
 icons/*x*
+*/firejail-dbus.log
+*/firejail-stderr.log
+*/firejail-stderr.log.?
+*/firejail-trace.log
