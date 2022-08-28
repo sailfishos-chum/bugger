@@ -177,12 +177,11 @@ Page {
         }
     ]
     onStateChanged: {
-        /* maybe save when the State changes. actual saving is determined in the signal handler */
-        console.debug("state changed, emitting shallSave");
+        /* Maybe save when the State changes. 
+         * Whether we actually will save is determined in the signal handler */
         shallSave();
     }
     onQualityStringChanged: {
-        console.debug("state is:", state, "quality is:", qualityString);
         if ( state === "good" || state === "full" ) {
             app.popup(qsTr("Achievement unlocked! The quality of your bug report is %1!").arg(page.qualityString));
         }
@@ -401,9 +400,14 @@ Page {
         MenuItem { text: qsTr("Post Bug Report");
             enabled: infoComplete
             onClicked: {
-                var fullPostUrl = formToUrl();
-                console.debug("Opening ", fullPostUrl);
-                Qt.openUrlExternally(fullPostUrl);
+                if (developerMode) {
+                    console.debug("Will Post this:\n"
+                    + "Title" + getTitle()
+                    + "Body:" + getPayload()
+                    );
+                }
+                console.info("Submitting Bug Report... ");
+                Qt.openUrlExternally( formToUrl() );
             }
         }
     }
@@ -464,10 +468,9 @@ Page {
     }
     /* encode the payload, return full URL for posting */
     function formToUrl() {
-        var fullPostUrl = postUrl
+        return postUrl
             + "&title=" + encodeURIComponent(getTitle())
-            + "&body=" +  encodeURIComponent(getPayload());
-        return fullPostUrl
+            + "&body="  + encodeURIComponent(getPayload());
     }
    /* ****** END POSTING ***** */
 
@@ -563,7 +566,7 @@ Page {
     function restoreSaved() {
         var data = Util.restore();
         if (!!data) {
-            console.debug("restoring:" , data);
+            //console.debug("restoring:" , data);
             var fields = JSON.parse(data).fields;
             if(page.restoreFields(fields)) {
                 app.popup(qsTr("Restored bug report contents from saved state."));
