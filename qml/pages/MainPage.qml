@@ -437,6 +437,9 @@ Page {
             + "PRECONDITIONS:\n"
             + "==========\n\n" + text_precons.text
             + "\n\n"
+            + "STEPS TO REPRODUCE:\n"
+            + "==============\n\n" + text_steps.text
+            + "\n\n"
             + "EXPECTED RESULTS:\n"
             + "============\n\n" + text_expres.text
             + "\n\n"
