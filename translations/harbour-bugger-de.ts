@@ -17,7 +17,7 @@
         <location filename="../qml/pages/AboutPage.qml" line="53"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
-        <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehlermeldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
+        <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehler&#173;meldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
 Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgenommen und getrackt werden. Weitere Informationen hierzu unter %2</translation>
     </message>
     <message>
@@ -110,7 +110,7 @@ Wenn du dir unsicher beim ausfüllen bist, stelle deine Fragen im Forum in der K
 
 General: https://forum.sailfishos.org/c/15
 
-Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die neuste oder aktuelle.
+Versions&#173;nummern: Bitte gib konkrete Versions&#173;nummern an. Jede Version war mal die neuste oder aktuelle.
         </translation>
     </message>
 </context>
@@ -347,7 +347,7 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
     <message>
         <location filename="../qml/pages/MainPage.qml" line="302"/>
         <source>Device Information</source>
-        <translation>Geräteinformationen</translation>
+        <translation>Geräte&#173;infor&#173;mationen</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="316"/>
@@ -367,7 +367,7 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
     <message>
         <location filename="../qml/pages/MainPage.qml" line="325"/>
         <source>Reproducibility</source>
-        <translation>Reproduzierbarkeit</translation>
+        <translation>Re&#173;produzier&#173;barkeit</translation>
     </message>
     <message>
         <source>not specified</source>
@@ -481,7 +481,7 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
         <location filename="../qml/components/VersionSelect.qml" line="35"/>
         <location filename="../qml/components/VersionSelect.qml" line="38"/>
         <source>Working Version</source>
-        <translation>Funktionierende Version</translation>
+        <translation>Funktio&#173;nierende Version</translation>
     </message>
     <message>
         <location filename="../qml/components/VersionSelect.qml" line="38"/>
@@ -504,7 +504,7 @@ Versionsnummern: Bitte gib konkrete Versionsnummern an. Jede Version war mal die
     <message>
         <location filename="../qml/components/WelcomeDialog.qml" line="38"/>
         <source>Welcome to the inofficial Sailfish OS bug reporting tool.</source>
-        <translation>Willkommen beim inoffiziellen Sailfish OS Bug Reporting Werkzeug.</translation>
+        <translation>Willkommen beim inoffiziellen Sailfish OS Bugreporting-Werkzeug.</translation>
     </message>
     <message>
         <source>Even though %1 offers localized versions, please keep your bug report contents in English if at all possible.</source>
@@ -529,7 +529,7 @@ Wenn das getan ist, kannst du deinen Bugreport im unteren Menü abschicken.
 
 Er wird im Browser als Entwurf geöffnet, du kannst ihn also noch ergänzen oder verändern bevor du ihn abschickst.
 
-Empfehlung: hab bereits ein Browserfenster offen, bei dem du im Sailfish OS Forum angemeldet bist, bevor du den Report von hier abschickst.
+Empfehlung: hab bereits ein Browser&#173;fenster offen, bei dem du im Sailfish OS Forum angemeldet bist, bevor du den Report von hier abschickst.
 </translation>
     </message>
     <message>
