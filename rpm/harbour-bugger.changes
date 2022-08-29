@@ -4,6 +4,7 @@
 - Add soft Hyphens to German translation (#14)
 - Bugfix: Use HTML instead of Markdown for the footer (#16)
 - Bugfix: Actually post Steps to Reproduce (#17)
+- Drop claimed support for SFOS 3.4 and older
 - Chum: Remove building for SFOS 3.4 and lower
 
 * Fri Aug 26 2022 Nephros <sailfish@nephros.org> - 0.9.7

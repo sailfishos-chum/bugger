@@ -54,6 +54,7 @@ RpmLintIgnore:
 #  - 'baz'
 Requires:
   - libsailfishapp-launcher
+  - sailfish-version >= 4.0.0
 PkgBR:
   - qt5-qttools-linguist
   - qt5-qmake

@@ -19,6 +19,7 @@ Source0:    %{name}-%{version}.tar.gz
 Source100:  harbour-bugger.yaml
 Source101:  harbour-bugger-rpmlintrc
 Requires:   libsailfishapp-launcher
+Requires:   sailfish-version >= 4.0.0
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  qt5-qmake
 BuildRequires:  sailfish-svg2png
