@@ -66,9 +66,10 @@ Page {
     property string qualityString//: qsTr("incomplete", "State of completeness of a bug report")
 
     /* just to add something of ours to the report */
-    readonly property string infoFooter: 'the initial version of this bug report was created using'
-        + ' [' + Qt.application.name + ' ' + Qt.application.version + ']'
-        + '(' + 'https://github.com/sailfishos-chum/bugger/releases/' + Qt.application.version + ')'
+    readonly property string infoFooter: 'the initial version of this bug report was created using '
+        + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/' + Qt.application.version + '">'
+        + Qt.application.name + ' ' + Qt.application.version
+        + '</a>'
 
     // used to clear this form, and the persistent storage
     property var defaultFieldContents: {
