@@ -1,6 +1,10 @@
 * Mon Aug 29 2022 Nephros <sailfish@nephros.org> - 0.9.8
 - Bugger! Release 0.9.8
-- Fix encyption detection under SailJail (#12)
+- Bugfix: Fix encyption detection under SailJail (#12)
+- Add soft Hyphens to German translation (#14)
+- Bugfix: Use HTML instead of Markdown for the footer (#16)
+- Bugfix: Actually post Steps to Reproduce (#17)
+- Chum: Remove building for SFOS 3.4 and lower
 
 * Fri Aug 26 2022 Nephros <sailfish@nephros.org> - 0.9.7
 - Bugger! Release 0.9.7
