@@ -1,3 +1,6 @@
+* Mon Sep  5 2022 Nephros <sailfish@nephros.org> - 0.9.9
+
+
 * Mon Aug 29 2022 Nephros <sailfish@nephros.org> - 0.9.8
 - Bugger! Release 0.9.8
 - Bugfix: Fix encyption detection under SailJail (#12)
