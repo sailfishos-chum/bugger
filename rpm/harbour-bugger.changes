@@ -6,6 +6,7 @@
 - Bugfix: Actually post Steps to Reproduce (#17)
 - Drop claimed support for SFOS 3.4 and older
 - Chum: Remove building for SFOS 3.4 and lower
+- Complete Swedish translation (#18, eson)
 
 * Fri Aug 26 2022 Nephros <sailfish@nephros.org> - 0.9.7
 - Bugger! Release 0.9.7
