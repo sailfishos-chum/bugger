@@ -375,10 +375,10 @@ Page {
                 TextSwitch { id: orsw; checked: bugInfo.mods.openrepos;    text: "OpenRepos"    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
                 TextSwitch { id: chsw; checked: bugInfo.mods.chum;         text: "Chum"+ " "    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
                 TextSwitch { id: othersw; checked: false; text: qsTr("Other (please specify)") }
-                TextField { id: text_mod_other; enabled: othersw.checked
-                    // this has no label...
-                    placeholderText: qsTr("e.g. WayDroid and GApps installed")
-                    description: qsTr("custom changes, installed packages etc.")
+                TextArea { id: text_mod_other; enabled: othersw.checked
+                    width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
+                    description: qsTr("e.g. WayDroid and GApps installed")
+                    label: qsTr("custom changes, installed packages etc.")
                 }
             }
         }
