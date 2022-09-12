@@ -452,7 +452,9 @@ Page {
             + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "  \n"
             + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
             + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
-            + " - Other: "        + (othersw.checked?"yes":"no") + ":  \n"+ text_mod_other.text + "  \n"
+            + " - Other: "        + ((othersw.checked)
+                ? "yes: " + text_mod_other.text + "  \n"
+                : "none specified  \n")
             + "\n\n"
             + "ADDITIONAL INFORMATION:\n"
             + "=================\n\n" + text_add.text
