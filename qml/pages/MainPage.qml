@@ -82,6 +82,7 @@ Page {
         "text_add":         "",
         "text_mod_other":   "",
         "regsw":            false,
+        "regsw.hasChanged": false,
         "regver":           -1,
         "regarch":          -1,
         "othersw":          false,
@@ -357,8 +358,10 @@ Page {
             }
             TextSwitch { id: regsw; checked: false;
                 text: qsTr("Regression (was working in a previous OS release)")
+                property bool hasChanged: false
                 automaticCheck: false
                 onClicked: {
+                    hasChanged = true;
                     checked = !checked;
                     if (!checked) {
                         regver.currentIndex  = -1
@@ -425,8 +428,8 @@ Page {
             + "OSVERSION: "     + bugInfo.os.version_id + "  \n"
             + "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
             + "UI LANGUAGE: "   + oslanguage + " (user: " + uilocale + ", os: " + oslocale + ")" + "  \n"
-            + "REGRESSION: "    + (regsw.checked?"yes":"no")
-            + ( regsw.checked
+            + "REGRESSION: "    + ((regsw.hasChanged) ? ((regsw.checked) ? "yes" : "no") : "not specified")
+            + ( (regsw.checked)
                 ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
                 : ""
             )
@@ -449,12 +452,12 @@ Page {
             + "\n\n"
             + "MODIFICATIONS:\n"
             + "==========\n\n"
-            + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "  \n"
+            + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "\n"
             + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
             + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
             + " - Other: "        + ((othersw.checked)
                 ? "yes: " + text_mod_other.text + "  \n"
-                : "none specified  \n")
+                : "none specified \n")
             + "\n\n"
             + "ADDITIONAL INFORMATION:\n"
             + "=================\n\n" + text_add.text
@@ -604,6 +607,7 @@ Page {
             text_add.text           = data.text_add;
             text_mod_other.text     = data.text_mod_other;
             regsw.checked           = data.regsw;
+            regsw.hasChanged        = data.regsw_haschanged;
             regver.currentIndex     = data.regver;
             regarch.currentIndex    = data.regarch;
             othersw.checked         = data.othersw;

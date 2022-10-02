@@ -18,7 +18,7 @@ var config = {
         "good":       150
     },
     "persistence": {
-        "fieldKeys":    13,
+        "fieldKeys":    14,
         "saveInterval": 7000
     }
 }
