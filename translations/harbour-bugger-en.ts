@@ -454,7 +454,14 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+Please fill out the information about your bug in the fields of the main page.
+After this is completed, you will be able to post the bug report in the Pulley Menu at the bottom.
+
+The report will be opened in the browser in draft mode so you can make adjustments before submitting.
+
+We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
+</translation>
     </message>
 </context>
 </TS>
