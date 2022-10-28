@@ -1,5 +1,7 @@
-* Mon Sep  5 2022 Nephros <sailfish@nephros.org> - 0.9.9
-
+* Fri Sep 28 2022 Nephros <sailfish@nephros.org> - 0.9.9
+- positive feedback on Good bug report
+- "various UI and stability fixes"
+- improved Regression selector (#20)
 
 * Mon Aug 29 2022 Nephros <sailfish@nephros.org> - 0.9.8
 - Bugger! Release 0.9.8
