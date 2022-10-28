@@ -22,6 +22,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import org.nemomobile.devicelock 1.0
 import org.nemomobile.systemsettings 1.0
+import org.nemomobile.ngf 1.0
 import "../components"
 import "../config/settings.js" as Settings
 import "../js/util.js" as Util
@@ -89,6 +90,8 @@ Page {
         "repro":            -1
     }
 
+    // Pavlov!! :)
+    NonGraphicalFeedback { id: postiveFeedback; event: "positive_confirmation" }
 
     /*
      * ***** DATA SOURCES *****
@@ -185,6 +188,7 @@ Page {
     }
     onQualityStringChanged: {
         if ( state === "good" || state === "full" ) {
+            postiveFeedback.play()
             app.popup(qsTr("Achievement unlocked! The quality of your bug report is %1!").arg(page.qualityString));
         }
     }
