@@ -26,11 +26,11 @@ Page {
     id: page
 
     // %h/Documents/$(date -I)_%N.log
-    readonly property string logBaseName: svcBaseName + "_svcBaseName.log"
-    readonly property string logFileName: new Date().toISOString().substring(0,10) + svcBaseName
-    readonly property string logFilePath: StandardPaths.documents + logFileName
+    readonly property string logFileName: new Date().toISOString().substring(0,10) + "_" + svcBaseName + ".log"
+    readonly property string logFilePath: StandardPaths.documents + "/" + logFileName
 
-    readonly property string svcBaseName: Qt.application.name + "-collect-logs"
+    // pointless assignment for debugging with qmlscene, which calls itself "QtQmlViewer":
+    readonly property string svcBaseName: "harbour-bugger-gather-logs"
     readonly property string svcFileName: svcBaseName + ".service"
     readonly property string svcBusName:  svcFileName.replace(/\./g, "_2e").replace(/-/g, "_2d")
 
@@ -38,10 +38,20 @@ Page {
     property bool svcIsEnabled: false
 
     function queryService()   { dbusManager.queryService() }
-    function enableService()  { dbusManager.enableService() }
     function startService()   { dbusUnit.startService() }
 
     property string logText
+    property bool logCreated: false
+    onLogCreatedChanged: { if (logCreated) loadLogFile() }
+    ListModel { id: logModel }
+    onLogTextChanged: {
+        logModel.clear()
+        logText.split("\n").forEach(
+            function(str) {
+                logModel.append({ "line": str })
+            }
+        );
+    }
 
     Component.onCompleted: {
         dbusManager.queryService()
@@ -53,38 +63,35 @@ Page {
         path: '/org/freedesktop/systemd1'
         iface: 'org.freedesktop.systemd1.Manager'
 
+        // receive signals:
+        signalsEnabled: true;
+        Component.onCompleted: call('Subscribe')
+
         function reload() {
             call('Reload')
+        }
+
+        // signal handler for finished job:
+        function jobRemoved(id, job, unit, result) {
+            if (unit == page.svcFileName) {
+                if (result == "done") {
+                    app.popup(qsTr("Log gathering successsful!"))
+                    page.logCreated = true;
+                } else {
+                    app.popup(qsTr("Log gathering failed!"))
+                }
+            }
         }
         function queryService() {
             typedCall('GetUnitFileState',
                 { 'type': 's', 'value': svcFileName },
                 function(result) {
-                    console.debug("Query:", result)
                     page.svcExists = true
-                    dbusUnit.queryEnabledState()
                 },
                 function(error, message) {
                     console.warn('GetUnitFileStatus failed:', error)
                     console.warn('GetUnitFileStatus message:', message)
                     page.svcExists = false 
-                })
-        }
-        function enableService() {
-            typedCall('EnableUnitFiles',
-                [
-                    { 'type': 'as', 'value': [svcFileName] },
-                    { 'type': 'b', 'value': false },
-                    { 'type': 'b', 'value': false },
-                ],
-                function(install, changes) {
-                    console.debug("Enabled:", install, changes)
-                    page.svcIsEnabled = true
-                    reload()
-                },
-                function(error, message) {
-                    console.warn("EnableUnitFiles failed:", error)
-                    console.warn("EnableUnitFiles message:", message)
                 })
         }
     }
@@ -95,13 +102,7 @@ Page {
         iface: 'org.freedesktop.systemd1.Unit'
         path: '/org/freedesktop/systemd1/unit/' + svcBusName
 
-        function queryEnabledState() {
-            var result = getProperty('UnitFileState')
-            page.svcIsEnabled = (result == 'enabled')
-        }
-
         function startService() {
-            //console.debug("dbus start unit", u );
             call('Start',
                 ['replace'],
                 function(result) { console.debug("Job:",       JSON.stringify(result)); },
@@ -116,23 +117,31 @@ Page {
         Column { id: col
             width: parent.width
             PageHeader { id: header ; title: qsTr("Collect Logs") }
+            /*
             SectionHeader { text: qsTr("Log Gatherer Status") }
             TextSwitch{ id: unitsw
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                checked: svcIsEnabled
+                checked: svcExists
                 automaticCheck: false
-                enabled: false
-                text: qsTr("Gatherer service is %1").arg((page.tmrIsEnabled) ? qsTr("available") : qsTr("not available"))
+                text: qsTr("Gatherer service is %1").arg((page.svcExists) ? qsTr("available") : qsTr("not available"))
+                TouchBlocker { anchors.fill: parent }
             }
+            */
             SectionHeader { text: qsTr("Journal contents")}
-            TextField { id: logText
+            SilicaListView { id: view
                 width: parent.width
-                height: Math.max(implicitHeight, page.height - Theme.itemSizeMedium*5)
-                text: (page.logText) ? page.logText : qsTr("No log file yet")
-                readOnly: true
-                font.family: "monospace"
-                color: Theme.secondaryColor
+                height: Math.max(implicitHeight, page.height *2/3)
+                model: logModel
+                delegate: Label {
+                    width: ListView.view.width
+                    text: line
+                    //wrapMode: Text.Wrap
+                    //readOnly: true
+                    font.family: "monospace"
+                    font.pixelSize: Theme.fontSizeTiny
+                    color: Theme.secondaryColor
+                }
             }
         }
         PullDownMenu { id: pdm
@@ -142,16 +151,17 @@ Page {
     }
 
     /* read fileUrl from filesystem, assign to bugInfo according to what */
-    function getFile() {
-
+    function loadLogFile() {
+        console.info('loading:', 'file://' + page.logFilePath);
         var r = new XMLHttpRequest()
-        r.open('GET', Qt.resolvedUrl(page.logFilePath));
+        r.open('GET', 'file://' + page.logFilePath);
         r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         r.send();
 
         r.onreadystatechange = function(event) {
             if (r.readyState == XMLHttpRequest.DONE) {
                 if (r.status === 200 || r.status == 0) {
+                    console.warn("XHR successful:",  r.response)
                     page.logText = r.response
                 } else {
                     console.warn("XHR failed:", r.response, r.errorText)
