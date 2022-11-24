@@ -11,6 +11,11 @@ var config = {
         "host":      'forum.sailfishos.org',
         "uri":       '/new-topic?category_id=13'
     },
+    "upload": {
+        "scheme":    'https',
+        "host":      'forum.sailfishos.org',
+        "uri":       '/uploads.json'
+    },
     "validation": {
         "minTitle":   20,
         "minDesc":    30,
