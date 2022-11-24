@@ -388,6 +388,11 @@ Page {
                     label: qsTr("custom changes, installed packages etc.")
                 }
             }
+            SectionHeader { text: qsTr("Attachments") }
+            ButtonLayout {
+                width: parent.width
+                Button { text: qsTr("Add Files"); onClicked: pageStack.push(Qt.resolvedUrl("FilePage.qml"))}
+            }
         }
         VerticalScrollDecorator {}
     }
