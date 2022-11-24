@@ -12,4 +12,4 @@ Name[sv]=Bugger!
 [X-Sailjail]
 ApplicationName=Bugger
 OrganizationName=sailfishos-chum
-Permissions=Documents
+Permissions=Documents,Images
