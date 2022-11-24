@@ -1,0 +1,6 @@
+[Unit]
+Description=Collect Journal file
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pkexec /bin/sh -c "/usr/bin/journalctl --no-hostname -a --utc -o short -p emerg..debug  _TRANSPORT=journal | grep -v selinux > %h/Documents/$(date -I)_%N.log"

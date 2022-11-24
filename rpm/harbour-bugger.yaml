@@ -52,6 +52,12 @@ RpmLintIgnore:
 #    %endif
 #Patches:
 #  - 'baz'
+RequiresPost:
+  - systemd
+RequiresPreUn:
+  - systemd
+RequiresPostUn:
+  - systemd
 Requires:
   - libsailfishapp-launcher
   - sailfish-version >= 4.0.0
@@ -59,6 +65,7 @@ PkgBR:
   - qt5-qttools-linguist
   - qt5-qmake
   - sailfish-svg2png
+  - systemd
   - qml-rpm-macros
 #PkgConfigBR:
 #    - ^^^
@@ -79,3 +86,4 @@ Files:
   - '%dir %{_datadir}/%{name}'
   - '%{_datadir}/%{name}/translations/*.qm'
   - '%{_datadir}/%{name}/qml/*'
+  - '%{_userunitdir}/*.service'
