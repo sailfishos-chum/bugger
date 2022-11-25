@@ -130,33 +130,7 @@ Page {
                 model: selectedFiles
                 cellWidth: parent.width/2
                 cellHeight: Theme.iconSizeMedium
-                delegate: ListItem {
-                    anchors.margins: Theme.paddingSmall
-                    width: GridView.view.cellWidth
-                    contentHeight: Math.max(GridView.view.cellHeight, Theme.iconSizeMedium, content.height)
-                    Row { id: content
-                        height: icon.height
-                        width: parent.width
-                        Icon { id: icon
-                            source: Theme.iconForMimeType(mimeType)
-                            height: Theme.iconSizeMedium
-                            width: height
-                            sourceSize.width: height
-                            sourceSize.height: height
-                        }
-                        Column {
-                            width: parent.width - icon.width
-                            anchors.verticalCenter: icon.verticalCenter
-                            Label { text: fileName; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeSmall; color: Theme.highlightColor }
-                            Label { text: mimeType; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
-                            //Label { text: filePath; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
-                        }
-                    }
-                    menu: ContextMenu {
-                        width: (parent) ? parent.width : 0 // gives a log warning but works ;)
-                        MenuItem { text: qsTr("Remove"); onClicked: { content.hidden = true; selectedFiles.remove(index,1) } }
-                    }
-                }
+                delegate: LogfileDelegate{}
             }
         }
         VerticalScrollDecorator {}
