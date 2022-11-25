@@ -21,7 +21,7 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
-// import "../components"
+import "../components"
 import "../config/settings.js" as Settings
 // import "../js/util.js" as Util
 
@@ -43,7 +43,6 @@ Page {
         State { name: "selected"; when: selectedFiles.count > 0
         },
         State { name: "prepared"; when: (fileData.length == selectedFiles.count)
-            PropertyChanges { target: uploadbutton; enabled: true }
         },
         State { name: "uploading";
         },
@@ -65,7 +64,9 @@ Page {
     }
     */
     Component { id: picker
-        MultiDocumentPickerDialog  {
+        MultiFilePickerDialog  {
+            title: qsTr("Select log files  to add")
+            nameFilters: [ '*.log', '*.txt', '*.json' ]
             onAccepted: {
                 for (var i = 0; i < selectedContent.count; ++i) {
                     getFileFrom(i, selectedContent.get(i).url)
@@ -75,12 +76,53 @@ Page {
         }
     }
 
+    function queryService()   { gather.queryService() }
+    function startService()   { gather.startService() }
+    LogGatherer { id: gather }
+    Connections {
+        target: gather
+        onLogCreatedChanged: {
+            // mimic the selectedContentProperties of the Picker and add to the model
+            const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
+            const d = []
+            const o = {
+                "title":    "",
+                "mimeType": "",
+                "fileName": "" ,
+                "filePath": "",
+                "url":      null,
+            }
+            const postfixes = [ ".log", ".json", "_kernel.log", "_kernel.json" ];
+            postfixes.forEach(function(postfix) {
+                o["title"] = (
+                    ( (/_kernel/.test(postfix)) ? "Kernel" : "Journal" )
+                    + " "
+                    + ((/json/.test(postfix)) ? "(JSON)" : "" )
+                );
+                o["mimeType"] = (/json$/.test(postfix)) ? "application/json" : "text/plain";
+                o["fileName"] = logBaseName + postfix;
+                o["filePath"] = StandardPaths.documents + "/" + o["fileName"];
+                o["url"]      = Qt.resolvedUrl(o["filePath"]);
+                d.push(o)
+            })
+            // add the generated information to the model
+            d.forEach(function(i) { selectedFiles.append(o)})
+        }
+    }
+
     SilicaFlickable { id: flick
         anchors.fill: parent
         contentHeight: col.height
         Column { id: col
             width: parent.width
             PageHeader { id: header ; title: qsTr("Upload Files") }
+            Label {
+                width: parent.width
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.highlightColor
+                wrapMode: Text.Wrap
+                text:  "information displayed here to be defined"
+            }
             SectionHeader { text: qsTr("List of files to upload") }
             GridView {
                 width: parent.width
@@ -116,41 +158,14 @@ Page {
                     }
                 }
             }
-            ValueButton {
-                anchors.horizontalCenter: parent.horizontalCenter
-                label: qsTr("Select Files")
-                value: qsTr("Selected: %1").arg(( selectedFiles ? selectedFiles.count : qsTr("None")))
-                onClicked: pageStack.push(picker)
-            }
-            ButtonLayout {
-                Button {
-                    enabled: ( selectedFiles && (selectedFiles.count > 0) && ( page.state != "prepared" ) )
-                    text: "Prepare for upload"
-                    onClicked: {
-                        fileData = [];
-                        for (var i = 0; i < selectedFiles.count; ++i) {
-                            getFileFrom(i, selectedFiles.get(i).url)
-                        }
-                    }
-                }
-                Button { id: uploadbutton
-                    enabled: false
-                    text: "Upload"
-                    onClicked: {
-                        uploadFiles()
-                    }
-                }
-            }
         }
         VerticalScrollDecorator {}
+        PullDownMenu { id: pdm
+            flickable: flick
+            MenuItem { text: qsTr("Pick additional Files"); onClicked: pageStack.push(picker) }
+            MenuItem { text: qsTr("Collect Journal"); onClicked: { startService() } }
+        }
     }
-
-   /*
-    * ****** POSTING *****
-    *
-    * attach files to bug report post
-    *
-    * */
 
     /* load files from URLs into data buffer */
     function getFileFrom(i, url) {
