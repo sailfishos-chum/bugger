@@ -53,9 +53,10 @@ GridItem {
     }
     onClicked: selected = !selected
     highlighted: selected
-    //menu: ContextMenu {
-    //    width: (parent) ? parent.width : 0 // gives a log warning but works ;)
-    //    MenuItem { text: qsTr("Remove"); onClicked: { content.hidden = true; selectedFiles.remove(index,1) } }
-    //}
+    menu: ContextMenu {
+        width: (parent) ? parent.width : 0 // gives a log warning but works ;)
+        MenuItem { text: qsTr("Remove"); onClicked: { content.hidden = true; selectedFiles.remove(index,1) } }
+    }
 }
+
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript

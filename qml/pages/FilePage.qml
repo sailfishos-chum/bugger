@@ -67,11 +67,17 @@ Page {
         MultiFilePickerDialog  {
             title: qsTr("Select log files  to add")
             nameFilters: [ '*.log', '*.txt', '*.json' ]
+            // signal is received twice
+            property bool acceptedHandled: false
             onAccepted: {
+                if (acceptedHandled) return
+                console.debug("selected:", selectedContent.count)
                 for (var i = 0; i < selectedContent.count; ++i) {
-                    getFileFrom(i, selectedContent.get(i).url)
+                    //getFileFrom(i, selectedContent.get(i).url)
                     selectedFiles.append(selectedContent.get(i))
+                    console.debug("appended:", i)
                 }
+                acceptedHandled=true
             }
         }
     }
