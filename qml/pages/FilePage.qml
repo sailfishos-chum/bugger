@@ -23,23 +23,28 @@ import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
 import "../components"
 import "../config/settings.js" as Settings
-// import "../js/util.js" as Util
 
-Page {
-    id: page
+Dialog { id: page
 
+    canAccept: false
     property var config: Settings.config
 
+    /*
     states: [
-        State { name: "selected"; when: selectedFiles.count > 0
+        State { name: "populated"; when: selectedFiles.count > 0
         },
-        State { name: "prepared"; when: loadedFiles.count == selectedFiles.count
+        State { name: "prepared";
         },
-        State { name: "uploading"; when: loadedFiles.count > uploadedFiles.count 
+        State { name: "uploading"; when: (loadedFiles.count > 0) && (!paster.done)
+            PropertyChanges { target: busy; running: true }
         },
-        State { name: "uploaded"; when: loadedFiles.count == uploadedFiles.count
+        State { name: "uploaded"; when: paster.done
+            PropertyChanges { target: page; uploadedFiles: paster.outModel; canAccept: true }
+            PropertyChanges { target: busy; running: false }
         }
     ]
+    onStateChanged: console.debug("New state:", state)
+    */
 
     Component { id: picker
         MultiFilePickerDialog  {
@@ -52,15 +57,26 @@ Page {
                 for (var i = 0; i < selectedContent.count; ++i) {
                     selectedFiles.append(selectedContent.get(i))
                 }
+                loadFiles()
                 acceptedHandled=true
             }
         }
     }
 
     property ListModel selectedFiles: ListModel{}
-    property ListModel loadedFiles: ListModel{}
+    property ListModel loadedFiles:   ListModel{}
     property ListModel uploadedFiles: ListModel{}
 
+    function loadFiles() {
+        for (var i = 0; i < selectedFiles.count; ++i) {
+            if (!selectedFiles.get(i).dataStr) {
+                loader.getFileFrom(selectedFiles.get(i))
+            }
+        }
+    }
+    function upload() {
+        paster.model = loader.outModel
+    }
     function startService()   { gather.startService() }
     LogGatherer { id: gather }
     LogLoader   { id: loader }
@@ -84,39 +100,52 @@ Page {
                 o["fileName"] = logBaseName + postfix;
                 o["filePath"] = StandardPaths.documents + "/" + o["fileName"];
                 o["url"]      = Qt.resolvedUrl(o["filePath"]);
-                console.debug("Adding:", JSON.stringify(o,null,2))
+                //console.debug("Adding:", JSON.stringify(o,null,2))
                 d.push(o)
             })
             // add the generated information to the model
             d.forEach(function(element) { selectedFiles.append(element)})
+            loadFiles()
         }
     }
 
     SilicaFlickable { id: flick
         anchors.fill: parent
         contentHeight: col.height
+        DialogHeader { id: header ;
+            width: parent.width
+            cancelText: qsTr("Back")
+            acceptText: qsTr("Apply")
+            title: qsTr("Gather Files")
+        }
         Column { id: col
             width: parent.width - Theme.horizontalPageMargin
             anchors.horizontalCenter: parent.horizontalCenter
-            PageHeader { id: header ; title: qsTr("Gather Files") }
+            anchors.top: header.bottom
             Label {
                 width: parent.width
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.highlightColor
                 wrapMode: Text.Wrap
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("Use the Pulley Menu to populate the file list.")
-                    + qsTr("Then select or deselect files you want to include.")
-                    + qsTr("Finally, use the Pulley Menu to upload the data and add the links to your bug report.")
+                text: qsTr("Here you can gather and add log files, which will be uploaded to a 'Pastebin' type of service, and added as links to your Bug Report.") + " "
                     + "\n\n"
-                    + qsTr("The data dill be uploaded to %1").arg(config.paste.host)
+                    + qsTr("Use the Pulley Menu to populate the file list.") + " "
+                    + qsTr("Long press on a file in the list to remove.") + " "
+                    + qsTr("Finally, use the Pulley Menu to upload the data and add the links.")
+                    + "\n\n"
+                    + qsTr("The data will be uploaded to %1, and be publicly available. Be sure you don't add private or confidential information.").arg(config.paste.host)
             }
             SectionHeader { text: qsTr("List of files to upload") }
-            FileList { id: fileList; model: selectedFiles }
+            FileList { id: fileList; model: selectedFiles
+                 cellWidth: page.isLandscape ? parent.width/2 : parent.width
+            }
         }
         VerticalScrollDecorator {}
+        PageBusyIndicator {id: busy}
         PullDownMenu { id: pdm
             flickable: flick
+            MenuItem { text: qsTr("Upload Contents"); onClicked: upload() }
             MenuItem { text: qsTr("Pick additional Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Collect Journal"); onClicked: { startService() } }
         }

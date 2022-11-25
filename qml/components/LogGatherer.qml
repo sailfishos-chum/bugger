@@ -90,7 +90,7 @@ Page {
         function startService() {
             call('Start',
                 ['replace'],
-                function(result) { console.debug("Job:",       JSON.stringify(result)); },
+                function(result) { }, //console.debug("Job:",       JSON.stringify(result)); },
                 function(result) { console.warn(qsTr("Start"), JSON.stringify(result)) }
             );
         }

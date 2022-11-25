@@ -22,8 +22,6 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 GridItem {
-    property bool selected: false
-    property string mimeType: ""
     property string displayName
 
     anchors.margins: Theme.paddingSmall
@@ -32,11 +30,9 @@ GridItem {
     Row { id: content
         height: icon.height
         width: parent.width
-        Switch { width: Theme.iconSizeSmall; height: width; anchors.verticalCenter: icon.verticalCenter
-            checked: selected;
-        }
         Icon { id: icon
             source: Theme.iconForMimeType(mimeType)
+            color: (model.dataStr) ? "green" : Theme.primaryColor
             height: Theme.iconSizeMedium
             width: height
             sourceSize.width: height
@@ -47,15 +43,14 @@ GridItem {
             anchors.verticalCenter: icon.verticalCenter
             Label { text: fileName; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeSmall; color: Theme.highlightColor }
             Label { text: mimeType; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
+            Label { text: (model.dataStr) ? model.dataStr.length : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             //Label { text: filePath; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             //Label { text: fileNameOrig ? fileNameOrig : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
         }
     }
-    onClicked: selected = !selected
-    highlighted: selected
     menu: ContextMenu {
         width: (parent) ? parent.width : 0 // gives a log warning but works ;)
-        MenuItem { text: qsTr("Remove"); onClicked: { content.hidden = true; selectedFiles.remove(index,1) } }
+        MenuItem { text: qsTr("Remove"); onClicked: remorseDelete(function(){ selectedFiles.remove(index) }) }
     }
 }
 

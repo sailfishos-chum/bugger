@@ -19,13 +19,28 @@ limitations under the License.
 */
 
 import QtQuick 2.6
-import "../config/settings.js" as Settings
 
 QtObject {
     id: page
 
+    property ListModel model
+    property ListModel outModel: ListModel{}
+
+    property bool done: model.count == outModel.count
+    onDoneChanged: console.debug("done", done, outModel.count)
+
+    onModelChanged: {
+        if (!model) return
+        for (var i = 0; i < model.count; ++i) {
+            getFileFrom(model.get(i))
+        }
+    }
+
+
     /* load files from URLs into data buffer */
-    function getFileFrom(url) {
+    function getFileFrom(data) {
+        //console.debug("Trying to load file contents for", JSON.stringify(data))
+        var url = data.url
         var r = new XMLHttpRequest()
         r.open('GET', url);
         r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
@@ -37,7 +52,18 @@ QtObject {
         r.onreadystatechange = function(event) {
             if (r.readyState == XMLHttpRequest.DONE) {
                 if (r.status === 200 || r.status == 0) {
-                    console.debug("Filedata loaded:", i, page.fileData.length);
+                    //console.debug("Filedata loaded: about", r.response.split("\n").length, "lines");
+                    const o = {
+                        "title"   : data["title"],
+                        "mimeType": data["mimeType"],
+                        "fileName": data["fileName"],
+                        "filePath": data["filePath"],
+                        "url"     : data["url"],
+                        "dataStr" : r.response
+                    }
+                    //console.debug("datastr:", o["dataStr"])
+                    //console.debug("adding to outmodel:", JSON.stringify(o))
+                    outModel.append(o);
                 } else {
                     console.debug("Filedata load failed:", JSON.stringify(r.response));
                 }

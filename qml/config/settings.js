@@ -19,7 +19,8 @@ var config = {
     "paste": {
         "scheme":    'https',
         "host":      'paste.mozilla.org',
-        "uri":       '/api/'
+        "uri":       '/api/',
+        "expireDays": 182
     },
     "validation": {
         "minTitle":   20,
