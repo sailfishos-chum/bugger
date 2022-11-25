@@ -3,4 +3,13 @@ Description=Collect Journal file
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/pkexec /bin/sh -c "/usr/bin/journalctl --no-hostname -a --utc -o short -p emerg..debug  _TRANSPORT=journal | grep -v selinux > %h/Documents/$(date -I)_%N.log"
+ProtectSystem=full
+ReadWritePaths=%h/Documents
+ExecStart=/usr/bin/pkexec /bin/sh -c "\
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short _TRANSPORT=journal | grep -v selinux > %h/Documents/$(date -I)_%N.log; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o json  _TRANSPORT=journal | grep -v selinux > %h/Documents/$(date -I)_%N.json; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise -k         > %h/Documents/$(date -I)_%N_kernel.log; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o json          -k         > %h/Documents/$(date -I)_%N_kernel.json; \
+          /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N*json %h/Documents/$(date -I)_%N*log; \
+          /usr/bin/chown %u    %h/Documents/$(date -I)_%N*json %h/Documents/$(date -I)_%N*log; \
+"
