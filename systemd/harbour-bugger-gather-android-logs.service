@@ -1,0 +1,13 @@
+[Unit]
+Description=Collect Android Support logcat file
+
+[Service]
+Type=oneshot
+ProtectSystem=full
+ReadWritePaths=%h/Documents
+ConditionPathExists=/system/bin/logcat
+ExecStart=/usr/bin/pkexec /bin/sh -c "\
+    /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > %h/Documents/$(date -I)_%N_android.log; \
+    /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N_android.log; \
+    /usr/bin/chown %u    %h/Documents/$(date -I)_%N_android.log; \
+"

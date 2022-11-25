@@ -16,6 +16,11 @@ var config = {
         "host":      'forum.sailfishos.org',
         "uri":       '/uploads.json'
     },
+    "paste": {
+        "scheme":    'https',
+        "host":      'paste.mozilla.org',
+        "uri":       '/api/'
+    },
     "validation": {
         "minTitle":   20,
         "minDesc":    30,

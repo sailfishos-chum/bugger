@@ -41,3 +41,10 @@ private-etc ssu/ssu.ini
 # patchmanager detection parses this for enabled patches
 private-etc patchmanager2.conf
 
+# BEG systemd manager and related
+dbus-user.talk org.freedesktop.systemd1
+dbus-user.call org.freedesktop.systemd1=org.freedesktop.systemd1@/*
+dbus-user.talk *=org.freedesktop.systemd1
+dbus-user.call *=org.freedesktop.systemd1.Manager@/*
+dbus-user.call *=org.freedesktop.systemd1.Unit@/*
+# END systemd manager and related

@@ -40,6 +40,12 @@ General: https://forum.sailfishos.org/c/15
 
 Information about debugging and collecting logs can be found here:
 
+Jolla Log Collecting script: https://jolla.zendesk.com/hc/en-us/articles/360013910599
+
+Jolla article about logs for some special use cases: https://jolla.zendesk.com/hc/en-us/articles/4405752484242
+
+Other articles on log colection: https://jolla.zendesk.com/hc/en-us/search?utf8=✓&query=Logs
+
 Testing: https://docs.sailfishos.org/Develop/Platform/Testing_Advice/
 
 Wiki: https://forum.sailfishos.org/t/12751/3

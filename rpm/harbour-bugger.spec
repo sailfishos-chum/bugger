@@ -9,7 +9,7 @@ Name:       harbour-bugger
 # << macros
 
 Summary:    Bug reporting helper
-Version:    0.9.9
+Version:    0.10.0
 Release:    1
 Group:      Applications
 License:    ASL 2.0
@@ -20,9 +20,13 @@ Source100:  harbour-bugger.yaml
 Source101:  harbour-bugger-rpmlintrc
 Requires:   libsailfishapp-launcher
 Requires:   sailfish-version >= 4.0.0
+Requires(preun): systemd
+Requires(post): systemd
+Requires(postun): systemd
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  qt5-qmake
 BuildRequires:  sailfish-svg2png
+BuildRequires:  systemd
 BuildRequires:  qml-rpm-macros
 BuildRequires:  desktop-file-utils
 
@@ -84,6 +88,21 @@ desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
 
+%preun
+# >> preun
+%systemd_user_preun harbour-bugger-gather-logs.service
+# << preun
+
+%post
+# >> post
+%systemd_user_post harbour-bugger-gather-logs.service
+# << post
+
+%postun
+# >> postun
+%systemd_user_postun harbour-bugger-gather-logs.service
+# << postun
+
 %files
 %defattr(-,root,root,-)
 %{_datadir}/applications/%{name}.desktop
@@ -93,5 +112,6 @@ desktop-file-install --delete-original       \
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*
+%{_userunitdir}/*.service
 # >> files
 # << files
