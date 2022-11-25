@@ -25,10 +25,6 @@ import Nemo.DBus 2.0
 Page {
     id: page
 
-    // %h/Documents/$(date -I)_%N.log
-    readonly property string logFileName: new Date().toISOString().substring(0,10) + "_" + svcBaseName + ".log"
-    readonly property string logFilePath: StandardPaths.documents + "/" + logFileName
-
     // pointless assignment for debugging with qmlscene, which calls itself "QtQmlViewer":
     readonly property string svcBaseName: "harbour-bugger-gather-logs"
     readonly property string svcFileName: svcBaseName + ".service"
@@ -40,18 +36,7 @@ Page {
     function queryService()   { dbusManager.queryService() }
     function startService()   { dbusUnit.startService() }
 
-    property string logText
     property bool logCreated: false
-    onLogCreatedChanged: { if (logCreated) loadLogFile() }
-    ListModel { id: logModel }
-    onLogTextChanged: {
-        logModel.clear()
-        logText.split("\n").forEach(
-            function(str) {
-                logModel.append({ "line": str })
-            }
-        );
-    }
 
     Component.onCompleted: {
         dbusManager.queryService()
@@ -110,66 +95,6 @@ Page {
             );
         }
     }
-
-    SilicaFlickable { id: flick
-        anchors.fill: parent
-        contentHeight: col.height
-        Column { id: col
-            width: parent.width
-            PageHeader { id: header ; title: qsTr("Collect Logs") }
-            /*
-            SectionHeader { text: qsTr("Log Gatherer Status") }
-            TextSwitch{ id: unitsw
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
-                checked: svcExists
-                automaticCheck: false
-                text: qsTr("Gatherer service is %1").arg((page.svcExists) ? qsTr("available") : qsTr("not available"))
-                TouchBlocker { anchors.fill: parent }
-            }
-            */
-            SectionHeader { text: qsTr("Journal contents")}
-            SilicaListView { id: view
-                width: parent.width
-                height: Math.max(implicitHeight, page.height *2/3)
-                model: logModel
-                delegate: Label {
-                    width: ListView.view.width
-                    text: line
-                    //wrapMode: Text.Wrap
-                    //readOnly: true
-                    font.family: "monospace"
-                    font.pixelSize: Theme.fontSizeTiny
-                    color: Theme.secondaryColor
-                }
-            }
-        }
-        PullDownMenu { id: pdm
-            flickable: flick
-            MenuItem { text: qsTr("Gather Logs and Load"); onClicked: { startService() } }
-        }
-    }
-
-    /* read fileUrl from filesystem, assign to bugInfo according to what */
-    function loadLogFile() {
-        console.info('loading:', 'file://' + page.logFilePath);
-        var r = new XMLHttpRequest()
-        r.open('GET', 'file://' + page.logFilePath);
-        r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        r.send();
-
-        r.onreadystatechange = function(event) {
-            if (r.readyState == XMLHttpRequest.DONE) {
-                if (r.status === 200 || r.status == 0) {
-                    console.warn("XHR successful:",  r.response)
-                    page.logText = r.response
-                } else {
-                    console.warn("XHR failed:", r.response, r.errorText)
-                }
-            }
-        }
-    }
 }
-
 
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
