@@ -28,24 +28,16 @@ import "../config/settings.js" as Settings
 Page {
     id: page
 
-    /* post submit settings */
     property var config: Settings.config
-
-    readonly property string postScheme:    config.upload.scheme
-    readonly property string postHost:      config.upload.host
-    readonly property string postUri:       config.upload.uri
-    readonly property url    postUrl:       postScheme + '://' + postHost + postUri
-
-    property ListModel selectedFiles: ListModel{}
 
     states: [
         State { name: "selected"; when: selectedFiles.count > 0
         },
-        State { name: "prepared";
+        State { name: "prepared"; when: loadedFiles.count == selectedFiles.count
         },
-        State { name: "uploading";
+        State { name: "uploading"; when: loadedFiles.count > uploadedFiles.count 
         },
-        State { name: "uploaded";
+        State { name: "uploaded"; when: loadedFiles.count == uploadedFiles.count
         }
     ]
 
@@ -58,7 +50,6 @@ Page {
             onAccepted: {
                 if (acceptedHandled) return
                 for (var i = 0; i < selectedContent.count; ++i) {
-                    //getFileFrom(i, selectedContent.get(i).url)
                     selectedFiles.append(selectedContent.get(i))
                 }
                 acceptedHandled=true
@@ -66,7 +57,10 @@ Page {
         }
     }
 
-    function queryService()   { gather.queryService() }
+    property ListModel selectedFiles: ListModel{}
+    property ListModel loadedFiles: ListModel{}
+    property ListModel uploadedFiles: ListModel{}
+
     function startService()   { gather.startService() }
     LogGatherer { id: gather }
     LogLoader   { id: loader }
