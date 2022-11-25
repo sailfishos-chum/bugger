@@ -51,9 +51,21 @@ Page {
         }
     ]
 
+    /*
     Component { id: picker
         MultiContentPickerDialog  {
             title: qsTr("Select log files or screenshots")
+            onAccepted: {
+                for (var i = 0; i < selectedContent.count; ++i) {
+                    getFileFrom(i, selectedContent.get(i).url)
+                    selectedFiles.append(selectedContent.get(i))
+                }
+            }
+        }
+    }
+    */
+    Component { id: picker
+        MultiDocumentPickerDialog  {
             onAccepted: {
                 for (var i = 0; i < selectedContent.count; ++i) {
                     getFileFrom(i, selectedContent.get(i).url)
