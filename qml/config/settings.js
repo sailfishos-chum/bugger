@@ -11,6 +11,11 @@ var config = {
         "host":      'forum.sailfishos.org',
         "uri":       '/new-topic?category_id=13'
     },
+    "paste": {
+        "scheme":    'https',
+        "host":      'paste.mozilla.org',
+        "uri":       '/api/'
+    },
     "validation": {
         "minTitle":   20,
         "minDesc":    30,
