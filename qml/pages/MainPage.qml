@@ -388,6 +388,11 @@ Page {
                     label: qsTr("custom changes, installed packages etc.")
                 }
             }
+            Column {
+                width: parent.width
+                SectionHeader { text: qsTr("Links/Attachments") }
+                FileList{}
+            }
         }
         VerticalScrollDecorator {}
     }
