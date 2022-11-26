@@ -72,6 +72,8 @@ Page {
         + Qt.application.name + ' ' + Qt.application.version
         + '</a>'
 
+    property var links: []
+
     // used to clear this form, and the persistent storage
     property var defaultFieldContents: {
         "text_title":       "",
@@ -87,7 +89,8 @@ Page {
         "regver":           -1,
         "regarch":          -1,
         "othersw":          false,
-        "repro":            -1
+        "repro":            -1,
+        "links":            []
     }
 
     // Pavlov!! :)
@@ -391,7 +394,9 @@ Page {
             Column {
                 width: parent.width
                 SectionHeader { text: qsTr("Links/Attachments") }
-                FileList{}
+                FileList{ id: files
+                    showPlaceholder: false
+                }
             }
         }
         VerticalScrollDecorator {}
@@ -400,7 +405,15 @@ Page {
         flickable: flick
         MenuItem { text: qsTr("About"); onClicked: { pageStack.push(Qt.resolvedUrl("AboutPage.qml")) } }
         MenuItem { text: qsTr("Help"); onClicked: { pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml")) } }
-        MenuItem { text: qsTr("Collect Logs"); onClicked: { pageStack.push(Qt.resolvedUrl("FilePage.qml")) } }
+        MenuItem { text: qsTr("Collect Logs")
+            onClicked: {
+            var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
+            dialog.accepted.connect(function() {
+                links = dialog.links
+                files.model = dialog.uploadedFiles
+            })
+            }
+        }
         MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Cleared."), function() { resetFields() }) } }
         //MenuItem { text: qsTr("Settings"); onClicked: { pageStack.push(Qt.resolvedUrl("SettingsPage.qml")) } }
     }
@@ -475,6 +488,10 @@ Page {
             + "\n"
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
+            + "\n\n"
+            + "ATTACHMENTS:\n"
+            + "=================\n\n"
+            + links.join('\n')
             + "\n\n\n\n"
             // add footer:
             + "----  \n"
