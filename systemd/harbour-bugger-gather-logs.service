@@ -1,6 +1,8 @@
 [Unit]
-Description=Collect Journal files
-Before=%N.target
+Description=Collect Journal file for Bugger!
+Before=harbour-bugger-gather-logs.target
+After=lipstick-security-ui.service
+Requires=lipstick-security-ui.service
 
 [Service]
 Type=oneshot
@@ -16,4 +18,4 @@ ExecStart=/usr/bin/pkexec /bin/sh -c "\
 "
 
 [Install]
-WantedBy=%N.target
+WantedBy=harbour-bugger-gather-logs.target

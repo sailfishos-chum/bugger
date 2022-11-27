@@ -1,17 +1,24 @@
 [Unit]
-Description=Collect Android Support logcat file
-After=aliendalvik.service
-#Requires=aliendalvik.service
-Requisite=aliendalvik.service
-BindsTo=aliendalvik.service
+Description=Collect Android Support logcat file for Bugger!
+
+After=lipstick-security-ui.service
+Requires=lipstick-security-ui.service
+
+# would be nice, but user service can't depend on system service:
+# therefore, we use ExecStartPre below instead
+# After=aliendalvik.service
+# Requisite=aliendalvik.service
+# BindsTo=aliendalvik.service
+
 PartOf=harbour-bugger-gather-logs.target
+
+ConditionPathExists=/system/bin/logcat
 
 [Service]
 Type=oneshot
 ProtectSystem=full
 ReadWritePaths=%h/Documents
-ConditionPathExists=/system/bin/logcat
-#ExecStartPre=/bin/bash -xc '/usr/bin/systemctl is-active --quiet aliandalvik.service && exit 1 || exit 0'
+ExecStartPre=/bin/sh -c '/usr/bin/systemctl is-active --quiet aliendalvik.service'
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
     /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > %h/Documents/$(date -I)_%N.log; \
     /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N.log; \
