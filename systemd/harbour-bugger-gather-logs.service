@@ -1,5 +1,6 @@
 [Unit]
-Description=Collect Journal file
+Description=Collect Journal files
+Before=%N.target
 
 [Service]
 Type=oneshot
@@ -13,3 +14,6 @@ ExecStart=/usr/bin/pkexec /bin/sh -c "\
           /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N*json %h/Documents/$(date -I)_%N*log; \
           /usr/bin/chown %u    %h/Documents/$(date -I)_%N*json %h/Documents/$(date -I)_%N*log; \
 "
+
+[Install]
+WantedBy=%N.target

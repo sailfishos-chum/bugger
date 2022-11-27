@@ -1,13 +1,22 @@
 [Unit]
 Description=Collect Android Support logcat file
+After=aliendalvik.service
+#Requires=aliendalvik.service
+Requisite=aliendalvik.service
+BindsTo=aliendalvik.service
+PartOf=harbour-bugger-gather-logs.target
 
 [Service]
 Type=oneshot
 ProtectSystem=full
 ReadWritePaths=%h/Documents
 ConditionPathExists=/system/bin/logcat
+#ExecStartPre=/bin/bash -xc '/usr/bin/systemctl is-active --quiet aliandalvik.service && exit 1 || exit 0'
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
-    /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > %h/Documents/$(date -I)_%N_android.log; \
-    /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N_android.log; \
-    /usr/bin/chown %u    %h/Documents/$(date -I)_%N_android.log; \
+    /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > %h/Documents/$(date -I)_%N.log; \
+    /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N.log; \
+    /usr/bin/chown %u    %h/Documents/$(date -I)_%N.log; \
 "
+
+[Install]
+WantedBy=harbour-bugger-gather-logs.target

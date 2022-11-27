@@ -27,7 +27,7 @@ Page {
 
     // pointless assignment for debugging with qmlscene, which calls itself "QtQmlViewer":
     readonly property string svcBaseName: "harbour-bugger-gather-logs"
-    readonly property string svcFileName: svcBaseName + ".service"
+    readonly property string svcFileName: svcBaseName + ".target"
     readonly property string svcBusName:  svcFileName.replace(/\./g, "_2e").replace(/-/g, "_2d")
 
     property bool svcExists:    false

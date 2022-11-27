@@ -112,6 +112,7 @@ desktop-file-install --delete-original       \
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*
+%{_userunitdir}/*.target
 %{_userunitdir}/*.service
 # >> files
 # << files
