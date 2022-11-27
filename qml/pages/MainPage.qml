@@ -393,7 +393,7 @@ Page {
             }
             Column {
                 width: parent.width
-                SectionHeader { text: qsTr("Links/Attachments") }
+                SectionHeader { text: qsTr("Links/Attachments (%1)").arg(files.count) }
                 FileList{ id: files
                     showPlaceholder: false
                 }
@@ -407,11 +407,12 @@ Page {
         MenuItem { text: qsTr("Help"); onClicked: { pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml")) } }
         MenuItem { text: qsTr("Collect Logs")
             onClicked: {
-            var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
-            dialog.accepted.connect(function() {
-                links = dialog.links
-                files.model = dialog.uploadedFiles
-            })
+                var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
+                dialog.accepted.connect(function() {
+                    console.debug("dialog done.")
+                    page.links = dialog.links
+                    page.files.model = dialog.uploadedFiles
+                })
             }
         }
         MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Cleared."), function() { resetFields() }) } }
