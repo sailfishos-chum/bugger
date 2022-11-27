@@ -8,7 +8,11 @@ ConditionFileIsExecutable=/usr/share/harbour-bugger/scripts/gather-logs-%i.sh
 
 [Service]
 Type=oneshot
-ProtectSystem=full
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateNetwork=true
+ProtectKernelTunables=true
+
 ReadWritePaths=%h/Documents
 ExecStart=/bin/sh -c "\
           /usr/share/harbour-bugger/scripts/gather-logs-%i.sh > %h/Documents/$(date -I)_%N.log; \
