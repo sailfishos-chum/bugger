@@ -22,13 +22,14 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 SilicaGridView { id: root
+    property bool showPlaceholder: true
     width: parent.width
     height: Theme.iconSizeMedium * Math.max(count, 2)
     cellWidth: parent.width/2
     cellHeight: Theme.iconSizeMedium
     delegate: LogfileDelegate {}
     ViewPlaceholder {
-        enabled: root.count == 0
+        enabled: (root.count == 0) && showPlaceholder
         text: "No files."
         hintText: "Pull down to add log files."
     }
