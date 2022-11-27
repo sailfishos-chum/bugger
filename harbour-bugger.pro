@@ -32,6 +32,11 @@ qml.path = /usr/share/$${TARGET}
 
 INSTALLS += qml
 
+readme.files = README_logcollect.md
+readme.path = /usr/share/$${TARGET}/scripts
+
+INSTALLS += readme
+
 OTHER_FILES += $$files(rpm/*)
 
 include(translations/translations.pri)

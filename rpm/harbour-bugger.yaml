@@ -1,6 +1,6 @@
 Name: harbour-bugger
 Summary: Bug reporting helper
-Version: 0.10.1
+Version: 0.10.2
 Release: 1
 Group: Applications
 License: ASL 2.0
@@ -84,6 +84,8 @@ Files:
   - '%config %{_sysconfdir}/sailjail/permissions/%{name}.profile'
   - '%config %{_sysconfdir}/firejail/%{name}.local'
   - '%dir %{_datadir}/%{name}'
+  - '%dir %{_datadir}/%{name}/scripts'
+  - '%{_datadir}/%{name}/scripts/README_logcollect.md'
   - '%{_datadir}/%{name}/translations/*.qm'
   - '%{_datadir}/%{name}/qml/*'
   - '%{_userunitdir}/*.target'

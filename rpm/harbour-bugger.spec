@@ -9,7 +9,7 @@ Name:       harbour-bugger
 # << macros
 
 Summary:    Bug reporting helper
-Version:    0.10.1
+Version:    0.10.2
 Release:    1
 Group:      Applications
 License:    ASL 2.0
@@ -90,17 +90,26 @@ desktop-file-install --delete-original       \
 
 %preun
 # >> preun
+%systemd_user_preun harbour-bugger-gather-logs.target
 %systemd_user_preun harbour-bugger-gather-logs.service
+%systemd_user_preun harbour-bugger-gather-logs-plugin@.service
+%systemd_user_preun harbour-bugger-gather-android-logs.service
 # << preun
 
 %post
 # >> post
+%systemd_user_post harbour-bugger-gather-logs.target
 %systemd_user_post harbour-bugger-gather-logs.service
+%systemd_user_post harbour-bugger-gather-logs-plugin@.service
+%systemd_user_post harbour-bugger-gather-android-logs.service
 # << post
 
 %postun
 # >> postun
+%systemd_user_postun harbour-bugger-gather-logs.target
 %systemd_user_postun harbour-bugger-gather-logs.service
+%systemd_user_postun harbour-bugger-gather-logs-plugin@.service
+%systemd_user_postun harbour-bugger-gather-android-logs.service
 # << postun
 
 %files
@@ -110,6 +119,8 @@ desktop-file-install --delete-original       \
 %config %{_sysconfdir}/sailjail/permissions/%{name}.profile
 %config %{_sysconfdir}/firejail/%{name}.local
 %dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/scripts
+%{_datadir}/%{name}/scripts/README_logcollect.md
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*
 %{_userunitdir}/*.target

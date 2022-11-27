@@ -1,3 +1,6 @@
 [Unit]
 Description=Collect Log files for Bugger!
 Documentation=https://github.com/sailfishos-chum/bugger/README_logcollect.md
+Documentation=/usr/share/harbour-bugger/scripts/README_logcollect.md
+DefaultDependencies=no
+After=user-session.target

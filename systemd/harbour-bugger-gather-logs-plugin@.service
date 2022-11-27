@@ -1,0 +1,18 @@
+[Unit]
+Description=Collect Logfiles
+Documentation=https://github.com/sailfishos-chum/bugger/README_logcollect.md
+Documentation=/usr/share/harbour-bugger/scripts/README_logcollect.md
+Before=harbour-bugger-gather-logs.target
+
+[Service]
+Type=oneshot
+ProtectSystem=full
+ReadWritePaths=%h/Documents
+ExecStart=/bin/sh -c "\
+          /usr/share/harbour-bugger/scripts/gather-logs-%i.sh > %h/Documents/$(date -I)_%N_%i.log; \
+          /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N*json %h/Documents/$(date -I)_%N*log; \
+          /usr/bin/chown %u    %h/Documents/$(date -I)_%N*json %h/Documents/$(date -I)_%N*log; \
+"
+
+[Install]
+WantedBy=harbour-bugger-gather-logs.target
