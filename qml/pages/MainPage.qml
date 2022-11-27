@@ -398,6 +398,7 @@ Page {
                 FileList{ id: fileList
                     model: filesModel
                     showPlaceholder: false
+                    filtered: true
                 }
             }
         }

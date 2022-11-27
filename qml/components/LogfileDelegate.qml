@@ -21,12 +21,27 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
-GridItem {
+GridItem { id: root
     property string displayName
 
     anchors.margins: Theme.paddingSmall
     width: GridView.view.cellWidth
     contentHeight: Math.max(GridView.view.cellHeight, Theme.iconSizeLarge, content.height)
+
+    // replicate the 'hidden' property from Sailfish.Silica.ListItem
+    property bool hidden
+    Item {
+        states: State {
+            when: root.hidden
+            name: "hidden"
+            PropertyChanges {
+                target: root
+                contentHeight: 0
+                enabled: false
+                opacity: 0.0
+            }
+        }
+    }
     Row { id: content
         height: icon.height
         width: parent.width
