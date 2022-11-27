@@ -393,8 +393,9 @@ Page {
             }
             Column {
                 width: parent.width
-                SectionHeader { text: qsTr("Links/Attachments (%1)").arg(files.count) }
-                FileList{ id: files
+                SectionHeader { text: qsTr("Links/Attachments (%1)").arg(fileList.count) }
+                FileList{ id: fileList
+                    model: filesModel
                     showPlaceholder: false
                 }
             }
@@ -405,13 +406,12 @@ Page {
         flickable: flick
         MenuItem { text: qsTr("About"); onClicked: { pageStack.push(Qt.resolvedUrl("AboutPage.qml")) } }
         MenuItem { text: qsTr("Help"); onClicked: { pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml")) } }
-        MenuItem { text: qsTr("Collect Logs")
+        MenuItem { text: qsTr("Add Logfiles")
             onClicked: {
                 var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
                 dialog.accepted.connect(function() {
                     console.debug("dialog done.")
                     page.links = dialog.links
-                    page.files.model = dialog.uploadedFiles
                 })
             }
         }

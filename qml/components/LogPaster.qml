@@ -24,15 +24,19 @@ import "../config/settings.js" as Settings
 Item {
     property var config: Settings.config.paste
     property string postUrl: config.scheme + "://" +  config.host + config.uri
+    property string uploading: ""
 
-    property ListModel model
-    property ListModel outModel: ListModel{}
-    property bool done: model.count == outModel.count
+    property ListModel model: ListModel{}
+    property bool done: model.count == (successCount + errorCount)
+    property int successCount: 0
+    property int errorCount: 0
 
     onModelChanged: {
         if (!model) return
+        successCount = 0;
+        errorCount = 0;
         for (var i = 0; i < model.count; ++i) {
-            pasteFile(model.get(i))
+            pasteFile(i, model.get(i))
             //delay(pasteFile(model.get(i)))
         }
     }
@@ -43,41 +47,37 @@ Item {
         delayTimer.start();
     }
 
-    function pasteFile(data) {
+    function pasteFile(index, data) {
         //console.debug("trying to upload:", JSON.stringify(data))
+        uploading = data.fileName
         var r = new XMLHttpRequest()
         r.open('POST', postUrl);
         r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         //console.debug("Sending:", payload);
         const fileContent = data["dataStr"]
+        console.assert( fileContent.length>0, "Trying to upload empty log data")
 
-        const payload = 
+        const payload =
             'expiry_days=' + config.expireDays
             + '&title='    + data.fileName
             + '&content='  + encodeURIComponent(fileContent)
-        //console.debug("sending:", payload);
         r.send(payload);
 
         r.onreadystatechange = function(event) {
             if (r.readyState == XMLHttpRequest.DONE) {
                 if (r.status === 200 || r.status == 0) {
-                    console.debug("upload sucessful:", r.response);
-                    const o = {
-                        "title"     : data["title"],
-                        "mimeType"  : data["mimeType"],
-                        "fileName"  : data["fileName"],
-                        "filePath"  : data["filePath"],
-                        "url"       : data["url"],
-                        "dataStr"   : data["dataStr"],
-                        "pastedUrl" : r.response
-                    }
-                    outModel.append(o);
+                    console.info("upload sucessful:", data["fileName"],  r.response);
+                    model.setProperty(index, "pastedUrl", r.response)
+                    successCount++;
                 } else {
-                    console.debug("error in processing request.", r.status, r.statusText);
+                    console.warn("error in processing request.", r.status, r.statusText);
+                    app.popup(qsTr("Error uploading: %1 - %2", "%1: error code, %2: error message").arg(r.status).arg(r.statusText));
+                    errorCount++;
                 }
             }
         }
+        uploading = ""
     }
 }
 

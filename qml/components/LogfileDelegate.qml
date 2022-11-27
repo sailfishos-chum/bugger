@@ -26,14 +26,13 @@ GridItem {
 
     anchors.margins: Theme.paddingSmall
     width: GridView.view.cellWidth
-    contentHeight: Math.max(GridView.view.cellHeight, Theme.iconSizeMedium, content.height)
+    contentHeight: Math.max(GridView.view.cellHeight, Theme.iconSizeLarge, content.height)
     Row { id: content
         height: icon.height
         width: parent.width
         Icon { id: icon
-            source: Theme.iconForMimeType(mimeType)
-            color: (model.dataStr) ? "green" : Theme.primaryColor
-            height: Theme.iconSizeMedium
+            source: Theme.iconForMimeType(mimeType) //+ '?' + ( (dataStr) ? "green" : Theme.primaryColor )
+            height: Theme.iconSizeLarge
             width: height
             sourceSize.width: height
             sourceSize.height: height
@@ -43,14 +42,14 @@ GridItem {
             anchors.verticalCenter: icon.verticalCenter
             Label { text: fileName; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeSmall; color: Theme.highlightColor }
             Label { text: mimeType; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
-            Label { text: (model.dataStr) ? model.dataStr.length : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
+            Label { text: (model.dataStr) ? Format.formatFileSize(model.dataStr.length) : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             //Label { text: filePath; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             //Label { text: fileNameOrig ? fileNameOrig : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
         }
     }
     menu: ContextMenu {
         width: (parent) ? parent.width : 0 // gives a log warning but works ;)
-        MenuItem { text: qsTr("Remove"); onClicked: remorseDelete(function(){ selectedFiles.remove(index) }) }
+        MenuItem { text: qsTr("Remove"); onClicked: remorseDelete(function(){ filesModel.remove(index) }) }
     }
 }
 

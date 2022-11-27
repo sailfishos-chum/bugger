@@ -24,9 +24,9 @@ import Sailfish.Silica 1.0
 SilicaGridView { id: root
     property bool showPlaceholder: true
     width: parent.width
-    height: Theme.iconSizeMedium * Math.max(count, 2)
+    height: Theme.iconSizeLarge * Math.max(count, 2)
     cellWidth: parent.width/2
-    cellHeight: Theme.iconSizeMedium
+    cellHeight: Theme.iconSizeLarge
     delegate: LogfileDelegate {}
     ViewPlaceholder {
         enabled: (root.count == 0) && showPlaceholder

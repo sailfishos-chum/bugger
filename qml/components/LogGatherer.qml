@@ -66,7 +66,6 @@ Page {
 
         // signal handler for finished job:
         function jobRemoved(id, job, unit, result) {
-            console.debug("Job:", unit, result)
             // NB: we listen for the service to be done, not the target.
             // we don't want to go into an endless loop of popups.
             if (unit == page.svcFileName) {

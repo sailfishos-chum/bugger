@@ -52,6 +52,8 @@ ApplicationWindow {
 
     BugInfo { id: bugInfo }
 
+    ListModel { id: filesModel } // for attachments
+
     /* read fileUrl from filesystem, assign to bugInfo according to what */
     function getInfo(fileUrl, what) {
 

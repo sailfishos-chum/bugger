@@ -28,10 +28,11 @@ Dialog { id: page
 
     canAccept: false
     property var config: Settings.config
+    property var links: []
 
     /*
     states: [
-        State { name: "populated"; when: selectedFiles.count > 0
+        State { name: "populated"; when: filesModel.count > 0
         },
         State { name: "prepared";
         },
@@ -39,7 +40,6 @@ Dialog { id: page
             PropertyChanges { target: busy; running: true }
         },
         State { name: "uploaded"; when: paster.done
-            PropertyChanges { target: page; uploadedFiles: paster.outModel; canAccept: true }
             PropertyChanges { target: busy; running: false }
         }
     ]
@@ -55,7 +55,7 @@ Dialog { id: page
             onAccepted: {
                 if (acceptedHandled) return
                 for (var i = 0; i < selectedContent.count; ++i) {
-                    selectedFiles.append(selectedContent.get(i))
+                    filesModel.append(selectedContent.get(i))
                 }
                 loadFiles()
                 acceptedHandled=true
@@ -63,24 +63,16 @@ Dialog { id: page
         }
     }
 
-    property ListModel selectedFiles: ListModel{}
-    property ListModel loadedFiles:   ListModel{}
-    property ListModel uploadedFiles: ListModel{}
-
     function loadFiles() {
-        for (var i = 0; i < selectedFiles.count; ++i) {
-            if (!selectedFiles.get(i).dataStr) {
-                loader.getFileFrom(selectedFiles.get(i))
-            }
-        }
+        loader.model = filesModel
     }
     function upload() {
-        paster.model = loader.outModel
+        paster.model = filesModel
     }
-    function startService()   { gather.startService() }
-    LogGatherer { id: gather }
-    LogLoader   { id: loader }
-    LogPaster   { id: paster }
+    function startGatherer()   { gather.start() }
+    LogGatherer { id: gather } // executes systemd things
+    LogLoader   { id: loader } // gets file contents
+    LogPaster   { id: paster } // uploads files to "pastebin"
     Connections {
         target: gather
         onLogCreatedChanged: {
@@ -96,16 +88,38 @@ Dialog { id: page
                     + " "
                     + ((/json/.test(postfix)) ? "(JSON)" : "" )
                 );
-                o["mimeType"] = (/json$/.test(postfix)) ? "application/json" : "text/plain";
-                o["fileName"] = logBaseName + postfix;
-                o["filePath"] = StandardPaths.documents + "/" + o["fileName"];
-                o["url"]      = Qt.resolvedUrl(o["filePath"]);
+                o["mimeType"]   = (/json$/.test(postfix)) ? "application/json" : "text/plain";
+                o["fileName"]   = logBaseName + postfix;
+                o["filePath"]   = StandardPaths.documents + "/" + o["fileName"];
+                o["url"]        = Qt.resolvedUrl(o["filePath"]);
+                o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
+                o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
                 //console.debug("Adding:", JSON.stringify(o,null,2))
                 d.push(o)
             })
             // add the generated information to the model
-            d.forEach(function(element) { selectedFiles.append(element)})
+            d.forEach(function(element) { filesModel.append(element)})
             loadFiles()
+        }
+    }
+    Connections {
+        target: paster
+        onDoneChanged: {
+            if (!paster.done) return
+            for (var i = 0; i < filesModel.count; ++i) {
+                var d = filesModel.get(i)
+                links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
+            }
+            canAccept = true
+            progress.visible = false
+            app.popup(qsTr("Uploading finished: %1 successful, %2 error.").arg(paster.successCount).arg(paster.errorCount))
+        }
+        onUploadingChanged: {
+            if (paster.uploading !== "") {
+                console.debug("uploading", paster.uploading)
+                progress.visible = true
+                progress.label=qsTr("uploading %1/%2").arg(paster.successCount + 1, filesModel.count) 
+            }
         }
     }
 
@@ -125,7 +139,7 @@ Dialog { id: page
             Label {
                 width: parent.width
                 font.pixelSize: Theme.fontSizeSmall
-                color: Theme.highlightColor
+                color: Theme.secondaryHighlightColor
                 wrapMode: Text.Wrap
                 horizontalAlignment: Text.AlignJustify
                 text: qsTr("Here you can gather and add log files, which will be uploaded to a 'Pastebin' type of service, and added as links to your Bug Report.") + " "
@@ -136,18 +150,23 @@ Dialog { id: page
                     + "\n\n"
                     + qsTr("The data will be uploaded to %1, and be publicly available. Be sure you don't add private or confidential information.").arg(config.paste.host)
             }
+            ProgressBar { id: progress
+                indeterminate: true
+                visible: false
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width
+            }
             SectionHeader { text: qsTr("List of files to upload") }
-            FileList { id: fileList; model: selectedFiles
-                 cellWidth: page.isLandscape ? parent.width/2 : parent.width
+            FileList { id: fileList; model: filesModel
+                cellWidth: page.isLandscape ? parent.width/2 : parent.width
             }
         }
         VerticalScrollDecorator {}
-        PageBusyIndicator {id: busy}
         PullDownMenu { id: pdm
             flickable: flick
-            MenuItem { text: qsTr("Upload Contents"); onClicked: upload() }
-            MenuItem { text: qsTr("Pick additional Files"); onClicked: pageStack.push(picker) }
-            MenuItem { text: qsTr("Collect Journal"); onClicked: { startService() } }
+            MenuItem { text: qsTr("Upload Contents"); onClicked: { upload() } }
+            MenuItem { text: qsTr("Add Files"); onClicked: pageStack.push(picker) }
+            MenuItem { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
         }
     }
 }

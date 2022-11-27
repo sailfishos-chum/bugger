@@ -23,22 +23,17 @@ import QtQuick 2.6
 QtObject {
     id: page
 
-    property ListModel model
-    property ListModel outModel: ListModel{}
-
-    property bool done: model.count == outModel.count
-    onDoneChanged: console.debug("done", done, outModel.count)
+    property ListModel model: ListModel{}
 
     onModelChanged: {
         if (!model) return
         for (var i = 0; i < model.count; ++i) {
-            getFileFrom(model.get(i))
+            getFileFrom(i, model.get(i))
         }
     }
 
-
     /* load files from URLs into data buffer */
-    function getFileFrom(data) {
+    function getFileFrom(index, data) {
         //console.debug("Trying to load file contents for", JSON.stringify(data))
         var url = data.url
         var r = new XMLHttpRequest()
@@ -52,20 +47,10 @@ QtObject {
         r.onreadystatechange = function(event) {
             if (r.readyState == XMLHttpRequest.DONE) {
                 if (r.status === 200 || r.status == 0) {
-                    //console.debug("Filedata loaded: about", r.response.split("\n").length, "lines");
-                    const o = {
-                        "title"   : data["title"],
-                        "mimeType": data["mimeType"],
-                        "fileName": data["fileName"],
-                        "filePath": data["filePath"],
-                        "url"     : data["url"],
-                        "dataStr" : r.response
-                    }
-                    //console.debug("datastr:", o["dataStr"])
-                    //console.debug("adding to outmodel:", JSON.stringify(o))
-                    outModel.append(o);
+                    console.debug("Filedata loaded: about", r.response.split("\n").length, "lines");
+                    model.setProperty(index, "dataStr", r.response)
                 } else {
-                    console.debug("Filedata load failed:", JSON.stringify(r.response));
+                    console.warn("Filedata load failed:", JSON.stringify(r.response));
                 }
             }
         }
