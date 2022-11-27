@@ -490,7 +490,7 @@ Page {
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
             + "\n\n"
-            + "ATTACHMENTS:\n"
+            + "LOG FILE LINKS:\n"
             + "=================\n\n"
             + links.join('\n')
             + "\n\n\n\n"

@@ -109,7 +109,12 @@ Dialog { id: page
             if (!paster.done) return
             for (var i = 0; i < filesModel.count; ++i) {
                 var d = filesModel.get(i)
-                links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
+                //links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
+                if (d.title && d.pastedUrl) {
+                    links.push(' - [' + d.title + '](' + d.pastedUrl + ')  ')
+                } else if (d.fileName && d.pastedUrl) {
+                    links.push(' - [' + d.fileName + '](' + d.pastedUrl + ')  ')
+                }
             }
             canAccept = true
             progress.visible = false
@@ -119,7 +124,7 @@ Dialog { id: page
             if (paster.uploading !== "") {
                 console.debug("uploading", paster.uploading)
                 progress.visible = true
-                progress.label=qsTr("uploading %1/%2").arg(paster.successCount + 1, filesModel.count) 
+                progress.label = qsTr("uploading %1/%2").arg(paster.successCount + 1).arg(filesModel.count)
             }
         }
     }
