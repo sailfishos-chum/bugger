@@ -392,6 +392,7 @@ Page {
                 }
             }
             Column {
+                visible: fileList.count > 0
                 width: parent.width
                 SectionHeader { text: qsTr("Links/Attachments (%1)").arg(fileList.count) }
                 FileList{ id: fileList
@@ -411,7 +412,15 @@ Page {
                 var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
                 dialog.accepted.connect(function() {
                     console.debug("dialog done.")
-                    page.links = dialog.links
+                    for (var i = 0; i < filesModel.count; ++i) {
+                        var d = filesModel.get(i)
+                        //links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
+                        if (d.title && d.pastedUrl) {
+                            links.push(' - [' + d.title + '](' + d.pastedUrl + ')  ')
+                        } else if (d.fileName && d.pastedUrl) {
+                            links.push(' - [' + d.fileName + '](' + d.pastedUrl + ')  ')
+                        }
+                    }
                 })
             }
         }
@@ -587,7 +596,8 @@ Page {
             "regver":           regver.currentIndex,
             "regarch":          regarch.currentIndex,
             "othersw":          othersw.checked,
-            "repro":            repro.sliderValue
+            "repro":            repro.sliderValue,
+            "links":            links
         };
         Util.store(post);
     }
@@ -641,6 +651,7 @@ Page {
             regarch.currentIndex    = data.regarch;
             othersw.checked         = data.othersw;
             repro.value             = data.repro;
+            links                   = data.links;
         } finally {
             preventSave = false;
         }

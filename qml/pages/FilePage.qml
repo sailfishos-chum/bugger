@@ -28,7 +28,8 @@ Dialog { id: page
 
     canAccept: false
     property var config: Settings.config
-    property var links: []
+
+    onRejected: filesModel.clear()
 
     /*
     states: [
@@ -107,15 +108,6 @@ Dialog { id: page
         target: paster
         onDoneChanged: {
             if (!paster.done) return
-            for (var i = 0; i < filesModel.count; ++i) {
-                var d = filesModel.get(i)
-                //links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
-                if (d.title && d.pastedUrl) {
-                    links.push(' - [' + d.title + '](' + d.pastedUrl + ')  ')
-                } else if (d.fileName && d.pastedUrl) {
-                    links.push(' - [' + d.fileName + '](' + d.pastedUrl + ')  ')
-                }
-            }
             canAccept = true
             progress.visible = false
             app.popup(qsTr("Uploading finished: %1 successful, %2 error.").arg(paster.successCount).arg(paster.errorCount))
@@ -132,12 +124,7 @@ Dialog { id: page
     SilicaFlickable { id: flick
         anchors.fill: parent
         contentHeight: col.height
-        DialogHeader { id: header ;
-            width: parent.width
-            cancelText: qsTr("Back")
-            acceptText: qsTr("Apply")
-            title: qsTr("Gather Files")
-        }
+        DialogHeader { id: header ; width: parent.width ; title: qsTr("Gather Files") }
         Column { id: col
             width: parent.width - Theme.horizontalPageMargin
             anchors.horizontalCenter: parent.horizontalCenter
