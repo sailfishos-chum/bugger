@@ -48,7 +48,7 @@ Dialog { id: page
 
     Component { id: picker
         MultiFilePickerDialog  {
-            title: qsTr("Select log files  to add")
+            title: qsTr("Select log files to add")
             nameFilters: [ '*.log', '*.txt', '*.json' ]
             // signal is received twice
             property bool acceptedHandled: false
