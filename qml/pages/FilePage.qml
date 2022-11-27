@@ -80,7 +80,8 @@ Dialog { id: page
             const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
             const d = []
             const o = {}
-            const postfixes = [ ".log", ".json", "_kernel.log", "_kernel.json" ];
+            //const postfixes = [ ".log", ".json", "_kernel.log", "_kernel.json" ];
+            const postfixes = [ ".log", "_kernel.log" ];
             postfixes.forEach(function(postfix) {
                 o = {};
                 o["title"] = (
