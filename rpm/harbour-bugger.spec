@@ -9,7 +9,7 @@ Name:       harbour-bugger
 # << macros
 
 Summary:    Bug reporting helper
-Version:    0.10.3
+Version:    0.10.4
 Release:    1
 Group:      Applications
 License:    ASL 2.0
@@ -18,11 +18,9 @@ URL:        https://github.com/sailfishos-chum/bugger
 Source0:    %{name}-%{version}.tar.gz
 Source100:  harbour-bugger.yaml
 Source101:  harbour-bugger-rpmlintrc
+Requires:   %{name}-gather-logs
 Requires:   libsailfishapp-launcher
 Requires:   sailfish-version >= 4.0.0
-Requires(preun): systemd
-Requires(post): systemd
-Requires(postun): systemd
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  qt5-qmake
 BuildRequires:  sailfish-svg2png
@@ -53,6 +51,27 @@ Screenshots:
   - https://github.com/sailfishos-chum/bugger/raw/master/Screenshot_002.png
 Url:
   Help: https://forum.sailfishos.org/t/10935
+%endif
+
+
+%package gather-logs
+Summary:    Log gathering tools from %{name}
+Group:      Applications
+BuildArch:  noarch
+Requires(preun): systemd
+Requires(post): systemd
+Requires(postun): systemd
+
+%description gather-logs
+%{summary}.
+
+%if "%{?vendor}" == "chum"
+PackageName: Log collecting tools from Bugger!
+Type: addon
+Categories:
+ - Utility
+Custom:
+  Repo: https://github.com/sailfishos-chum/bugger
 %endif
 
 
@@ -88,29 +107,29 @@ desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
 
-%preun
-# >> preun
+%preun gather-logs
+# >> preun gather-logs
 %systemd_user_preun harbour-bugger-gather-logs.target
 %systemd_user_preun harbour-bugger-gather-logs.service
 %systemd_user_preun harbour-bugger-gather-logs-plugin@.service
 %systemd_user_preun harbour-bugger-gather-android-logs.service
-# << preun
+# << preun gather-logs
 
-%post
-# >> post
+%post gather-logs
+# >> post gather-logs
 %systemd_user_post harbour-bugger-gather-logs.target
 %systemd_user_post harbour-bugger-gather-logs.service
 %systemd_user_post harbour-bugger-gather-logs-plugin@.service
 %systemd_user_post harbour-bugger-gather-android-logs.service
-# << post
+# << post gather-logs
 
-%postun
-# >> postun
+%postun gather-logs
+# >> postun gather-logs
 %systemd_user_postun harbour-bugger-gather-logs.target
 %systemd_user_postun harbour-bugger-gather-logs.service
 %systemd_user_postun harbour-bugger-gather-logs-plugin@.service
 %systemd_user_postun harbour-bugger-gather-android-logs.service
-# << postun
+# << postun gather-logs
 
 %files
 %defattr(-,root,root,-)
@@ -119,11 +138,16 @@ desktop-file-install --delete-original       \
 %config %{_sysconfdir}/sailjail/permissions/%{name}.profile
 %config %{_sysconfdir}/firejail/%{name}.local
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/scripts
-%{_datadir}/%{name}/scripts/README_logcollect.md
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*
-%{_userunitdir}/*.target
-%{_userunitdir}/*.service
 # >> files
 # << files
+
+%files gather-logs
+%defattr(-,root,root,-)
+%dir %{_datadir}/%{name}/scripts
+%{_datadir}/%{name}/scripts/README_logcollect.md
+%{_userunitdir}/*.target
+%{_userunitdir}/*.service
+# >> files gather-logs
+# << files gather-logs

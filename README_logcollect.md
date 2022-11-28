@@ -32,3 +32,6 @@ Notes:
 Of course, you are free to not use the Service Template and just depend on the
 Target from any custom systemd services you have written.
 
+If your log collecting script is part of a package, you can depend on
+`harbour-bugger-gather-logs` to make sure the infrastructure is installed.
+
