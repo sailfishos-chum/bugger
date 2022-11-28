@@ -25,23 +25,16 @@ import Nemo.DBus 2.0
 Page {
     id: page
 
-    readonly property string svcBaseName: "harbour-bugger-gather-logs"
-    readonly property string svcFileName: svcBaseName + ".service"
-    readonly property string svcBusName:  svcFileName.replace(/\./g, "_2e").replace(/-/g, "_2d")
-
-    readonly property string tgtFileName: svcBaseName + ".target"
+    readonly property string unitBaseName: "harbour-bugger-gather-logs"
+    readonly property string svcFileName: unitBaseName + ".service"
+    readonly property string tgtFileName: unitBaseName + ".target"
     readonly property string tgtBusName:  svcFileName.replace(/\./g, "_2e").replace(/-/g, "_2d")
 
     property bool svcExists:    false
-    property bool svcIsEnabled: false
-
     property bool tgtExists:    false
     property bool tgtIsEnabled: false
 
-    function startService()   { dbusUnit.startService() }
-    function startTarget()    { dbusTarget.startTarget() }
-
-    function start()    { startTarget() }
+    function start() { dbusTarget.startTarget() }
 
     property bool logCreated: false
 
@@ -98,25 +91,11 @@ Page {
                 function(error, message) {
                     console.warn('GetUnitFileStatus failed:', error)
                     console.warn('GetUnitFileStatus message:', message)
-                    page.tgtExists = false 
+                    page.tgtExists = false
                 })
         }
     }
 
-    DBusInterface { id: dbusUnit
-        bus: DBus.SessionBus
-        service: 'org.freedesktop.systemd1'
-        iface: 'org.freedesktop.systemd1.Unit'
-        path: '/org/freedesktop/systemd1/unit/' + svcBusName
-
-        function startService() {
-            call('Start',
-                ['replace'],
-                function(result) { }, //console.debug("Job:",       JSON.stringify(result)); },
-                function(result) { console.warn(qsTr("Start"), JSON.stringify(result)) }
-            );
-        }
-    }
     DBusInterface { id: dbusTarget
         bus: DBus.SessionBus
         service: 'org.freedesktop.systemd1'
