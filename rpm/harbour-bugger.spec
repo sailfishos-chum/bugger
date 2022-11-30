@@ -58,6 +58,7 @@ Url:
 Summary:    Log gathering tools from %{name}
 Group:      Applications
 BuildArch:  noarch
+Requires:   polkit
 Requires(preun): systemd
 Requires(post): systemd
 Requires(postun): systemd

@@ -100,6 +100,8 @@ SubPackages:
 
       BuildArch: noarch
       AutoDepend: false
+      Requires:
+        - polkit
       RequiresPost:
         - systemd
       RequiresPreUn:
