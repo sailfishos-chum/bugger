@@ -111,3 +111,26 @@ SubPackages:
         - '%{_datadir}/%{name}/scripts/README_logcollect.md'
         - '%{_userunitdir}/*.target'
         - '%{_userunitdir}/*.service'
+
+    - Name:  gather-logs-contrib
+      Version: 0.1
+      Summary: Log gathering contributions for %{name}
+      Group: Applications
+      Description: |
+          %{summary}.
+
+          %if "%{?vendor}" == "chum"
+          PackageName: Log collecting contributions for Bugger!
+          Type: addon
+          Categories:
+           - Utility
+          Custom:
+            Repo: https://github.com/sailfishos-chum/bugger
+          %endif
+
+      Requires:
+        - '%{name}-gather-logs'
+      BuildArch: noarch
+      AutoDepend: false
+      Files:
+        - '%{_datadir}/%{name}/scripts/gather-logs-*.sh'

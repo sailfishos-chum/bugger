@@ -75,6 +75,26 @@ Custom:
 %endif
 
 
+%package gather-logs-contrib
+Summary:    Log gathering contributions for %{name}
+Group:      Applications
+Version:    0.1
+BuildArch:  noarch
+Requires:   %{name}-gather-logs
+
+%description gather-logs-contrib
+%{summary}.
+
+%if "%{?vendor}" == "chum"
+PackageName: Log collecting contributions for Bugger!
+Type: addon
+Categories:
+ - Utility
+Custom:
+  Repo: https://github.com/sailfishos-chum/bugger
+%endif
+
+
 %prep
 %setup -q -n %{name}-%{version}
 
@@ -151,3 +171,9 @@ desktop-file-install --delete-original       \
 %{_userunitdir}/*.service
 # >> files gather-logs
 # << files gather-logs
+
+%files gather-logs-contrib
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/scripts/gather-logs-*.sh
+# >> files gather-logs-contrib
+# << files gather-logs-contrib

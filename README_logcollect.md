@@ -3,6 +3,8 @@
 Bugger! provides a systemd Target as well as a Service Template to facilitate
 "plug-in" functionality for log gathering.
 
+### Adding a script to the log collector:
+
 In order to add your script to the Bugger! log collector, do the following:
 
 1. create a POSIX shell script which outputs logging to standard output
@@ -15,7 +17,7 @@ In order to add your script to the Bugger! log collector, do the following:
    dependency on the `harbour-bugger-gather-logs.target` target, which is
    called by the app.
 
-Notes:
+*Notes:*
 
  - Bugger! will run the log creation, but will not add the created log files in
    the app. Users will have to select them manually.
@@ -28,10 +30,24 @@ Notes:
  - scripts are run in systemd user scope. You can't be root. If you need to be
    root, use `pkexec` to prompt users for the lock code/fingerprint.
 
-
 Of course, you are free to not use the Service Template and just depend on the
 Target from any custom systemd services you have written.
 
 If your log collecting script is part of a package, you can depend on
 `harbour-bugger-gather-logs` to make sure the infrastructure is installed.
+
+### Example
+
+A very basig "Hello World" example is in the `contrib` folder and part of the
+`harbour-bugger-gather-logs-contrib` package.
+
+Is places a script in `/usr/share/harbour-bugger/scripts` and can be activated by doing
+
+    systemctl --user enable harbour-bugger-gather-logs-plugin@hello-world.service`
+
+### Submitting scripts
+
+If you would like to add a log collection script to the -contrib package,
+please file a Pull Request, placing the script in the `contrib` directory.
+
 
