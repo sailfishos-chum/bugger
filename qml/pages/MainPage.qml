@@ -417,7 +417,7 @@ Page {
                         var d = filesModel.get(i)
                         //links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
                         if (d.title && d.pastedUrl) {
-                            links.push(' - [' + d.title.trim() + '](' + d.pastedUrl + ')  ')
+                            links.push(' - [' + d.title + '](' + d.pastedUrl + ')  ')
                         } else if (d.fileName && d.pastedUrl) {
                             links.push(' - [' + d.fileName + '](' + d.pastedUrl + ')  ')
                         }
