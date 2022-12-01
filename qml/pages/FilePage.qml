@@ -76,31 +76,40 @@ Dialog { id: page
     LogPaster   { id: paster } // uploads files to "pastebin"
     Connections {
         target: gather
+        /*
+         * mimic the selectedContentProperties schema from FilePicker and add to the model
+         */
         onLogCreatedChanged: {
-            // mimic the selectedContentProperties of the Picker and add to the model
-            const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
-            const d = []
+            //const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
+            const logBaseName = new Date().toISOString().substring(0,10) + "_" + config.gather.basename
+            const elements = []
             const o = {}
-            //const postfixes = [ ".log", ".json", "_kernel.log", "_kernel.json" ];
-            const postfixes = [ ".log", "_kernel.log" ];
+            //const postfixes = [ ".log", "_kernel.log" ];
+            const postfixes = config.gather.postfixes
+            const pretty    = config.gather.prettynames
             postfixes.forEach(function(postfix) {
                 o = {};
-                o["title"] = (
-                    ( (/_kernel/.test(postfix)) ? "Kernel" : "Journal" )
-                    + " "
-                    + ((/json/.test(postfix)) ? "(JSON)" : "" )
-                );
+                o["title"] = "";
+                const fn = logBaseName + postfix;
+                for ( var i = 0; i < pretty.length; ++i) {
+                    const re = new RegExp(pretty[i].pattern);
+                    if (re.test(postfix)) {
+                        console.debug("found pretty name", pretty[i].name, "from pattern", pretty[i].pattern, "for filename", fn)
+                        o["title"] = pretty[i].name;
+                        break;
+                    }
+                };
                 o["mimeType"]   = (/json$/.test(postfix)) ? "application/json" : "text/plain";
                 o["fileName"]   = logBaseName + postfix;
                 o["filePath"]   = StandardPaths.documents + "/" + o["fileName"];
                 o["url"]        = Qt.resolvedUrl(o["filePath"]);
                 o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
                 o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
-                //console.debug("Adding:", JSON.stringify(o,null,2))
-                d.push(o)
+                console.debug("Adding:", JSON.stringify(o,null,2))
+                elements.push(o)
             })
             // add the generated information to the model
-            d.forEach(function(element) { filesModel.append(element)})
+            elements.forEach(function(element) { filesModel.append(element)})
             loadFiles()
         }
     }

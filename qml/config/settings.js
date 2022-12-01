@@ -16,6 +16,15 @@ var config = {
         "host":      'forum.sailfishos.org',
         "uri":       '/uploads.json'
     },
+    "gather": {
+        "basename":     "harbour-bugger-gather-logs",
+        "postfixes":    [ ".log", "_kernel.log" ],
+        "prettynames":  [
+            { "pattern": "/_kernel/",  "name": "Kernel" },
+            { "pattern": "/_android/", "name": "Android" },
+            { "pattern": "/_hybris/",  "name": "Hybris" },
+        ]
+    },
     "paste": {
         "scheme":    'https',
         "host":      'paste.mozilla.org',
