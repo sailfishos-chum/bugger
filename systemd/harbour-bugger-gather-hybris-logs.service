@@ -19,7 +19,7 @@ Type=oneshot
 ProtectSystem=full
 ReadWritePaths=%h/Documents
 ExecStartPre=/bin/sh -c '/usr/bin/systemctl is-active --quiet droid-hal-init.service'
-ExecStart=/usr/bin/pkexec /bin/sh -c "\
+ExecStart=/bin/sh -c "\
     /usr/libexec/droid-hybris/system/bin/logcat -d > %h/Documents/$(date -I)_%N.log; \
     /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N.log; \
     /usr/bin/chown %u    %h/Documents/$(date -I)_%N.log; \
