@@ -132,7 +132,7 @@ desktop-file-install --delete-original       \
 # >> preun gather-logs
 %systemd_user_preun harbour-bugger-gather-logs.target
 %systemd_user_preun harbour-bugger-gather-logs.service
-%systemd_user_preun harbour-bugger-gather-logs-plugin@.service
+#%%systemd_user_preun harbour-bugger-gather-logs-plugin@.service
 %systemd_user_preun harbour-bugger-gather-logs_android.service
 %systemd_user_preun harbour-bugger-gather-logs_hybris.service
 # << preun gather-logs
@@ -141,7 +141,7 @@ desktop-file-install --delete-original       \
 # >> post gather-logs
 %systemd_user_post harbour-bugger-gather-logs.target
 %systemd_user_post harbour-bugger-gather-logs.service
-%systemd_user_post harbour-bugger-gather-logs-plugin@.service
+#%%systemd_user_post harbour-bugger-gather-logs-plugin@.service
 %systemd_user_post harbour-bugger-gather-logs_android.service
 %systemd_user_post harbour-bugger-gather-logs_hybris.service
 # << post gather-logs
@@ -150,7 +150,7 @@ desktop-file-install --delete-original       \
 # >> postun gather-logs
 %systemd_user_postun harbour-bugger-gather-logs.target
 %systemd_user_postun harbour-bugger-gather-logs.service
-%systemd_user_postun harbour-bugger-gather-logs-plugin@.service
+#%%systemd_user_postun harbour-bugger-gather-logs-plugin@.service
 %systemd_user_postun harbour-bugger-gather-logs_android.service
 %systemd_user_postun harbour-bugger-gather-logs_hybris.service
 # << postun gather-logs
