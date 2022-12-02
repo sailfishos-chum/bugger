@@ -91,77 +91,77 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     <message>
         <location filename="../qml/pages/FilePage.qml" line="51"/>
         <source>Select log files to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj loggfiler att lägga till</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="115"/>
         <source>Uploading finished: %1 successful, %2 error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppladdning slutförd: %1 felfritt, %2 fel.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="121"/>
         <source>uploading %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>laddar upp %1/%2</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="131"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillbaka</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="132"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillämpa</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="133"/>
         <source>Gather Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Samla filer</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="145"/>
         <source>Here you can gather and add log files, which will be uploaded to a &apos;Pastebin&apos; type of service, and added as links to your Bug Report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Här kan du samla in och lägga till loggfiler, som laddas upp till en &quot;Pastebin-tjänst&quot; och läggs till som länkar i din felrapport.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="147"/>
         <source>Use the Pulley Menu to populate the file list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd dragmenyn för att fylla fillistan.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="148"/>
         <source>Long press on a file in the list to remove.</source>
-        <translation type="unfinished"></translation>
+        <translation>Långtryck på en fil i listan, för att ta bort.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="149"/>
         <source>Finally, use the Pulley Menu to upload the data and add the links.</source>
-        <translation type="unfinished"></translation>
+        <translation>Slutligen använder du dragmenyn för att ladda upp data och lägga till länkarna.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="151"/>
         <source>The data will be uploaded to %1, and be publicly available. Be sure you don&apos;t add private or confidential information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Data laddas upp till %1 och är offentligt tillgängliga. Tillse att du inte lägger till privat eller konfidentiell information.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="159"/>
         <source>List of files to upload</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista över filer att ladda upp</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="167"/>
         <source>Upload Contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladda upp innehåll</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="168"/>
         <source>Add Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till filer</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="169"/>
         <source>Collect Logs</source>
-        <translation type="unfinished"></translation>
+        <translation>Samla in loggar</translation>
     </message>
 </context>
 <context>
@@ -213,7 +213,27 @@ Testing: https://docs.sailfishos.org/Develop/Platform/Testing_Advice/
 
 Wiki: https://forum.sailfishos.org/t/12751/3
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+Läs riktlinjerna och följ mallen när du skapar en felrapport.
+
+Riktlinjer: https://forum.sailfishos.org/t/22
+
+Om du är osäker på hur du fyller i mallen rekommenderar vi att du först frågar om ditt problem, i forumets kategori Allmänt.
+
+Allmänt: https://forum.sailfishos.org/c/15
+
+Information om felsökning och insamling av loggar hittas här:
+
+Jollas logginsamlingsskript: https://jolla.zendesk.com/hc/en-us/articles/360013910599
+
+Jolla-artikel om loggar för vissa speciella användningsfall: https://jolla.zendesk.com/hc/en-us/articles/4405752484242
+
+Andra artiklar om logginsamling: https://jolla.zendesk.com/hc/en-us/search?utf8=✓&amp;query=Logs
+
+Testning: https://docs.sailfishos.org/Develop/Platform/Testing_Advice/
+
+Wiki: https://forum.sailfishos.org/t/12751/3
+</translation>
     </message>
 </context>
 <context>
@@ -229,18 +249,18 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/components/LogGatherer.qml" line="73"/>
         <source>Log gathering successsful!</source>
-        <translation type="unfinished"></translation>
+        <translation>Logginsamling slutförd!</translation>
     </message>
     <message>
         <location filename="../qml/components/LogGatherer.qml" line="76"/>
         <source>Log gathering failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Logginsamling misslyckades!</translation>
     </message>
     <message>
         <location filename="../qml/components/LogGatherer.qml" line="116"/>
         <location filename="../qml/components/LogGatherer.qml" line="130"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta</translation>
     </message>
 </context>
 <context>
@@ -249,7 +269,7 @@ Wiki: https://forum.sailfishos.org/t/12751/3
         <location filename="../qml/components/LogPaster.qml" line="75"/>
         <source>Error uploading: %1 - %2</source>
         <comment>%1: error code, %2: error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fel vid uppladdning: %1 - %2</translation>
     </message>
 </context>
 <context>
@@ -257,7 +277,7 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="52"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort</translation>
     </message>
 </context>
 <context>
@@ -507,17 +527,17 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/pages/MainPage.qml" line="396"/>
         <source>Links/Attachments (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Länkar/Bilagor (%1)</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="408"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="409"/>
         <source>Add Logfiles</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till loggfiler</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="418"/>
