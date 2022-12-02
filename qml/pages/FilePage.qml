@@ -56,9 +56,13 @@ Dialog { id: page
             onAccepted: {
                 if (acceptedHandled) return
                 for (var i = 0; i < selectedContent.count; ++i) {
-                    filesModel.append(selectedContent.get(i))
+                    var o = selectedContent.get(i)
+                    o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
+                    o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
+                    filesModel.append(o)
+                    console.debug("added", i+1, "of" , selectedContent.count,  "files:")
+                    console.debug(JSON.stringify(o, null, 2))
                 }
-                loadFiles()
                 acceptedHandled=true
             }
         }
@@ -66,6 +70,7 @@ Dialog { id: page
 
     function loadFiles() {
         loader.model = filesModel
+        loader.reload()
     }
     function upload() {
         paster.model = filesModel
@@ -78,6 +83,17 @@ Dialog { id: page
         target: gather
         /*
          * mimic the selectedContentProperties schema from FilePicker and add to the model
+         *
+         * {
+             "contentType": 6,
+             "fileName": "2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "filePath": "/home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "fileSize": 439122,
+             "mimeType": "text/x-log",
+             "title": "2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "url": "file:///home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "url": "file:///home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log"
+           }
          */
         onLogCreatedChanged: {
             //const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
@@ -103,6 +119,7 @@ Dialog { id: page
                 o["fileName"]   = logBaseName + postfix;
                 o["filePath"]   = StandardPaths.documents + "/" + o["fileName"];
                 o["url"]        = Qt.resolvedUrl(o["filePath"]);
+                o["fileSize"]   = -1; // prepare property so we don't need dynamicRoles
                 o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
                 o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
                 console.debug("Adding:", JSON.stringify(o,null,2))
@@ -125,7 +142,8 @@ Dialog { id: page
             if (paster.uploading !== "") {
                 console.debug("uploading", paster.uploading)
                 progress.visible = true
-                progress.label = qsTr("uploading %1/%2").arg(paster.successCount + 1).arg(filesModel.count)
+                //progress.label = qsTr("uploading %1/%2").arg(paster.successCount + 1).arg(filesModel.count)
+                progress.label = qsTr("uploading %1 files, %2 done").arg(filesModel.count).arg(paster.successCount)
             }
         }
     }
