@@ -178,6 +178,6 @@ desktop-file-install --delete-original       \
 
 %files gather-logs-contrib
 %defattr(-,root,root,-)
-%attri(0755,root,root) %{_datadir}/%{name}/scripts/gather-logs-*.sh
+%attr(0755,root,root) %{_datadir}/%{name}/scripts/gather-logs-*.sh
 # >> files gather-logs-contrib
 # << files gather-logs-contrib
