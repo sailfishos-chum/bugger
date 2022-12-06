@@ -135,4 +135,4 @@ SubPackages:
       BuildArch: noarch
       AutoDepend: false
       Files:
-        - '%{_datadir}/%{name}/scripts/gather-logs-*.sh'
+        - '%attri(0755,root,root) %{_datadir}/%{name}/scripts/gather-logs-*.sh'
