@@ -6,6 +6,10 @@ var config = {
         "ssu": 'file:///etc/ssu/ssu.ini',
         "pm":  'file:///etc/patchmanager2.conf'
     },
+    "email": {
+        "to": "support@jolla.com",
+        "subject": "[Bugger] Log Files"
+    },
     "submit": {
         "scheme":    'https',
         "host":      'forum.sailfishos.org',
