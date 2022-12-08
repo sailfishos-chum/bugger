@@ -20,15 +20,8 @@ limitations under the License.
 
 import QtQuick 2.6
 import Nemo.DBus 2.0
+DBusInterface {
 
-QtObject {
-    id: page
-
-    function newMail(subject, to, body) {
-        mailface.new(subject, to, body)
-    }
-
-    DbusInterface {
     /*
     <node name="com.jolla.email.ui">
         <interface name="com.jolla.email.ui">
@@ -39,18 +32,17 @@ QtObject {
         <arg name="emailBcc" type="s" direction="in" />
         <arg name="emailBody" type="s" direction="in" />
         </method>
-        */
+    */
 
-        service: "com.jolla.email.ui"
-        iface:   "com.jolla.email.ui"
-        path:   "com/jolla/email/ui"
-        function new(subject, to, body) {
-            call('compose',
-                [subject, to, '', '', body,],
-                function(result) { }, //console.debug("Job:",       JSON.stringify(result))
-                function(result) { console.warn(qsTr("New Mai;"), JSON.stringify(result)) }
-            );
-        }
+    service: "com.jolla.email.ui"
+    iface:   "com.jolla.email.ui"
+    path:   "com/jolla/email/ui"
+    function newMail(subject, to, cc, bcc, body) {
+        call('compose',
+            [subject, to, cc, bcc, body,],
+            function(result) { console.debug(qsTr("New Mail"), JSON.stringify(result)) },
+            function(result) { console.warn(qsTr("New Mail"), JSON.stringify(result)) }
+        );
     }
 }
 
