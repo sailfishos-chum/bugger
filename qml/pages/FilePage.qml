@@ -76,6 +76,55 @@ Dialog { id: page
         paster.model = filesModel
     }
     function startGatherer()   { gather.start() }
+    function email()   {
+        //sharer.share()
+        const body = "This is a Test."
+        const content = encodeURI("mailto:" + config.email.to
+            + "?subject=" + config.email.subject + " " + Math.random()
+            + "&body=" + body
+            )
+        var res = [
+            //{ "data": content }
+            body,
+        ];
+        console.debug("Sharing: ", filesModel.count, " elements")
+        for (var i = 0; i < filesModel.count; ++i) {
+            const f = filesModel.get(i)
+            if (f.dataStr.length > 0) {
+                console.debug("Sharing: adding data")
+                res.push({ "data": f.dataStr, "linkTitle": f.title,  "name": f.fileName })
+            } else if (f.filePath.length > 0) {
+                res.push( f.filePath )
+                console.debug("Sharing: adding path")
+            } else {
+                console.warn("Sharing: trying to add element with no content")
+            }
+        }
+        sharer.resources = res;
+        console.debug("Sharing: ", res)
+        sharer.trigger();
+        // TODO: use an URL to mail:
+        /*
+        const body = "This is a Test."
+        Qt.openUrlExternally(encodeURI("mailto:" + config.email.to
+            + "?subject=" + config.email.subject + " " + Math.random()
+            + "&body=" + body
+        ))
+        /*
+        return;
+        // TODO: use the com.jolla.email DBus interface:
+        /*
+        mailer.newMail(
+            config.email.subject + " "+ Math.random(),
+            config.email.to,
+            '',
+            '',
+            body
+        )
+        */
+    }
+    //LogMailer   { id: mailer } // calls jolla-email, Issue #29
+    LogShare    { id: sharer } // calls Share by Email, Issue #29
     LogGatherer { id: gather } // executes systemd things
     LogLoader   { id: loader } // gets file contents
     LogPaster   { id: paster } // uploads files to "pastebin"
@@ -184,7 +233,8 @@ Dialog { id: page
         VerticalScrollDecorator {}
         PullDownMenu { id: pdm
             flickable: flick
-            MenuItem { text: qsTr("Upload Contents"); onClicked: { upload() } }
+            MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;     onClicked: { email() } }
+            MenuItem { text: qsTr("Upload Contents"); enabled: filesModel.count > 0; onClicked: { upload() } }
             MenuItem { text: qsTr("Add Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
         }
