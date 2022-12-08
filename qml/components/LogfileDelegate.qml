@@ -67,6 +67,7 @@ GridItem { id: root
     }
     menu: ContextMenu {
         width: (parent) ? parent.width : 0 // gives a log warning but works ;)
+        MenuItem { text: qsTr("View"); onClicked: { pageStack.push("../pages/LogViewPage.qml", { "fileData": model.dataStr, "fileName": model.fileName }) } }
         MenuItem { text: qsTr("Remove"); onClicked: remorseDelete(function(){ filesModel.remove(index) }) }
     }
 }
