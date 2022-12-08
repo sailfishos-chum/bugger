@@ -108,14 +108,13 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Wähle Logdateien</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="113"/>
+        <location filename="../qml/pages/FilePage.qml" line="139"/>
         <source>Uploading finished: %1 successful, %2 error.</source>
         <translation>Raufladen beendet: %1 erfolgreich, %2 mit Fehlern.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="119"/>
         <source>uploading %1/%2</source>
-        <translation>Lade %1/%2 hinauf</translation>
+        <translation type="vanished">Lade %1/%2 hinauf</translation>
     </message>
     <message>
         <source>Back</source>
@@ -126,52 +125,57 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation type="vanished">OK</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="127"/>
+        <location filename="../qml/pages/FilePage.qml" line="146"/>
+        <source>uploading %1 files, %2 done</source>
+        <translation>hochladen: %1 Datei(en), %2 fertig</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="154"/>
         <source>Gather Files</source>
         <translation>Daten sammeln</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="138"/>
+        <location filename="../qml/pages/FilePage.qml" line="165"/>
         <source>Here you can gather and add log files, which will be uploaded to a &apos;Pastebin&apos; type of service, and added as links to your Bug Report.</source>
         <translation>Hier kannst du Dateien hinzufügen, die auf ein &apos;Pastebin&apos;-Service hinaufgeladen werden, und als Verknüpfungen dem Bugreport hinzugefügt werden.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="140"/>
+        <location filename="../qml/pages/FilePage.qml" line="167"/>
         <source>Use the Pulley Menu to populate the file list.</source>
         <translation>Verwende das Zieh-Menü, um die Liste der Dateien zu befüllen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="141"/>
+        <location filename="../qml/pages/FilePage.qml" line="168"/>
         <source>Long press on a file in the list to remove.</source>
         <translation>Zum Entfernen, halte das Element in der Liste gedrückt.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="142"/>
+        <location filename="../qml/pages/FilePage.qml" line="169"/>
         <source>Finally, use the Pulley Menu to upload the data and add the links.</source>
         <translation>Zum Schluss verwende das Ziehmenü, um die Daten hinzufzuladen und die Verknüpfungen zu erstellen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="144"/>
+        <location filename="../qml/pages/FilePage.qml" line="171"/>
         <source>The data will be uploaded to %1, and be publicly available. Be sure you don&apos;t add private or confidential information.</source>
         <translation>Die Daten werden auf %1 hinaufgeladen und dind dann öffentlich zugänglich. Stelle sicher, daß keine privaten oder geheimen Daten dort landen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="152"/>
+        <location filename="../qml/pages/FilePage.qml" line="179"/>
         <source>List of files to upload</source>
         <translation>Liste der Dateien</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="160"/>
+        <location filename="../qml/pages/FilePage.qml" line="187"/>
         <source>Upload Contents</source>
         <translation>Inhalte hinaufladen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="161"/>
+        <location filename="../qml/pages/FilePage.qml" line="188"/>
         <source>Add Files</source>
         <translation>Dateien hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="162"/>
+        <location filename="../qml/pages/FilePage.qml" line="189"/>
         <source>Collect Logs</source>
         <translation>Logdateien sammeln</translation>
     </message>
@@ -264,11 +268,19 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     </message>
 </context>
 <context>
+    <name>LogViewPage</name>
+    <message>
+        <location filename="../qml/pages/LogViewPage.qml" line="32"/>
+        <source>Log File</source>
+        <translation>Logdatei</translation>
+    </message>
+</context>
+<context>
     <name>LogfileDelegate</name>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="62"/>
         <source>uploaded</source>
-        <translation>raufgeladen</translation>
+        <translation>hinaufgeladen</translation>
     </message>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="62"/>
@@ -277,6 +289,16 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     </message>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="70"/>
+        <source></source>
+        <translation>nicht hinaufgeladen</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/LogfileDelegate.qml" line="70"/>
+        <source>View</source>
+        <translation>Ansehen</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/LogfileDelegate.qml" line="71"/>
         <source>Remove</source>
         <translation>Entfernen</translation>
     </message>
@@ -322,7 +344,7 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="165"/>
-        <location filename="../qml/pages/MainPage.qml" line="461"/>
+        <location filename="../qml/pages/MainPage.qml" line="460"/>
         <source>Please fill in the required fields</source>
         <translation>Bitte fülle die Pflichtfelder aus</translation>
     </message>
@@ -343,7 +365,7 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/pages/MainPage.qml" line="171"/>
         <location filename="../qml/pages/MainPage.qml" line="285"/>
-        <location filename="../qml/pages/MainPage.qml" line="462"/>
+        <location filename="../qml/pages/MainPage.qml" line="461"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
@@ -389,20 +411,20 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/pages/MainPage.qml" line="177"/>
         <location filename="../qml/pages/MainPage.qml" line="296"/>
-        <location filename="../qml/pages/MainPage.qml" line="463"/>
+        <location filename="../qml/pages/MainPage.qml" line="462"/>
         <source>Description</source>
         <translation>Beschreibung</translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="461"/>
         <location filename="../qml/pages/MainPage.qml" line="462"/>
         <location filename="../qml/pages/MainPage.qml" line="463"/>
-        <location filename="../qml/pages/MainPage.qml" line="464"/>
         <source>%1 field is incomplete</source>
         <translation>Feld %1 ist unvollständig</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="183"/>
-        <location filename="../qml/pages/MainPage.qml" line="464"/>
+        <location filename="../qml/pages/MainPage.qml" line="463"/>
         <source>Steps</source>
         <translation>Schritte</translation>
     </message>
@@ -590,52 +612,52 @@ Wiki: https://forum.sailfishos.org/t/12751/3
         <translation>eigene Veränderungen, installierte Pakete usw.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="423"/>
+        <location filename="../qml/pages/MainPage.qml" line="422"/>
         <source>Links/Attachments (%1)</source>
         <translation>Verknüpfungen/Anlagen (%1)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="435"/>
+        <location filename="../qml/pages/MainPage.qml" line="434"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="436"/>
+        <location filename="../qml/pages/MainPage.qml" line="435"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="437"/>
+        <location filename="../qml/pages/MainPage.qml" line="436"/>
         <source>Add Logfiles</source>
         <translation>Logdateien hizufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="454"/>
+        <location filename="../qml/pages/MainPage.qml" line="453"/>
         <source>Reset all to default</source>
         <translation>Auf Default zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="454"/>
+        <location filename="../qml/pages/MainPage.qml" line="453"/>
         <source>Cleared.</source>
         <translation>Gelöscht.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="460"/>
+        <location filename="../qml/pages/MainPage.qml" line="459"/>
         <source>Bug quality is: %1 </source>
         <translation>Die Qualität ist %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="461"/>
+        <location filename="../qml/pages/MainPage.qml" line="460"/>
         <source>(marked with an asterisk (*))!</source>
         <translation>(mit Sternchen (*) markiert!)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="465"/>
+        <location filename="../qml/pages/MainPage.qml" line="464"/>
         <source>Post Bug Report</source>
         <translation>Bugreport abschicken</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="652"/>
+        <location filename="../qml/pages/MainPage.qml" line="651"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Gespeicherte Inhalte wurden geladen.</translation>
     </message>
