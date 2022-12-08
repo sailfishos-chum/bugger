@@ -22,9 +22,12 @@ import QtQuick 2.6
 import Sailfish.Share 1.0
 
 ShareAction { id: shareAction
-    mimeType: "text/x-url"
-    //onDone: {
-    //}
+    mimeType: "text/x-url" // apparently this reduces the app list and includes email
+    title: qsTr("Share %1 log files").arg(resources.length)
+    onDone: {
+        console.debug("Share data info:", JSON.stringify(shareAction.resources))
+        console.debug("Transfer info:", JSON.stringify(shareAction.selectedTransferMethodInfo))
+    }
 }
 
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript

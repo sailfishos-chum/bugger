@@ -21,6 +21,8 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
+//import Nemo.Email 0.1
+import com.jolla.email 1.1
 import "../components"
 import "../config/settings.js" as Settings
 
@@ -76,6 +78,62 @@ Dialog { id: page
         paster.model = filesModel
     }
     function startGatherer()   { gather.start() }
+    /*
+    EmailAccount { id: mail
+        accountId: 83
+        property alias body:        msg.body
+        property alias from:        msg.from
+        property alias to:          msg.to
+        property alias subject:     msg.subject
+        property alias attachments: msg.attachments
+        function saveDraft() { msg.saveDraft() }
+        function send() { msg.send() }
+    }
+    */
+    /*
+    EmailMessage { id: mail
+        onSendEnqueued: console.debug("Message enqueued:", JSON.stringify(mail,null,2))
+        onSendCompleted: console.debug("Message sent")
+    }
+    */
+    EmailComposer { id: mail
+        accountId: 83
+    }
+    /*
+    function emailmessage() {
+        const files = []
+        for (var i = 0; i < filesModel.count; ++i) {
+            const f = filesModel.get(i)
+            if (f.filePath.length > 0) {
+                files.push( f.filePath )
+            }
+        }
+        mail.body = "This is a Test.";
+        //mail.to  = [ config.email.to ]
+        mail.to  = [ "sailfish@nephros.org" ]
+        mail.from  = "peter@nephros.org"
+        mail.subject = config.email.subject + " " + Math.random();
+        mail.attachments = files
+        mail.saveDraft()
+        mail.send()
+    }
+    */
+    function emailmessage() {
+        const files = []
+        for (var i = 0; i < filesModel.count; ++i) {
+            const f = filesModel.get(i)
+            if (f.filePath.length > 0) {
+                files.push( f.filePath )
+            }
+        }
+        mail.emailBody = "This is a Test.";
+        //mail.to  = [ config.email.to ]
+        mail.emailTo  = [ "sailfish@nephros.org" ]
+        //mail.emailFrom  = "peter@nephros.org"
+        mail.emailSubject = config.email.subject + " " + Math.random();
+        //mail.attachmentsModel = filesModel
+        mail.sendMessage()
+    }
     function email()   {
         //sharer.share()
         const body = "This is a Test."
@@ -233,6 +291,7 @@ Dialog { id: page
         VerticalScrollDecorator {}
         PullDownMenu { id: pdm
             flickable: flick
+            MenuItem { text: qsTr("Send E-Mail Message"); enabled: filesModel.count > 0;     onClicked: { emailmessage() } }
             MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;     onClicked: { email() } }
             MenuItem { text: qsTr("Upload Contents"); enabled: filesModel.count > 0; onClicked: { upload() } }
             MenuItem { text: qsTr("Add Files"); onClicked: pageStack.push(picker) }
