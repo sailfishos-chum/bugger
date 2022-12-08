@@ -1,3 +1,9 @@
+* Thu Dec  8 2022 Nephros <sailfish@nephros.org> - 0.10.5
+- add option to view logs (#32)
+
+* Mon Nov 28 2022 Nephros <sailfish@nephros.org> - 0.10.4
+- various improvements to the log collecting plugin system
+
 * Fri Dec  2 2022 Nephros <sailfish@nephros.org> - 0.10.3
 - Beta Release (#27)
 - add systemd-based log collecting plugin system
