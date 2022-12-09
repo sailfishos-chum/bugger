@@ -36,7 +36,7 @@ DBusInterface {
 
     service: "com.jolla.email.ui"
     iface:   "com.jolla.email.ui"
-    path:   "com/jolla/email/ui"
+    path:   "/com/jolla/email/ui"
     function newMail(subject, to, cc, bcc, body) {
         call('compose',
             [subject, to, cc, bcc, body,],
