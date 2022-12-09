@@ -76,7 +76,7 @@ Dialog { id: page
         paster.model = filesModel
     }
     function startGatherer()   { gather.start() }
-    function email()   {
+    function emailshare()   {
         //sharer.share()
         const body = "This is a Test."
         const content = encodeURI("mailto:" + config.email.to
@@ -103,17 +103,47 @@ Dialog { id: page
         sharer.resources = res;
         console.debug("Sharing: ", res)
         sharer.trigger();
-        // TODO: use an URL to mail:
-        /*
-        const body = "This is a Test."
-        Qt.openUrlExternally(encodeURI("mailto:" + config.email.to
-            + "?subject=" + config.email.subject + " " + Math.random()
-            + "&body=" + body
-        ))
-        /*
-        return;
-        // TODO: use the com.jolla.email DBus interface:
-        /*
+    }
+    function email() {
+        console.time("Constructed Email in")
+        const body = ''
+        //const crlf = '\r\n'
+        //const mboundary = 'mixed_boundary' + Math.random().toString(14).substr(2, 12)
+        //const rboundary = 'related_boundary' + Math.random().toString(14).substr(2, 12)
+        //body += 'Content-Type: multipart/mixed; boundary="' + mboundary + '"' + crlf
+        //body += '--'+ mboundary + crlf
+        //body += 'Content-Type: text/plain' + crlf
+        //body += 'Content-Transfer-Encoding: 8bit' + crlf + crlf
+        //body += 'This email was created using ' + Qt.application.name + ' ' + Qt.application.version + '.\n\n'
+        //body += 'There should be ' + filesModel.count + ' files attached.\n\n'
+        //body += crlf + crlf
+        //body += '--'+ mboundary + crlf
+        //body += 'Content-Type: multipart/related; boundary="' + rboundary + '"' + crlf
+        //for (var i = 0; i < filesModel.count; ++i) {
+        //    const f = filesModel.get(i)
+        //    if (f.dataStr.length > 0) {
+        //        body += '--'+ rboundary + crlf
+        //        body += 'Content-Type: text/plain; name="' + f.fileName + '"' + crlf
+        //        body += 'Content-ID: ' +  f.fileName + crlf
+        //        body += 'Content-Transfer-Encoding: base64' + crlf + crlf
+        //        body += Qt.btoa(f.dataStr)  + crlf + crlf
+        //    }
+        //}
+        //// final boundaries
+        //body += crlf + crlf + '--'+ rboundary + '--' + crlf
+        //body += crlf + crlf + '--'+ mboundary + '--' + crlf
+        body += 'This email was created using ' + Qt.application.name + ' ' + Qt.application.version + '.\n\n'
+        body += 'There should be ' + filesModel.count + ' files attached.\n\n'
+        for (var i = 0; i < filesModel.count; ++i) {
+            const f = filesModel.get(i)
+            if (f.dataStr.length > 0) {
+                body += 'begin-base64 644 ' + f.fileName + '\n'
+                //body += Qt.btoa(f.dataStr) + '\n'
+                body += Qt.btoa(encodeURIComponent(f.dataStr).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) { return String.fromCharCode('0x' + p1) }))
+                body += '\n====' + '\n'
+            }
+        }
+        console.timeEnd("Constructed Email in")
         mailer.newMail(
             config.email.subject + " "+ Math.random(),
             config.email.to,
@@ -121,9 +151,9 @@ Dialog { id: page
             '',
             body
         )
-        */
     }
-    //LogMailer   { id: mailer } // calls jolla-email, Issue #29
+
+    LogMailer   { id: mailer } // calls jolla-email, Issue #29
     LogShare    { id: sharer } // calls Share by Email, Issue #29
     LogGatherer { id: gather } // executes systemd things
     LogLoader   { id: loader } // gets file contents
@@ -233,8 +263,9 @@ Dialog { id: page
         VerticalScrollDecorator {}
         PullDownMenu { id: pdm
             flickable: flick
-            MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;     onClicked: { email() } }
-            MenuItem { text: qsTr("Upload Contents"); enabled: filesModel.count > 0; onClicked: { upload() } }
+            MenuItem { text: qsTr("Share via E-Mail"); enabled: filesModel.count > 0; onClicked: { emailshare() } }
+            MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;      onClicked: { email() } }
+            MenuItem { text: qsTr("Upload Contents"); enabled: filesModel.count > 0;  onClicked: { upload() } }
             MenuItem { text: qsTr("Add Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
         }
