@@ -1,5 +1,5 @@
 * Fri Dec  2 2022 Nephros <sailfish@nephros.org> - 0.10.3
-- Beta Release (#27)
+- Beta Release (#21)
 - add systemd-based log collecting plugin system
 - collect systemd jounrnal automatically
 - allow user to add other files
@@ -8,13 +8,13 @@
 - Update Swedish translation (#23, eson)
 
 * Sun Nov 27 2022 Nephros <sailfish@nephros.org> - 0.10.2
-- add systemd-based log collecting plugin system (#27)
+- add systemd-based log collecting plugin system (#21)
 
 * Fri Nov 25 2022 Nephros <sailfish@nephros.org> - 0.10.1
-- log file uploading implemented (#27)
+- log file uploading implemented (#21)
 
 * Fri Nov 25 2022 Nephros <sailfish@nephros.org> - 0.10.0
-- begin work on collecting logs (#27)
+- begin work on collecting logs (#21)
 
 * Fri Sep 28 2022 Nephros <sailfish@nephros.org> - 0.9.9
 - positive feedback on Good bug report
