@@ -1,5 +1,6 @@
 [Unit]
 Description=Collect Android Support logcat file for Bugger!
+Documentation=https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Logs_with_Logcat
 
 After=lipstick-security-ui.service
 Requires=lipstick-security-ui.service
@@ -20,7 +21,12 @@ ProtectSystem=full
 ReadWritePaths=%h/Documents
 ExecStartPre=/bin/sh -c '/usr/bin/systemctl is-active --quiet aliendalvik.service'
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
-    /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > %h/Documents/$(date -I)_%N.log; \
+    if [ $(awk  -F= '/^VERSION_ID/ {print $2}' /etc/os-release | awk -F. '{print $1 $2 $3}') -ge 450 ]; \
+    then; \
+      /usr/bin/lxc-attach -n aliendalvik --lxcpath=/tmp/aliendalvik -- /system/bin/logcat -d > %h/Documents/$(date -I)_%N.log; \
+    else; \
+      /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > %h/Documents/$(date -I)_%N.log; \
+    fi; \
     /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N.log; \
     /usr/bin/chown %u    %h/Documents/$(date -I)_%N.log; \
 "
