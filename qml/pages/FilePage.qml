@@ -78,14 +78,24 @@ Dialog { id: page
     function startGatherer()   { gather.start() }
     function emailshare()   {
         //sharer.share()
-        const body = "This is a Test."
-        const content = encodeURI("mailto:" + config.email.to
-            + "?subject=" + config.email.subject + " " + Math.random()
-            + "&body=" + body
-            )
+        const body = ''
+        body += 'This email was created using ' + Qt.application.name + ' ' + Qt.application.version + '.\n\n'
+        body += 'There should be ' + filesModel.count + ' files attached.\n\n'
+        body += 'The UUID or this email and it contents is: ' +  Qt.md5("" + Date.now() + Math.random())
+        // this requires a patched jolla-email. See patch "patch-email-share-enhanced"
+        const appHint = {
+            "type" : "email",
+            "data": {
+                 "to":      config.email.to,
+                 "cc":      "",
+                 "bcc":     "",
+                 "subject": config.email.subject
+            }
+        }
         var res = [
-            //{ "data": content }
-            body,
+            { "type": "text/x-url", "linkTitle": body },
+            // this requires a patched jolla-email. See patch "patch-email-share-enhanced"
+            { "type": "text/x-sailfish-share-hints", "appHint": JSON.stringify(appHint) }
         ];
         console.debug("Sharing: ", filesModel.count, " elements")
         for (var i = 0; i < filesModel.count; ++i) {
@@ -145,7 +155,7 @@ Dialog { id: page
         }
         console.timeEnd("Constructed Email in")
         mailer.newMail(
-            config.email.subject + " "+ Math.random(),
+            config.email.subject,
             config.email.to,
             '',
             '',
