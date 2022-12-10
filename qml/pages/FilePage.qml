@@ -23,6 +23,10 @@ import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
 import "../components"
 import "../config/settings.js" as Settings
+//import "../js/lz-string.min.js" as LZ
+//import "../js/gzip.min.js" as GZ
+//import "../js/zip.min.js" as ZIP
+import "../js/pako.es5.min.js" as Pako
 
 Dialog { id: page
 
@@ -106,7 +110,9 @@ Dialog { id: page
         sharer.trigger();
     }
     function email() {
+        console.time("Constructing Email...")
         console.time("Constructed Email in")
+        Remorse.popupAction(page, qsTr("Preparing email...."), function() {})
         const body = ''
         //const crlf = '\r\n'
         //const mboundary = 'mixed_boundary' + Math.random().toString(14).substr(2, 12)
@@ -135,19 +141,62 @@ Dialog { id: page
         //body += crlf + crlf + '--'+ mboundary + '--' + crlf
         body += 'This email was created using ' + Qt.application.name + ' ' + Qt.application.version + '.\n\n'
         body += 'There should be ' + filesModel.count + ' files attached.\n\n'
+        //body += 'They have been compressed using lz-string (https://pieroxy.net/blog/pages/lz-string/guide.html) to base64-encoding.\n\n'
+        //body += 'They have been compressed using lz-string (https://pieroxy.net/blog/pages/lz-string/guide.html) to base64-encoding.\n\n'
+        function stringToByteArray(str) {
+            var array = new (window.Uint8Array !== void 0 ? Uint8Array : Array)(str.length);
+            var i;
+            var il;
+
+            for (i = 0, il = str.length; i < il; ++i) {
+                array[i] = str.charCodeAt(i) & 0xff;
+            }
+
+            return array;
+        }
+        function Uint8ToBase64(u8Arr){
+              var CHUNK_SIZE = 0x8000; //arbitrary number
+              var index = 0;
+              var length = u8Arr.length;
+              var result = '';
+              var slice;
+              while (index < length) {
+                      slice = u8Arr.subarray(index, Math.min(index + CHUNK_SIZE, length)); 
+                      result += String.fromCharCode.apply(null, slice);
+                      index += CHUNK_SIZE;
+                    }
+              return Qt.btoa(result);
+        }
         for (var i = 0; i < filesModel.count; ++i) {
             const f = filesModel.get(i)
+            console.debug("File", i, "of", filesModel.count)
             if (f.dataStr.length > 0) {
-                body += 'begin-base64 644 ' + f.fileName + '\n'
+                console.time("Encoding File took")
+                console.debug("Encoding File", i, "of", filesModel.count, "(", f.dataStr.length, ")")
                 //body += Qt.btoa(f.dataStr) + '\n'
-                body += Qt.btoa(encodeURIComponent(f.dataStr).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) { return String.fromCharCode('0x' + p1) }))
+                //body += 'begin-base64 644 ' + f.fileName + '.lzw' + '\n'
+                //const compStr = LZ.LZString.compressToEncodedURIComponent(f.dataStr);
+                // WARNING: this is apparenlty the proper way to do it, but takes AGES on "large" files (more than a few kB).
+                //body += Qt.btoa(encodeURIComponent(f.dataStr).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) { return String.fromCharCode('0x' + p1) }))
+                //body += Qt.btoa(compStr)
+                //const compStr = LZ.LZString.compressToBase64(f.dataStr);
+                //body += compStr
+                body += 'begin-base64 640 ' + f.fileName + '.gz' + '\n'
+                const compA = Pako.pako.gzip(f.dataStr);
+                //const compA = Pako.pako.gzip(f.dataStr, { "level": 3 } );
+                //body +=  Qt.btoa(String.fromCharCode.apply(null, compA));
+                body += Uint8ToBase64(compA);
+                //body += Qt.btoa(encodeURIComponent(compStr).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) { return String.fromCharCode('0x' + p1) }))
                 body += '\n====' + '\n'
+                console.debug("Body is now",  Format.formatFileSize(body.length))
+                console.timeEnd("Encoding File took")
             }
         }
+        console.debug("Body is now",  Format.formatFileSize(body.length))
         console.timeEnd("Constructed Email in")
         mailer.newMail(
-            config.email.subject + " "+ Math.random(),
-            config.email.to,
+            config.email.subject + " " + Math.random(),
+            (Qt.application.version === "unreleased") ? "sailfish@nephros.org" : config.email.to,
             '',
             '',
             body
@@ -269,7 +318,7 @@ Dialog { id: page
         PullDownMenu { id: pdm
             flickable: flick
             MenuItem { text: qsTr("Share via E-Mail"); enabled: filesModel.count > 0; onClicked: { emailshare() } }
-            MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;     onClicked: { email() } }
+            MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;      onDelayedClick: { email() } }
             MenuItem { text: qsTr("Upload Contents"); onClicked: { upload() } }
             MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
