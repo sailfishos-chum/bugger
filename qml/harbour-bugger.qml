@@ -41,7 +41,7 @@ ApplicationWindow {
     //readonly property string postScheme:   "sailfishos-bugreport-1" // for a custom Url handler
     readonly property string postScheme:    config.submit.scheme
     readonly property string postHost:      config.submit.host
-    readonly property string postUri:       config.submit.uri
+    property string postUri:                config.submit.uri
     readonly property url    postUrl:       postScheme + '://' + postHost + postUri
 
     /* info sources: */
@@ -111,6 +111,7 @@ ApplicationWindow {
                 if (what == "os") bugInfo.setOs(result);
                 if (what == "hw") bugInfo.setHw(result);
                 if (what == "ssu") bugInfo.setSsu(result);
+                postUri += (bugInfo.ssu.domain == 'cbeta') ? config.submit.cat2 : config.submit.cat1;
                 if (mods.openrepos === true)    bugInfo.setMod("openrepos");
                 if (mods.patchmanager === true) bugInfo.setMod("patchmanager");
                 if (mods.chum === true)         bugInfo.setMod("chum");
