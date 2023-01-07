@@ -1,7 +1,10 @@
+* Sat Jan  7 2023 Nephros <sailfish@nephros.org> - 0.10.4
+- Select posting category depending on ssu domain (#33)
+
 * Fri Dec  2 2022 Nephros <sailfish@nephros.org> - 0.10.3
 - Beta Release (#21)
 - add systemd-based log collecting plugin system
-- collect systemd jounrnal automatically
+- collect systemd journal automatically
 - allow user to add other files
 - upload logs to paste.mozilla.org
 - add links to uploaded content to Forum post
