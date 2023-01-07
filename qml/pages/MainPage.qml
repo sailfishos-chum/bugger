@@ -22,6 +22,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import org.nemomobile.devicelock 1.0
 import org.nemomobile.systemsettings 1.0
+import org.nemomobile.ngf 1.0
 import "../components"
 import "../config/settings.js" as Settings
 import "../js/util.js" as Util
@@ -82,12 +83,15 @@ Page {
         "text_add":         "",
         "text_mod_other":   "",
         "regsw":            false,
+        "regsw.hasChanged": false,
         "regver":           -1,
         "regarch":          -1,
         "othersw":          false,
         "repro":            -1
     }
 
+    // Pavlov!! :)
+    NonGraphicalFeedback { id: postiveFeedback; event: "positive_confirmation" }
 
     /*
      * ***** DATA SOURCES *****
@@ -184,6 +188,7 @@ Page {
     }
     onQualityStringChanged: {
         if ( state === "good" || state === "full" ) {
+            postiveFeedback.play()
             app.popup(qsTr("Achievement unlocked! The quality of your bug report is %1!").arg(page.qualityString));
         }
     }
@@ -357,8 +362,10 @@ Page {
             }
             TextSwitch { id: regsw; checked: false;
                 text: qsTr("Regression (was working in a previous OS release)")
+                property bool hasChanged: false
                 automaticCheck: false
                 onClicked: {
+                    hasChanged = true;
                     checked = !checked;
                     if (!checked) {
                         regver.currentIndex  = -1
@@ -375,10 +382,10 @@ Page {
                 TextSwitch { id: orsw; checked: bugInfo.mods.openrepos;    text: "OpenRepos"    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
                 TextSwitch { id: chsw; checked: bugInfo.mods.chum;         text: "Chum"+ " "    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
                 TextSwitch { id: othersw; checked: false; text: qsTr("Other (please specify)") }
-                TextField { id: text_mod_other; enabled: othersw.checked
-                    // this has no label...
-                    placeholderText: qsTr("e.g. WayDroid and GApps installed")
-                    description: qsTr("custom changes, installed packages etc.")
+                TextArea { id: text_mod_other; enabled: othersw.checked
+                    width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
+                    description: qsTr("e.g. WayDroid and GApps installed")
+                    label: qsTr("custom changes, installed packages etc.")
                 }
             }
         }
@@ -387,6 +394,7 @@ Page {
     PullDownMenu { id: pdm
         flickable: flick
         MenuItem { text: qsTr("About"); onClicked: { pageStack.push(Qt.resolvedUrl("AboutPage.qml")) } }
+        MenuItem { text: qsTr("Help"); onClicked: { pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml")) } }
         MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Cleared."), function() { resetFields() }) } }
         //MenuItem { text: qsTr("Settings"); onClicked: { pageStack.push(Qt.resolvedUrl("SettingsPage.qml")) } }
     }
@@ -425,8 +433,8 @@ Page {
             + "OSVERSION: "     + bugInfo.os.version_id + "  \n"
             + "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
             + "UI LANGUAGE: "   + oslanguage + " (user: " + uilocale + ", os: " + oslocale + ")" + "  \n"
-            + "REGRESSION: "    + (regsw.checked?"yes":"no")
-            + ( regsw.checked
+            + "REGRESSION: "    + ((regsw.hasChanged) ? ((regsw.checked) ? "yes" : "no") : "not specified")
+            + ( (regsw.checked)
                 ? " (since: " + ((!!regver.value) ? regver.value : "n/a") + " - " + ((!!regarch.value) ? regarch.value : "n/a") + ")"
                 : ""
             )
@@ -449,10 +457,12 @@ Page {
             + "\n\n"
             + "MODIFICATIONS:\n"
             + "==========\n\n"
-            + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "  \n"
+            + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "\n"
             + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
             + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
-            + " - Other: "        + (othersw.checked?"yes":"no") + ":  \n"+ text_mod_other.text + "  \n"
+            + " - Other: "        + ((othersw.checked)
+                ? "yes: " + text_mod_other.text + "  \n"
+                : "none specified \n")
             + "\n\n"
             + "ADDITIONAL INFORMATION:\n"
             + "=================\n\n" + text_add.text
@@ -605,6 +615,7 @@ Page {
             text_add.text           = data.text_add;
             text_mod_other.text     = data.text_mod_other;
             regsw.checked           = data.regsw;
+            regsw.hasChanged        = data.regsw_haschanged;
             regver.currentIndex     = data.regver;
             regarch.currentIndex    = data.regarch;
             othersw.checked         = data.othersw;

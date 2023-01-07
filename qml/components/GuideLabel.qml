@@ -34,11 +34,15 @@ Please review the guidelines and follow the template when creating a bug report.
 
 Guidelines: https://forum.sailfishos.org/t/22
 
-If you are uncertain about how to fill out the template, we recommend asking about your issue in the General category first.
+If you are uncertain about how to fill out the report, we recommend asking about your issue in the General category of the Forum first:
 
 General: https://forum.sailfishos.org/c/15
 
-Software versions: Please indicate version number instead of current/latest, as every version has been current or latest at some point in time!
+Information about debugging and collecting logs can be found here:
+
+Testing: https://docs.sailfishos.org/Develop/Platform/Testing_Advice/
+
+Wiki: https://forum.sailfishos.org/t/12751/3
 ')
 }
 
