@@ -118,7 +118,6 @@ ApplicationWindow {
                 if (mods.chum === true)         bugInfo.setMod("chum");
 
                 if (bugInfo.ssu.domain == 'cbeta') postCategory = config.submit.category_cbeta;
-                if (bugInfo.ssu.domain == 'cbeta') postCategory = config.submit.category_cbeta;
             }
         }
     }
