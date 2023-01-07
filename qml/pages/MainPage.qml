@@ -25,6 +25,7 @@ import org.nemomobile.systemsettings 1.0
 import org.nemomobile.ngf 1.0
 import "../components"
 import "../config/settings.js" as Settings
+import "../config/sfos_versions.js" as SFOS
 import "../js/util.js" as Util
 
 Page {
@@ -35,6 +36,9 @@ Page {
     readonly property int minDescLength:    Settings.config.validation.minDesc
     readonly property int minStepsLength:   Settings.config.validation.minSteps
     readonly property int goodLength:       Settings.config.validation.good
+
+    /* known SFOS versions */
+    property var sfosData: SFOS.data
 
     /* IMPORTANT: remember to update this if any persisting UI elements are added on this page! */
     readonly property int fieldKeys:        Settings.config.persistence.fieldKeys
@@ -483,7 +487,9 @@ Page {
     /* encode the payload, return full URL for posting */
     function formToUrl() {
         // handle case for cbeta users:
-        var postCategory = (bugInfo.ssu.domain == 'cbeta') ? postCatBeta : postCatBugs;
+        var postCategory = ( (bugInfo.ssu.domain == 'cbeta') && (sfosData.latest !== bugInfo.os.version_id ))
+            ? postCatBeta
+            : postCatBugs;
         return postUrl
             + postCategory
             + "&title=" + encodeURIComponent(getTitle())
