@@ -42,9 +42,9 @@ ApplicationWindow {
     readonly property string postScheme:    config.submit.scheme
     readonly property string postHost:      config.submit.host
     readonly property string postUri:       config.submit.uri
-    property string postCategory:           config.submit.category_bugs
-
-    property url postUrl: postScheme + '://' + postHost + postUri + postCategory
+    readonly property string postCatBugs:   config.submit.category_bugs
+    readonly property string postCatBeta:   config.submit.category_cbeta
+    readonly property url postUrl:          postScheme + '://' + postHost + postUri
 
     /* info sources: */
     readonly property url osInfoFile:  config.sources.os
@@ -115,7 +115,6 @@ ApplicationWindow {
                 if (mods.patchmanager === true) bugInfo.setMod("patchmanager");
                 if (mods.chum === true)         bugInfo.setMod("chum");
 
-                if (bugInfo.ssu.domain == 'cbeta') postCategory = config.submit.category_cbeta;
             }
         }
     }

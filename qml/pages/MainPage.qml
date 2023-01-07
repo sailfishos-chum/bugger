@@ -472,7 +472,10 @@ Page {
     }
     /* encode the payload, return full URL for posting */
     function formToUrl() {
+        // handle case for cbeta users:
+        var postCategory = (bugInfo.ssu.domain == 'cbeta') ? postCatBeta : postCatBugs;
         return postUrl
+            + postCategory
             + "&title=" + encodeURIComponent(getTitle())
             + "&body="  + encodeURIComponent(getPayload());
     }
