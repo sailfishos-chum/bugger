@@ -10,7 +10,9 @@ var config = {
     "submit": {
         "scheme":    'https',
         "host":      'forum.sailfishos.org',
-        "uri":       '/new-topic?category_id=13'
+        "uri":       '/new-topic?category_id=',
+        "category_bugs":      '13',
+        "category_cbeta":     '21',
     },
     "upload": {
         "scheme":    'https',
