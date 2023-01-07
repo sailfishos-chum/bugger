@@ -11,8 +11,8 @@ var config = {
         "scheme":    'https',
         "host":      'forum.sailfishos.org',
         "uri":       '/new-topic?category_id=',
-        "cat1":      '13',
-        "cat2":      '21',
+        "category_bugs":      '13',
+        "category_cbeta":     '21',
     },
     "upload": {
         "scheme":    'https',
