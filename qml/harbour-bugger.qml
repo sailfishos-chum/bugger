@@ -42,7 +42,9 @@ ApplicationWindow {
     readonly property string postScheme:    config.submit.scheme
     readonly property string postHost:      config.submit.host
     readonly property string postUri:       config.submit.uri
-    readonly property url    postUrl:       postScheme + '://' + postHost + postUri
+    readonly property string postCatBugs:   config.submit.category_bugs
+    readonly property string postCatBeta:   config.submit.category_cbeta
+    readonly property url postUrl:          postScheme + '://' + postHost + postUri
 
     /* info sources: */
     readonly property url osInfoFile:  config.sources.os
@@ -114,6 +116,7 @@ ApplicationWindow {
                 if (mods.openrepos === true)    bugInfo.setMod("openrepos");
                 if (mods.patchmanager === true) bugInfo.setMod("patchmanager");
                 if (mods.chum === true)         bugInfo.setMod("chum");
+
             }
         }
     }
