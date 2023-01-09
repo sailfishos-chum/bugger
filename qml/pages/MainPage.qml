@@ -68,7 +68,7 @@ Page {
 
     /* just to add something of ours to the report */
     readonly property string infoFooter: 'the initial version of this bug report was created using '
-        + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/' + Qt.application.version + '">'
+        + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/">'
         + Qt.application.name + ' ' + Qt.application.version
         + '</a>'
 
