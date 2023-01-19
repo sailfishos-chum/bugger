@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022 Peter G. (nephros)
+Copyright (c) 2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -436,7 +436,9 @@ Page {
                     );
                 }
                 console.info("Submitting Bug Report... ");
-                Qt.openUrlExternally( formToUrl() );
+                //Qt.openUrlExternally( formToUrl() );
+                var finalUrl = formToUrl();
+                var dialog = pageStack.push(Qt.resolvedUrl("PostSelector.qml"), { "postUrl": finalUrl } )
             }
         }
     }
