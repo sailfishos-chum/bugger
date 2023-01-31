@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022 Peter G. (nephros)
+Copyright (c) 2022,2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -43,6 +43,7 @@ ApplicationWindow {
     readonly property string postHost:      config.submit.host
     readonly property string postUri:       config.submit.uri
     readonly property string postCatBugs:   config.submit.category_bugs
+    readonly property string postCatFeatures:   config.submit.category_features
     readonly property string postCatBeta:   config.submit.category_cbeta
     readonly property url postUrl:          postScheme + '://' + postHost + postUri
 

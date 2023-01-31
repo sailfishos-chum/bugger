@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022,2023 Peter G. (nephros)
+Copyright (c) 2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -20,9 +20,6 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import org.nemomobile.devicelock 1.0
-import org.nemomobile.systemsettings 1.0
-import org.nemomobile.ngf 1.0
 import "../components"
 import "../config/settings.js" as Settings
 import "../js/util.js" as Util
@@ -67,7 +64,7 @@ Page {
     property string qualityString//: qsTr("incomplete", "State of completeness of a bug report")
 
     /* just to add something of ours to the report */
-    readonly property string infoFooter: 'the initial version of this bug report was created using '
+    readonly property string infoFooter: 'the initial version of this feature request was created using '
         + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/">'
         + Qt.application.name + ' ' + Qt.application.version
         + '</a>'
@@ -78,55 +75,11 @@ Page {
     property var defaultFieldContents: {
         "text_title":       "",
         "text_desc":        "",
-        "text_steps":       " 1. \n 2. \n 3. ",
-        "text_precons":     "",
-        "text_expres":      "",
-        "text_actres":      "",
-        "text_add":         "",
-        "text_mod_other":   "",
-        "regsw":            false,
-        "regsw.hasChanged": false,
-        "regver":           -1,
-        "regarch":          -1,
-        "othersw":          false,
-        "repro":            -1,
         "links":            []
     }
 
     // Pavlov!! :)
     NonGraphicalFeedback { id: postiveFeedback; event: "positive_confirmation" }
-
-    /*
-     * ***** DATA SOURCES *****
-     *
-     * to autodetect some values for the report
-     */
-    /* from org.nemomobile.devicelock  to determine Home Encryption */
-    EncryptionSettings{id: enc}
-    property bool encryption: enc.homeEncrypted
-    property string encStr: "not supported"
-    onEncryptionChanged: {
-        console.info("Detected encryption:",   encryption)
-        if (typeof encryption !== "undefined") {
-            encStr = encryption ? "enabled" : "disabled";
-        } else {
-            encStr = "not detected";
-        }
-    }
-
-    // from org.nemomobile.systemsettings to determine Device Owner
-    UserInfo{id: userInfo; uid: config.sources.useruid }
-    // from org.nemomobile.systemsettings to determine OS language
-    LanguageModel{id: languageModel}
-    property string oslanguage:  languageModel.languageName(languageModel.currentIndex)
-    property string uilocale:    Qt.locale().name
-    property string oslocale:    languageModel.locale(languageModel.currentIndex)
-
-    onOslanguageChanged: console.info("Detected OS Language:", oslanguage)
-    onOslocaleChanged:   console.info("Detected OS Locale:",   oslocale)
-    /* ***** END DATA SOURCES ***** */
-
-
     /*
      * ***** PAGE INITIALIZATION *****
      *
@@ -159,18 +112,6 @@ Page {
             }
             PropertyChanges { target: page; qualityString: qsTr("incomplete", "State of completeness of a bug report") }
         },
-        State { name: "stepsMissing";   when: (!infoComplete && !stepsComplete)
-            PropertyChanges { target: header;
-                description: qsTr("%1 field is too short").arg(qsTr("Steps")) + " (" + text_steps.text.length + "/" + minStepsLength + ")"
-            }
-            PropertyChanges { target: page; qualityString: qsTr("incomplete", "State of completeness of a bug report") }
-        },
-        State { name: "complete";       when: (infoComplete && !infoGood && !infoFull )
-            PropertyChanges { target: header;
-                description:    qsTr("Ready for posting") + qsTr(", but please add more information")
-            }
-            PropertyChanges { target: page; qualityString: qsTr("ok", "State of completeness of a bug report") }
-        },
         State { name: "good";       when: (infoGood && !infoFull)
             PropertyChanges { target: header;
                 description:    qsTr("Ready for posting")
@@ -196,30 +137,12 @@ Page {
         }
     }
 
-    /*
-     * ***** WELCOME DIALOG *****
-     *
-     * show a welcome popup on launch
-     */
-    property bool welcomeShown: false
-    onStatusChanged: {
-        if (status == PageStatus.Active) showWelcomeDialog();
-    }
-    function showWelcomeDialog() {
-        if (welcomeShown) return;
-        if (developerMode) return;
-        var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
-        dialog.done.connect(function() { page.welcomeShown = true;})
-    }
-    /* END WELCOME DIALOG */
-
-
     SilicaFlickable { id: flick
         anchors.fill: parent
         contentHeight: col.height
         Column { id: col
             width: parent.width
-            PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qualityString) }
+            PageHeader { id: header ; title: qsTr("Feature Request (%1)").arg(qualityString) }
             /* tap-to-hide information */
             SilicaItem { id: hidetext
                 width:  parent.width - Theme.horizontalPageMargin
@@ -281,45 +204,8 @@ Page {
                     property bool acceptableInput: text.length > minDescLength
                     onFocusChanged: shallSave();
                 }
-                SectionHeader { text: qsTr("Steps to Reproduce") + "*" }
-                TextArea{id: text_steps;
-                    width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
-                    // description wraps the text, label fades it out.
-                    //label: qsTr("Provide as much information as you have to reproduce the behavior")
-                    label: qsTr("How to reproduce");
-                    //description: qsTr("Provide as much information as you have to reproduce the behavior")
-                    description: qsTr("Provide as much information as you have")
-                    text: " 1. \n 2. \n 3. ";
-                    placeholderText: " 1. \n 2. \n 3. ";
-                    // TextField has this, TextArea not:
-                    property bool acceptableInput: text.length > minStepsLength
-                    onFocusChanged: shallSave();
-                }
-            }
-           SectionHeader { text: qsTr("Preconditions") }
-            TextArea{id: text_precons;
-                width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
-                label: qsTr("Some Context information")
-                description: qsTr("e.g. 'an email account is needed'.")
-                onFocusChanged: shallSave();
             }
 
-            SectionHeader { text: qsTr("Expected Results") }
-            TextArea{id: text_expres;
-                width: parent.width;
-                label: qsTr("What outcome did you expect")
-                description: qsTr("e.g. 'an error notification', 'a message is shown'")
-                onFocusChanged: shallSave();
-            }
-            SectionHeader { text: qsTr("Actual Results") }
-            TextArea{id: text_actres;
-                width: parent.width;
-                label: qsTr("What was the outcome")
-                description: qsTr("e.g. 'the app closed', 'a message was not shown'")
-                onFocusChanged: shallSave();
-            }
-            SectionHeader { text: qsTr("Device Information") }
-            Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             /*
              * bug info contents may be available later than this page is instantiated.
              * So use a Loader to quiet the "undefined" errors in the log.
@@ -339,58 +225,7 @@ Page {
                 description: qsTr("e.g. links to logs or screenshots.")
                 onFocusChanged: shallSave();
             }
-            Slider { id: repro;
-                width: parent.width;
-                label: qsTr("Reproducibility");
-                minimumValue: 0; maximumValue: 100; stepSize: 25 ; value: -1
-                valueText: qsTr(userTextL10N)
-                // this goes into the bug report
-                property string userText: {
-                    if (value == -1) return "not specified"
-                    if (value == 0)  return "unknown"
-                    if (value <= 25) return "never"
-                    if (value <= 50) return "sometimes"
-                    if (value <= 75) return "often"
-                    return "always"
-                }
-                // this is just for translation/presentation
-                property string userTextL10N: {
-                    if (value == -1) return ""
-                    if (value == 0)  return qsTr("unknown",        "Reproducibility")
-                    if (value <= 25) return qsTr("never",          "Reproducibility")
-                    if (value <= 50) return qsTr("sometimes",      "Reproducibility")
-                    if (value <= 75) return qsTr("often",          "Reproducibility")
-                    return qsTr("always", "Reproducibility")
-                }
-            }
-            TextSwitch { id: regsw; checked: false;
-                text: qsTr("Regression (was working in a previous OS release)")
-                property bool hasChanged: false
-                automaticCheck: false
-                onClicked: {
-                    hasChanged = true;
-                    checked = !checked;
-                    if (!checked) {
-                        regver.currentIndex  = -1
-                        regarch.currentIndex = -1
-                    }
-                }
-            }
-            VersionSelect { id: regver;  state: "version"; visible: regsw.checked; anchors.left: regsw.left ; anchors.leftMargin: Theme.itemSizeExtraSmall - Theme.paddingLarge }
-            VersionSelect { id: regarch; state: "arch";    visible: regsw.checked; anchors.left: regsw.left ; anchors.leftMargin: Theme.itemSizeExtraSmall - Theme.paddingLarge }
-            Column {
-                width: parent.width
-                SectionHeader { text: qsTr("Modifications") }
-                TextSwitch { id: pmsw; checked: bugInfo.mods.patchmanager; text: "Patchmanager" + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
-                TextSwitch { id: orsw; checked: bugInfo.mods.openrepos;    text: "OpenRepos"    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
-                TextSwitch { id: chsw; checked: bugInfo.mods.chum;         text: "Chum"+ " "    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
-                TextSwitch { id: othersw; checked: false; text: qsTr("Other (please specify)") }
-                TextArea { id: text_mod_other; enabled: othersw.checked
-                    width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
-                    description: qsTr("e.g. WayDroid and GApps installed")
-                    label: qsTr("custom changes, installed packages etc.")
-                }
-            }
+            /*
             Column {
                 width: parent.width
                 SectionHeader { text: qsTr("Links/Attachments (%1)").arg(fileList.count) }
@@ -399,6 +234,7 @@ Page {
                     showPlaceholder: false
                 }
             }
+            */
         }
         VerticalScrollDecorator {}
     }
@@ -406,7 +242,6 @@ Page {
         flickable: flick
         MenuItem { text: qsTr("About"); onClicked: { pageStack.push(Qt.resolvedUrl("AboutPage.qml")) } }
         MenuItem { text: qsTr("Help"); onClicked: { pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml")) } }
-        MenuItem { text: qsTr("Feature Request"); onClicked: { pageStack.push(Qt.resolvedUrl("FeaturePage.qml")) } }
         MenuItem { text: qsTr("Add Logfiles")
             onClicked: {
                 var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
@@ -426,8 +261,7 @@ Page {
         MenuLabel { text: qsTr("Please fill in the required fields") + " " + qsTr("(marked with an asterisk (*))!"); visible: !infoComplete; }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Title"))       ; visible: ( !infoComplete && !titleComplete); }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Description")) ; visible: ( !infoComplete && !descComplete); }
-        MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Steps"))       ; visible: ( !infoComplete && !stepsComplete); }
-        MenuItem { text: qsTr("Post Bug Report");
+        MenuItem { text: qsTr("Post Feature Request");
             enabled: infoComplete
             onClicked: {
                 if (developerMode) {
@@ -436,7 +270,7 @@ Page {
                     + "Body:" + getPayload()
                     );
                 }
-                console.info("Submitting Bug Report... ");
+                console.info("Submitting Feature Request... ");
                 Qt.openUrlExternally( formToUrl() );
             }
         }
@@ -464,33 +298,9 @@ Page {
             + "DESCRIPTION:\n"
             + "=========\n\n" + text_desc.text
             + "\n\n"
-            + "PRECONDITIONS:\n"
-            + "==========\n\n" + text_precons.text
-            + "\n\n"
-            + "STEPS TO REPRODUCE:\n"
-            + "==============\n\n" + text_steps.text
-            + "\n\n"
-            + "EXPECTED RESULTS:\n"
-            + "============\n\n" + text_expres.text
-            + "\n\n"
-            + "ACTUAL RESULTS:\n"
-            + "===========\n\n" + text_actres.text
-            + "\n\n"
-            + "MODIFICATIONS:\n"
-            + "==========\n\n"
-            + " - Patchmanager: " + (pmsw.checked?"yes":"no") + "\n"
-            + " - OpenRepos: "    + (orsw.checked?"yes":"no") + "  \n"
-            + " - Chum: "         + (chsw.checked?"yes":"no") + "  \n"
-            + " - Other: "        + ((othersw.checked)
-                ? "yes: " + text_mod_other.text + "  \n"
-                : "none specified \n")
-            + "\n\n"
             + "ADDITIONAL INFORMATION:\n"
             + "=================\n\n" + text_add.text
             + "\n"
-            + "Device Owner User: " + userInfo.username + "  \n"
-            + "Home Encryption: " + encStr + "  \n"
-            + "\n\n"
             + "ATTACHMENTS:\n"
             + "=================\n\n"
             + links.join('\n')
@@ -508,7 +318,7 @@ Page {
     /* encode the payload, return full URL for posting */
     function formToUrl() {
         // handle case for cbeta users:
-        var postCategory = (bugInfo.ssu.domain == 'cbeta') ? postCatBeta : postCatBugs;
+        var postCategory = (bugInfo.ssu.domain == 'cbeta') ? postCatBeta : postCatFeatures;
         return postUrl
             + postCategory
             + "&title=" + encodeURIComponent(getTitle())
@@ -581,17 +391,7 @@ Page {
         post.fields = {
             "text_title":       text_title.text,
             "text_desc":        text_desc.text,
-            "text_steps":       text_steps.text,
-            "text_precons":     text_precons.text,
-            "text_expres":      text_expres.text,
-            "text_actres":      text_actres.text,
             "text_add":         text_add.text,
-            "text_mod_other":   text_mod_other.text,
-            "regsw":            regsw.checked,
-            "regver":           regver.currentIndex,
-            "regarch":          regarch.currentIndex,
-            "othersw":          othersw.checked,
-            "repro":            repro.sliderValue
         };
         Util.store(post);
     }
@@ -633,18 +433,6 @@ Page {
         try {
             text_title.text         = data.text_title;
             text_desc.text          = data.text_desc;
-            text_steps.text         = data.text_steps;
-            text_precons.text       = data.text_precons;
-            text_expres.text        = data.text_expres;
-            text_actres.text        = data.text_actres;
-            text_add.text           = data.text_add;
-            text_mod_other.text     = data.text_mod_other;
-            regsw.checked           = data.regsw;
-            regsw.hasChanged        = data.regsw_haschanged;
-            regver.currentIndex     = data.regver;
-            regarch.currentIndex    = data.regarch;
-            othersw.checked         = data.othersw;
-            repro.value             = data.repro;
         } finally {
             preventSave = false;
         }

@@ -12,6 +12,7 @@ var config = {
         "host":      'forum.sailfishos.org',
         "uri":       '/new-topic?category_id=',
         "category_bugs":      '13',
+        "category_features":  '00',
         "category_cbeta":     '21',
     },
     "upload": {
