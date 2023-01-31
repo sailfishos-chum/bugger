@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022 Peter G. (nephros)
+Copyright (c) 2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -27,7 +27,13 @@ import Nemo.DBus 2.0
 
 Page { id: page
     property string postUrl
-    property bool haveSFV: FileEngine.exists("/usr/share/applications/harbour-sfos-forum-viewer.desktop")
+    property bool haveSFV: FileEngine.exists("/usr/share/applications/harbour-sfos-forum-viewer.desktop") && (sfvConfig.key && (sfvConfig.key !== "-1"))
+
+    ConfigurationGroup {
+        id: sfvConfig
+        path: "/apps/harbour-sfos-forum-viewer"
+        property string key
+    }
 
     SilicaFlickable { id: flick
         anchors.fill: parent
