@@ -50,7 +50,11 @@ QtObject {
             if (r.readyState == XMLHttpRequest.DONE) {
                 if (r.status === 200 || r.status == 0) {
                     console.debug("Filedata loaded: about", r.response.split("\n").length, "lines");
-                    model.setProperty(index, "dataStr", r.response)
+                    if (r.response.length > 0) {
+                        model.setProperty(index, "dataStr", r.response)
+                    } else {
+                        console.warn("File was empty, not added:", JSON.stringify(r.response));
+                    }
                 } else {
                     console.warn("Filedata load failed:", JSON.stringify(r.response));
                 }
