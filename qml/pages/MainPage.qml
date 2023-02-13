@@ -487,7 +487,7 @@ Page {
     /* encode the payload, return full URL for posting */
     function formToUrl() {
         // handle case for cbeta users:
-        var postCategory = ( (bugInfo.ssu.domain == 'cbeta') && (sfosData.latest !== bugInfo.os.version_id ))
+        var postCategory = ( (bugInfo.ssu.domain == 'cbeta') && (sfosData.latest["cbeta"] === bugInfo.os.version_id ))
             ? postCatBeta
             : postCatBugs;
         return postUrl
