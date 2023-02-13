@@ -471,9 +471,12 @@ Page {
                     );
                 }
                 console.info("Submitting Bug Report... ");
-                //Qt.openUrlExternally( formToUrl() );
                 var finalUrl = formToUrl();
-                var dialog = pageStack.push(Qt.resolvedUrl("PostSelector.qml"), { "postUrl": finalUrl } )
+                if (app.sfvIntegration) {
+                    var dialog = pageStack.push(Qt.resolvedUrl("PostSelector.qml"), { "postUrl": finalUrl } )
+                } else {
+                    Qt.openUrlExternally( finalUrl );
+                }
             }
         }
     }

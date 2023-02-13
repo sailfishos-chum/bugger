@@ -21,6 +21,7 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
+import Nemo.Configuration 1.0
 import "pages"
 import "cover"
 import "components"
@@ -148,6 +149,14 @@ ApplicationWindow {
         smessage.previewSummary = s
         smessage.urgency = 0;
         smessage.publish();
+    }
+
+    // application settings:
+    property alias sfvIntegration: settings.sfvIntegration
+    ConfigurationGroup  {
+        id: settings
+        path: "/org/nephros/" + Qt.application.name
+        property sfvIntegration: false
     }
 
     initialPage: Component { MainPage{} }

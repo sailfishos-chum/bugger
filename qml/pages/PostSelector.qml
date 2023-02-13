@@ -22,12 +22,14 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Nemo.FileManager 1.0
 import Nemo.DBus 2.0
+import Nemo.Configuration 1.0
 //import "../components"
 //import "../config/settings.js" as Settings
 
 Page { id: page
     property string postUrl
     property bool haveSFV: FileEngine.exists("/usr/share/applications/harbour-sfos-forum-viewer.desktop") && (sfvConfig.key && (sfvConfig.key !== "-1"))
+    property bool wantSfv: app.sfvIntegration
 
     ConfigurationGroup {
         id: sfvConfig
