@@ -6,7 +6,11 @@
  */
 .pragma library
 var data = {
-    "latest": "4.4.0.72",
+    "latest": [
+        "release": "4.5.0.16",
+        "obeta":   "4.5.0.16",
+        "cbeta":   "4.5.0.16"
+    ],
     "version": [
         "4.4.0.72",
         "4.4.0.68",
