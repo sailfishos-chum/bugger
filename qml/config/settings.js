@@ -4,7 +4,8 @@ var config = {
         "os":  'file:///etc/sailfish-release',
         "hw":  'file:///etc/hw-release',
         "ssu": 'file:///etc/ssu/ssu.ini',
-        "pm":  'file:///etc/patchmanager2.conf'
+        "pm":  'file:///etc/patchmanager2.conf',
+        "useruid": 100000
     },
     "email": {
         "to": "support@jolla.com",
