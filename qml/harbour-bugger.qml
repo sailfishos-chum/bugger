@@ -31,6 +31,8 @@ ApplicationWindow {
 
     property bool developerMode: false
 
+    allowedOrientations: Orientation.All
+
     /* detect closing of app, so can trigger a save */
     signal willQuit()
     Connections { target: __quickWindow; onClosing: willQuit() }
