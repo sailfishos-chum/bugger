@@ -1,0 +1,28 @@
+[Unit]
+Description=Collect update log file for Bugger!
+
+#After=lipstick-security-ui.service
+#Requires=lipstick-security-ui.service
+
+# would be nice, but user service can't depend on system service:
+# therefore, we use ExecStartPre below instead
+# After=aliendalvik.service
+# Requisite=aliendalvik.service
+# BindsTo=aliendalvik.service
+
+PartOf=harbour-bugger-gather-logs.target
+
+ConditionPathExists=/var/log/systemupdate.log
+
+[Service]
+Type=oneshot
+ProtectSystem=full
+ReadWritePaths=%h/Documents
+ExecStart=/bin/sh -c "\
+    cp /var/log/systemupdate.log %h/Documents/$(date -I)_%N.log; \
+    /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N.log; \
+    /usr/bin/chown %u    %h/Documents/$(date -I)_%N.log; \
+"
+
+[Install]
+WantedBy=harbour-bugger-gather-logs.target

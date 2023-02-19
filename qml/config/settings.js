@@ -27,6 +27,7 @@ var config = {
             { "pattern": "/_kernel/",  "name": "Kernel" },
             { "pattern": "/_android/", "name": "Android" },
             { "pattern": "/_hybris/",  "name": "Hybris" },
+            { "pattern": "/_update/",  "name": "Update" },
         ]
     },
     "paste": {
