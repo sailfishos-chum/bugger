@@ -2,6 +2,7 @@ OTHER_FILES += $${TARGET}-gather-logs.target\
                $${TARGET}-gather-logs.service\
                $${TARGET}-gather-logs_hybris.service \
                $${TARGET}-gather-logs_android.service \
+               $${TARGET}-gather-logs_update.service \
                $${TARGET}-gather-logs-plugin@.service
 
 INSTALLS += sdservice
