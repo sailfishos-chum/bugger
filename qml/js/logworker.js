@@ -1,14 +1,19 @@
-/*
-Copyright (c) 2023 Peter G. (nephros)
-*/
+// Copyright (c) 2023 Peter G. (nephros)
 // SPDX-License-Identifier: Apache-2.0
 
 .pragma library
 
-WorkerScript.onMessage(m) {
-    if (m.action === "getFile") { getFile ( m.parms.model, m.parms.index ) }
-}
-/* load files from URLs into data buffer */
+WorkerScript.onMessage = function(m) {
+    if (m.action === "reload") reload(m.model)
+    function reload(model) {
+        if (!model) return
+        for (var i = 0; i < model.count; ++i) {
+            getFile(model.i)
+        }
+    }
+
+
+    /* load files from URLs into data buffer */
     function getFile(model, index) {
         var data = model.get(index)
         //console.debug("Trying to load file contents for", JSON.stringify(data))
@@ -37,5 +42,5 @@ WorkerScript.onMessage(m) {
             }
         }
     }
-
+}
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
