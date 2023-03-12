@@ -3,7 +3,7 @@
 
 .pragma library
 
-WorkerScript.onMessage(m) {
+WorkerScript.onMessage = function(m) {
     if (m.action === "reload") reload(m.model)
     function reload(model) {
         if (!model) return
