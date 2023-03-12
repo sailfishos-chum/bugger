@@ -6,7 +6,7 @@ Copyright (c) 2023 Peter G. (nephros)
 .pragma library
 
 WorkerScript.onMessage(m) {
-    if (m.action === "getFile") { getFile ( m.parms.model, m.parms.index }})
+    if (m.action === "getFile") { getFile ( m.parms.model, m.parms.index ) }
 }
 /* load files from URLs into data buffer */
     function getFile(model, index) {
