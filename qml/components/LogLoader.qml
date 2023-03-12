@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022 Peter G. (nephros)
+Copyright (c) 2022,2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -20,9 +20,12 @@ limitations under the License.
 
 import QtQuick 2.6
 
-QtObject {
+Item {
     id: page
 
+    WorkerScript { id: worker
+        source: "../js/logworker.js"
+    }
     property ListModel model: ListModel{}
 
     onModelChanged: reload()
@@ -34,32 +37,8 @@ QtObject {
         }
     }
 
-    /* load files from URLs into data buffer */
     function getFileFrom(index, data) {
-        //console.debug("Trying to load file contents for", JSON.stringify(data))
-        var url = data.url
-        var r = new XMLHttpRequest()
-        r.open('GET', url);
-        r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        //r.responseType = 'text';
-        //r.responseType = 'arraybuffer'; //we need binary data
-        //r.responseType = 'blob'; //we need binary data
-        r.send();
-
-        r.onreadystatechange = function(event) {
-            if (r.readyState == XMLHttpRequest.DONE) {
-                if (r.status === 200 || r.status == 0) {
-                    console.debug("Filedata loaded: about", r.response.split("\n").length, "lines");
-                    if (r.response.length > 0) {
-                        model.setProperty(index, "dataStr", r.response)
-                    } else {
-                        console.warn("File was empty, not added:", JSON.stringify(r.response));
-                    }
-                } else {
-                    console.warn("Filedata load failed:", JSON.stringify(r.response));
-                }
-            }
-        }
+        worker.sendMessage({action: "getFile", parms: { model: model, index: index }})
     }
 }
 
