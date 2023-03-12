@@ -5,7 +5,7 @@
 
 WorkerScript.onMessage(m) {
     if (m.action === "reload") reload(m.model)
-    function reload() {
+    function reload(model) {
         if (!model) return
         for (var i = 0; i < model.count; ++i) {
             getFile(model.i)
