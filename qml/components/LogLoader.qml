@@ -21,24 +21,16 @@ limitations under the License.
 import QtQuick 2.6
 
 Item {
-    id: page
+
+    property ListModel model: ListModel{}
 
     WorkerScript { id: worker
         source: "../js/logworker.js"
     }
-    property ListModel model: ListModel{}
-
-    onModelChanged: reload()
 
     function reload() {
         if (!model) return
-        for (var i = 0; i < model.count; ++i) {
-            getFileFrom(i, model.get(i))
-        }
-    }
-
-    function getFileFrom(index, data) {
-        worker.sendMessage({action: "getFile", parms: { model: model, index: index }})
+        worker.sendMessage({action: "reload",  model: model})
     }
 }
 
