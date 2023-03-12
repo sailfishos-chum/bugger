@@ -31,12 +31,24 @@ Item {
     property int successCount: 0
     property int errorCount: 0
 
+    WorkerScript { id: worker
+        source: "../js/logworker.js"
+        onMessage: function(m) {
+            if (m.event === "pasteOk") { successCount++ }
+            if (m.event === "pasteError") {
+                errorCount++
+                app.popup(qsTr("Error uploading: %1 - %2", "%1: error code, %2: error message").arg(m.code).arg(m.text));
+            }
+            if (m.event === "uploading") { uploading = m.file }
+        }
+    }
+
     onModelChanged: {
         if (!model) return
         successCount = 0;
         errorCount = 0;
         for (var i = 0; i < model.count; ++i) {
-            pasteFile(i, model.get(i))
+            worker.sendMessage({ action: "pasteFile", model: model, index: i, url: postUrl, expire: config.expireDays })
             //delay(pasteFile(model.get(i)))
         }
     }
@@ -47,38 +59,6 @@ Item {
         delayTimer.start();
     }
 
-    function pasteFile(index, data) {
-        //console.debug("trying to upload:", JSON.stringify(data))
-        uploading = data.fileName
-        var r = new XMLHttpRequest()
-        r.open('POST', postUrl);
-        r.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        //console.debug("Sending:", payload);
-        const fileContent = data["dataStr"]
-        console.assert( fileContent.length>0, "Trying to upload empty log data")
-
-        const payload =
-            'expiry_days=' + config.expireDays
-            + '&title='    + data.fileName
-            + '&content='  + encodeURIComponent(fileContent)
-        r.send(payload);
-
-        r.onreadystatechange = function(event) {
-            if (r.readyState == XMLHttpRequest.DONE) {
-                if (r.status === 200 || r.status == 0) {
-                    console.info("upload sucessful:", data["fileName"],  r.response);
-                    model.setProperty(index, "pastedUrl", r.response.replace(/"/g, ""))
-                    successCount++;
-                } else {
-                    console.warn("error in processing request.", r.status, r.statusText);
-                    app.popup(qsTr("Error uploading: %1 - %2", "%1: error code, %2: error message").arg(r.status).arg(r.statusText));
-                    errorCount++;
-                }
-            }
-        }
-        uploading = ""
-    }
 }
 
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
