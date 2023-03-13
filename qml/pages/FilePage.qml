@@ -190,7 +190,7 @@ Dialog { id: page
         PullDownMenu { id: pdm
             flickable: flick
             MenuItem { text: qsTr("Upload Contents"); onClicked: { upload() } }
-            MenuItem { text: qsTr("Add Files"); onClicked: pageStack.push(picker) }
+            MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
         }
     }

@@ -144,7 +144,7 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="188"/>
-        <source>Add Files</source>
+        <source>Pick Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

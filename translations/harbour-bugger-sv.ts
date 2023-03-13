@@ -157,7 +157,7 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="188"/>
-        <source>Add Files</source>
+        <source>Pick Files</source>
         <translation>Lägg till filer</translation>
     </message>
     <message>
