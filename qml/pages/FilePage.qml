@@ -117,7 +117,7 @@ Dialog { id: page
                 };
                 o["mimeType"]   = (/json$/.test(postfix)) ? "application/json" : "text/plain";
                 o["fileName"]   = logBaseName + postfix;
-                o["filePath"]   = StandardPaths.documents + "/" + o["fileName"];
+                o["filePath"]   = StandardPaths.documents + "/Bugger/" + o["fileName"];
                 o["url"]        = Qt.resolvedUrl(o["filePath"]);
                 o["fileSize"]   = -1; // prepare property so we don't need dynamicRoles
                 o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
