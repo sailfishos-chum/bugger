@@ -171,7 +171,7 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="188"/>
-        <source>Add Files</source>
+        <source>Pick Files</source>
         <translation>Dateien hinzufügen</translation>
     </message>
     <message>

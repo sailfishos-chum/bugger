@@ -179,11 +179,9 @@ Dialog { id: page
            }
          */
         onLogCreatedChanged: {
-            //const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
             const logBaseName = new Date().toISOString().substring(0,10) + "_" + config.gather.basename
             const elements = []
             const o = {}
-            //const postfixes = [ ".log", "_kernel.log" ];
             const postfixes = config.gather.postfixes
             const pretty    = config.gather.prettynames
             postfixes.forEach(function(postfix) {
@@ -210,23 +208,25 @@ Dialog { id: page
             })
             // add the generated information to the model
             elements.forEach(function(element) { filesModel.append(element)})
-            // and trigger loading file contents:
+            // ... and trigger loading file contents:
             loadFiles()
         }
     }
+
     Connections {
         target: paster
+        // after paster is done, allow finishing the dialog
         onDoneChanged: {
             if (!paster.done) return
             canAccept = true
             progress.visible = false
             app.popup(qsTr("Uploading finished: %1 successful, %2 error.").arg(paster.successCount).arg(paster.errorCount))
         }
+        // show progress of uploads:
         onUploadingChanged: {
             if (paster.uploading !== "") {
                 console.debug("uploading", paster.uploading)
                 progress.visible = true
-                //progress.label = qsTr("uploading %1/%2").arg(paster.successCount + 1).arg(filesModel.count)
                 progress.label = qsTr("uploading %1 files, %2 done").arg(filesModel.count).arg(paster.successCount)
             }
         }
@@ -271,7 +271,7 @@ Dialog { id: page
             MenuItem { text: qsTr("Share via E-Mail"); enabled: filesModel.count > 0; onClicked: { emailshare() } }
             MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;      onClicked: { email() } }
             MenuItem { text: qsTr("Upload Contents"); enabled: filesModel.count > 0;  onClicked: { upload() } }
-            MenuItem { text: qsTr("Add Files"); onClicked: pageStack.push(picker) }
+            MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
         }
     }
