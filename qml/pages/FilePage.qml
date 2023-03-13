@@ -74,11 +74,15 @@ Dialog { id: page
     }
     function upload() {
         paster.model = filesModel
+        paster.upload()
     }
     function startGatherer()   { gather.start() }
     LogGatherer { id: gather } // executes systemd things
     LogLoader   { id: loader } // gets file contents
     LogPaster   { id: paster } // uploads files to "pastebin"
+    /*
+     * after the Gathere signals that it is finished, add file information to the model
+      */
     Connections {
         target: gather
         /*
@@ -127,6 +131,7 @@ Dialog { id: page
             })
             // add the generated information to the model
             elements.forEach(function(element) { filesModel.append(element)})
+            // and trigger loading file contents:
             loadFiles()
         }
     }

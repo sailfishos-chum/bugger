@@ -26,10 +26,8 @@ Item {
         }
     }
 
-    onModelChanged: {
+    function upload() {
         if (!model) return
-        successCount = 0;
-        errorCount = 0;
         for (var i = 0; i < model.count; ++i) {
             worker.sendMessage({ action: "pasteFile", model: model, index: i, url: postUrl, expire: config.expireDays })
             //delay(pasteFile(model.get(i)))
