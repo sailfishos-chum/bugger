@@ -34,9 +34,12 @@ WorkerScript.onMessage = function(m) {
                     console.debug("Filedata loaded: about", r.response.split("\n").length, "lines");
                     if (r.response.length > 0) {
                         model.setProperty(index, "dataStr", r.response)
+                        // FIXME: use response header for this?
+                        model.setProperty(index, "fileSize", r.response.length)
                         model.sync()
                     } else {
                         console.warn("File was empty, not added:", JSON.stringify(r.response));
+                        model.setProperty(index, "fileSize", 0)
                     }
                 } else {
                     console.warn("Filedata load failed:", JSON.stringify(r.response));
@@ -56,7 +59,7 @@ WorkerScript.onMessage = function(m) {
         r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         //console.debug("Sending:", payload);
         const fileContent = data["dataStr"]
-        console.assert( fileContent.length>0, "Trying to upload empty log data")
+        console.assert( (fileContent.length>0), "Trying to upload empty log data")
 
         const payload =
             'expiry_days=' + expire
