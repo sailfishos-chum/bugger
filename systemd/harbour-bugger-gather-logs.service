@@ -9,10 +9,11 @@ Type=oneshot
 ProtectSystem=full
 ReadWritePaths=%h/Documents
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
-          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise _TRANSPORT=journal | grep -v selinux > %h/Documents/$(date -I)_%N.log; \
-          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise -k         > %h/Documents/$(date -I)_%N_kernel.log; \
-          /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N*log; \
-          /usr/bin/chown %u    %h/Documents/$(date -I)_%N*log; \
+          /bin/mkdir -p %h/Documents/Bugger; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise _TRANSPORT=journal | grep -v selinux > %h/Documents/Bugger/$(date -I)_%N.log; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise -k         > %h/Documents/Bugger/$(date -I)_%N_kernel.log; \
+          /usr/bin/chmod 0600  %h/Documents/Bugger/$(date -I)_%N*log; \
+          /usr/bin/chown %u    %h/Documents/Bugger/$(date -I)_%N*log; \
 "
 
 [Install]

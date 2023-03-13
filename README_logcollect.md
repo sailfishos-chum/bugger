@@ -24,7 +24,7 @@ In order to add your script to the Bugger! log collector, do the following:
  - The script will be run from systemd with `/bin/sh -c "scriptname"`, so make
    sure its is /bin/sh compatible!
  - log output will be written to
-   `~/Documents/YYYY-MM-DD_harbour-bugger-gather-logs-plugin@$YOURNAME.log`
+   `~/Documents/Bugger/YYYY-MM-DD_harbour-bugger-gather-logs-plugin@$YOURNAME.log`
  - `harbour-bugger-gather-logs-plugin@.service` uses `ProtectSystem=full`, so
    don't expect any location to be writable in your script.
  - scripts are run in systemd user scope. You can't be root. If you need to be

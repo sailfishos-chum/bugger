@@ -15,9 +15,10 @@ ProtectKernelTunables=true
 
 ReadWritePaths=%h/Documents
 ExecStart=/bin/sh -c "\
-          /usr/share/harbour-bugger/scripts/gather-logs-%i.sh > %h/Documents/$(date -I)_%N.log; \
-          /usr/bin/chmod 0600  %h/Documents/$(date -I)_%N.log; \
-          /usr/bin/chown %u    %h/Documents/$(date -I)_%N.log; \
+          /bin/mkdir -p %h/Documents/Bugger; \
+          /usr/share/harbour-bugger/scripts/gather-logs-%i.sh > %h/Documents/Bugger/$(date -I)_%N.log; \
+          /usr/bin/chmod 0600  %h/Documents/Bugger/$(date -I)_%N.log; \
+          /usr/bin/chown %u    %h/Documents/Bugger/$(date -I)_%N.log; \
 "
 
 [Install]
