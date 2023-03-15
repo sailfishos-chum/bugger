@@ -14,25 +14,30 @@ Requires=lipstick-security-ui.service
 PartOf=harbour-bugger-gather-logs.target
 
 ConditionPathExists=/system/bin/logcat
+ConditionPathExists=/system/bin/dumpsys
 
 [Service]
 Type=oneshot
 ProtectSystem=full
 ReadWritePaths=%h/Documents
+Environment=BUGGER_LOGPATH=%h/Documents/Bugger
 ExecStartPre=/bin/sh -c '/usr/bin/systemctl is-active --quiet aliendalvik.service'
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
-    /bin/mkdir -p %h/Documents/Bugger; \
+    /bin/mkdir -p ${BUGGER_LOGPATH}; \
     if [ $(awk  -F= '/^VERSION_ID/ {print $2}' /etc/os-release | awk -F. '{print $1 $2 $3}') -ge 450 ]; \
     then; \
-      /usr/bin/appsupport-attach /system/bin/logcat -d > %h/Documents/Bugger/$(date -I)_%N.log; \
+      /usr/bin/appsupport-attach /system/bin/logcat -d > ${BUGGER_LOGPATH}/$(date -I)_%N.log; \
+      /usr/bin/appsupport-attach /system/bin/dumpsys -d > ${BUGGER_LOGPATH}/$(date -I)_%N_dumpsys.log; \
     elif [ $(awk  -F= '/^VERSION_ID/ {print $2}' /etc/os-release | awk -F. '{print $1 $2 $3}') -ge 440 ]; \
     then; \
-      /usr/bin/lxc-attach -n aliendalvik --lxcpath=/tmp/aliendalvik -- /system/bin/logcat -d > %h/Documents/Bugger/$(date -I)_%N.log; \
+      /usr/bin/lxc-attach -n aliendalvik --lxcpath=/tmp/aliendalvik -- /system/bin/logcat -d > ${BUGGER_LOGPATH}/$(date -I)_%N.log; \
+      /usr/bin/lxc-attach -n aliendalvik --lxcpath=/tmp/aliendalvik -- /system/bin/dumpsys -d > ${BUGGER_LOGPATH}/$(date -I)_%N_dumpsys.log; \
     else; \
-      /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > %h/Documents/Bugger/$(date -I)_%N.log; \
+      /usr/bin/lxc-attach -n aliendalvik -- /system/bin/logcat -d > ${BUGGER_LOGPATH}/$(date -I)_%N.log; \
+      /usr/bin/lxc-attach -n aliendalvik -- /system/bin/dumpsys -d > ${BUGGER_LOGPATH}/$(date -I)_%N_dumpsys.log; \
     fi; \
-    /usr/bin/chmod 0600  %h/Documents/Bugger/$(date -I)_%N.log; \
-    /usr/bin/chown %u    %h/Documents/Bugger/$(date -I)_%N.log; \
+    /usr/bin/chmod 0600  ${BUGGER_LOGPATH}/$(date -I)_%N*.log; \
+    /usr/bin/chown %u    ${BUGGER_LOGPATH}/$(date -I)_%N*.log; \
 "
 
 [Install]
