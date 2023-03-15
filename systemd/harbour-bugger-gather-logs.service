@@ -8,12 +8,13 @@ Requires=lipstick-security-ui.service
 Type=oneshot
 ProtectSystem=full
 ReadWritePaths=%h/Documents
+Environment=BUGGER_LOGPATH=%h/Documents/Bugger
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
-          /bin/mkdir -p %h/Documents/Bugger; \
-          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise _TRANSPORT=journal | grep -v selinux > %h/Documents/Bugger/$(date -I)_%N.log; \
-          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise -k         > %h/Documents/Bugger/$(date -I)_%N_kernel.log; \
-          /usr/bin/chmod 0600  %h/Documents/Bugger/$(date -I)_%N*log; \
-          /usr/bin/chown %u    %h/Documents/Bugger/$(date -I)_%N*log; \
+          /bin/mkdir -p ${BUGGER_LOGPATH}; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise _TRANSPORT=journal | grep -v selinux > ${BUGGER_LOGPATH}/$(date -I)_%N.log; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise -k         > ${BUGGER_LOGPATH}/$(date -I)_%N_kernel.log; \
+          /usr/bin/chmod 0600  ${BUGGER_LOGPATH}/$(date -I)_%N*log; \
+          /usr/bin/chown %u    ${BUGGER_LOGPATH}/$(date -I)_%N*log; \
 "
 
 [Install]

@@ -14,11 +14,12 @@ Type=oneshot
 ProtectSystem=full
 ReadWritePaths=%h/Documents
 # see https://github.com/jovirkku/docs.sailfishos.org/blob/master/Support/Help_Articles/Collecting_Logs/Collect_Persistent_Logs/gather-logs.sh
-Environment=LOG_PACKAGE=%h/Documents/Bugger/jolla-gather-logs.tar.bz2
+Environment=BUGGER_LOGPATH=%h/Documents/Bugger
+Environment=LOG_PACKAGE=jolla-gather-logs.tar.bz2
 Environment=GATHER_LOGS_DIR=/_gather_logs_tmp
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
-    /bin/mkdir -p %h/Documents/Bugger; \
-    /usr/bin/tar cjf "$LOG_PACKAGE" "$GATHER_LOGS_DIR" -C /\
+    /bin/mkdir -p ${BUGGER_LOGPATH}; \
+    /usr/bin/tar cjf "${BUGGER_LOGPATH}/$LOG_PACKAGE" "$GATHER_LOGS_DIR" -C /\
 "
 
 [Install]
