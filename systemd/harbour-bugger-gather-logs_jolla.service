@@ -1,0 +1,25 @@
+[Unit]
+Description=Collect Jolla gather-logs.sh output for Bugger!
+Documentation=https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Persistent_Logs/
+
+After=lipstick-security-ui.service
+Requires=lipstick-security-ui.service
+
+PartOf=harbour-bugger-gather-logs.target
+
+ConditionPathExists=/_gather_logs_tmp
+
+[Service]
+Type=oneshot
+ProtectSystem=full
+ReadWritePaths=%h/Documents
+# see https://github.com/jovirkku/docs.sailfishos.org/blob/master/Support/Help_Articles/Collecting_Logs/Collect_Persistent_Logs/gather-logs.sh
+Environment=LOG_PACKAGE=%h/Documents/Bugger/jolla-gather-logs.tar.bz2
+Environment=GATHER_LOGS_DIR=/_gather_logs_tmp
+ExecStart=/usr/bin/pkexec /bin/sh -c "\
+    /bin/mkdir -p %h/Documents/Bugger; \
+    /usr/bin/tar cjf "$LOG_PACKAGE" "$GATHER_LOGS_DIR" -C /\
+"
+
+[Install]
+WantedBy=harbour-bugger-gather-logs.target
