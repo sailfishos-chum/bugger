@@ -318,7 +318,7 @@ Dialog { id: page
         PullDownMenu { id: pdm
             flickable: flick
             MenuItem { text: qsTr("Share via E-Mail"); enabled: filesModel.count > 0; onClicked: { emailshare() } }
-            MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;      onDelayedClick: { email() } }
+            MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0; onClicked: { Clipboard.text = config.email.to } onDelayedClick: { email() } }
             MenuItem { text: qsTr("Upload Contents"); onClicked: { upload() } }
             MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
