@@ -4,40 +4,11 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../../components"
-import "../../config/jollahelp.js" as DSO
+import "../../config/help.js" as DSO
 
 Page {
-    ListModel { id: dsoModel
-        ListElement {
-            title: "Collecting Logs"
-            url: "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs"
-        }
-        ListElement {
-            title: "Basic Logs"
-            desc:  ""
-            url: "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Basic_Logs"
-        }
-        ListElement {
-            title: "Persistent Logs"
-            desc:  ""
-            url: "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Persistent_Logs/"
-        }
-        ListElement {
-            title: "Email Logs"
-            desc:  ""
-            url: "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Email_Logs/"
-        }
-        ListElement {
-            title: "oFono Logs"
-            desc:  ""
-            url: "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_oFono_Logs/"
-        }
-        ListElement {
-            title: "Android Logs"
-            desc:  ""
-            url: "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Logs_with_Logcat/"
-        }
-    }
+    Component.onCompleted: { DSO.data.forEach(function(e) { helpModel.append(e) }) }
+    ListModel { id: helpModel }
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: content.height
@@ -56,8 +27,8 @@ Page {
             Repeater {
                 width: parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
-                model: dsoModel
-                delegate: ValueButton { label: qsTr("Article"); value: title; description: url; onClicked: { Qt.openUrlExternally(url)} }
+                model: helpModel
+                delegate: ValueButton { label: category; value: title; description: desc ? desc : url; onClicked: { Qt.openUrlExternally(url)} }
             }
         }
     }
