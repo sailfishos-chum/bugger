@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022 Peter G. (nephros)
+Copyright (c) 2022,2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -22,34 +22,44 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
-LinkedLabel {
+Column{
     anchors.horizontalCenter: parent.horizontalCenter
+    width: parent.width - Theme.horizontalPageMargin
+    spacing: Theme.paddingMedium
+Label {
+    anchors.horizontalCenter: parent.horizontalCenter
+    width: parent.width
     color: Theme.secondaryColor
     font.pixelSize: Theme.fontSizeSmall
     horizontalAlignment: Text.AlignJustify
     wrapMode: Text.WordWrap
-    shortenUrl: true
-    plainText: qsTr('
-Please review the guidelines and follow the template when creating a bug report.
-
-Guidelines: https://forum.sailfishos.org/t/22
-
-If you are uncertain about how to fill out the report, we recommend asking about your issue in the General category of the Forum first:
-
-General: https://forum.sailfishos.org/c/15
-
-Information about debugging and collecting logs can be found here:
-
-Jolla Log Collecting script: https://jolla.zendesk.com/hc/en-us/articles/360013910599
-
-Jolla article about logs for some special use cases: https://jolla.zendesk.com/hc/en-us/articles/4405752484242
-
-Other articles on log colection: https://jolla.zendesk.com/hc/en-us/search?utf8=✓&query=Logs
-
-Testing: https://docs.sailfishos.org/Develop/Platform/Testing_Advice/
-
-Wiki: https://forum.sailfishos.org/t/12751/3
-')
+    text: qsTr('Please review the guidelines and follow the template when creating a bug report.')
 }
 
+ValueButton {
+    label: qsTr("Forum")
+    value: qsTr("Guidelines")
+    description: "https://forum.sailfishos.org/t/22"
+    onClicked: { Qt.openUrlExternally("https://forum.sailfishos.org/t/22")}
+}
+
+Label {
+    anchors.horizontalCenter: parent.horizontalCenter
+    width: parent.width
+    color: Theme.secondaryColor
+    font.pixelSize: Theme.fontSizeSmall
+    horizontalAlignment: Text.AlignJustify
+    wrapMode: Text.WordWrap
+    text: qsTr('If you are uncertain about how to fill out the report, we recommend asking about your issue in the General category of the Forum first:')
+}
+
+ValueButton { label: qsTr("Forum")
+    value: qsTr("General")
+    description:  "https://forum.sailfishos.org/c/15"
+    onClicked: { Qt.openUrlExternally("https://forum.sailfishos.org/c/15")}
+}
+
+//ValueButton { label: qsTr("Wiki: https://forum.sailfishos.org/t/12751/3
+//}
+}
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
