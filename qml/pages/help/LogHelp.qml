@@ -28,7 +28,9 @@ Page {
                 width: parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
                 model: helpModel
-                delegate: ValueButton { label: category; value: title; description: desc ? desc : url; onClicked: { Qt.openUrlExternally(url)} }
+                delegate: ValueButton { label: category; value: name; description: (desc) ? desc : url
+                    onClicked: { Qt.openUrlExternally(url)}
+                }
             }
         }
     }
