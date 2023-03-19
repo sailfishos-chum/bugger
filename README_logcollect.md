@@ -38,7 +38,7 @@ If your log collecting script is part of a package, you can depend on
 
 ### Example
 
-A very basig "Hello World" example is in the `contrib` folder and part of the
+A very basic "Hello World" example is in the `contrib` folder and part of the
 `harbour-bugger-gather-logs-contrib` package.
 
 Is places a script in `/usr/share/harbour-bugger/scripts` and can be activated by doing
