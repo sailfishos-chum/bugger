@@ -355,9 +355,6 @@ Page {
             SectionHeader { text: qsTr("Additional Information"); font.pixelSize: Theme.fontSizeLarge }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             SectionHeader { text: qsTr("Additional Information") }
-            CatSelect { id: metacat
-                onCategoryChanged: metatags["category"] = category;
-            }
             TextArea{id: text_add;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
