@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022 Peter G. (nephros)
+Copyright (c) 2022,2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -330,6 +330,7 @@ Page {
             }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             SectionHeader { text: qsTr("Additional Information") }
+            CatSelect { id: metacat }
             TextArea{id: text_add;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
