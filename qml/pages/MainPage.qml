@@ -82,7 +82,13 @@ Page {
             "The following tags are metadata for automated processing. Please leave them as-is and ignore them.",
         ]
         const keys  = Object.keys(metatags)
-        keys.forEach(function(k) { comm.push("<x-bugger-meta name='" + k + "' value='" + metatags[k] + "' />") })
+        const truth = [];
+        keys.forEach(function(k) {
+            comm.push("<x-bugger-meta name='" + k + "' value='" + metatags[k] + "' />")
+            truth.push(metatags[k]);
+        })
+        const tamperhash = Qt.md5(truth.join(""));
+        comm.push("<x-bugger-meta name='hash' value='" + tamperhash + "' />")
         comm.push("-->\n")
         return comm.join('\n')
     }
@@ -203,6 +209,8 @@ Page {
         shallSave();
     }
     onQualityStringChanged: {
+        onCategoryChanged: metatags["qualityname"] = state;
+        onCategoryChanged: metatags["qualityrating"] = infoGoodCnt;
         if ( state === "good" || state === "full" ) {
             postiveFeedback.play()
             app.popup(qsTr("Achievement unlocked! The quality of your bug report is %1!").arg(page.qualityString));
@@ -357,6 +365,7 @@ Page {
                 width: parent.width;
                 label: qsTr("Reproducibility");
                 minimumValue: 0; maximumValue: 100; stepSize: 25 ; value: -1
+                onValueChanged: metatags["reproducible"] = value;
                 valueText: qsTr(userTextL10N)
                 // this goes into the bug report
                 property string userText: {
