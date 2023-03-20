@@ -20,12 +20,10 @@ ComboBox {
     label: qsTr("Category")
     value:       (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).displayName : qsTr("None")
     description: (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).description : qsTr("Bug Category")
-    //value: qsTr("Please Select")
-    //currentIndex: 0
     ContextMenu { id: cmenu
         property alias entries: entriesrep.model
         Repeater { id: entriesrep
-            delegate: MenuItem { text: (description.length > 0) ? description : displayName }
+            delegate: MenuItem { text: Theme.highlightText(displayName + ((description.length >0) ? ": " + description : ""), displayName, Theme.highlightColor) }
         }
     }
 }
