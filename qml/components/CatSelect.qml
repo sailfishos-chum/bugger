@@ -17,7 +17,7 @@ ComboBox {
     property ListModel catModel: ListModel{}
     property string category: (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).name : "none"
 
-    label: qsTr("Category")
+    label: qsTr("Bug Category")
     value:       (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).displayName : qsTr("None")
     description: (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).description : qsTr("Bug Category")
     ContextMenu { id: cmenu
