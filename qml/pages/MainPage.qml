@@ -72,6 +72,20 @@ Page {
         + Qt.application.name + ' ' + Qt.application.version
         + '</a>'
 
+    property var metatags: {
+        "version":  Qt.application.version,
+    }
+    function metatagsToComment() {
+        const comm = [
+            "<!--",
+            "The following tags are metadata for automated processing. Please leave them as-is and ignore them.",
+        ]
+        const keys  = Object.keys(metatags)
+        keys.forEach(function(k) { comm.push("<x-bugger-meta name='" + k + "' value='" + metatags[k] + "' />") })
+        comm.push("-->\n")
+        return comm.join('\n')
+    }
+
     // used to clear this form, and the persistent storage
     property var defaultFieldContents: {
         "text_title":       "",
@@ -330,7 +344,9 @@ Page {
             }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             SectionHeader { text: qsTr("Additional Information") }
-            CatSelect { id: metacat }
+            CatSelect { id: metacat
+                onCategoryChanged: metatags["category"] = category;
+            }
             TextArea{id: text_add;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
@@ -474,6 +490,8 @@ Page {
             // add footer:
             + "----  \n"
             + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
+            // add meta tags:
+            + metatagsToComment()
             + "";
         return payload;
     }
