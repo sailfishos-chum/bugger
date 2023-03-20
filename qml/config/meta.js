@@ -2,6 +2,8 @@
 /*
  * When adding a category, add it at the end!!
  *
+ * Also, don't repeat the display name in the description, it makes the highlight look ugly.
+ *
  */
 var data = {
     "categories": [
@@ -12,37 +14,37 @@ var data = {
                 "description": ""
         },
         {  "name": "backup",   "displayName": "Backup",
-                "description": "The Sailfish Backup system"
+                "description": "The Sailfish vault system"
         },
         {  "name": "bluetooth", "displayName": "Bluetooth",
-                "description": "Bluetooth connection or devices"
+                "description": "BT connection or devices"
         },
         {  "name": "browser",  "displayName": "Browser",
                 "description": "Web browsing"
         },
         {  "name": "calendar", "displayName": "Calendar",
-                "description": "Calendar sync or management problems"
+                "description": "sync or management of events"
         },
         {  "name": "contacts", "displayName": "Contacts",
-                "description": "Contact sync or management problems"
+                "description": "sync or management of contact information"
         },
         {  "name": "exchange", "displayName": "Exchange",
-                "description": "Exchange/O356 sync or management problems"
+                "description": "Outlook or Office356 accounts"
         },
         {  "name": "fingerprint",  "displayName": "Fingerprint",
-                "description": "Fingerprint Reader"
+                "description": ""
         },
         {  "name": "mail", "displayName": "EMail",
-                "description": "General EMail"
+                "description": "General mail"
         },
         { "name": "media_tracker", "displayName": "Media Indexing",
-                "description": "Media Player remote control (MPRIS)"
+                "description": "Music, Image, and Video metadata"
         },
         { "name": "mobile_data",  "displayName": "Mobile Data",
-                "description": ""
+                "description": "SIM cards, reception, switching, roaming"
         },
         { "name": "mpris", "displayName": "MPRIS",
-                "description": ""
+                "description": "Media Player remote control"
         },
         { "name": "native_app",   "displayName": "SFOS App",
                 "description": "Sailfish stock apps"
@@ -57,7 +59,7 @@ var data = {
                 "description": "Out-of-memory conditions"
         },
         { "name": "positioning",  "displayName": "Positioning",
-                "description": "GPS and other positioning methods"
+                "description": "GPS and other geolocation methods"
         },
     ]
 }
