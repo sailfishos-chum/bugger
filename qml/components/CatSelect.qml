@@ -5,24 +5,29 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../config/meta.js" as Meta
 
-Column {
+ComboBox {
     width: parent.width
-    property var catData: Meta.data.categories
 
-    property alias currentIndex: cbox.currentIndex
-    property alias value: cbox.value
-    ContextMenu { id: catmenu
-        Repeater {
-            model: catData
-            delegate: MenuItem { text: modelData.displayName }
+    Component.onCompleted: {
+        Meta.data.categories.forEach(function(e){ catModel.append(e) })
+        cmenu.entries = catModel
+        menu = cmenu
+    }
+
+    property ListModel catModel: ListModel{}
+    property string category: (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).name : "none"
+
+    label: qsTr("Category")
+    value:       (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).displayName : qsTr("None")
+    description: (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).description : qsTr("Bug Category")
+    //value: qsTr("Please Select")
+    //currentIndex: 0
+    ContextMenu { id: cmenu
+        property alias entries: entriesrep.model
+        Repeater { id: entriesrep
+            delegate: MenuItem { text: (description.length > 0) ? description : displayName }
         }
     }
-   ComboBox {id: cbox
-        width: parent.width
-       label: qsTr("Category")
-       description: qsTr("Type of bug/classification")
-        currentIndex: -1
-        menu: catmenu
-    }
 }
+
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
