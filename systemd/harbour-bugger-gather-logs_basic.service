@@ -17,24 +17,26 @@ ExecStart=/usr/bin/pkexec /bin/sh -c "\
     /bin/mkdir -p ${BUGGER_LOGPATH}; \
     /usr/bin/chown %u ${BUGGER_LOGPATH}; \
     for f in /etc/hw-release /etc/sailfish-release /etc/passwd /etc/group; do\
-         echo \"====== $f =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-         cat $f >>  ${BUGGER_LOGPATH}/%N_basic.log \
-    done \
-    echo \"====== rpm -qa =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-    rpm -qa | sort >> \"$BUGGER_LOGPATH/%N_basic.log\" \
-    echo \"====== ssu lr =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-    ssu lr >> \"$BUGGER_LOGPATH/%N_basic.log \
-    echo \"====== df =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-    df >> ${BUGGER_LOGPATH}/%N_basic.log \
-    echo \"====== df =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-    mount >> \"$BUGGER_LOGPATH/mount\" \
-    echo \"====== mount =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-    ps >> $BUGGER_LOGPATH/%N_basic.log \" \
-    echo \"====== sl -lR /dev =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-    ps >> $BUGGER_LOGPATH/%N_basic.log \" \
-    ls -l -n -R /dev >> \"$BUGGER_LOGPATH/%N_basic.log\" \
-    echo \"====== sl -lR /etc =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
-    ls -l -n -R /etc >> \"$BUGGER_LOGPATH/%N_basic.log\" \
+         printf '====== %s =====\n' $f >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+         cat $f >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    done ;\
+    printf '====== rpm -qa =====\n' >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    rpm -qa | sort >> $BUGGER_LOGPATH/$(/usr/bin/date -I)_%N.log ;\
+    printf '====== ssu lr =====\n' >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    ssu lr >> $BUGGER_LOGPATH/$(/usr/bin/date -I)_%N.log ;\
+    printf '====== df =====\n' >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    df >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    printf '====== df =====\n' >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    mount >> $BUGGER_LOGPATH/mount ;\
+    printf '====== mount =====\n' >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    ps >> $BUGGER_LOGPATH/$(/usr/bin/date -I)_%N.log ;\
+    printf '====== sl -lR /dev =====\n' >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    ps >> $BUGGER_LOGPATH/$(/usr/bin/date -I)_%N.log ;\
+    ls -l -n -R /dev >> $BUGGER_LOGPATH/$(/usr/bin/date -I)_%N.log ;\
+    printf '====== sl -lR /etc =====\n' >> ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log ;\
+    ls -l -n -R /etc >> $BUGGER_LOGPATH/$(/usr/bin/date -I)_%N.log ;\
+    /usr/bin/chmod 0600  ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
+    /usr/bin/chown %u    ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
 "
 
 [Install]
