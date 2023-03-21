@@ -5,7 +5,7 @@ Documentation=https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/
 After=lipstick-security-ui.service
 Requires=lipstick-security-ui.service
 
-PartOf=harbour-bugger-gather-logs.target
+#PartOf=harbour-bugger-gather-logs.target
 
 ConditionPathExists=/_gather_logs_tmp
 
@@ -19,6 +19,7 @@ Environment=LOG_PACKAGE=jolla-gather-logs.tar.bz2
 Environment=GATHER_LOGS_DIR=/_gather_logs_tmp
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
     /bin/mkdir -p ${BUGGER_LOGPATH}; \
+    /usr/bin/chown %u ${BUGGER_LOGPATH}; \
     /usr/bin/tar cjf "${BUGGER_LOGPATH}/$LOG_PACKAGE" "$GATHER_LOGS_DIR" -C /\
 "
 

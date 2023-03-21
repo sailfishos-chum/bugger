@@ -17,6 +17,7 @@ ReadWritePaths=%h/Documents
 Environment=BUGGER_LOGPATH=%h/Documents/Bugger
 ExecStart=/bin/sh -c "\
           /bin/mkdir -p ${BUGGER_LOGPATH}; \
+          /usr/bin/chown %u ${BUGGER_LOGPATH}; \
           /usr/share/harbour-bugger/scripts/gather-logs-%i.sh > ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
           /usr/bin/chmod 0600  ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
           /usr/bin/chown %u    ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \

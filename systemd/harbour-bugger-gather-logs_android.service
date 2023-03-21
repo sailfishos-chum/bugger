@@ -11,7 +11,7 @@ Requires=lipstick-security-ui.service
 # Requisite=aliendalvik.service
 # BindsTo=aliendalvik.service
 
-PartOf=harbour-bugger-gather-logs.target
+#PartOf=harbour-bugger-gather-logs.target
 
 ConditionPathExists=/system/bin/logcat
 ConditionPathExists=/system/bin/dumpsys
@@ -24,6 +24,7 @@ Environment=BUGGER_LOGPATH=%h/Documents/Bugger
 ExecStartPre=/bin/sh -c '/usr/bin/systemctl is-active --quiet aliendalvik.service'
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
     /bin/mkdir -p ${BUGGER_LOGPATH}; \
+    /usr/bin/chown %u ${BUGGER_LOGPATH}; \
     if [ $(awk  -F= '/^VERSION_ID/ {print $2}' /etc/os-release | awk -F. '{print $1 $2 $3}') -ge 450 ]; \
     then; \
       /usr/bin/appsupport-attach /system/bin/logcat -d > ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \

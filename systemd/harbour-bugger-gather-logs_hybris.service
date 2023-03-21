@@ -10,7 +10,7 @@ Requires=lipstick-security-ui.service
 # Requisite=aliendalvik.service
 # BindsTo=aliendalvik.service
 
-PartOf=harbour-bugger-gather-logs.target
+#PartOf=harbour-bugger-gather-logs.target
 
 ConditionPathExists=/usr/libexec/droid-hybris/system/bin/logcat
 
@@ -22,6 +22,7 @@ Environment=BUGGER_LOGPATH=%h/Documents/Bugger
 ExecStartPre=/bin/sh -c '/usr/bin/systemctl is-active --quiet droid-hal-init.service'
 ExecStart=/bin/sh -c "\
     /bin/mkdir -p ${BUGGER_LOGPATH}; \
+    /usr/bin/chown %u ${BUGGER_LOGPATH}; \
     /usr/libexec/droid-hybris/system/bin/logcat -d > ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
     /usr/bin/chmod 0600  ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
     /usr/bin/chown %u    ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \

@@ -5,7 +5,7 @@ Documentation=https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/
 After=lipstick-security-ui.service
 Requires=lipstick-security-ui.service
 
-PartOf=harbour-bugger-gather-logs.target
+#PartOf=harbour-bugger-gather-logs.target
 
 [Service]
 Type=oneshot
@@ -15,6 +15,7 @@ ReadWritePaths=%h/Documents
 Environment=BUGGER_LOGPATH=%h/Documents/Bugger
 ExecStart=/usr/bin/pkexec /bin/sh -c "\
     /bin/mkdir -p ${BUGGER_LOGPATH}; \
+    /usr/bin/chown %u ${BUGGER_LOGPATH}; \
     for f in /etc/hw-release /etc/sailfish-release /etc/passwd /etc/group; do\
          echo \"====== $f =====\" >> ${BUGGER_LOGPATH}/%N_basic.log \
          cat $f >>  ${BUGGER_LOGPATH}/%N_basic.log \
