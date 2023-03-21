@@ -35,5 +35,13 @@ Column{
         wrapMode: Text.WordWrap
         text: qsTr('If you are uncertain about how to fill out the report, we recommend asking about your issue in the General category of the Forum first:')
     }
+
+    ValueButton {
+        label: qsTr("Forum")
+        value: qsTr("General")
+        description: "https://forum.sailfishos.org/t/15"
+        onClicked: { Qt.openUrlExternally("https://forum.sailfishos.org/t/15")}
+    }
+
 }
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
