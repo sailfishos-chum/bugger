@@ -32,7 +32,7 @@ var data = {
                 "description": "Outlook or Office356 accounts"
         },
         {  "name": "fingerprint",  "displayName": "Fingerprint",
-                "description": ""
+                "description": "recognition, management, sensor"
         },
         {  "name": "mail", "displayName": "EMail",
                 "description": "General mail"
