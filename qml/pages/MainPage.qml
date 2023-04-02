@@ -339,7 +339,7 @@ Page {
                 description: qsTr("e.g. 'the app closed', 'a message was not shown'")
                 onFocusChanged: shallSave();
             }
-            SectionHeader { text: qsTr("Device Information") }
+            SectionHeader { text: qsTr("Device Information"); font.pixelSize: Theme.fontSizeLarge  }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             /*
              * bug info contents may be available later than this page is instantiated.
@@ -352,8 +352,10 @@ Page {
                 active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
                 sourceComponent: DeviceInfo{}
             }
+            Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width }
+            Item { height: Theme.paddingLarge*2; width: parent.width }
+            SectionHeader { text: qsTr("Additional Information"); font.pixelSize: Theme.fontSizeLarge }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
-            SectionHeader { text: qsTr("Additional Information") }
             TextArea{id: text_add;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
@@ -416,6 +418,7 @@ Page {
             }
             Column {
                 width: parent.width
+                visible: filesModel.count > 0
                 SectionHeader { text: qsTr("Links/Attachments (%1)").arg(fileList.count) }
                 FileList{ id: fileList
                     model: filesModel
