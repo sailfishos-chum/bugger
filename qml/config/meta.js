@@ -41,7 +41,7 @@ var data = {
                 "description": "Music, Image, and Video metadata"
         },
         { "name": "mobile_data",  "displayName": "Mobile Data",
-                "description": "SIM cards, reception, switching, roaming"
+                "description": "SIM cards, reception, roaming"
         },
         { "name": "mpris", "displayName": "MPRIS",
                 "description": "Media Player remote control"
@@ -50,10 +50,10 @@ var data = {
                 "description": "Sailfish stock apps"
         },
         { "name": "network",  "displayName": "Networking",
-                "description": ""
+                "description": "general networking issues"
         },
         { "name": "ngfd", "displayName": "UI Feedback",
-                "description": "Non-graphical feedback"
+                "description": "haptic feedback"
         },
         { "name": "oom_killer",   "displayName": "OOM",
                 "description": "Out-of-memory conditions"
@@ -63,6 +63,9 @@ var data = {
         },
         { "name": "power",  "displayName": "Power Management",
                 "description": "Battery drain, sleep, charging"
+        },
+        { "name": "flashing",  "displayName": "Flashing",
+                "description": "installing and flashing images"
         },
     ]
 }
