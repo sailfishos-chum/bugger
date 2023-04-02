@@ -61,6 +61,9 @@ var data = {
         { "name": "positioning",  "displayName": "Positioning",
                 "description": "GPS and other geolocation methods"
         },
+        { "name": "power",  "displayName": "Power Management",
+                "description": "Battery drain, sleep, charging"
+        },
     ]
 }
 // vim: ft=javascript expandtab ts=4 sw=4 st=4
