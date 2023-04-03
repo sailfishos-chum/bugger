@@ -419,7 +419,6 @@ Page {
             Column {
                 visible: fileList.count > 0
                 width: parent.width
-                visible: filesModel.count > 0
                 SectionHeader { text: qsTr("Links/Attachments (%1)").arg(fileList.count) }
                 FileList{ id: fileList
                     model: filesModel
