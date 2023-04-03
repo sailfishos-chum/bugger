@@ -21,12 +21,27 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
-GridItem {
+GridItem { id: root
     property string displayName
 
     anchors.margins: Theme.paddingSmall
     width: GridView.view.cellWidth
     contentHeight: Math.max(GridView.view.cellHeight, Theme.iconSizeLarge, content.height)
+
+    // replicate the 'hidden' property from Sailfish.Silica.ListItem
+    property bool hidden
+    Item {
+        states: State {
+            when: root.hidden
+            name: "hidden"
+            PropertyChanges {
+                target: root
+                contentHeight: 0
+                enabled: false
+                opacity: 0.0
+            }
+        }
+    }
     Row { id: content
         height: icon.height
         width: parent.width
@@ -42,7 +57,10 @@ GridItem {
             anchors.verticalCenter: icon.verticalCenter
             Label { text: fileName; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeSmall; color: Theme.highlightColor }
             Label { text: mimeType; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
-            Label { text: (model.dataStr) ? Format.formatFileSize(model.dataStr.length) : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
+            Row { width: parent.width; spacing: Theme.paddingSmall
+            Label { text: (model.dataStr) ? Format.formatFileSize(model.dataStr.length) : ""; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
+            Label { text: (model.pastedUrl) ? qsTr("uploaded"): qsTr("not uploaded"); truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
+            }
             //Label { text: filePath; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             //Label { text: fileNameOrig ? fileNameOrig : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
         }

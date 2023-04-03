@@ -417,12 +417,14 @@ Page {
                 }
             }
             Column {
+                visible: fileList.count > 0
                 width: parent.width
                 visible: filesModel.count > 0
                 SectionHeader { text: qsTr("Links/Attachments (%1)").arg(fileList.count) }
                 FileList{ id: fileList
                     model: filesModel
                     showPlaceholder: false
+                    filtered: true
                 }
             }
         }
@@ -437,7 +439,15 @@ Page {
                 var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
                 dialog.accepted.connect(function() {
                     console.debug("dialog done.")
-                    page.links = dialog.links
+                    for (var i = 0; i < filesModel.count; ++i) {
+                        var d = filesModel.get(i)
+                        //links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
+                        if (d.title && d.pastedUrl) {
+                            links.push(' - [' + d.title + '](' + d.pastedUrl + ')  ')
+                        } else if (d.fileName && d.pastedUrl) {
+                            links.push(' - [' + d.fileName + '](' + d.pastedUrl + ')  ')
+                        }
+                    }
                 })
             }
         }
@@ -516,7 +526,7 @@ Page {
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
             + "\n\n"
-            + "ATTACHMENTS:\n"
+            + "LOG FILE LINKS:\n"
             + "=================\n\n"
             + links.join('\n')
             + "\n\n\n\n"
@@ -618,7 +628,8 @@ Page {
             "regver":           regver.currentIndex,
             "regarch":          regarch.currentIndex,
             "othersw":          othersw.checked,
-            "repro":            repro.sliderValue
+            "repro":            repro.sliderValue,
+            "links":            links
         };
         Util.store(post);
     }
@@ -672,6 +683,7 @@ Page {
             regarch.currentIndex    = data.regarch;
             othersw.checked         = data.othersw;
             repro.value             = data.repro;
+            links                   = data.links;
         } finally {
             preventSave = false;
         }
