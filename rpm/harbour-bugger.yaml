@@ -1,6 +1,6 @@
 Name: harbour-bugger
 Summary: Bug reporting helper
-Version: 0.10.4
+Version: 0.10.5
 Release: 1
 Group: Applications
 License: ASL 2.0
@@ -52,13 +52,8 @@ RpmLintIgnore:
 #    %endif
 #Patches:
 #  - 'baz'
-RequiresPost:
-  - systemd
-RequiresPreUn:
-  - systemd
-RequiresPostUn:
-  - systemd
 Requires:
+  - '%{name}-gather-logs'
   - libsailfishapp-launcher
   - sailfish-version >= 4.0.0
 PkgBR:
@@ -84,9 +79,60 @@ Files:
   - '%config %{_sysconfdir}/sailjail/permissions/%{name}.profile'
   - '%config %{_sysconfdir}/firejail/%{name}.local'
   - '%dir %{_datadir}/%{name}'
-  - '%dir %{_datadir}/%{name}/scripts'
-  - '%{_datadir}/%{name}/scripts/README_logcollect.md'
   - '%{_datadir}/%{name}/translations/*.qm'
   - '%{_datadir}/%{name}/qml/*'
-  - '%{_userunitdir}/*.target'
-  - '%{_userunitdir}/*.service'
+
+SubPackages:
+    - Name:  gather-logs
+      Summary: Log gathering tools from %{name}
+      Group: Applications
+      Description: |
+          %{summary}.
+
+          %if "%{?vendor}" == "chum"
+          PackageName: Log collecting tools from Bugger!
+          Type: addon
+          Categories:
+           - Utility
+          Custom:
+            Repo: https://github.com/sailfishos-chum/bugger
+          %endif
+
+      BuildArch: noarch
+      AutoDepend: false
+      Requires:
+        - polkit
+      RequiresPost:
+        - systemd
+      RequiresPreUn:
+        - systemd
+      RequiresPostUn:
+        - systemd
+      Files:
+        - '%dir %{_datadir}/%{name}/scripts'
+        - '%{_datadir}/%{name}/scripts/README_logcollect.md'
+        - '%{_userunitdir}/*.target'
+        - '%{_userunitdir}/*.service'
+
+    - Name:  gather-logs-contrib
+      Version: 0.1
+      Summary: Log gathering contributions for %{name}
+      Group: Applications
+      Description: |
+          %{summary}.
+
+          %if "%{?vendor}" == "chum"
+          PackageName: Log collecting contributions for Bugger!
+          Type: addon
+          Categories:
+           - Utility
+          Custom:
+            Repo: https://github.com/sailfishos-chum/bugger
+          %endif
+
+      Requires:
+        - '%{name}-gather-logs'
+      BuildArch: noarch
+      AutoDepend: false
+      Files:
+        - '%{_datadir}/%{name}/scripts/gather-logs-*.sh'
