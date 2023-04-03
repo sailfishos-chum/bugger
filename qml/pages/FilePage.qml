@@ -56,9 +56,13 @@ Dialog { id: page
             onAccepted: {
                 if (acceptedHandled) return
                 for (var i = 0; i < selectedContent.count; ++i) {
-                    filesModel.append(selectedContent.get(i))
+                    var o = selectedContent.get(i)
+                    o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
+                    o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
+                    filesModel.append(o)
+                    console.debug("added", i+1, "of" , selectedContent.count,  "files:")
+                    console.debug(JSON.stringify(o, null, 2))
                 }
-                loadFiles()
                 acceptedHandled=true
             }
         }
@@ -66,6 +70,7 @@ Dialog { id: page
 
     function loadFiles() {
         loader.model = filesModel
+        loader.reload()
     }
     function upload() {
         paster.model = filesModel
@@ -76,31 +81,52 @@ Dialog { id: page
     LogPaster   { id: paster } // uploads files to "pastebin"
     Connections {
         target: gather
+        /*
+         * mimic the selectedContentProperties schema from FilePicker and add to the model
+         *
+         * {
+             "contentType": 6,
+             "fileName": "2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "filePath": "/home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "fileSize": 439122,
+             "mimeType": "text/x-log",
+             "title": "2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "url": "file:///home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log",
+             "url": "file:///home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log"
+           }
+         */
         onLogCreatedChanged: {
-            // mimic the selectedContentProperties of the Picker and add to the model
-            const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
-            const d = []
+            //const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
+            const logBaseName = new Date().toISOString().substring(0,10) + "_" + config.gather.basename
+            const elements = []
             const o = {}
-            //const postfixes = [ ".log", ".json", "_kernel.log", "_kernel.json" ];
-            const postfixes = [ ".log", "_kernel.log" ];
+            //const postfixes = [ ".log", "_kernel.log" ];
+            const postfixes = config.gather.postfixes
+            const pretty    = config.gather.prettynames
             postfixes.forEach(function(postfix) {
                 o = {};
-                o["title"] = (
-                    ( (/_kernel/.test(postfix)) ? "Kernel" : "Journal" )
-                    + " "
-                    + ((/json/.test(postfix)) ? "(JSON)" : "" )
-                );
+                o["title"] = "";
+                const fn = logBaseName + postfix;
+                for ( var i = 0; i < pretty.length; ++i) {
+                    const re = new RegExp(pretty[i].pattern);
+                    if (re.test(postfix)) {
+                        console.debug("found pretty name", pretty[i].name, "from pattern", pretty[i].pattern, "for filename", fn)
+                        o["title"] = pretty[i].name;
+                        break;
+                    }
+                };
                 o["mimeType"]   = (/json$/.test(postfix)) ? "application/json" : "text/plain";
                 o["fileName"]   = logBaseName + postfix;
                 o["filePath"]   = StandardPaths.documents + "/" + o["fileName"];
                 o["url"]        = Qt.resolvedUrl(o["filePath"]);
+                o["fileSize"]   = -1; // prepare property so we don't need dynamicRoles
                 o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
                 o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
-                //console.debug("Adding:", JSON.stringify(o,null,2))
-                d.push(o)
+                console.debug("Adding:", JSON.stringify(o,null,2))
+                elements.push(o)
             })
             // add the generated information to the model
-            d.forEach(function(element) { filesModel.append(element)})
+            elements.forEach(function(element) { filesModel.append(element)})
             loadFiles()
         }
     }
@@ -116,7 +142,8 @@ Dialog { id: page
             if (paster.uploading !== "") {
                 console.debug("uploading", paster.uploading)
                 progress.visible = true
-                progress.label = qsTr("uploading %1/%2").arg(paster.successCount + 1).arg(filesModel.count)
+                //progress.label = qsTr("uploading %1/%2").arg(paster.successCount + 1).arg(filesModel.count)
+                progress.label = qsTr("uploading %1 files, %2 done").arg(filesModel.count).arg(paster.successCount)
             }
         }
     }

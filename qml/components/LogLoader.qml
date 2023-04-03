@@ -25,7 +25,9 @@ QtObject {
 
     property ListModel model: ListModel{}
 
-    onModelChanged: {
+    onModelChanged: reload()
+
+    function reload() {
         if (!model) return
         for (var i = 0; i < model.count; ++i) {
             getFileFrom(i, model.get(i))

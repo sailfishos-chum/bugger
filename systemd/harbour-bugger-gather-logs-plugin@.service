@@ -10,7 +10,7 @@ ConditionFileIsExecutable=/usr/share/harbour-bugger/scripts/gather-logs-%i.sh
 Type=oneshot
 ProtectSystem=strict
 ProtectHome=read-only
-PrivateNetwork=true
+#PrivateNetwork=true
 ProtectKernelTunables=true
 
 ReadWritePaths=%h/Documents

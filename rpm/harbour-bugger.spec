@@ -132,24 +132,27 @@ desktop-file-install --delete-original       \
 # >> preun gather-logs
 %systemd_user_preun harbour-bugger-gather-logs.target
 %systemd_user_preun harbour-bugger-gather-logs.service
-%systemd_user_preun harbour-bugger-gather-logs-plugin@.service
-%systemd_user_preun harbour-bugger-gather-android-logs.service
+#%%systemd_user_preun harbour-bugger-gather-logs-plugin@.service
+%systemd_user_preun harbour-bugger-gather-logs_android.service
+%systemd_user_preun harbour-bugger-gather-logs_hybris.service
 # << preun gather-logs
 
 %post gather-logs
 # >> post gather-logs
 %systemd_user_post harbour-bugger-gather-logs.target
 %systemd_user_post harbour-bugger-gather-logs.service
-%systemd_user_post harbour-bugger-gather-logs-plugin@.service
-%systemd_user_post harbour-bugger-gather-android-logs.service
+#%%systemd_user_post harbour-bugger-gather-logs-plugin@.service
+%systemd_user_post harbour-bugger-gather-logs_android.service
+%systemd_user_post harbour-bugger-gather-logs_hybris.service
 # << post gather-logs
 
 %postun gather-logs
 # >> postun gather-logs
 %systemd_user_postun harbour-bugger-gather-logs.target
 %systemd_user_postun harbour-bugger-gather-logs.service
-%systemd_user_postun harbour-bugger-gather-logs-plugin@.service
-%systemd_user_postun harbour-bugger-gather-android-logs.service
+#%%systemd_user_postun harbour-bugger-gather-logs-plugin@.service
+%systemd_user_postun harbour-bugger-gather-logs_android.service
+%systemd_user_postun harbour-bugger-gather-logs_hybris.service
 # << postun gather-logs
 
 %files
@@ -175,6 +178,6 @@ desktop-file-install --delete-original       \
 
 %files gather-logs-contrib
 %defattr(-,root,root,-)
-%{_datadir}/%{name}/scripts/gather-logs-*.sh
+%attr(0755,root,root) %{_datadir}/%{name}/scripts/gather-logs-*.sh
 # >> files gather-logs-contrib
 # << files gather-logs-contrib
