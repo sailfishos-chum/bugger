@@ -50,7 +50,7 @@ var data = {
                 "description": "Sailfish stock apps"
         },
         { "name": "network",  "displayName": "Networking",
-                "description": "general networking issues"
+                "description": "general net and ocnnectivity issues"
         },
         { "name": "ngfd", "displayName": "UI Feedback",
                 "description": "haptic feedback"
