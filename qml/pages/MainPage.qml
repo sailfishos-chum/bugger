@@ -501,8 +501,6 @@ Page {
             // add footer:
             + "----  \n"
             + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
-            // add meta tags:
-            + metatagsToComment()
             + "";
         return payload;
     }
