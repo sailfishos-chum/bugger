@@ -86,7 +86,7 @@ Page {
             comm.push("<x-bugger-meta name='" + k + "' value='" + metatags[k] + "' />")
             truth.push(metatags[k]);
         })
-        const tamperhash = Qt.md5(truth.join(""));
+        const tamperhash = Qt.md5(truth.join("\n"));
         comm.push("<x-bugger-meta name='hash' value='" + tamperhash + "' />")
         comm.push("-->\n")
         return comm.join('\n')
@@ -496,11 +496,11 @@ Page {
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
             + "\n\n\n\n"
+            // add meta tags:
+            + metatagsToComment()
             // add footer:
             + "----  \n"
             + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
-            // add meta tags:
-            + metatagsToComment()
             + "";
         return payload;
     }
