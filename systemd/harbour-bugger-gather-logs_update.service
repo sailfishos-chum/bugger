@@ -1,18 +1,13 @@
 [Unit]
-Description=Collect up/usr/bin/date log file for Bugger!
+Description=Collect update log file for Bugger!
 
+#Before=harbour-bugger-gather-logs.target
 #After=lipstick-security-ui.service
 #Requires=lipstick-security-ui.service
 
-# would be nice, but user service can't depend on system service:
-# therefore, we use ExecStartPre below instead
-# After=aliendalvik.service
-# Requisite=aliendalvik.service
-# BindsTo=aliendalvik.service
-
 #PartOf=harbour-bugger-gather-logs.target
 
-ConditionPathExists=/var/log/systemup/usr/bin/date.log
+ConditionPathExists=/var/log/systemupdate.log
 
 [Service]
 Type=oneshot
@@ -22,7 +17,7 @@ Environment=BUGGER_LOGPATH=%h/Documents/Bugger
 ExecStart=/bin/sh -c "\
     /bin/mkdir -p ${BUGGER_LOGPATH}; \
     /usr/bin/chown %u ${BUGGER_LOGPATH}; \
-    cp /var/log/systemup/usr/bin/date.log ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
+    cp /var/log/systemupdate.log ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
     /usr/bin/chmod 0600  ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
     /usr/bin/chown %u    ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
 "
