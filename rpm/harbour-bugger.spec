@@ -9,8 +9,8 @@ Name:       harbour-bugger
 # << macros
 
 Summary:    Bug reporting helper
-Version:    0.9.9
-Release:    4
+Version:    0.9.10
+Release:    0
 Group:      Applications
 License:    ASL 2.0
 BuildArch:  noarch
