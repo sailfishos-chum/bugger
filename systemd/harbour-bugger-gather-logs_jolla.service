@@ -2,6 +2,7 @@
 Description=Collect Jolla gather-logs.sh output for Bugger!
 Documentation=https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Persistent_Logs/
 
+Before=harbour-bugger-gather-logs.target
 After=lipstick-security-ui.service
 Requires=lipstick-security-ui.service
 

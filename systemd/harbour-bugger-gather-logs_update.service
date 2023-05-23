@@ -1,14 +1,9 @@
 [Unit]
 Description=Collect update log file for Bugger!
 
+#Before=harbour-bugger-gather-logs.target
 #After=lipstick-security-ui.service
 #Requires=lipstick-security-ui.service
-
-# would be nice, but user service can't depend on system service:
-# therefore, we use ExecStartPre below instead
-# After=aliendalvik.service
-# Requisite=aliendalvik.service
-# BindsTo=aliendalvik.service
 
 #PartOf=harbour-bugger-gather-logs.target
 

@@ -1,6 +1,7 @@
 [Unit]
 Description=Collect hybris logcat file for Bugger!
 
+Before=harbour-bugger-gather-logs.target
 After=lipstick-security-ui.service
 Requires=lipstick-security-ui.service
 
