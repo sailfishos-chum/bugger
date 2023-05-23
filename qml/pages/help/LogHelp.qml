@@ -16,6 +16,7 @@ Page {
             width: parent.width
             spacing: Theme.paddingMedium
             PageHeader { title: qsTr("Logging Documentation") }
+            /*
             SectionHeader { text: qsTr("Native log collecting system") }
             WelcomeLabel {
                 width: parent.width - Theme.horizontalPageMargin
@@ -24,6 +25,7 @@ Page {
                     + qsTr("App developers have the option ro use a plugin-like system to add their logs to this.")
             }
             SectionHeader { text: qsTr("Sailfish OS Documentation") }
+            */
             Repeater {
                 width: parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
