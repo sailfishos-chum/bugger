@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2022 Peter G. (nephros)
+Copyright (c) 2022,2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -71,6 +71,26 @@ Page {
         + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/">'
         + Qt.application.name + ' ' + Qt.application.version
         + '</a>'
+
+    property var metatags: {
+        "version":  Qt.application.version,
+    }
+    function metatagsToComment() {
+        const comm = [
+            "<!--",
+            "The following tags are metadata for automated processing. Please leave them as-is and ignore them.",
+        ]
+        const keys  = Object.keys(metatags)
+        const truth = [];
+        keys.forEach(function(k) {
+            comm.push("<x-bugger-meta name='" + k + "' value='" + metatags[k] + "' />")
+            truth.push(metatags[k]);
+        })
+        const tamperhash = Qt.md5(truth.join("\n"));
+        comm.push("<x-bugger-meta name='hash' value='" + tamperhash + "' />")
+        comm.push("-->\n")
+        return comm.join('\n')
+    }
 
     // used to clear this form, and the persistent storage
     property var defaultFieldContents: {
@@ -187,6 +207,8 @@ Page {
         shallSave();
     }
     onQualityStringChanged: {
+        onCategoryChanged: metatags["qualityname"] = state;
+        onCategoryChanged: metatags["qualityrating"] = infoGoodCnt;
         if ( state === "good" || state === "full" ) {
             postiveFeedback.play()
             app.popup(qsTr("Achievement unlocked! The quality of your bug report is %1!").arg(page.qualityString));
@@ -315,7 +337,7 @@ Page {
                 description: qsTr("e.g. 'the app closed', 'a message was not shown'")
                 onFocusChanged: shallSave();
             }
-            SectionHeader { text: qsTr("Device Information") }
+            SectionHeader { text: qsTr("Device Information"); font.pixelSize: Theme.fontSizeLarge  }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             /*
              * bug info contents may be available later than this page is instantiated.
@@ -328,18 +350,22 @@ Page {
                 active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
                 sourceComponent: DeviceInfo{}
             }
+            Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width }
+            Item { height: Theme.paddingLarge*2; width: parent.width }
+            SectionHeader { text: qsTr("Additional Information"); font.pixelSize: Theme.fontSizeLarge }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
-            SectionHeader { text: qsTr("Additional Information") }
             TextArea{id: text_add;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
                 description: qsTr("e.g. links to logs or screenshots.")
                 onFocusChanged: shallSave();
             }
+            CatSelect { onCategoryChanged: metatags["category"] = category; }
             Slider { id: repro;
                 width: parent.width;
                 label: qsTr("Reproducibility");
                 minimumValue: 0; maximumValue: 100; stepSize: 25 ; value: -1
+                onValueChanged: metatags["reproducible"] = value;
                 valueText: qsTr(userTextL10N)
                 // this goes into the bug report
                 property string userText: {
@@ -470,6 +496,8 @@ Page {
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
             + "\n\n\n\n"
+            // add meta tags:
+            + metatagsToComment()
             // add footer:
             + "----  \n"
             + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
