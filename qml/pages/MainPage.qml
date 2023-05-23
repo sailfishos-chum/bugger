@@ -107,7 +107,8 @@ Page {
         "regver":           -1,
         "regarch":          -1,
         "othersw":          false,
-        "repro":            -1
+        "repro":            -1,
+        "bugcat.category":  "none"
     }
 
     // Pavlov!! :)
@@ -360,7 +361,7 @@ Page {
                 description: qsTr("e.g. links to logs or screenshots.")
                 onFocusChanged: shallSave();
             }
-            CatSelect { onCategoryChanged: metatags["category"] = category; }
+            CatSelect { id: bugcat; onCategoryChanged: metatags["category"] = category; }
             Slider { id: repro;
                 width: parent.width;
                 label: qsTr("Reproducibility");
@@ -594,7 +595,8 @@ Page {
             "regver":           regver.currentIndex,
             "regarch":          regarch.currentIndex,
             "othersw":          othersw.checked,
-            "repro":            repro.sliderValue
+            "repro":            repro.sliderValue,
+            "bugcat":           bugcat.category
         };
         Util.store(post);
     }
@@ -648,6 +650,7 @@ Page {
             regarch.currentIndex    = data.regarch;
             othersw.checked         = data.othersw;
             repro.value             = data.repro;
+            bugcat.category         = data.bugcat
         } finally {
             preventSave = false;
         }
