@@ -360,12 +360,14 @@ Page {
                 description: qsTr("e.g. links to logs or screenshots.")
                 onFocusChanged: shallSave();
             }
-            CatSelect { onCategoryChanged: metatags["category"] = category; }
+            SectionHeader { text: qsTr("Category") }
+            CatSelect { onCategoryChanged: { metatags["category"] = category; shallSave() }}
+            SectionHeader { text: qsTr("Reproducibility") }
             Slider { id: repro;
                 width: parent.width;
                 label: qsTr("Reproducibility");
                 minimumValue: 0; maximumValue: 100; stepSize: 25 ; value: -1
-                onValueChanged: metatags["reproducible"] = value;
+                onValueChanged: { metatags["reproducible"] = value; shallSave() }
                 valueText: qsTr(userTextL10N)
                 // this goes into the bug report
                 property string userText: {
@@ -386,6 +388,8 @@ Page {
                     return qsTr("always", "Reproducibility")
                 }
             }
+
+            SectionHeader { text: qsTr("Regression") }
             TextSwitch { id: regsw; checked: false;
                 text: qsTr("Regression (was working in a previous OS release)")
                 property bool hasChanged: false
