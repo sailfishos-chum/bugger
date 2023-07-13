@@ -103,7 +103,7 @@ Page {
         "text_add":         "",
         "text_mod_other":   "",
         "regsw":            false,
-        "regsw.hasChanged": false,
+        "regsw_haschanged": false,
         "regver":           -1,
         "regarch":          -1,
         "othersw":          false,
