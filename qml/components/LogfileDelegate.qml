@@ -20,6 +20,7 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Nemo.FileManager 1.0
 
 GridItem { id: root
     property string displayName
@@ -69,7 +70,16 @@ GridItem { id: root
         width: (parent) ? parent.width : 0 // gives a log warning but works ;)
         MenuItem { visible: model.pastedUrl; text: qsTr("View online"); onClicked: { Qt.openUrlExternally(model.pastedUrl) } }
         MenuItem { text: qsTr("View"); onClicked: { pageStack.push("../pages/LogViewPage.qml", { "fileData": model.dataStr, "fileName": model.fileName }) } }
-        MenuItem { text: qsTr("Remove"); onClicked: remorseDelete(function(){ filesModel.remove(index) }) }
+        MenuItem { text: qsTr("Remove from list"); onClicked: remorseDelete(function(){ filesModel.remove(index) }) }
+        MenuItem { text: qsTr("Delete file"); onClicked: remorseDelete(function(){ deleteFile(index) }) }
+    }
+    function deleteFile(index) {
+        const fn = filesModel.get(index).filePath
+        FileEngine.deleteFiles( [ fn ] )
+        FileEngine.fileDeleted.connect(function() {
+            console.info("File deleted.")
+            filesModel.remove(index)
+        });
     }
 }
 
