@@ -1,0 +1,29 @@
+[Unit]
+Description=Bugger! Journal debug config
+Documentation=https://github.com/sailfishos-chum/bugger/blob/master/README_logcollect.md
+Documentation=file:///usr/share/harbour-bugger/scripts/README_logcollect.md
+
+[Service]
+Type=oneshot
+RemainAfterExit=false
+ProtectSystem=strict
+ProtectHome=read-only
+#PrivateNetwork=true
+ProtectKernelTunables=true
+
+ReadWritePaths=/etc/systemd/journald.conf.d
+Environment=BUGGER_JRNLCONFPATH=/usr/share/harbour-bugger
+Environment=BUGGER_JRNLCONF=99_bugger_full_debug.conf
+
+#ConditionPathExists=/etc/systemd/journald.conf.d
+ExecStartPre=/usr/bin/test -d /etc/systemd/journald.conf.d
+ExecStart=/bin/sh -c "\
+if [ -e /etc/systemd/journald.conf.d/$BUGGER_JRNLCONF ] ;\
+then rm -f /etc/systemd/journald.conf.d/$BUGGER_JRNLCONF ;\
+echo Config file removed. ;\
+else cp $BUGGER_JRNLCONFPATH/$BUGGER_JRNLCONF /etc/systemd/journald.conf.d/ ;\
+echo Config file placed. ;\
+fi ;\
+echo Restarting JournalD ;\
+systemctl restart systemd-journald ;\
+"

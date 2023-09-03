@@ -21,6 +21,7 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
+import Nemo.FileManager 1.0
 import "../components"
 import "../config/settings.js" as Settings
 
@@ -154,6 +155,7 @@ Dialog { id: page
         )
     }
 
+    FileWatcher { id: watcher }
     LogMailer   { id: mailer } // calls jolla-email, Issue #29
     LogShare    { id: sharer } // calls Share by Email, Issue #29
     LogGatherer { id: gather } // executes systemd things
@@ -207,9 +209,15 @@ Dialog { id: page
                 elements.push(o)
             })
             // add the generated information to the model
-            elements.forEach(function(element) { filesModel.append(element)})
+            elements.forEach(function(element) {
+                if (watcher.testFileExists(element.filePath)) {
+                    filesModel.append(element)
+                } else {
+                    console.warn("File not found.");
+                }
+            })
             // ... and trigger loading file contents:
-            loadFiles()
+            if (filesModel.count > 0) loadFiles()
         }
     }
 
