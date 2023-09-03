@@ -15,22 +15,9 @@ Dialog { id: page
 
     onRejected: filesModel.clear()
 
-    /*
-    states: [
-        State { name: "populated"; when: filesModel.count > 0
-        },
-        State { name: "prepared";
-        },
-        State { name: "uploading"; when: (loadedFiles.count > 0) && (!paster.done)
-            PropertyChanges { target: busy; running: true }
-        },
-        State { name: "uploaded"; when: paster.done
-            PropertyChanges { target: busy; running: false }
-        }
-    ]
-    onStateChanged: console.debug("New state:", state)
+    /* Lets the user select a set of files, and copies them into the
+     * app-specific Documents location, so that the dirModel can will them up.
     */
-
     Component { id: picker
         MultiFilePickerDialog  {
             title: qsTr("Select log files to add")
@@ -41,12 +28,9 @@ Dialog { id: page
                 if (acceptedHandled) return
                 for (var i = 0; i < selectedContent.count; ++i) {
                     var o = selectedContent.get(i)
-                    o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
-                    o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
-                    filesModel.append(o)
-                    console.debug("added", i+1, "of" , selectedContent.count,  "files:")
-                    console.debug(JSON.stringify(o, null, 2))
+                    FileEngine.copyFiles(o.filePath)
                 }
+                FileEngine.pasteFiles(StandardPaths.documents + "/Bugger/")
                 acceptedHandled=true
             }
         }
@@ -138,71 +122,51 @@ Dialog { id: page
         )
     }
 
-    FileWatcher { id: watcher }
+    FileModel { id: dirModel;
+        path:  StandardPaths.documents + "/Bugger/"
+        active: true
+        includeFiles: true
+        includeHiddenFiles: false
+        includeDirectories: false
+        includeParentDirectory: false
+        //nameFilters: config.gather.postfixes
+        nameFilters: [ '*.log', '*.txt', '*.json' ]
+        onPopulatedChanged: {
+            console.debug("dirModel has", dirModel.count, "files");
+            //if (!populated || active) return
+            if (!dirModel.populated) return
+            filesModel.clear();
+            transformer.model = dirModel
+            transformer.active = true
+       }
+    }
+    /* As we can't change elements of dirModel/FileModel, make an extended
+     * model here.
+    */
+    Instantiator { id: transformer
+        active: false
+        delegate: QtObject {
+            Component.onCompleted: {
+                const o = {}
+                o["title"] = "";
+                o["mimeType"]   = mimeType
+                o["fileName"]   = fileName
+                o["filePath"]   = StandardPaths.documents + "/Bugger/" + o["fileName"];
+                o["url"]        = Qt.resolvedUrl(o["filePath"]);
+                //o["fileSize"]   = -1; // prepare property so we don't need dynamicRoles
+                o["fileSize"]   = size;
+                o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
+                //console.debug("Adding:", JSON.stringify(o,null,2))
+                filesModel.append(o)
+            }
+        }
+    }
+
     LogMailer   { id: mailer } // calls jolla-email, Issue #29
     LogShare    { id: sharer } // calls Share by Email, Issue #29
     LogGatherer { id: gather } // executes systemd things
     LogLoader   { id: loader } // gets file contents
     LogPaster   { id: paster } // uploads files to "pastebin"
-    /*
-     * after the Gathere signals that it is finished, add file information to the model
-      */
-    Connections {
-        target: gather
-        /*
-         * mimic the selectedContentProperties schema from FilePicker and add to the model
-         *
-         * {
-             "contentType": 6,
-             "fileName": "2022-12-01_harbour-bugger-gather-hybris-logs.log",
-             "filePath": "/home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log",
-             "fileSize": 439122,
-             "mimeType": "text/x-log",
-             "title": "2022-12-01_harbour-bugger-gather-hybris-logs.log",
-             "url": "file:///home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log",
-             "url": "file:///home/nemo/Documents/2022-12-01_harbour-bugger-gather-hybris-logs.log"
-           }
-         */
-        onLogCreatedChanged: {
-            const logBaseName = new Date().toISOString().substring(0,10) + "_" + config.gather.basename
-            const elements = []
-            const o = {}
-            const postfixes = config.gather.postfixes
-            const pretty    = config.gather.prettynames
-            postfixes.forEach(function(postfix) {
-                o = {};
-                o["title"] = "";
-                const fn = logBaseName + postfix;
-                for ( var i = 0; i < pretty.length; ++i) {
-                    const re = new RegExp(pretty[i].pattern);
-                    if (re.test(postfix)) {
-                        console.debug("found pretty name", pretty[i].name, "from pattern", pretty[i].pattern, "for filename", fn)
-                        o["title"] = pretty[i].name;
-                        break;
-                    }
-                };
-                o["mimeType"]   = (/json$/.test(postfix)) ? "application/json" : "text/plain";
-                o["fileName"]   = logBaseName + postfix;
-                o["filePath"]   = StandardPaths.documents + "/Bugger/" + o["fileName"];
-                o["url"]        = Qt.resolvedUrl(o["filePath"]);
-                o["fileSize"]   = -1; // prepare property so we don't need dynamicRoles
-                o["dataStr"]    = ""; // prepare property so we don't need dynamicRoles
-                o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
-                console.debug("Adding:", JSON.stringify(o,null,2))
-                elements.push(o)
-            })
-            // add the generated information to the model
-            elements.forEach(function(element) {
-                if (watcher.testFileExists(element.filePath)) {
-                    filesModel.append(element)
-                } else {
-                    console.warn("File not found.");
-                }
-            })
-            // ... and trigger loading file contents:
-            if (filesModel.count > 0) loadFiles()
-        }
-    }
 
     Connections {
         target: paster
@@ -257,9 +221,9 @@ Dialog { id: page
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 Button { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
-                Button{ enabled: false; text: "->"; width: Theme.iconSizeSmall }
+                Button{ enabled: false; text: "⇒"; width: Theme.iconSizeSmallPlus }
                 Button { text: qsTr("Upload Contents"); enabled: filesModel.count > 0;  onClicked: { upload() } }
-                Button{ enabled: false; text: "->"; width: Theme.iconSizeSmall }
+                //Button{ enabled: false; text: "⇒"; width: Theme.iconSizeSmall }
             }
             ProgressBar { id: progress
                 indeterminate: true

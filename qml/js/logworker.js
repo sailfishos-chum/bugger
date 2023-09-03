@@ -31,7 +31,7 @@ WorkerScript.onMessage = function(m) {
                     if (r.response.length > 0) {
                         model.setProperty(index, "dataStr", r.response)
                         // FIXME: use response header for this?
-                        model.setProperty(index, "fileSize", r.response.length)
+                        //model.setProperty(index, "fileSize", r.response.length)
                     } else {
                         console.warn("File was empty, removing from list:", data.fileName);
                         model.remove(index)
