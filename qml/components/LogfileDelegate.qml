@@ -55,7 +55,7 @@ GridItem { id: root
         Column {
             width: parent.width - icon.width
             anchors.verticalCenter: icon.verticalCenter
-            Label { text: fileName; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeSmall; color: Theme.highlightColor }
+            Label { text: fileName; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeSmall; color: Theme.highlightColor; elide: Text.ElideLeft }
             Label { text: mimeType; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             Row { width: parent.width; spacing: Theme.paddingSmall
             Label { text: (model.fileSize > 0) ? Format.formatFileSize(model.fileSize) : "?"; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
