@@ -22,8 +22,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Nemo.DBus 2.0
 
-Page {
-    id: page
+Item { id: root
 
     readonly property string unitBaseName: "harbour-bugger-gather-logs"
     readonly property string svcFileName: unitBaseName + ".service"
@@ -61,10 +60,10 @@ Page {
         function jobRemoved(id, job, unit, result) {
             // NB: we listen for the service to be done, not the target.
             // we don't want to go into an endless loop of popups.
-            if (unit == page.svcFileName) {
+            if (unit == root.svcFileName) {
                 if (result == "done") {
                     app.popup(qsTr("Log gathering successsful!"))
-                    page.logCreated = true;
+                    root.logCreated = true;
                 } else {
                     app.popup(qsTr("Log gathering failed!"))
                 }
@@ -74,24 +73,24 @@ Page {
             typedCall('GetUnitFileState',
                 { 'type': 's', 'value': svcFileName },
                 function(result) {
-                    page.svcExists = true
+                    root.svcExists = true
                 },
                 function(error, message) {
                     console.warn('GetUnitFileStatus failed:', error)
                     console.warn('GetUnitFileStatus message:', message)
-                    page.svcExists = false 
+                    root.svcExists = false 
                 })
         }
         function queryTarget() {
             typedCall('GetUnitFileState',
                 { 'type': 's', 'value': tgtFileName },
                 function(result) {
-                    page.tgtExists = true
+                    root.tgtExists = true
                 },
                 function(error, message) {
                     console.warn('GetUnitFileStatus failed:', error)
                     console.warn('GetUnitFileStatus message:', message)
-                    page.tgtExists = false
+                    root.tgtExists = false
                 })
         }
     }
