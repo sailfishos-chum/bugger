@@ -31,8 +31,8 @@ SilicaGridView { id: root
     delegate: LogfileDelegate { hidden: ( root.filtered && (pastedUrl.length ==0)) }
     ViewPlaceholder {
         enabled: (root.count == 0) && showPlaceholder
-        text: "No files."
-        hintText: "Pull down to add log files."
+        text: qsTr("No files.")
+        hintText: qsTr("Use <b>%1</b> to add log files.").arg(qsTr("Gather Logs"))
     }
 }
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
