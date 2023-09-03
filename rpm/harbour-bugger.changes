@@ -1,7 +1,11 @@
+* Sun Sep  3 2023 Nephros <sailfish@nephros.org> - no version
+- Beta Release
+- Add function to control journald debug logging
+
 * Mon Mar 20 2023 Nephros <sailfish@nephros.org> - 0.10.4
 - Beta Release (#40)
 - Add hidden metadata for automated processing
-- Add "bug category" selector 
+- Add "bug category" selector
 
 * Fri Dec  2 2022 Nephros <sailfish@nephros.org> - 0.10.3
 - Beta Release (#21)
