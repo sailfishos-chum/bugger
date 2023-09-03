@@ -122,11 +122,19 @@ rm -rf %{buildroot}
 # >> install post
 # mangle version info
 sed -i -e "s/unreleased/%{version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
+#ghost
+mkdir -p %{buildroot}/etc/systemd/journald.conf.d
+touch %{buildroot}/etc/systemd/journald.conf.d/99_bugger_full_debug.conf
 # << install post
 
 desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
+
+%post
+# >> post
+%systemd_post %{name}-journalconf.service
+# << post
 
 %preun gather-logs
 # >> preun gather-logs
@@ -170,6 +178,9 @@ desktop-file-install --delete-original       \
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*
+%{_unitdir}/*.service
+%{_datadir}/%{name}/99_bugger_full_debug.conf
+%ghost /etc/systemd/journald.conf.d/99_bugger_full_debug.conf
 # >> files
 # << files
 

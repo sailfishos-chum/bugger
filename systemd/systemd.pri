@@ -5,7 +5,8 @@ OTHER_FILES += $${TARGET}-gather-logs.target\
                $${TARGET}-gather-logs_android.service \
                $${TARGET}-gather-logs_update.service \
                $${TARGET}-gather-logs_jolla.service \
-               $${TARGET}-gather-logs-plugin@.service
+               $${TARGET}-gather-logs-plugin@.service \
+               $${TARGET}-journalconf.service
 
 INSTALLS += sdservice
 
@@ -20,3 +21,10 @@ sdservice.files = $$PWD/$${TARGET}-gather-logs.target \
 
 sdservice.path = $$INSTALL_ROOT/usr/lib/systemd/user
 
+INSTALLS += jcservice
+jcservice.files = $$PWD/$${TARGET}-journalconf.service
+jcservice.path = $$INSTALL_ROOT/usr/lib/systemd/system
+
+INSTALLS += journalconf
+journalconf.path = $$INSTALL_ROOT/usr/share/$$TARGET
+journalconf.files = $$PWD/99_bugger_full_debug.conf

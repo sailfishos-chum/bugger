@@ -81,6 +81,10 @@ Files:
   - '%dir %{_datadir}/%{name}'
   - '%{_datadir}/%{name}/translations/*.qm'
   - '%{_datadir}/%{name}/qml/*'
+  # log config toggle:
+  - '%{_unitdir}/*.service'
+  - '%{_datadir}/%{name}/99_bugger_full_debug.conf'
+  - '%ghost /etc/systemd/journald.conf.d/99_bugger_full_debug.conf'
 
 SubPackages:
     - Name:  gather-logs
