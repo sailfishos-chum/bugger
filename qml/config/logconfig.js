@@ -1,18 +1,7 @@
 .pragma library
 var config = {
     "entries": [
-        {
-            "name": "persistent_journal",
-            "displayName": "Persistent Journal",
-            "path": "/etc/systemd/journald.conf.d/999_bugger.conf",
-            "content": [
-                "Storage=persistent",
-                "SystemMaxUse=50M",
-                "RateLimitBurst=0",
-                "RateLimitInterval=0",
-            ]
-        },
-        {
+       {
             "name": "ofono_verbose",
             "displayName": "Ofono deugging",
             "path": "/var/lib/environment/ofono/gather_logs.conf",
