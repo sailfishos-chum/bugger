@@ -62,9 +62,11 @@ WorkerScript.onMessage = function(m) {
 
         r.onreadystatechange = function(event) {
             if (r.readyState == XMLHttpRequest.DONE) {
-                if (r.status === 200 || r.status == 0) {
-                    console.info("upload sucessful:", data["fileName"],  r.response);
+                //if (r.status === 200 || r.status == 0) {
+                if (r.status === 200) {
+                    console.info("upload successful:", data["fileName"],  r.response);
                     model.setProperty(index, "pastedUrl", r.response.replace(/"/g, ""))
+                    model.sync();
                     WorkerScript.sendMessage({ event: "pasteOk"})
                 } else {
                     console.warn("error in processing request.", r.status, r.statusText);
