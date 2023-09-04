@@ -32,8 +32,8 @@ Dialog { id: page
                 for (var i = 0; i < selectedContent.count; ++i) {
                     var o = selectedContent.get(i)
                     FileEngine.copyFiles(o.filePath)
+                    FileEngine.pasteFiles(page.cacheDir)
                 }
-                FileEngine.pasteFiles(page.cacheDir)
                 acceptedHandled=true
             }
         }
