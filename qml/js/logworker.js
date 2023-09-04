@@ -30,7 +30,7 @@ WorkerScript.onMessage = function(m) {
                     uploadFile(r.response)
                 } else {
                     console.warn("Filedata load failed:", JSON.stringify(r.response));
-                    WorkerScript.sendMessage({ event: "readError", code: r.status, text: r.statusText })
+                    WorkerScript.sendMessage({ event: "readError", file: model.get(index).fileName, code: r.status, text: r.statusText ? r.statusText : "Unknown Error" })
                 }
             }
         }

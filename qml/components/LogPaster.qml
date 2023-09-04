@@ -17,6 +17,10 @@ Item {
     WorkerScript { id: worker
         source: "../js/logworker.js"
         onMessage: function(m) {
+            if (m.event === "readError") {
+                errorCount++
+                app.popup(qsTr("Error uploading %1: %2 - %3", "%1: file name, %2 error code, %3: error message").arg(m.file).arg(m.code).arg(m.text));
+            }
             if (m.event === "pasteOk") { successCount++ }
             if (m.event === "pasteError") {
                 errorCount++
