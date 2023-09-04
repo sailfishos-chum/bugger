@@ -62,7 +62,7 @@ GridItem { id: root
         FileEngine.deleteFiles( [ fn ] )
         FileEngine.fileDeleted.connect(function() {
             console.info("File deleted.")
-            filesModel.remove(index)
+            //filesModel.remove(index)
         });
     }
 }
