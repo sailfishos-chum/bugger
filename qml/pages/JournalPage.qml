@@ -70,7 +70,7 @@ Page { id: page
                 checked: jrnlConf.exists
                 //automaticCheck: false
                 busy: jrnlRefresh.running
-                text: qsTr("Full debugging")
+                text: qsTr("Full debug logging")
                 description: qsTr("If enabled, the Journal daemon will persist logs, and log at Debug levels. Do remember to turn this off again.\nAuthentication may be required on toggle.")
                 onClicked:  {
                     if (busy) return;
