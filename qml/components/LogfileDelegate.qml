@@ -45,7 +45,7 @@ GridItem { id: root
             Label { text: (model.fileSize > 0) ? Format.formatFileSize(model.fileSize) : "?"; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             Label { text: (model.pastedUrl) ? qsTr("uploaded"): qsTr("not uploaded"); truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             }
-            Label { text: filePath; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
+            //Label { text: (model.pastedUrl) ? model.pastedUrl : model.filePath; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             //Label { text: fileNameOrig ? fileNameOrig : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
         }
     }

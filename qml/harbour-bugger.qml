@@ -146,7 +146,8 @@ ApplicationWindow {
     Notification { id: smessage; isTransient: true; }
     function popup(s) {
         smessage.previewSummary = s
-        smessage.urgency = 0;
+        smessage.expireTimeout = Math.floor(1000 * s.length/20)
+        //smessage.urgency = 0;
         smessage.publish();
     }
 

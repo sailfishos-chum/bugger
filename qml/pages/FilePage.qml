@@ -38,11 +38,6 @@ Dialog { id: page
             }
         }
     }
-
-    function loadFiles() {
-        loader.model = filesModel
-        loader.reload()
-    }
     function upload() {
         paster.model = filesModel
         paster.upload()
@@ -135,40 +130,43 @@ Dialog { id: page
         //nameFilters: config.gather.postfixes
         nameFilters: [ '*.log', '*.txt', '*.json' ]
         onPopulatedChanged: {
-            console.debug("dirModel has", dirModel.count, "files");
+            console.info("Detected", dirModel.count, "files.");
             //if (!populated || active) return
             if (!dirModel.populated) return
+            transformer.model = null
+            transformer.active = false
             filesModel.clear();
             transformer.model = dirModel
             transformer.active = true
        }
     }
-    /* As we can't change elements of dirModel/FileModel, make an extended
-     * model here.
+    /*
+     * Since a FileModel does not have a get() method, and we can't extend its
+       elements, popuplate our own model with the extended data.
+       Actually we just really need the "pastedUrl" property. This is a FIXME.
+
+       Use an Instantiator to generate the content, as it can use the model directly.
     */
     Instantiator { id: transformer
         active: false
-        delegate: QtObject {
-            Component.onCompleted: {
-                const o = {}
-                o["title"] = "";
-                o["mimeType"]   = mimeType
-                o["fileName"]   = fileName
-                o["filePath"]   = page.cacheDir + o["fileName"];
-                o["url"]        = Qt.resolvedUrl(o["filePath"]);
-                //o["fileSize"]   = -1; // prepare property so we don't need dynamicRoles
-                o["fileSize"]   = size;
-                o["pastedUrl"]  = ""; // prepare property so we don't need dynamicRoles
-                //console.debug("Adding:", JSON.stringify(o,null,2))
-                filesModel.append(o)
-            }
+        delegate: ListElement {
+            property string title: ""
+            property string mimeType: model.mimeType
+            property string fileName: model.fileName
+            property string filePath: page.cacheDir + model.fileName
+            // do not specify an url type here, it will become an object...
+            property string url:      Qt.resolvedUrl(filePath)
+            property int fileSize:    model.size
+            property string pastedUrl: "" // create property so we don't need dynamicRoles
         }
+        // after we're done, add ourselves to the model:
+        onObjectAdded: function(i,o) { filesModel.set(i,o) }
+        onObjectRemoved: function(i,o) { filesModel.remove(i) }
     }
 
     LogMailer   { id: mailer } // calls jolla-email, Issue #29
     LogShare    { id: sharer } // calls Share by Email, Issue #29
     LogGatherer { id: gather } // executes systemd things
-    LogLoader   { id: loader } // gets file contents
     LogPaster   { id: paster } // uploads files to "pastebin"
 
     Connections {
