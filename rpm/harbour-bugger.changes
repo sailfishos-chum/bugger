@@ -1,6 +1,6 @@
 * Sun Sep  3 2023 Nephros <sailfish@nephros.org> - no version
 - Beta Release
-- Add function to control journald debug logging
+- Add function to control journald debug logging (#37)
 
 * Mon Mar 20 2023 Nephros <sailfish@nephros.org> - 0.10.4
 - Beta Release (#40)
