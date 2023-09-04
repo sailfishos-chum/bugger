@@ -45,14 +45,15 @@ GridItem { id: root
             Label { text: (model.fileSize > 0) ? Format.formatFileSize(model.fileSize) : "?"; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             Label { text: (model.pastedUrl) ? qsTr("uploaded"): qsTr("not uploaded"); truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             }
-            //Label { text: filePath; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
+            Label { text: filePath; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
             //Label { text: fileNameOrig ? fileNameOrig : ""; width: parent.width; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor }
         }
     }
     menu: ContextMenu {
         width: (parent) ? parent.width : 0 // gives a log warning but works ;)
         MenuItem { visible: model.pastedUrl; text: qsTr("View online"); onClicked: { Qt.openUrlExternally(model.pastedUrl) } }
-        MenuItem { text: qsTr("View"); onClicked: { pageStack.push("../pages/LogViewPage.qml", { "fileData": model.dataStr, "fileName": model.fileName }) } }
+        //MenuItem { text: qsTr("View"); onClicked: { pageStack.push("../pages/LogViewPage.qml", { "fileData": model.dataStr, "fileName": model.fileName }) } }
+        MenuItem { text: qsTr("View"); onClicked: { console.debug("viewing:", filePath, fileName); pageStack.push("../pages/LogViewPage.qml", { "fileName": model.filePath }) } }
         MenuItem { text: qsTr("Remove from list"); onClicked: remorseDelete(function(){ filesModel.remove(index) }) }
         MenuItem { text: qsTr("Delete file"); onClicked: remorseDelete(function(){ deleteFile(index) }) }
     }
