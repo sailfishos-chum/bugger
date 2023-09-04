@@ -27,15 +27,13 @@ Item { id: root
     readonly property string unitBaseName: "harbour-bugger-gather-logs"
     readonly property string svcFileName: unitBaseName + ".service"
     readonly property string tgtFileName: unitBaseName + ".target"
-    readonly property string tgtBusName:  svcFileName.replace(/\./g, "_2e").replace(/-/g, "_2d")
+    readonly property string tgtBusName:  tgtFileName.replace(/\./g, "_2e").replace(/-/g, "_2d")
 
     property bool svcExists:    false
     property bool tgtExists:    false
     property bool tgtIsEnabled: false
 
     function start() { dbusTarget.startTarget() }
-
-    property bool logCreated: false
 
     Component.onCompleted: {
         dbusManager.queryService()
@@ -63,7 +61,6 @@ Item { id: root
             if (unit == root.svcFileName) {
                 if (result == "done") {
                     app.popup(qsTr("Log gathering successsful!"))
-                    root.logCreated = true;
                 } else {
                     app.popup(qsTr("Log gathering failed!"))
                 }
