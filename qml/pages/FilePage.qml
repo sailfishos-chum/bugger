@@ -31,6 +31,7 @@ Dialog { id: page
                 if (acceptedHandled) return
                 for (var i = 0; i < selectedContent.count; ++i) {
                     var o = selectedContent.get(i)
+                    if (i.fileSize == 0) continue;
                     FileEngine.copyFiles(o.filePath)
                     FileEngine.pasteFiles(page.cacheDir)
                 }
@@ -128,16 +129,16 @@ Dialog { id: page
         includeDirectories: false
         includeParentDirectory: false
         //nameFilters: config.gather.postfixes
-        nameFilters: [ '*.log', '*.txt', '*.json' ]
+        //nameFilters: [ '*.log', '*.txt', '*.json' ]
         onPopulatedChanged: {
             console.info("Detected", dirModel.count, "files.");
             //if (!populated || active) return
             if (!dirModel.populated) return
-            transformer.model = null
-            transformer.active = false
-            filesModel.clear();
-            transformer.model = dirModel
+            //transformer.model = null
+            //transformer.active = false
+            //filesModel.clear();
             transformer.active = true
+            transformer.model = dirModel
        }
     }
     /*
@@ -218,13 +219,17 @@ Dialog { id: page
                     + qsTr("Long press on a file in the list to view or remove it.") + " "
                     + qsTr("Finally, upload the data to add the links to your Bug Report.")
             }
-            Flow {
+            Row {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                Button { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
-                Button{ enabled: false; text: "⇒"; width: Theme.iconSizeSmallPlus }
-                Button { text: qsTr("Upload Contents"); enabled: filesModel.count > 0;  onClicked: { upload() } }
-                //Button{ enabled: false; text: "⇒"; width: Theme.iconSizeSmall }
+                //    ⇒ ⇓ ⇐
+                Button { text: qsTr("Pick Files") + " ⇒"; onClicked: pageStack.push(picker) }
+                //Button{ enabled: false; text: "⇒⇓⇐"; width: Theme.iconSizeMedium }
+                Button{ enabled: false; text: "⇓"; width: Theme.iconSizeMedium }
+                Button { text: "⇐" + qsTr("Collect Logs"); onClicked: { startGatherer() } }
+            }
+            Button { text: qsTr("Upload Contents"); enabled: filesModel.count > 0;  onClicked: { upload() }
+                anchors.horizontalCenter: parent.horizontalCenter
             }
             ProgressBar { id: progress
                 indeterminate: true
@@ -243,7 +248,7 @@ Dialog { id: page
             MenuItem { text: qsTr("Share via E-Mail"); enabled: filesModel.count > 0; onClicked: { emailshare() } }
             MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;      onClicked: { email() } }
             MenuItem { text: qsTr("Help on Collecting Logs"); onClicked: { pageStack.push(Qt.resolvedUrl("help/LogHelp.qml")) } }
-            MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
+            //MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
             MenuItem { text: qsTr("Configure Logging"); onClicked: pageStack.push("JournalPage.qml") }
         }
     }
