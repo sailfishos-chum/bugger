@@ -13,6 +13,9 @@ Dialog { id: page
     canAccept: false
     property var config: Settings.config
 
+    // NOTE: if you change this, change all the paths in the Systemd units as well!
+    readonly property string cacheDir: StandardPaths.documents + "/Bugger/"
+
     onRejected: filesModel.clear()
 
     /* Lets the user select a set of files, and copies them into the
@@ -30,7 +33,7 @@ Dialog { id: page
                     var o = selectedContent.get(i)
                     FileEngine.copyFiles(o.filePath)
                 }
-                FileEngine.pasteFiles(StandardPaths.documents + "/Bugger/")
+                FileEngine.pasteFiles(page.cacheDir)
                 acceptedHandled=true
             }
         }
@@ -123,7 +126,7 @@ Dialog { id: page
     }
 
     FileModel { id: dirModel;
-        path:  StandardPaths.documents + "/Bugger/"
+        path:  page.cacheDir
         active: true
         includeFiles: true
         includeHiddenFiles: false
@@ -151,7 +154,7 @@ Dialog { id: page
                 o["title"] = "";
                 o["mimeType"]   = mimeType
                 o["fileName"]   = fileName
-                o["filePath"]   = StandardPaths.documents + "/Bugger/" + o["fileName"];
+                o["filePath"]   = page.cacheDir + o["fileName"];
                 o["url"]        = Qt.resolvedUrl(o["filePath"]);
                 //o["fileSize"]   = -1; // prepare property so we don't need dynamicRoles
                 o["fileSize"]   = size;
