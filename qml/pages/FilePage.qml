@@ -249,7 +249,7 @@ Dialog { id: page
             MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;      onClicked: { email() } }
             MenuItem { text: qsTr("Help on Collecting Logs"); onClicked: { pageStack.push(Qt.resolvedUrl("help/LogHelp.qml")) } }
             //MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
-            MenuItem { text: qsTr("Configure Logging"); onClicked: pageStack.push("JournalPage.qml") }
+            MenuItem { text: qsTr("Configure Logging"); onClicked: pageStack.push("LogConfigPage.qml") }
         }
     }
 }
