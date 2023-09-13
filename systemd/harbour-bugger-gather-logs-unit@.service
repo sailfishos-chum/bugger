@@ -1,0 +1,25 @@
+[Unit]
+Description=Collect Journal for unit: %i
+Documentation=https://github.com/sailfishos-chum/bugger/blob/master/README_logcollect.md
+Documentation=file:///usr/share/harbour-bugger/scripts/README_logcollect.md
+Before=harbour-bugger-gather-logs.target
+
+[Service]
+Type=oneshot
+ProtectSystem=strict
+ProtectHome=read-only
+#PrivateNetwork=true
+ProtectKernelTunables=true
+
+ReadWritePaths=%h/Documents
+Environment=BUGGER_LOGPATH=%h/Documents/Bugger
+ExecStart=/bin/sh -c "\
+          /bin/mkdir -p ${BUGGER_LOGPATH}; \
+          /usr/bin/chown %u ${BUGGER_LOGPATH}; \
+          /usr/bin/journalctl --no-hostname --all --quiet --utc --priority=emerg..debug -o short-precise -u %i > ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
+          /usr/bin/chmod 0600  ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
+          /usr/bin/chown %u    ${BUGGER_LOGPATH}/$(/usr/bin/date -I)_%N.log; \
+"
+
+[Install]
+WantedBy=harbour-bugger-gather-logs.target

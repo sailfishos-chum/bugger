@@ -6,6 +6,7 @@ OTHER_FILES += $${TARGET}-gather-logs.target\
                $${TARGET}-gather-logs_update.service \
                $${TARGET}-gather-logs_jolla.service \
                $${TARGET}-gather-logs-plugin@.service \
+               $${TARGET}-gather-logs-unit@.service \
                $${TARGET}-journalconf.service
 
 INSTALLS += sdservice
@@ -17,7 +18,8 @@ sdservice.files = $$PWD/$${TARGET}-gather-logs.target \
                $$PWD/$${TARGET}-gather-logs_android.service \
                $$PWD/$${TARGET}-gather-logs_update.service \
                $$PWD/$${TARGET}-gather-logs_jolla.service \
-               $$PWD/$${TARGET}-gather-logs-plugin@.service
+               $$PWD/$${TARGET}-gather-logs-plugin@.service \
+               $$PWD/$${TARGET}-gather-logs-unit@.service
 
 sdservice.path = $$INSTALL_ROOT/usr/lib/systemd/user
 
