@@ -109,9 +109,9 @@ Page { id: page
                 [
                     name, "replace",
                     [
-                        { "name": "Description", "value":"Test Transient Unit" },
-                        { "name": "Type", "value": "oneshot" },
-                        { "name": "ExecStart", "value": "/bin/echo 'Testing transient unit %N'" },
+                        [ "Description", "Test Transient Unit" ],
+                        [ "Type", "oneshot" ],
+                        [ "ExecStart", "/bin/echo 'Testing transient unit %N'" ],
                     ],
                     [],
                 ],
