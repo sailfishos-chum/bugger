@@ -25,7 +25,8 @@ var config = {
         "uri":       '/uploads.json'
     },
     "gather": {
-        "basename":     "harbour-bugger-gather-logs",
+        "basename":         "harbour-bugger-gather-logs",
+        "perunit_template": "harbour-bugger-gather-logs-unit",
         "postfixes":    [ ".log", "_kernel.log" ],
         "prettynames":  [
             { "pattern": "/_kernel/",  "name": "Kernel" },

@@ -210,6 +210,30 @@ Page { id: page
                     manager.togglePlugins()
                 }
             }
+            SectionHeader { text: qsTr("Collect Unit Log") }
+            TextField { unitField
+                width: parent.width
+                placeholderText: qsTr("A Unit name (e.g. lipstick)")
+                // description wraps the text, label fades it out.
+                description: qsTr("We will try to gather the output from only this unit (<tt>journalctl -u</tt>). Note that this will only work if your user can read the journal at all.");
+                validator:  RegularExpressionValidator { regularExpression: /[0-9a-f._-]+/ }
+                inputMethodHints: Qt.ImhUrlCharactersOnly
+                EnterKey.enabled: text.length > 0
+                //EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                //EnterKey.onClicked: text_desc.focus = true
+            }
+            ButtonLayout {
+                width: parent.width
+                Button {
+                    text: qsTr("Collect Log")
+                    enabled: ( (unitField.text.length > 3) && unitField.acceptableInput )
+                    onClicked: {
+                        const template = config.gather.perunit_template;
+                        const myunit = template + "@" + unitField.text + ".service";
+                        manager.start(myunit);
+                    }
+                }
+            }
         }
         VerticalScrollDecorator {}
     }
