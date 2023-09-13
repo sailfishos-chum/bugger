@@ -107,16 +107,16 @@ Page { id: page
             */
             call('StartTransientUnit',
                 [
-                    u, "replace",
+                    name, "replace",
                     [
-                        { "Description": "Test Transient Unit" },
-                        { "Type": "oneshot" },
-                        { "ExecStart": "/bin/echo 'Testing transient unit %N'" },
+                        { "name": "Description", "value":"Test Transient Unit" },
+                        { "name": "Type", "value": "oneshot" },
+                        { "name": "ExecStart", "value": "/bin/echo 'Testing transient unit %N'" },
                     ],
                     [],
                 ],
                 function(result) { console.debug("Job:", JSON.stringify(result)); watchJob(result, qsTr("StartTransient")); },
-                function(result) { failMsg(qsTr("StartTransient %1").arg(u), result) }
+                function(result) { console.warn(qsTr("StartTransient %1").arg(name), result) }
             );
             // properties could also be a string like this:  "[('ExecStart', <'ls -h'>)]" according to https://gist.github.com/daharon/c088b3ede0d72fd20ac400b3060cca2d
         }
@@ -240,7 +240,7 @@ Page { id: page
                 placeholderText: qsTr("A Unit name (e.g. lipstick)")
                 // description wraps the text, label fades it out.
                 description: qsTr("We will try to gather the output from only this unit (<tt>journalctl -u</tt>). Note that this will only work if your user can read the journal at all.");
-                validator:  RegularExpressionValidator { regularExpression: /[0-9a-f._-]+/ }
+                //validator:  RegExValidator { regularExpression: /[0-9a-f._-]+/ }
                 inputMethodHints: Qt.ImhUrlCharactersOnly
                 EnterKey.enabled: text.length > 0
                 //EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -248,6 +248,12 @@ Page { id: page
             }
             ButtonLayout {
                 width: parent.width
+                Button {
+                    text: qsTr("TestTrans")
+                    onClicked: {
+                        manager.startTransient("test", []);
+                    }
+                }
                 Button {
                     text: qsTr("Collect Log")
                     enabled: ( (unitField.text.length > 3) && unitField.acceptableInput )
