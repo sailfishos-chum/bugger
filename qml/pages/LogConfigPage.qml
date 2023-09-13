@@ -235,7 +235,7 @@ Page { id: page
                 }
             }
             SectionHeader { text: qsTr("Collect Unit Log") }
-            TextField { unitField
+            TextField { id: unitField
                 width: parent.width
                 placeholderText: qsTr("A Unit name (e.g. lipstick)")
                 // description wraps the text, label fades it out.
