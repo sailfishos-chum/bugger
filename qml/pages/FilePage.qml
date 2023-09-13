@@ -215,21 +215,87 @@ Dialog { id: page
                 color: Theme.secondaryHighlightColor
                 wrapMode: Text.Wrap
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("Use the <b>%1</b> or <b>%2</b> functions to populate the file list.").arg("Collect Logs").arg("Pick Files") + " "
-                    + qsTr("Long press on a file in the list to view or remove it.") + " "
-                    + qsTr("Finally, upload the data to add the links to your Bug Report.")
+                text: qsTr("Check the log gathering options")
             }
-            Row {
+            ButtonLayout {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                //    ⇒ ⇓ ⇐
-                Button { text: qsTr("Pick Files") + " ⇒"; onClicked: pageStack.push(picker) }
-                //Button{ enabled: false; text: "⇒⇓⇐"; width: Theme.iconSizeMedium }
-                Button{ enabled: false; text: "⇓"; width: Theme.iconSizeMedium }
-                Button { text: "⇐" + qsTr("Collect Logs"); onClicked: { startGatherer() } }
+                Button { text: qsTr("Configure Logging"); onClicked: pageStack.push("LogConfigPage.qml") }
             }
-            Button { text: qsTr("Upload Contents"); enabled: filesModel.count > 0;  onClicked: { upload() }
+            Label {
+                width: parent.width
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryHighlightColor
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Use the <b>%1</b> or <b>%2</b> functions to populate the file list.").arg("Collect Logs").arg("Pick Files") + " "
+                    + qsTr("Picked files will be copied to the staging directory, so you can delete them without affecting the original.")
+            }
+            ButtonLayout {
+                width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
+                Button { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
+                Button { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
+            }
+            Label {
+                width: parent.width
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryHighlightColor
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Add the log output for a specific Service.") + " "
+                      + qsTr("We will try to gather the output from only this unit (<tt>journalctl -u</tt>). Note that this will only work if your user can read the journal at all.");
+            }
+            ComboBox { id: unitBox
+                label: qsTr("Unit")
+                value:  (currentIndex === -1) ? qsTr("Please Select") : currentItem.text
+                currentIndex: -1
+                menu:ContextMenu{
+                    Repeater {
+                        model: gather.knownUnits.split(',')
+                        delegate: MenuItem { text: modelData }
+                    }
+                }
+            }
+            /*
+            TextField { id: unitField
+                width: parent.width
+                placeholderText: qsTr("A Unit name (e.g. lipstick)")
+                //validator:  RegExValidator { regularExpression: /[0-9a-f._-]+/ }
+                inputMethodHints: Qt.ImhUrlCharactersOnly
+                EnterKey.enabled: text.length > 0
+                EnterKey.onClicked: focus = false
+            }
+            */
+            ButtonLayout {
+                width: parent.width
+                Button {
+                    text: qsTr("Collect Unit Log")
+                    //enabled: ( (unitField.text.length > 3) && unitField.acceptableInput )
+                    enabled: (unitBox.currentIndex > -1 )
+                    onClicked: {
+                        const template = config.gather.perunit_template;
+                        //const myunit = template + "@" + unitField.text + ".service";
+                        //const myunit = template + "@" + unitBox.currentItem.text.replace(".service","") + ".service";
+                        const myunit = template + "@" + unitBox.currentItem.text + ".service";
+                        gather.collectLog(myunit);
+                    }
+                }
+            }
+
+            Label {
+                width: parent.width
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryHighlightColor
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Long press on a file in the list to view or remove it.") + " "
+                    + qsTr("Finally, upload the data to add the links to your Bug Report.")
+            }
+            ButtonLayout {
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                Button { text: qsTr("Upload Contents"); enabled: filesModel.count > 0;  onClicked: { upload() } }
             }
             ProgressBar { id: progress
                 indeterminate: true
@@ -249,7 +315,7 @@ Dialog { id: page
             MenuItem { text: qsTr("Send E-Mail"); enabled: filesModel.count > 0;      onClicked: { email() } }
             MenuItem { text: qsTr("Help on Collecting Logs"); onClicked: { pageStack.push(Qt.resolvedUrl("help/LogHelp.qml")) } }
             //MenuItem { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
-            MenuItem { text: qsTr("Configure Logging"); onClicked: pageStack.push("LogConfigPage.qml") }
+            //MenuItem { text: qsTr("Configure Logging"); onClicked: pageStack.push("LogConfigPage.qml") }
         }
     }
 }

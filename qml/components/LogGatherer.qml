@@ -16,9 +16,38 @@ Item { id: root
     property bool tgtExists:    false
     property bool tgtIsEnabled: false
 
+    property string knownUnits
+
     function start() { dbusTarget.startTarget() }
+    function listUnits() {
+        dbusManager.call("ListUnits", [],
+            function(result) {
+                var running = []
+                result.forEach(function(e) {
+                    //"unit", "desc", "loaded", "status", "sub", "followed",
+                    //"service", "numjobs", "jobs", "jobpath",
+                    //"custom",
+                    if (! /service$/.test(e[0])) return
+                    if (e[2] == "loaded" && (e[3] == "active" || e[3] == "failed")) {
+                        running.push(e[0])
+                    }
+                })
+                knownUnits = running.join(',')
+                console.debug(knownUnits)
+            },
+            function(result) { console.warn(qsTr("Start"), JSON.stringify(result)) }
+        );
+    }
+    function collectLog(unit) {
+        dbusManager.call("StartUnit",
+            [ unit,"replace"],
+            function(result) { },
+            function(result) { console.warn(qsTr("Start"), JSON.stringify(result)) }
+        );
+    }
 
     Component.onCompleted: {
+    listUnits()
         dbusManager.queryService()
         dbusManager.queryTarget()
     }

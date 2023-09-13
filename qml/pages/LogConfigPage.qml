@@ -13,7 +13,16 @@ Page { id: page
     property var config: Settings.config
     property bool collectEnabled
     property bool pluginEnabled
+    property var watchedJobs: new Object()      // record jobs we launched, used as key-value store
 
+    function successMsg(message, result) {
+        app.popup(result + ": " + message)
+        console.debug(result + ": " + message)
+    }
+    function failMsg(message, result) {
+        app.popup(result + ": " + message)
+        console.warn(result + ": " + message)
+    }
     DBusInterface { id: manager
         bus: DBus.SessionBus
         service: "org.freedesktop.systemd1"
@@ -208,30 +217,6 @@ Page { id: page
                 description: qsTr("If enabled, apps which use the Plugin system will have their logs added to thelog cache.") + '\n' + qsTr("Authentication may be required on toggle.")
                 onClicked:  {
                     manager.togglePlugins()
-                }
-            }
-            SectionHeader { text: qsTr("Collect Unit Log") }
-            TextField { id: unitField
-                width: parent.width
-                placeholderText: qsTr("A Unit name (e.g. lipstick)")
-                // description wraps the text, label fades it out.
-                description: qsTr("We will try to gather the output from only this unit (<tt>journalctl -u</tt>). Note that this will only work if your user can read the journal at all.");
-                //validator:  RegExValidator { regularExpression: /[0-9a-f._-]+/ }
-                inputMethodHints: Qt.ImhUrlCharactersOnly
-                EnterKey.enabled: text.length > 0
-                //EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                //EnterKey.onClicked: text_desc.focus = true
-            }
-            ButtonLayout {
-                width: parent.width
-                Button {
-                    text: qsTr("Collect Log")
-                    enabled: ( (unitField.text.length > 3) && unitField.acceptableInput )
-                    onClicked: {
-                        const template = config.gather.perunit_template;
-                        const myunit = template + "@" + unitField.text + ".service";
-                        manager.start(myunit);
-                    }
                 }
             }
         }
