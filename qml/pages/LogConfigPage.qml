@@ -96,6 +96,30 @@ Page { id: page
                 function(result) { failMsg(qsTr("Preset %1").arg(u), result) }
             );
         }
+        function startTransient(name, properties) {
+            console.debug("dbus start transient unit", name);
+            /*
+                StartTransientUnit(in  s name,
+                                   in  s mode,
+                                   in  a(sv) properties,
+                                   in  a(sa(sv)) aux,
+                                   out o job);
+            */
+            call('StartTransientUnit',
+                [
+                    u, "replace",
+                    [
+                        { "Description": "Test Transient Unit" },
+                        { "Type": "oneshot" },
+                        { "ExecStart": "/bin/echo 'Testing transient unit %N'" },
+                    ],
+                    [],
+                ],
+                function(result) { console.debug("Job:", JSON.stringify(result)); watchJob(result, qsTr("StartTransient")); },
+                function(result) { failMsg(qsTr("StartTransient %1").arg(u), result) }
+            );
+            // properties could also be a string like this:  "[('ExecStart', <'ls -h'>)]" according to https://gist.github.com/daharon/c088b3ede0d72fd20ac400b3060cca2d
+        }
 
         //signal handler for finished jobs:
         function jobRemoved(id, job, unit, result) {
