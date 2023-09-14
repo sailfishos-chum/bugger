@@ -6,6 +6,7 @@ import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
 import Nemo.FileManager 1.0
 import "../components"
+import "../components/singletons"
 import "../config/settings.js" as Settings
 
 Dialog { id: page
@@ -252,9 +253,14 @@ Dialog { id: page
                 value:  (currentIndex === -1) ? qsTr("Please Select") : currentItem.text
                 description: qsTr("Tap to open the list of user services.")
                 currentIndex: -1
-                menu: ContextMenu{
+                onVisibleChanged: {
+                    if ((visible) && (currentIndex === -1)) {
+                        DBusManager.refreshUnits()
+                    }
+                }
+                menu: ContextMenu {
                     Repeater {
-                        model: gather.knownUnits.split(',')
+                        model: DBusManager.knownUnits.split(',')
                         delegate: MenuItem { text: modelData }
                     }
                 }
@@ -280,12 +286,19 @@ Dialog { id: page
                         //const myunit = template + "@" + unitField.text + ".service";
                         //const myunit = template + "@" + unitBox.currentItem.text.replace(".service","") + ".service";
                         const myunit = template + "@" + unitBox.currentItem.text + ".service";
-                        gather.collectLog(myunit);
+                        DBusManager.call("StartUnit",
+                            [ unit, "replace"],
+                            function(result) { app.popup(qsTr("Log gathering successsful!")) },
+                            function(result) { app.popup(qsTr("Log gathering failed!"))
+                                console.warn(qsTr("Start"), JSON.stringify(result))
+                            }
+                        );
                     }
                 }
             }
             SectionHeader { text: qsTr("List of files to upload") }
             FileList { id: fileList; model: filesModel
+                // override width, as per default this is a 2-by-X GridView
                 cellWidth: page.isLandscape ? parent.width/2 : parent.width
             }
             Label {
