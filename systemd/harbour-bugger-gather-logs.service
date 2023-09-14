@@ -1,5 +1,5 @@
 [Unit]
-Description=Collect Journal file for Bugger!
+Description=Bugger! Collect Journal
 Before=harbour-bugger-gather-logs.target
 After=lipstick-security-ui.service
 Requires=lipstick-security-ui.service

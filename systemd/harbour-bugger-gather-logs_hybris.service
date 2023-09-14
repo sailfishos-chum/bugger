@@ -1,5 +1,5 @@
 [Unit]
-Description=Collect hybris logcat file for Bugger!
+Description=Bugger! Collect Hybris logcat
 
 Before=harbour-bugger-gather-logs.target
 After=lipstick-security-ui.service

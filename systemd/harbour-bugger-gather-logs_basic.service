@@ -1,5 +1,5 @@
 [Unit]
-Description=Collect Jolla gather-logs.sh basic output for Bugger!
+Description=Bugger! Collect Jolla gather-logs.sh basic
 Documentation=https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Persistent_Logs/
 
 Before=harbour-bugger-gather-logs.target

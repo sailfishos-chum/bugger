@@ -1,5 +1,5 @@
 [Unit]
-Description=Collect Android Support logcat file for Bugger!
+Description=Bugger! Collect Android Support logcat
 Documentation=https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Logs_with_Logcat
 
 Before=harbour-bugger-gather-logs.target

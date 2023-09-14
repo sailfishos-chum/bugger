@@ -1,5 +1,5 @@
 [Unit]
-Description=Collect Journal for unit: %i
+Description=Bugger! Collect Journal for unit %i
 Documentation=https://github.com/sailfishos-chum/bugger/blob/master/README_logcollect.md
 Documentation=file:///usr/share/harbour-bugger/scripts/README_logcollect.md
 #Before=harbour-bugger-gather-logs.target

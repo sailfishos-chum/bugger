@@ -1,5 +1,5 @@
 [Unit]
-Description=Collect update log file for Bugger!
+Description=Bugger! Collect Update logs
 
 #Before=harbour-bugger-gather-logs.target
 #After=lipstick-security-ui.service
