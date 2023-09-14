@@ -13,8 +13,23 @@ Page { id: page
     property var config: Settings.config
     property bool collectEnabled
     property bool pluginEnabled
+
     property var watchedJobs: new Object()      // record jobs we launched, used as key-value store
 
+    // fixme: we can't actually determine active state for a target and a template...
+    onStatusChanged: {
+        if (status == PageStatus.Active) {
+            const u
+            u = "harbour-bugger-gather-logs.target"
+            manager.getUnitState(u, function(state){
+                collectEnabled = (state === "enabled")
+            })
+            u = "harbour-bugger-gather-logs-plugin@harbour-bugger-gather-logs.service"
+            manager.getUnitState(u, function(state){
+                pluginEnabled = (state === "enabled")
+            })
+        }
+    }
     function successMsg(message, result) {
         app.popup(result + ": " + message)
         console.debug(result + ": " + message)

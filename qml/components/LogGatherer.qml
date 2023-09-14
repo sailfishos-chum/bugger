@@ -33,7 +33,6 @@ Item { id: root
                     }
                 })
                 knownUnits = running.join(',')
-                console.debug(knownUnits)
             },
             function(result) { console.warn(qsTr("Start"), JSON.stringify(result)) }
         );

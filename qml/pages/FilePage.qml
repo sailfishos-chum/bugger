@@ -143,7 +143,7 @@ Dialog { id: page
     }
     /*
      * Since a FileModel does not have a get() method, and we can't extend its
-       elements, popuplate our own model with the extended data.
+       elements, populate our own model with the extended data.
        Actually we just really need the "pastedUrl" property. This is a FIXME.
 
        Use an Instantiator to generate the content, as it can use the model directly.
@@ -234,6 +234,7 @@ Dialog { id: page
             ButtonLayout {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
+                preferredWidth: Theme.buttonWidthExtraSmall
                 Button { text: qsTr("Pick Files"); onClicked: pageStack.push(picker) }
                 Button { text: qsTr("Collect Logs"); onClicked: { startGatherer() } }
             }
@@ -249,8 +250,9 @@ Dialog { id: page
             ComboBox { id: unitBox
                 label: qsTr("Unit")
                 value:  (currentIndex === -1) ? qsTr("Please Select") : currentItem.text
+                description: qsTr("Tap to open the list of user services.")
                 currentIndex: -1
-                menu:ContextMenu{
+                menu: ContextMenu{
                     Repeater {
                         model: gather.knownUnits.split(',')
                         delegate: MenuItem { text: modelData }
@@ -282,7 +284,10 @@ Dialog { id: page
                     }
                 }
             }
-
+            SectionHeader { text: qsTr("List of files to upload") }
+            FileList { id: fileList; model: filesModel
+                cellWidth: page.isLandscape ? parent.width/2 : parent.width
+            }
             Label {
                 width: parent.width
                 font.pixelSize: Theme.fontSizeSmall
@@ -302,10 +307,6 @@ Dialog { id: page
                 visible: false
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: parent.width
-            }
-            SectionHeader { text: qsTr("List of files to upload") }
-            FileList { id: fileList; model: filesModel
-                cellWidth: page.isLandscape ? parent.width/2 : parent.width
             }
         }
         VerticalScrollDecorator {}
