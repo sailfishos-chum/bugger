@@ -8,6 +8,7 @@ import Nemo.DBus 2.0
 Item { id: root
 
     // public functions:
+    function startUnit(unit) { manager.start(unit) }
     /*! \qmlmethod getUnitState(unit, callback)
 
        Queries the \c status property of a Systemd Unit
@@ -17,8 +18,8 @@ Item { id: root
        the containing ithe result of the query, e.g.
        "active", "failed" etc.
     */
-
     function getUnitState(unit, callback) { manager.getUnitState(unit, callback) }
+
     /*! \qmlmethod toggleGather()
        Toggles the \c harbour-bugger-gather-logs.target on
        or off (enables/disables it via systemd).

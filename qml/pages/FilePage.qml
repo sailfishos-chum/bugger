@@ -286,13 +286,7 @@ Dialog { id: page
                         //const myunit = template + "@" + unitField.text + ".service";
                         //const myunit = template + "@" + unitBox.currentItem.text.replace(".service","") + ".service";
                         const myunit = template + "@" + unitBox.currentItem.text + ".service";
-                        DBusManager.call("StartUnit",
-                            [ unit, "replace"],
-                            function(result) { app.popup(qsTr("Log gathering successsful!")) },
-                            function(result) { app.popup(qsTr("Log gathering failed!"))
-                                console.warn(qsTr("Start"), JSON.stringify(result))
-                            }
-                        );
+                        DBusManager.startUnit( myunit )
                     }
                 }
             }

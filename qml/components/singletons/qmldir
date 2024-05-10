@@ -1,2 +1,2 @@
 module Bugger
-singleton DbusManager 1.0 DBusManager.qml
+singleton DBusManager 1.0 DBusManager.qml
