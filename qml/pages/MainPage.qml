@@ -349,6 +349,10 @@ Page {
                 width: parent.width
                 active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
                 sourceComponent: DeviceInfo{}
+                onLoaded:  {
+                    metatags["osversion"] = !!bugInfo.os.version_id ? bugInfo.os.version_id : "?"
+                    metatags["deviceid"]  = !!bugInfo.hw.id         ? bugInfo.hw.id : "?"
+                }
             }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width }
             Item { height: Theme.paddingLarge*2; width: parent.width }
@@ -394,6 +398,7 @@ Page {
                 text: qsTr("Regression (was working in a previous OS release)")
                 property bool hasChanged: false
                 automaticCheck: false
+                onCheckedChanged: { metatags["regression"] = checked }
                 onClicked: {
                     hasChanged = true;
                     checked = !checked;
