@@ -657,7 +657,12 @@ Wiki: https://forum.sailfishos.org/t/12751/3
         <translation>Bugreport abschicken</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="651"/>
+        <location filename="../qml/pages/MainPage.qml" line="444"/>
+        <source>Post CBeta Bug Report</source>
+        <translation>CBeta-Bugreport abschicken</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="626"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Gespeicherte Inhalte wurden geladen.</translation>
     </message>
