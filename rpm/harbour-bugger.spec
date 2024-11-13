@@ -9,7 +9,7 @@ Name:       harbour-bugger
 # << macros
 
 Summary:    Bug reporting helper
-Version:    0.9.10
+Version:    0.9.11
 Release:    0
 Group:      Applications
 License:    ASL 2.0
@@ -64,7 +64,7 @@ Url:
 
 %qmake5 
 
-make %{?_smp_mflags}
+%make_build
 
 # >> build post
 # << build post
