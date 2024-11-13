@@ -404,7 +404,7 @@ Page {
                 text: qsTr("Regression (was working in a previous OS release)")
                 property bool hasChanged: false
                 automaticCheck: false
-                onCheckedChanged: { metatags["regression"] = checked }
+                onCheckedChanged: { metatags["regression"] = checked ? "true" : "false" }
                 onClicked: {
                     hasChanged = true;
                     checked = !checked;
