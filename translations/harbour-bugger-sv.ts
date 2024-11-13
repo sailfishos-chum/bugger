@@ -480,6 +480,11 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
         <translation>Posta felrapporten</translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="444"/>
+        <source>Post CBeta Bug Report</source>
+        <translation>Posta ”cbeta” felrapporten</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/MainPage.qml" line="626"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Återställt rapportinnehåll från sparat tillstånd.</translation>
