@@ -238,6 +238,7 @@ Page {
         contentHeight: col.height
         Column { id: col
             width: parent.width
+            bottomPadding: Theme.paddingLarge
             PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qualityString) }
             /* tap-to-hide information */
             SilicaItem { id: hidetext
@@ -422,6 +423,17 @@ Page {
                     description: qsTr("e.g. WayDroid and GApps installed")
                     label: qsTr("custom changes, installed packages etc.")
                 }
+            }
+            Label { id: cbetaLabel
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+                visible: bugInfo && bugInfo.ssu && (bugInfo.ssu.domain == 'cbeta')
+                color: Theme.primaryColor
+                font.bold: true
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.WordWrap
+                text: qsTr("Your device is currently registered as a CBeta device.")
+                    + " " + qsTr("Submissions will go to the CBeta forum per default.")
             }
         }
         VerticalScrollDecorator {}
