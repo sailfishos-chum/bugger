@@ -30,6 +30,8 @@ import "../js/util.js" as Util
 Page {
     id: page
 
+    allowedOrientations: Orientation.All
+
     /* config constants: */
     readonly property int minTitleLength:   Settings.config.validation.minTitle
     readonly property int minDescLength:    Settings.config.validation.minDesc
