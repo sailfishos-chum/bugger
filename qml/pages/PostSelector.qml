@@ -21,6 +21,7 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Nemo.FileManager 1.0
+import Nemo.DBus 2.0
 //import "../components"
 //import "../config/settings.js" as Settings
 
@@ -84,7 +85,36 @@ Page { id: page
                 }
             }
         }
+        PullDownMenu {
+            MenuItem { text: qsTr("Post Bug Report");
+                enabled: browserSw.checked || viewerSw.checked || genericSw.checked
+                onClicked: {
+                    if (browserSw.checked) {
+                        browserInterface.post(postUrl)
+                     } else if (viewerSw.checked) {
+                        viewerInterface.post(postUrl)
+                    } else if (genericSw.checked) { Qt.openUrlExternally(postUrl) }
+                }
+            }
+        }
         VerticalScrollDecorator {}
+    }
+
+    DBusInterface { id: browserInterface
+        service: "org.sailfishos.browser.ui"
+        path: "/ui"
+        iface: "org.sailfishos.browser.ui"
+        function post(urlStr) {
+            typedCall("openUrl", { "type": "as", "value": [ urlStr ] }, function(e) {console.info("posted.",e)}, function(e,m) {console.warn("Posting failed, ",e,m)})
+        }
+    }
+    DBusInterface { id: viewerInterface
+        service: "org.github.szopin.harbour-sfos-forum-viewer.ui"
+        path: "/ui"
+        iface: "org.github.szopin.harbour-sfos-forum-viewer.ui"
+        function post(urlStr) {
+            call("openUrl", [ urlStr ], function(e) {console.info("posted.",e)}, function(e,m) {console.warn("Posting failed, ",e,m)})
+        }
     }
 }
 
