@@ -27,6 +27,8 @@ import "../config/settings.js" as Settings
 
 Page { id: page
 
+   allowedOrientations: Orientation.All
+
     property var config: Settings.config
 
     DBusInterface { id: journald
