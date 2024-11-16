@@ -28,6 +28,7 @@ ValueButton { id: root
 
     Component { id: catDialog // meow!
         Dialog { id: catDlg
+            allowedOrientations: Orientation.All
             canAccept: (selected != -1) // do it via onClicked on the list delegate
             property int selected: -1
             function select(i) {
