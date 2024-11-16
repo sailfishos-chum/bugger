@@ -1,6 +1,6 @@
 [Unit]
 Description=Collect Logfiles Bugger! Plugin: %i
-Documentation=https://github.com/sailfishos-chum/bugger/README_logcollect.md
+Documentation=https://github.com/sailfishos-chum/bugger/blob/master/README_logcollect.md
 Documentation=file:///usr/share/harbour-bugger/scripts/README_logcollect.md
 Before=harbour-bugger-gather-logs.target
 
@@ -8,7 +8,11 @@ ConditionFileIsExecutable=/usr/share/harbour-bugger/scripts/gather-logs-%i.sh
 
 [Service]
 Type=oneshot
-ProtectSystem=full
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateNetwork=true
+ProtectKernelTunables=true
+
 ReadWritePaths=%h/Documents
 ExecStart=/bin/sh -c "\
           /usr/share/harbour-bugger/scripts/gather-logs-%i.sh > %h/Documents/$(date -I)_%N.log; \

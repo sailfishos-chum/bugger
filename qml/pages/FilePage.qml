@@ -28,7 +28,8 @@ Dialog { id: page
 
     canAccept: false
     property var config: Settings.config
-    property var links: []
+
+    onRejected: filesModel.clear()
 
     /*
     states: [
@@ -80,7 +81,8 @@ Dialog { id: page
             const logBaseName = new Date().toISOString().substring(0,10) + "_" + "harbour-bugger-gather-logs"
             const d = []
             const o = {}
-            const postfixes = [ ".log", ".json", "_kernel.log", "_kernel.json" ];
+            //const postfixes = [ ".log", ".json", "_kernel.log", "_kernel.json" ];
+            const postfixes = [ ".log", "_kernel.log" ];
             postfixes.forEach(function(postfix) {
                 o = {};
                 o["title"] = (
@@ -106,10 +108,6 @@ Dialog { id: page
         target: paster
         onDoneChanged: {
             if (!paster.done) return
-            for (var i = 0; i < filesModel.count; ++i) {
-                var d = filesModel.get(i)
-                links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
-            }
             canAccept = true
             progress.visible = false
             app.popup(qsTr("Uploading finished: %1 successful, %2 error.").arg(paster.successCount).arg(paster.errorCount))
@@ -118,7 +116,7 @@ Dialog { id: page
             if (paster.uploading !== "") {
                 console.debug("uploading", paster.uploading)
                 progress.visible = true
-                progress.label=qsTr("uploading %1/%2").arg(paster.successCount + 1, filesModel.count) 
+                progress.label = qsTr("uploading %1/%2").arg(paster.successCount + 1).arg(filesModel.count)
             }
         }
     }
@@ -126,12 +124,7 @@ Dialog { id: page
     SilicaFlickable { id: flick
         anchors.fill: parent
         contentHeight: col.height
-        DialogHeader { id: header ;
-            width: parent.width
-            cancelText: qsTr("Back")
-            acceptText: qsTr("Apply")
-            title: qsTr("Gather Files")
-        }
+        DialogHeader { id: header ; width: parent.width ; title: qsTr("Gather Files") }
         Column { id: col
             width: parent.width - Theme.horizontalPageMargin
             anchors.horizontalCenter: parent.horizontalCenter

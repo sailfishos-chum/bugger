@@ -23,11 +23,12 @@ import Sailfish.Silica 1.0
 
 SilicaGridView { id: root
     property bool showPlaceholder: true
+    property bool filtered: false
     width: parent.width
     height: Theme.iconSizeLarge * Math.max(count, 2)
     cellWidth: parent.width/2
     cellHeight: Theme.iconSizeLarge
-    delegate: LogfileDelegate {}
+    delegate: LogfileDelegate { hidden: ( root.filtered && (pastedUrl.length ==0)) }
     ViewPlaceholder {
         enabled: (root.count == 0) && showPlaceholder
         text: "No files."

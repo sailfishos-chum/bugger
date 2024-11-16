@@ -68,7 +68,7 @@ Item {
             if (r.readyState == XMLHttpRequest.DONE) {
                 if (r.status === 200 || r.status == 0) {
                     console.info("upload sucessful:", data["fileName"],  r.response);
-                    model.setProperty(index, "pastedUrl", r.response)
+                    model.setProperty(index, "pastedUrl", r.response.replace(/"/g, ""))
                     successCount++;
                 } else {
                     console.warn("error in processing request.", r.status, r.statusText);

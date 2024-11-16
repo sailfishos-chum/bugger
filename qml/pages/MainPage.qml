@@ -2,7 +2,7 @@
 
 Apache License 2.0
 
-Copyright (c) 2023 Peter G. (nephros)
+Copyright (c) 2022,2023 Peter G. (nephros)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License.  
@@ -68,11 +68,30 @@ Page {
 
     /* just to add something of ours to the report */
     readonly property string infoFooter: 'the initial version of this bug report was created using '
-        + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/' + Qt.application.version + '">'
+        + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/">'
         + Qt.application.name + ' ' + Qt.application.version
         + '</a>'
 
     property var links: []
+    property var metatags: {
+        "version":  Qt.application.version,
+    }
+    function metatagsToComment() {
+        const comm = [
+            "<!--",
+            "The following tags are metadata for automated processing. Please leave them as-is and ignore them.",
+        ]
+        const keys  = Object.keys(metatags)
+        const truth = [];
+        keys.forEach(function(k) {
+            comm.push("<x-bugger-meta name='" + k + "' value='" + metatags[k] + "' />")
+            truth.push(metatags[k]);
+        })
+        const tamperhash = Qt.md5(truth.join(""));
+        comm.push("<x-bugger-meta name='hash' value='" + tamperhash + "' />")
+        comm.push("-->\n")
+        return comm.join('\n')
+    }
 
     // used to clear this form, and the persistent storage
     property var defaultFieldContents: {
@@ -115,7 +134,7 @@ Page {
     }
 
     // from org.nemomobile.systemsettings to determine Device Owner
-    UserInfo{id: userInfo; uid: 100000}
+    UserInfo{id: userInfo; uid: config.sources.useruid }
     // from org.nemomobile.systemsettings to determine OS language
     LanguageModel{id: languageModel}
     property string oslanguage:  languageModel.languageName(languageModel.currentIndex)
@@ -190,6 +209,8 @@ Page {
         shallSave();
     }
     onQualityStringChanged: {
+        onCategoryChanged: metatags["qualityname"] = state;
+        onCategoryChanged: metatags["qualityrating"] = infoGoodCnt;
         if ( state === "good" || state === "full" ) {
             postiveFeedback.play()
             app.popup(qsTr("Achievement unlocked! The quality of your bug report is %1!").arg(page.qualityString));
@@ -318,7 +339,7 @@ Page {
                 description: qsTr("e.g. 'the app closed', 'a message was not shown'")
                 onFocusChanged: shallSave();
             }
-            SectionHeader { text: qsTr("Device Information") }
+            SectionHeader { text: qsTr("Device Information"); font.pixelSize: Theme.fontSizeLarge  }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
             /*
              * bug info contents may be available later than this page is instantiated.
@@ -331,18 +352,22 @@ Page {
                 active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
                 sourceComponent: DeviceInfo{}
             }
+            Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width }
+            Item { height: Theme.paddingLarge*2; width: parent.width }
+            SectionHeader { text: qsTr("Additional Information"); font.pixelSize: Theme.fontSizeLarge }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width}
-            SectionHeader { text: qsTr("Additional Information") }
             TextArea{id: text_add;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
                 description: qsTr("e.g. links to logs or screenshots.")
                 onFocusChanged: shallSave();
             }
+            CatSelect { onCategoryChanged: metatags["category"] = category; }
             Slider { id: repro;
                 width: parent.width;
                 label: qsTr("Reproducibility");
                 minimumValue: 0; maximumValue: 100; stepSize: 25 ; value: -1
+                onValueChanged: metatags["reproducible"] = value;
                 valueText: qsTr(userTextL10N)
                 // this goes into the bug report
                 property string userText: {
@@ -392,11 +417,13 @@ Page {
                 }
             }
             Column {
+                visible: fileList.count > 0
                 width: parent.width
                 SectionHeader { text: qsTr("Links/Attachments (%1)").arg(fileList.count) }
                 FileList{ id: fileList
                     model: filesModel
                     showPlaceholder: false
+                    filtered: true
                 }
             }
         }
@@ -411,7 +438,15 @@ Page {
                 var dialog = pageStack.push(Qt.resolvedUrl("FilePage.qml"))
                 dialog.accepted.connect(function() {
                     console.debug("dialog done.")
-                    page.links = dialog.links
+                    for (var i = 0; i < filesModel.count; ++i) {
+                        var d = filesModel.get(i)
+                        //links.push('<a href="' + d.pastedUrl + '">' + d.fileName + '</a>')
+                        if (d.title && d.pastedUrl) {
+                            links.push(' - [' + d.title.trim() + '](' + d.pastedUrl + ')  ')
+                        } else if (d.fileName && d.pastedUrl) {
+                            links.push(' - [' + d.fileName + '](' + d.pastedUrl + ')  ')
+                        }
+                    }
                 })
             }
         }
@@ -492,13 +527,15 @@ Page {
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
             + "\n\n"
-            + "ATTACHMENTS:\n"
+            + "LOG FILE LINKS:\n"
             + "=================\n\n"
             + links.join('\n')
             + "\n\n\n\n"
             // add footer:
             + "----  \n"
             + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
+            // add meta tags:
+            + metatagsToComment()
             + "";
         return payload;
     }
@@ -508,7 +545,10 @@ Page {
     }
     /* encode the payload, return full URL for posting */
     function formToUrl() {
+        // handle case for cbeta users:
+        var postCategory = (bugInfo.ssu.domain == 'cbeta') ? postCatBeta : postCatBugs;
         return postUrl
+            + postCategory
             + "&title=" + encodeURIComponent(getTitle())
             + "&body="  + encodeURIComponent(getPayload());
     }
@@ -589,7 +629,8 @@ Page {
             "regver":           regver.currentIndex,
             "regarch":          regarch.currentIndex,
             "othersw":          othersw.checked,
-            "repro":            repro.sliderValue
+            "repro":            repro.sliderValue,
+            "links":            links
         };
         Util.store(post);
     }
@@ -643,6 +684,7 @@ Page {
             regarch.currentIndex    = data.regarch;
             othersw.checked         = data.othersw;
             repro.value             = data.repro;
+            links                   = data.links;
         } finally {
             preventSave = false;
         }

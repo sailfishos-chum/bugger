@@ -4,12 +4,16 @@ var config = {
         "os":  'file:///etc/sailfish-release',
         "hw":  'file:///etc/hw-release',
         "ssu": 'file:///etc/ssu/ssu.ini',
-        "pm":  'file:///etc/patchmanager2.conf'
+        "pm":  'file:///etc/patchmanager2.conf',
+        "useruid": 100000
     },
     "submit": {
         "scheme":    'https',
         "host":      'forum.sailfishos.org',
-        "uri":       '/new-topic?category_id=13'
+        "uri":       '/new-topic?category_id=',
+        "category_bugs":      '13',
+        "category_features":  '23',
+        "category_cbeta":     '21',
     },
     "upload": {
         "scheme":    'https',
