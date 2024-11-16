@@ -44,10 +44,12 @@ Page { id: page
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryHighlightColor
                 horizontalAlignment: Text.AlignJustify
+                wrapMode: Text.Wrap
                 text: qsTr("There are several way to finally post your report.<br />")
                     + "<ul>"
-                    + "<li>" + qsTr("If you choose the Browser, continue on page 38.")
-                    + "<li>" + qsTr("If you choose the Forum Viewer, roll a d8 and determine the outcome using the table on page 142.")
+                    + "<li>" + qsTr("If you choose the Browser, continue on page %1.").arg(Math.round(Math.random()*128+12))
+                    + "<li>" + qsTr("If you choose the Forum Viewer, roll a d8 and determine the outcome using the table on page %1.").arg(Math.round(Math.random()*64+13))
+
                     + "</ul>"
             }
             ButtonLayout {
