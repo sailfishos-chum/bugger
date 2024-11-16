@@ -52,11 +52,36 @@ Page { id: page
 
                     + "</ul>"
             }
-            ButtonLayout {
+            Column {
                 width: parent.width
-                preferredWidth: Theme.buttonSizeExtraLarge
-                Button { text: qsTr("Browser") }
-                Button { text: qsTr("Forum Viewer"); enabled: page.haveSFV }
+                TextSwitch { id: browserSw; text: qsTr("Sailfish Browser"); checked: true
+                    automaticCheck: false
+                    onClicked: {
+                        checked = !checked
+                        //if(checked) browserSw.checked = false
+                        if(checked) viewerSw.checked = false
+                        if(checked) genericSw.checked = false
+                    }
+                }
+                TextSwitch { id: viewerSw;  text: qsTr("SFOS Forum Viewer"); enabled: page.haveSFV
+                description: enabled ? "" : qsTr("App is not installed")
+                    automaticCheck: false
+                    onClicked: {
+                        checked = !checked
+                        if(checked) browserSw.checked = false
+                        //if(checked) viewerSw.checked = false
+                        if(checked) genericSw.checked = false
+                    }
+                }
+                TextSwitch { id: genericSw;  text: qsTr("Generic Browser")
+                    automaticCheck: false
+                    onClicked: {
+                        checked = !checked
+                        if(checked) browserSw.checked = false
+                        if(checked) viewerSw.checked = false
+                        //if(checked) genericSw.checked = false
+                    }
+                }
             }
         }
         VerticalScrollDecorator {}
