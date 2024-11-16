@@ -52,8 +52,8 @@ Page { id: page
             ButtonLayout {
                 width: parent.width
                 preferredWidth: Theme.buttonSizeExtraLarge
-                Button { label: qsTr("Browser") }
-                Button { label: qsTr("Forum Viewer"); enabled: page.haveSFV }
+                Button { text: qsTr("Browser") }
+                Button { text: qsTr("Forum Viewer"); enabled: page.haveSFV }
             }
         }
         VerticalScrollDecorator {}
