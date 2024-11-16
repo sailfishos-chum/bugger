@@ -20,12 +20,13 @@ limitations under the License.
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Nemo.FileManager 1.0
 //import "../components"
 //import "../config/settings.js" as Settings
 
 Page { id: page
     property string postUrl
-    property bool haveSFV: false
+    property bool haveSFV: FileEngine.exists("/usr/share/applications/harbour-sfos-forum-viewer.desktop")
 
     SilicaFlickable { id: flick
         anchors.fill: parent
