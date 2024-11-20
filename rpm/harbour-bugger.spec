@@ -186,6 +186,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/*/*/apps/icon-m-new-bug.png
 %{_datadir}/jolla-settings/entries/%{name}.json
 %{_datadir}/lipstick/quickactions/%{name}.conf
+%{_datadir}/translations/%{name}-quickactions*.qm
 %{_unitdir}/*.service
 %{_datadir}/%{name}/99_bugger_full_debug.conf
 %ghost /etc/systemd/journald.conf.d/99_bugger_full_debug.conf
