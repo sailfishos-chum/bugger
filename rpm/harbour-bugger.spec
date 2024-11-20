@@ -101,5 +101,6 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/*/*/apps/icon-m-new-bug.png
 %{_datadir}/jolla-settings/entries/%{name}.json
 %{_datadir}/lipstick/quickactions/%{name}.conf
+%{_datadir}/translations/%{name}-quickactions*.qm
 # >> files
 # << files
