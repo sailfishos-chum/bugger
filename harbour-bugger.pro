@@ -37,4 +37,5 @@ OTHER_FILES += $$files(rpm/*)
 
 include(translations/translations.pri)
 include(icons/icons.pri)
+include(quickaction/quickaction.pri)
 include(sailjail/sailjail.pri)
