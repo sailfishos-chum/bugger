@@ -127,7 +127,7 @@ ApplicationWindow {
     Component.onCompleted: {
         // for sailjail
         Qt.application.version = "unreleased";
-        console.info("Intialized", Qt.application.name, "version", Qt.application.version, "by", Qt.application.organization );
+        console.info("Initialized", Qt.application.name, "version", Qt.application.version, "by", Qt.application.organization );
         console.debug("Parameters: " + Qt.application.arguments.join(" "))
 
         if (Qt.application.arguments.indexOf("-developermode") > -1) {
