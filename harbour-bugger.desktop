@@ -2,7 +2,7 @@
 Type=Application
 Icon=harbour-bugger
 X-Nemo-Application-Type=silica-qt5
-Exec=/usr/bin/invoker --type=silica-qt5 /usr/bin/sailfish-qml harbour-bugger
+Exec=/usr/bin/invoker --type=silica-qt5 -- /usr/bin/sailfish-qml harbour-bugger
 Name=Bugger!
 Name[en]=Bugger!
 Name[de]=Bugger!
@@ -17,3 +17,4 @@ X-Maemo-Method=sailfishos-chum.Bugger.newBug
 ApplicationName=Bugger
 OrganizationName=sailfishos-chum
 Permissions=Documents,Email
+ExecDBus=/usr/bin/invoker --type=silica-qt5 --id=harbour-bugger -- /usr/bin/sailfish-qml harbour-bugger --dbus
