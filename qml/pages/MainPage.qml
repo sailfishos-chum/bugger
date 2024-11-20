@@ -229,6 +229,7 @@ Page {
     function showWelcomeDialog() {
         if (welcomeShown) return;
         if (developerMode) return;
+        if (noGreeter) return;
         var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
         dialog.done.connect(function() { page.welcomeShown = true;})
     }

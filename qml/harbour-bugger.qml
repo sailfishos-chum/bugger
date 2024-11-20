@@ -31,6 +31,7 @@ ApplicationWindow {
     id: app
 
     property bool developerMode: false
+    property bool noGreeter: false
 
     allowedOrientations: Orientation.All
 
@@ -133,6 +134,10 @@ ApplicationWindow {
             developerMode = true
             console.info("Developer mode enabled!")
             console.debug("Loaded settings:", JSON.stringify(Settings,null, 2))
+        }
+        if (Qt.application.arguments.indexOf("-no-greeter") > -1) {
+            noGreeter = true
+            console.debug("Skipping Greeting banner")
         }
         /* LOAD ALL THE THINGS */
         getInfo(osInfoFile, "os");
