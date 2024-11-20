@@ -3,7 +3,7 @@
 ######################################################################
 
 TARGET = harbour-bugger
-CONFIG += sailfishapp sailfishapp_i18n
+CONFIG += sailfishapp_qml
 INCLUDEPATH += .
 
 lupdate_only {
