@@ -6,6 +6,9 @@
 Name:       harbour-bugger
 
 # >> macros
+# because we set more than one Version (see subpackgage gather-logs-contrib)
+# version mangling takes that value. So lets keep it here.
+%global mangle_version %{version}
 # << macros
 
 Summary:    Bug reporting helper
@@ -78,7 +81,8 @@ rm -rf %{buildroot}
 
 # >> install post
 # mangle version info
-sed -i -e "s/unreleased/%{version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
+echo Mangling version: %{mangle_version}
+sed -i -e "s/unreleased/%{mangle_version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
 # << install post
 
 desktop-file-install --delete-original       \
