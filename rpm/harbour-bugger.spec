@@ -24,6 +24,7 @@ Source101:  harbour-bugger-rpmlintrc
 Requires:   %{name}-gather-logs
 Requires:   libsailfishapp-launcher
 Requires:   sailfish-version >= 4.0.0
+BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  qt5-qmake
 BuildRequires:  sailfish-svg2png
