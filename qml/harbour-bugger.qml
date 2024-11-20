@@ -159,6 +159,8 @@ ApplicationWindow {
     /*
      * Dbus listener for Topmenu quick action
     */
+    readonly property string busname: (Qt.application.name === "QtQmlViewer") ? "Bugger" : Qt.application.name
+    readonly property string ifaceVer: "1"
     DBusAdaptor { id: listener
 
         bus: DBus.SessionBus
