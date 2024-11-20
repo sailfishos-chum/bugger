@@ -1,0 +1,23 @@
+{
+    "translation_catalog": "lipstick-jolla-home",
+    "entries": [
+        {
+            "path": "system_settings/look_and_feel/topmenu/actions/report_a_bug",
+            "title": "Report a bug!",
+            "translation_id": "",
+            "title_short": "Bug!",
+            "translation_id_short": "",
+            "type": "action",
+            "icon": "image://theme/icon-m-new-bug",
+            "order": 75,
+            "params": {
+                "type": "grid",
+                "requires-package": "harbour-bugger",
+                "remote-service": "sailfishos-chum.Bugger",
+                "remote-path": "/ui",
+                "remote-interface": "sailfishos-chum.Bugger",
+                "remote-method": "newBug"
+            }
+        }
+    ]
+}
