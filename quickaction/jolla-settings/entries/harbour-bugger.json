@@ -13,9 +13,9 @@
             "params": {
                 "type": "grid",
                 "requires-package": "harbour-bugger",
-                "remote-service": "sailfishos-chum.Bugger",
-                "remote-path": "/ui",
-                "remote-interface": "sailfishos-chum.Bugger",
+                "remote-service": "sailfishos-chum.Bugger.ui",
+                "remote-path": "/sailfishos_chum/Bugger/ui",
+                "remote-interface": "sailfishos-chum.Bugger.ui",
                 "remote-method": "newBug"
             }
         }

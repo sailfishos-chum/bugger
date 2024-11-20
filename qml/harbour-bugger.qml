@@ -154,9 +154,10 @@ ApplicationWindow {
     readonly property string busname: (Qt.application.name === "QtQmlViewer") ? "Bugger" : Qt.application.name
     DBusAdaptor { id: listener
         bus: DBus.SessionBus
-        service: "sailfishos-chum." + busname
-        path:    "/ui"
-        iface:   "sailfishos-chum." + busname
+        service: "sailfishos-chum." + busname + ".ui"
+        //path:    "/ui"
+        path:    "/sailfishos_chum/Bugger"
+        iface:   "sailfishos-chum." + busname + ".ui"
         xml: [
             '<interface name="' + iface + '">',
             '  <method name="newBug" />',

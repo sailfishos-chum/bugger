@@ -8,9 +8,11 @@ Name[en]=Bugger!
 Name[de]=Bugger!
 Name[sv]=Bugger!
 
-X-Maemo-Service=sailfishos-chum.Bugger
-X-Maemo-Object-Path=/ui
-X-Maemo-Method=sailfishos-chum.Bugger.newBug
+X-Maemo-Service=sailfishos-chum.Bugger.ui
+# See rules about contsructing the object name at
+# https://specifications.freedesktop.org/desktop-entry-spec/latest/dbus.html
+X-Maemo-Object-Path=/sailfishos_chum/Bugger/ui
+X-Maemo-Method=sailfishos-chum.Bugger.ui.newBug
 
 
 [X-Sailjail]
