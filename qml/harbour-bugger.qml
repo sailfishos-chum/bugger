@@ -21,6 +21,7 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
+import Nemo.DBus 2.0
 import "pages"
 import "cover"
 import "components"
@@ -148,6 +149,41 @@ ApplicationWindow {
         smessage.previewSummary = s
         smessage.urgency = 0;
         smessage.publish();
+    }
+    /*
+     * Dbus listener for openUrl/openApp etc
+    */
+    readonly property string busname: (Qt.application.name === "QtQmlViewer") ? "Bugger" : Qt.application.name
+    DBusAdaptor { id: listener
+        bus: DBus.SessionBus
+        service: "sailfishos-chum." + busname
+        path:    "/ui"
+        iface:   "sailfishos-chum." + busname
+        xml: [
+            '<interface name="' + iface + '">',
+            '  <method name="newBug" />',
+            //'  <method name="activate" />',
+            //'  <method name="open">',
+            //'    <arg name="url" type="s" direction="in">',
+            //'    </arg>',
+            //'  </method>',
+            '</interface>',
+            ].join('\n')
+
+        function newBug() {
+            console.info("App opened via Quick Action.")
+            __silica_applicationwindow_instance.activate()
+        }
+        function activate() {
+            console.info("App opened via DBus Activate.")
+            __silica_applicationwindow_instance.activate()
+        }
+        function open(url) {
+            console.info("App opened via DBus Open.")
+            __silica_applicationwindow_instance.activate()
+        }
+
+        Component.onCompleted: console.debug(qsTr("DBus service %1 ready").arg(service))
     }
 
     initialPage: Component { MainPage{} }

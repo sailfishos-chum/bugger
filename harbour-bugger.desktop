@@ -8,6 +8,10 @@ Name[en]=Bugger!
 Name[de]=Bugger!
 Name[sv]=Bugger!
 
+X-Maemo-Service=sailfishos-chum.Bugger
+X-Maemo-Object-Path=/ui
+X-Maemo-Method=sailfishos-chum.Bugger.newBug
+
 
 [X-Sailjail]
 ApplicationName=Bugger
