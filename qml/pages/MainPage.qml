@@ -66,7 +66,7 @@ Page {
         1 * text_expres.text.length +
         1 * text_actres.text.length +
         0
-    property string qualityString//: qsTr("incomplete", "State of completeness of a bug report")
+    property string qualityString // : qsTr("incomplete", "State of completeness of a bug report")
 
     /* just to add something of ours to the report */
     readonly property string infoFooter: 'the initial version of this bug report was created using '
@@ -447,6 +447,7 @@ Page {
         MenuItem { text: qsTr("Help"); onClicked: { pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml")) } }
         MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Cleared."), function() { resetFields() }) } }
         //MenuItem { text: qsTr("Settings"); onClicked: { pageStack.push(Qt.resolvedUrl("SettingsPage.qml")) } }
+        MenuLabel { text: qsTr("To submit, scroll to the bottom") }
     }
     PushUpMenu { id: pum
         flickable: flick
