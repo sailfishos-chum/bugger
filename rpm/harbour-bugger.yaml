@@ -60,8 +60,9 @@ PkgBR:
   - qt5-qmake
   - sailfish-svg2png
   - qml-rpm-macros
-#PkgConfigBR:
-#    - ^^^
+PkgConfigBR:
+  # ensure qmake prfs are present:
+  - sailfishapp
 Configure: none
 Builder: qmake5
 NoIconCache: true
