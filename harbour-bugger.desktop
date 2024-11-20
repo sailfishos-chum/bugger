@@ -2,18 +2,11 @@
 Type=Application
 Icon=harbour-bugger
 X-Nemo-Application-Type=silica-qt5
-Exec=/usr/bin/invoker --type=silica-qt5 -- /usr/bin/sailfish-qml harbour-bugger
+Exec=/usr/bin/invoker --type=silica-qt5 --id=harbour-bugger -- /usr/bin/sailfish-qml harbour-bugger
 Name=Bugger!
 Name[en]=Bugger!
 Name[de]=Bugger!
 Name[sv]=Bugger!
-
-X-Maemo-Service=sailfishos-chum.Bugger.ui
-# See rules about contsructing the object name at
-# https://specifications.freedesktop.org/desktop-entry-spec/latest/dbus.html
-X-Maemo-Object-Path=/sailfishos_chum/Bugger/ui
-X-Maemo-Method=sailfishos-chum.Bugger.ui.newBug
-
 
 [X-Sailjail]
 ApplicationName=Bugger

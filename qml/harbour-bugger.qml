@@ -148,24 +148,22 @@ ApplicationWindow {
         smessage.urgency = 0;
         smessage.publish();
     }
+
     /*
-     * Dbus listener for openUrl/openApp etc
+     * Dbus listener for Topmenu quick action
     */
-    readonly property string busname: (Qt.application.name === "QtQmlViewer") ? "Bugger" : Qt.application.name
     DBusAdaptor { id: listener
+
         bus: DBus.SessionBus
-        service: "sailfishos-chum." + busname + ".ui"
+        // we need to use the sailjail-registered service
+        //service: "sailfishos-chum." + busname + ".ui"
+        service: "sailfishos-chum." + busname
         //path:    "/ui"
-        path:    "/sailfishos_chum/Bugger"
-        iface:   "sailfishos-chum." + busname + ".ui"
+        path:    "/sailfishos_chum" + "/" + busname + "/" + "ui"
+        iface:   "sailfishos_chum." + busname + ifaceVer + ".ui"
         xml: [
             '<interface name="' + iface + '">',
             '  <method name="newBug" />',
-            //'  <method name="activate" />',
-            //'  <method name="open">',
-            //'    <arg name="url" type="s" direction="in">',
-            //'    </arg>',
-            //'  </method>',
             '</interface>',
             ].join('\n')
 
@@ -173,15 +171,6 @@ ApplicationWindow {
             console.info("App opened via Quick Action.")
             __silica_applicationwindow_instance.activate()
         }
-        function activate() {
-            console.info("App opened via DBus Activate.")
-            __silica_applicationwindow_instance.activate()
-        }
-        function open(url) {
-            console.info("App opened via DBus Open.")
-            __silica_applicationwindow_instance.activate()
-        }
-
         Component.onCompleted: console.debug(qsTr("DBus service %1 ready").arg(service))
     }
 
