@@ -1,3 +1,7 @@
+* Wed Nov 20 2024 Nephros <sailfish@nephros.org> - 0.9.12
+- "various fixes" backported from master
+- Add Top Menu quickaction
+
 * Sat Nov 16 2024 Nephros <sailfish@nephros.org> - 0.9.11
 - Allow any Orientation
 
