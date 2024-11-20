@@ -33,10 +33,9 @@ TRANSLATIONS += translations/$${TARGET}-en.ts \
 # qml.path = /usr/share/$${TARGET}
 # INSTALLS += qml
 
-readme.files = README_logcollect.md
-readme.path = /usr/share/$${TARGET}/scripts
-
-INSTALLS += readme
+lc_readme.files = README_logcollect.md
+lc_readme.path = /usr/share/$${TARGET}/scripts
+INSTALLS += lc_readme
 
 OTHER_FILES += $$files(rpm/*)
 
