@@ -36,6 +36,6 @@ TRANSLATIONS += translations/$${TARGET}-en.ts \
 OTHER_FILES += $$files(rpm/*)
 
 include(translations/translations.pri)
-include(icons/icons.pri)
+include(svgs/icons.pri)
 include(quickaction/quickaction.pri)
 include(sailjail/sailjail.pri)
