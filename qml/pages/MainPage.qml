@@ -486,7 +486,7 @@ Page {
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Title"))       ; visible: ( !infoComplete && !titleComplete); }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Description")) ; visible: ( !infoComplete && !descComplete); }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Steps"))       ; visible: ( !infoComplete && !stepsComplete); }
-        MenuItem { text: (bugInfo.ssu.domain == 'cbeta') ? qsTr("Post CBeta Bug Report") : qsTr("Post Bug Report");
+        MenuItem { text: (bugInfo && bugInfo.ssu && (bugInfo.ssu.domain == 'cbeta')) ? qsTr("Post CBeta Bug Report") : qsTr("Post Bug Report");
             enabled: infoComplete
             onClicked: {
                 if (developerMode) {
