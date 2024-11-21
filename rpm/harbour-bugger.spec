@@ -183,7 +183,7 @@ desktop-file-install --delete-original       \
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/%{name}/qml/*
-%{_datadir}/icons/*/*/apps/icon-m-new-bug.png
+%{_datadir}/themes/*/*/*/*/icon-m-new-bug.png
 %{_datadir}/jolla-settings/entries/%{name}.json
 %{_datadir}/translations/%{name}-quickactions*.qm
 %{_unitdir}/*.service

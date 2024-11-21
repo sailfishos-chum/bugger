@@ -8,3 +8,4 @@ translations/*.qm
 quickaction/translations/*.qm
 Makefile
 icons/*x*
+z?.*
