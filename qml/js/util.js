@@ -20,7 +20,7 @@ function store(obj) {
 function restore(loc) {
     return load();
 }
-function reset() { resetDdefault() }
+function reset() { resetDefault() }
 
 /* 
  * **** INTERNAL FUNCTIONS ****
