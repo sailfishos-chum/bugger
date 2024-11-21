@@ -9,3 +9,4 @@ quickaction/translations/*.qm
 Makefile
 icons/*x*
 z?.*
+appicon/icons/

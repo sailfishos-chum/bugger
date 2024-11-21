@@ -1,4 +1,5 @@
 TEMPLATE = aux
+
 QMAKE_EXTRA_TARGETS += svg appicon
 #INSTALLS += svg appicon
 INSTALLS += appicon
@@ -14,14 +15,14 @@ appicon.sizes = \
 
 for(iconsize, appicon.sizes) {
     profile = $${iconsize}x$${iconsize}
-    system(mkdir -p $${OUT_PWD}/icons/$${profile})
+    system(mkdir -p $${PWD}/icons/$${profile})
 
     appicon.commands += /usr/bin/sailfish_svg2png \
         -z 1.0 -s 1 1 1 1 1 1 $${iconsize} \
         $${PWD}/svgs \
-        icons/$${profile}/apps ;
+        $${PWD}/icons/$${profile}/apps ;
 
-    appicon.files += icons/$${profile}
+    appicon.files += $${PWD}/icons/$${profile}
 }
 appicon.commands += true
 appicon.path = $$PREFIX/share/icons/hicolor/
