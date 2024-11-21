@@ -1,9 +1,8 @@
 .pragma library
 /*
  * When adding a category, add it at the end!!
- *
  * Don't use very long descriptions, they are shown in a button!
- *
+ * "None" should remain the first entry
  */
 var data = {
     "categories": [
@@ -46,11 +45,11 @@ var data = {
         { "name": "mpris", "displayName": "MPRIS",
                 "description": "Media Player remote control"
         },
-        { "name": "native_app","displayName": "SFOS App",
+        { "name": "native_app","displayName": "Sailfish OS App",
                 "description": "Sailfish stock apps"
         },
         { "name": "network",  "displayName": "Networking",
-                "description": "General net and ocnnectivity issues"
+                "description": "General net and connectivity issues"
         },
         { "name": "ngfd", "displayName": "UI Feedback",
                 "description": "Haptic feedback"
@@ -66,6 +65,18 @@ var data = {
         },
         { "name": "flashing",  "displayName": "Flashing",
                 "description": "Installing/flashing OS images"
+        },
+        { "name": "adaptation",  "displayName": "Device Adaptation",
+                "description": "Base support for a specific device, firmware etc."
+        },
+        { "name": "lipstick",  "displayName": "Home Screen",
+                "description": "Home Sceen, Launcher, etc"
+        },
+        { "name": "silica",  "displayName": "Silica",
+                "description": "The Silica UI, and other Sailfish UI components"
+        },
+        { "name": "telephony",  "displayName": "Telephony",
+                "description": "Issues with calls, reception, ..."
         },
     ]
 }
