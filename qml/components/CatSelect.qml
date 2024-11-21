@@ -13,7 +13,22 @@ ValueButton { id: root
     property string category: (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).name : "none"
 
     Component.onCompleted: {
-        Meta.data.categories.forEach(function(e){ catModel.append(e) })
+        // for some reason, using shift() never removes "none", and sorting
+        // never consodered the last element.
+        // so we [0] and slice(1) instead
+        // something something length of original array, shallow copy, yada yada
+        const f = Meta.data.categories[0] // "none"
+        catModel.append(f) // "none" shall be the first element
+        var sc = Meta.data.categories.slice(1)
+        sc.sort(function(a,b){
+            const an = a.displayName
+            const bn = b.displayName
+            var ret = 0
+            if(an < bn) ret = -1
+            if(an > bn) ret = 1
+            return ret
+        })
+        sc.forEach(function(e){ catModel.append(e) })
     }
 
 
