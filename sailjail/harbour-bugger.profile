@@ -6,6 +6,12 @@
 # x-sailjail-translation-key-long-description = permission-la-data_description
 # x-sailjail-long-description = Access necessary resources for Bugger! to work
 
+## PERMISSIONS
+# x-sailjail-permission = Documents
+# x-sailjail-permission = Email
+include /etc/sailjail/permissions/Documents.permission
+include /etc/sailjail/permissions/Email.permission
+
 # language detection
 
 # detect user settings
