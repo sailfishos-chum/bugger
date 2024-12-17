@@ -2,63 +2,76 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="sv">
 <context>
+    <name></name>
+    <message id="harbour-bugger-qa_name">
+        <location filename="../quickaction/strings.qml" line="4"/>
+        <source>Report a Bug! (Using Bugger!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="harbour-bugger-qa_name_short">
+        <location filename="../quickaction/strings.qml" line="6"/>
+        <source>Report a Bug!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
         <translation>%1 är ett litet verktyg som hjälper dig att rapportera fel på https://forum.sailfishos.org, enligt en mer eller mindre standardiserad mall. 
 Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka upp dem och spåra dem internt. För mer information, se %2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="56"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>Version:</source>
         <translation>Version:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="57"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Copyright:</source>
         <translation>Copyright:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>License:</source>
         <translation>Licens:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="59"/>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
         <source>Source Code:</source>
         <translation>Källkod:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="60"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Credits</source>
         <translation>Erkännanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <location filename="../qml/pages/AboutPage.qml" line="64"/>
+        <location filename="../qml/pages/AboutPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutPage.qml" line="66"/>
         <source>Translation: %1</source>
         <comment>%1 is the native language name</comment>
         <translation>Översättning: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>What&apos;s %1?</source>
         <translation>Vad är %1?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutPage.qml" line="64"/>
         <source>Contributions and Help: </source>
         <translation>Bidrag och hjälp: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="61"/>
+        <location filename="../qml/pages/AboutPage.qml" line="63"/>
         <source>Bug Coordination Team Lead: </source>
         <translation>Gruppledare för felrapport­koordinering: </translation>
     </message>
@@ -68,6 +81,7 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     <message>
         <location filename="../qml/components/CatSelect.qml" line="20"/>
         <location filename="../qml/components/CatSelect.qml" line="22"/>
+        <location filename="../qml/components/CatSelect.qml" line="42"/>
         <source>Bug Category</source>
         <translation type="unfinished"></translation>
     </message>
@@ -101,14 +115,32 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     </message>
 </context>
 <context>
+    <name>FileList</name>
+    <message>
+        <location filename="../qml/components/FileList.qml" line="34"/>
+        <source>No files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/FileList.qml" line="35"/>
+        <source>Use &lt;b&gt;%1&lt;/b&gt; to add log files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/FileList.qml" line="35"/>
+        <source>Gather Logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FilePage</name>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="52"/>
+        <location filename="../qml/pages/FilePage.qml" line="39"/>
         <source>Select log files to add</source>
         <translation>Välj loggfiler att lägga till</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="223"/>
+        <location filename="../qml/pages/FilePage.qml" line="217"/>
         <source>Uploading finished: %1 successful, %2 error.</source>
         <translation>Uppladdning slutförd: %1 felfritt, %2 fel.</translation>
     </message>
@@ -125,67 +157,94 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation type="vanished">Tillämpa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="230"/>
+        <location filename="../qml/pages/FilePage.qml" line="224"/>
         <source>uploading %1 files, %2 done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="238"/>
+        <location filename="../qml/pages/FilePage.qml" line="232"/>
         <source>Gather Files</source>
         <translation>Samla filer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="249"/>
+        <location filename="../qml/pages/FilePage.qml" line="244"/>
         <source>Here you can gather and add log files, which will be uploaded to a &apos;Pastebin&apos; type of service, and added as links to your Bug Report.</source>
         <translation>Här kan du samla in och lägga till loggfiler, som laddas upp till en &quot;Pastebin-tjänst&quot; och läggs till som länkar i din felrapport.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="251"/>
         <source>Use the Pulley Menu to populate the file list.</source>
-        <translation>Använd dragmenyn för att fylla fillistan.</translation>
+        <translation type="vanished">Använd dragmenyn för att fylla fillistan.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="252"/>
         <source>Long press on a file in the list to remove.</source>
-        <translation>Långtryck på en fil i listan, för att ta bort.</translation>
+        <translation type="vanished">Långtryck på en fil i listan, för att ta bort.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="253"/>
         <source>Finally, use the Pulley Menu to upload the data and add the links.</source>
-        <translation>Slutligen använder du dragmenyn för att ladda upp data och lägga till länkarna.</translation>
+        <translation type="vanished">Slutligen använder du dragmenyn för att ladda upp data och lägga till länkarna.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="255"/>
+        <location filename="../qml/pages/FilePage.qml" line="246"/>
         <source>The data will be uploaded to %1, and be publicly available. Be sure you don&apos;t add private or confidential information.</source>
         <translation>Data laddas upp till %1 och är offentligt tillgängliga. Tillse att du inte lägger till privat eller konfidentiell information.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="263"/>
-        <source>List of files to upload</source>
-        <translation>Lista över filer att ladda upp</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FilePage.qml" line="271"/>
-        <source>Share via E-Mail</source>
+        <location filename="../qml/pages/FilePage.qml" line="248"/>
+        <source>Workflow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="272"/>
-        <source>Send E-Mail</source>
+        <location filename="../qml/pages/FilePage.qml" line="255"/>
+        <source>Use the &lt;b&gt;%1&lt;/b&gt; or &lt;b&gt;%2&lt;/b&gt; functions to populate the file list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="256"/>
+        <source>Long press on a file in the list to view or remove it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="257"/>
+        <source>Finally, upload the data to add the links to your Bug Report.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="273"/>
+        <source>List of files to upload</source>
+        <translation>Lista över filer att ladda upp</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="281"/>
+        <source>Share via E-Mail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="282"/>
+        <source>Send E-Mail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="285"/>
+        <source>Configure Logging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="264"/>
         <source>Upload Contents</source>
         <translation>Ladda upp innehåll</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="274"/>
+        <location filename="../qml/pages/FilePage.qml" line="283"/>
+        <source>Help on Collecting Logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="284"/>
         <source>Pick Files</source>
         <translation>Lägg till filer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="275"/>
+        <location filename="../qml/pages/FilePage.qml" line="262"/>
         <source>Collect Logs</source>
         <translation>Samla in loggar</translation>
     </message>
@@ -217,7 +276,6 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
 </translation>
     </message>
     <message>
-        <location filename="../qml/components/GuideLabel.qml" line="32"/>
         <source>
 Please review the guidelines and follow the template when creating a bug report.
 
@@ -239,7 +297,7 @@ Testing: https://docs.sailfishos.org/Develop/Platform/Testing_Advice/
 
 Wiki: https://forum.sailfishos.org/t/12751/3
 </source>
-        <translation>
+        <translation type="vanished">
 Läs riktlinjerna och följ mallen när du skapar en felrapport.
 
 Riktlinjer: https://forum.sailfishos.org/t/22
@@ -261,6 +319,56 @@ Testning: https://docs.sailfishos.org/Develop/Platform/Testing_Advice/
 Wiki: https://forum.sailfishos.org/t/12751/3
 </translation>
     </message>
+    <message>
+        <location filename="../qml/components/GuideLabel.qml" line="19"/>
+        <source>Please review the guidelines and follow the template when creating a bug report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/GuideLabel.qml" line="23"/>
+        <location filename="../qml/components/GuideLabel.qml" line="40"/>
+        <source>Forum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/GuideLabel.qml" line="24"/>
+        <source>Guidelines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/GuideLabel.qml" line="36"/>
+        <source>If you are uncertain about how to fill out the report, we recommend asking about your issue in the General category of the Forum first:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/GuideLabel.qml" line="41"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>JournalPage</name>
+    <message>
+        <location filename="../qml/pages/JournalPage.qml" line="59"/>
+        <source>Journal Config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/JournalPage.qml" line="69"/>
+        <source>Here you can configure various settings regarding logging.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/JournalPage.qml" line="75"/>
+        <source>Full debug logging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/JournalPage.qml" line="76"/>
+        <source>If enabled, the Journal daemon will persist logs, and log at Debug levels. Do remember to turn this off again.
+Authentication may be required on toggle.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>L10NNotice</name>
@@ -273,19 +381,47 @@ Wiki: https://forum.sailfishos.org/t/12751/3
 <context>
     <name>LogGatherer</name>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="66"/>
+        <location filename="../qml/components/LogGatherer.qml" line="65"/>
         <source>Log gathering successsful!</source>
         <translation>Logginsamling slutförd!</translation>
     </message>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="69"/>
+        <location filename="../qml/components/LogGatherer.qml" line="68"/>
         <source>Log gathering failed!</source>
         <translation>Logginsamling misslyckades!</translation>
     </message>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="109"/>
+        <location filename="../qml/components/LogGatherer.qml" line="108"/>
         <source>Start</source>
         <translation>Starta</translation>
+    </message>
+</context>
+<context>
+    <name>LogHelp</name>
+    <message>
+        <location filename="../qml/pages/help/LogHelp.qml" line="19"/>
+        <source>Logging Documentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/LogHelp.qml" line="20"/>
+        <source>Native log collecting system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/LogHelp.qml" line="24"/>
+        <source>We provide a systemd Target as well as a Service Template to facilitate log gathering.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/LogHelp.qml" line="25"/>
+        <source>App developers have the option ro use a plugin-like system to add their logs to this.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/LogHelp.qml" line="27"/>
+        <source>Sailfish OS Documentation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -309,7 +445,7 @@ Wiki: https://forum.sailfishos.org/t/12751/3
 <context>
     <name>LogViewPage</name>
     <message>
-        <location filename="../qml/pages/LogViewPage.qml" line="32"/>
+        <location filename="../qml/pages/LogViewPage.qml" line="16"/>
         <source>Log File</source>
         <translation type="unfinished"></translation>
     </message>
@@ -317,94 +453,108 @@ Wiki: https://forum.sailfishos.org/t/12751/3
 <context>
     <name>LogfileDelegate</name>
     <message>
-        <location filename="../qml/components/LogfileDelegate.qml" line="62"/>
+        <location filename="../qml/components/LogfileDelegate.qml" line="46"/>
         <source>uploaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/LogfileDelegate.qml" line="62"/>
+        <location filename="../qml/components/LogfileDelegate.qml" line="46"/>
         <source>not uploaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/LogfileDelegate.qml" line="70"/>
+        <location filename="../qml/components/LogfileDelegate.qml" line="54"/>
+        <source>View online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/LogfileDelegate.qml" line="55"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/LogfileDelegate.qml" line="71"/>
+        <location filename="../qml/components/LogfileDelegate.qml" line="56"/>
+        <source>Remove from list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/LogfileDelegate.qml" line="57"/>
+        <source>Delete file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Remove</source>
-        <translation>Ta bort</translation>
+        <translation type="vanished">Ta bort</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="434"/>
+        <location filename="../qml/pages/MainPage.qml" line="458"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="243"/>
+        <location filename="../qml/pages/MainPage.qml" line="247"/>
         <source>Bug Info (%1)</source>
         <translation>Felinformation (%1)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="167"/>
-        <location filename="../qml/pages/MainPage.qml" line="173"/>
-        <location filename="../qml/pages/MainPage.qml" line="179"/>
-        <location filename="../qml/pages/MainPage.qml" line="185"/>
+        <location filename="../qml/pages/MainPage.qml" line="169"/>
+        <location filename="../qml/pages/MainPage.qml" line="175"/>
+        <location filename="../qml/pages/MainPage.qml" line="181"/>
+        <location filename="../qml/pages/MainPage.qml" line="187"/>
         <source>incomplete</source>
         <comment>State of completeness of a bug report</comment>
         <translation>ej komplett</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="171"/>
-        <location filename="../qml/pages/MainPage.qml" line="177"/>
-        <location filename="../qml/pages/MainPage.qml" line="183"/>
+        <location filename="../qml/pages/MainPage.qml" line="173"/>
+        <location filename="../qml/pages/MainPage.qml" line="179"/>
+        <location filename="../qml/pages/MainPage.qml" line="185"/>
         <source>%1 field is too short</source>
         <translation>%1fältet är för kort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="171"/>
-        <location filename="../qml/pages/MainPage.qml" line="285"/>
-        <location filename="../qml/pages/MainPage.qml" line="461"/>
+        <location filename="../qml/pages/MainPage.qml" line="173"/>
+        <location filename="../qml/pages/MainPage.qml" line="289"/>
+        <location filename="../qml/pages/MainPage.qml" line="486"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="177"/>
-        <location filename="../qml/pages/MainPage.qml" line="296"/>
-        <location filename="../qml/pages/MainPage.qml" line="462"/>
+        <location filename="../qml/pages/MainPage.qml" line="179"/>
+        <location filename="../qml/pages/MainPage.qml" line="300"/>
+        <location filename="../qml/pages/MainPage.qml" line="487"/>
         <source>Description</source>
         <translation>Beskrivning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="183"/>
-        <location filename="../qml/pages/MainPage.qml" line="463"/>
+        <location filename="../qml/pages/MainPage.qml" line="185"/>
+        <location filename="../qml/pages/MainPage.qml" line="488"/>
         <source>Steps</source>
         <translation>Steg</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="191"/>
+        <location filename="../qml/pages/MainPage.qml" line="193"/>
         <source>ok</source>
         <comment>State of completeness of a bug report</comment>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="189"/>
-        <location filename="../qml/pages/MainPage.qml" line="195"/>
-        <location filename="../qml/pages/MainPage.qml" line="201"/>
+        <location filename="../qml/pages/MainPage.qml" line="191"/>
+        <location filename="../qml/pages/MainPage.qml" line="197"/>
+        <location filename="../qml/pages/MainPage.qml" line="203"/>
         <source>Ready for posting</source>
         <translation>Klart för postning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="189"/>
+        <location filename="../qml/pages/MainPage.qml" line="191"/>
         <source>, but please add more information</source>
         <translation>, men försök lämna mer information</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="197"/>
+        <location filename="../qml/pages/MainPage.qml" line="199"/>
         <source>good</source>
         <comment>State of completeness of a bug report</comment>
         <translation>bra</translation>
@@ -415,238 +565,269 @@ Wiki: https://forum.sailfishos.org/t/12751/3
         <translation type="vanished">komplett</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="266"/>
+        <location filename="../qml/pages/MainPage.qml" line="270"/>
         <source>You can tap this section to hide it.</source>
         <translation>Du kan snabbtrycka på det här avsnittet för att dölja det.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="287"/>
+        <location filename="../qml/pages/MainPage.qml" line="291"/>
         <source>A New Bug Report</source>
         <translation>En ny felrapport</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="289"/>
+        <location filename="../qml/pages/MainPage.qml" line="293"/>
         <source>Please be brief but descriptive</source>
         <translation>Håll det kort men beskrivande</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="300"/>
+        <location filename="../qml/pages/MainPage.qml" line="304"/>
         <source>Describe what is not working</source>
         <translation>Beskriv vad som inte fungerar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="305"/>
+        <location filename="../qml/pages/MainPage.qml" line="309"/>
         <source>Steps to Reproduce</source>
         <translation>Steg för att återskapa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="310"/>
+        <location filename="../qml/pages/MainPage.qml" line="314"/>
         <source>How to reproduce</source>
         <translation>Hur man återskapar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="312"/>
+        <location filename="../qml/pages/MainPage.qml" line="316"/>
         <source>Provide as much information as you have</source>
         <translation>Lämna så mycket information som du kan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="320"/>
+        <location filename="../qml/pages/MainPage.qml" line="324"/>
         <source>Preconditions</source>
         <translation>Förutsättningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="323"/>
+        <location filename="../qml/pages/MainPage.qml" line="327"/>
         <source>Some Context information</source>
         <translation>Lite information om sammanhanget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="324"/>
+        <location filename="../qml/pages/MainPage.qml" line="328"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
         <translation>t.ex. &quot;ett mejlkonto krävs&quot;.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="328"/>
+        <location filename="../qml/pages/MainPage.qml" line="332"/>
         <source>Expected Results</source>
         <translation>Förväntat resultat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="331"/>
+        <location filename="../qml/pages/MainPage.qml" line="335"/>
         <source>What outcome did you expect</source>
         <translation>Vilket resultat väntade du dig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="332"/>
+        <location filename="../qml/pages/MainPage.qml" line="336"/>
         <source>e.g. &apos;an error notification&apos;, &apos;a message is shown&apos;</source>
         <translation>t.ex. &quot;ett felmeddelande&quot; eller &quot;en avisering visas&quot;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="335"/>
+        <location filename="../qml/pages/MainPage.qml" line="339"/>
         <source>Actual Results</source>
         <translation>Faktiskt resultat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="338"/>
+        <location filename="../qml/pages/MainPage.qml" line="342"/>
         <source>What was the outcome</source>
         <translation>Vad var det faktiska resultatet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="339"/>
+        <location filename="../qml/pages/MainPage.qml" line="343"/>
         <source>e.g. &apos;the app closed&apos;, &apos;a message was not shown&apos;</source>
         <translation>t.ex. &quot;appen stängdes&quot; eller &quot;ett meddelande visades inte&quot;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="342"/>
+        <location filename="../qml/pages/MainPage.qml" line="346"/>
         <source>Device Information</source>
         <translation>Enhetsinformation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="357"/>
+        <location filename="../qml/pages/MainPage.qml" line="365"/>
         <source>Additional Information</source>
         <translation>Ytterligare information</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="361"/>
+        <location filename="../qml/pages/MainPage.qml" line="369"/>
         <source>Add any other information</source>
         <translation>Lägg till valfri annan information</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="362"/>
+        <location filename="../qml/pages/MainPage.qml" line="370"/>
         <source>e.g. links to logs or screenshots.</source>
         <translation>t.ex länk till loggar eller skärmklipp.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="368"/>
+        <location filename="../qml/pages/MainPage.qml" line="373"/>
+        <source>Category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="375"/>
+        <location filename="../qml/pages/MainPage.qml" line="378"/>
         <source>Reproducibility</source>
         <translation>Reproducerbarhet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="384"/>
+        <location filename="../qml/pages/MainPage.qml" line="394"/>
         <source>unknown</source>
         <comment>Reproducibility</comment>
         <translation>okänt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="385"/>
+        <location filename="../qml/pages/MainPage.qml" line="395"/>
         <source>never</source>
         <comment>Reproducibility</comment>
         <translation>aldrig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="386"/>
+        <location filename="../qml/pages/MainPage.qml" line="396"/>
         <source>sometimes</source>
         <comment>Reproducibility</comment>
         <translation>ibland</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="387"/>
+        <location filename="../qml/pages/MainPage.qml" line="397"/>
         <source>often</source>
         <comment>Reproducibility</comment>
         <translation>ofta</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="388"/>
+        <location filename="../qml/pages/MainPage.qml" line="398"/>
         <source>always</source>
         <comment>Reproducibility</comment>
         <translation>alltid</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="392"/>
+        <location filename="../qml/pages/MainPage.qml" line="402"/>
+        <source>Regression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="404"/>
         <source>Regression (was working in a previous OS release)</source>
         <translation>Regression (fungerade i en tidigare OS-version)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="408"/>
+        <location filename="../qml/pages/MainPage.qml" line="421"/>
         <source>Modifications</source>
         <translation>Ändringar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="409"/>
-        <location filename="../qml/pages/MainPage.qml" line="410"/>
-        <location filename="../qml/pages/MainPage.qml" line="411"/>
+        <location filename="../qml/pages/MainPage.qml" line="422"/>
+        <location filename="../qml/pages/MainPage.qml" line="423"/>
+        <location filename="../qml/pages/MainPage.qml" line="424"/>
         <source>(autodetected)</source>
         <translation>(automatiskt identifierad)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="412"/>
+        <location filename="../qml/pages/MainPage.qml" line="425"/>
         <source>Other (please specify)</source>
         <translation>Annat (specificera)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="415"/>
+        <location filename="../qml/pages/MainPage.qml" line="428"/>
         <source>e.g. WayDroid and GApps installed</source>
         <translation>t.ex. WayDroid och GApps installerat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="416"/>
+        <location filename="../qml/pages/MainPage.qml" line="429"/>
         <source>custom changes, installed packages etc.</source>
         <translation>anpassade ändringar, installerade paket etc.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="422"/>
+        <location filename="../qml/pages/MainPage.qml" line="435"/>
         <source>Links/Attachments (%1)</source>
         <translation>Länkar/Bilagor (%1)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="435"/>
+        <location filename="../qml/pages/MainPage.qml" line="450"/>
+        <source>Your device is currently registered as a CBeta device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="451"/>
+        <source>Submissions will go to the CBeta forum per default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="459"/>
         <source>Help</source>
         <translation>Hjälp</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="436"/>
+        <location filename="../qml/pages/MainPage.qml" line="460"/>
         <source>Add Logfiles</source>
         <translation>Lägg till loggfiler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="453"/>
+        <location filename="../qml/pages/MainPage.qml" line="477"/>
         <source>Reset all to default</source>
         <translation>Återställ allt till standard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="453"/>
+        <location filename="../qml/pages/MainPage.qml" line="477"/>
         <source>Cleared.</source>
         <translation>Rensat.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="165"/>
-        <location filename="../qml/pages/MainPage.qml" line="460"/>
+        <location filename="../qml/pages/MainPage.qml" line="167"/>
+        <location filename="../qml/pages/MainPage.qml" line="485"/>
         <source>Please fill in the required fields</source>
         <translation>Fyll i obligatoriska fält</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="203"/>
+        <location filename="../qml/pages/MainPage.qml" line="205"/>
         <source>excellent</source>
         <comment>State of completeness of a bug report</comment>
         <translation>utmärkt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="216"/>
+        <location filename="../qml/pages/MainPage.qml" line="218"/>
         <source>Achievement unlocked! The quality of your bug report is %1!</source>
         <translation>Postning upplåst! Kvaliteten på din felrapport är %1!</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="459"/>
+        <location filename="../qml/pages/MainPage.qml" line="479"/>
+        <source>To submit, scroll to the bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="484"/>
         <source>Bug quality is: %1 </source>
         <translation>Rapportkvalitet: %1 </translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="460"/>
+        <location filename="../qml/pages/MainPage.qml" line="485"/>
         <source>(marked with an asterisk (*))!</source>
         <translation>(markerat med en asterisk (*))!</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="461"/>
-        <location filename="../qml/pages/MainPage.qml" line="462"/>
-        <location filename="../qml/pages/MainPage.qml" line="463"/>
+        <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <location filename="../qml/pages/MainPage.qml" line="487"/>
+        <location filename="../qml/pages/MainPage.qml" line="488"/>
         <source>%1 field is incomplete</source>
         <translation>Fältet %1 är ofullständigt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="464"/>
+        <location filename="../qml/pages/MainPage.qml" line="489"/>
         <source>Post Bug Report</source>
         <translation>Posta felrapporten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="651"/>
+        <location filename="../qml/pages/MainPage.qml" line="489"/>
+        <source>Post CBeta Bug Report</source>
+        <translation>Posta ”cbeta” felrapporten</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="676"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Återställt rapportinnehåll från sparat tillstånd.</translation>
     </message>
@@ -673,17 +854,17 @@ Wiki: https://forum.sailfishos.org/t/12751/3
 <context>
     <name>WelcomeDialog</name>
     <message>
-        <location filename="../qml/components/WelcomeDialog.qml" line="33"/>
+        <location filename="../qml/components/WelcomeDialog.qml" line="35"/>
         <source>Welcome</source>
         <translation>Välkommen</translation>
     </message>
     <message>
-        <location filename="../qml/components/WelcomeDialog.qml" line="34"/>
+        <location filename="../qml/components/WelcomeDialog.qml" line="36"/>
         <source>Dismiss</source>
         <translation>Uppfattat</translation>
     </message>
     <message>
-        <location filename="../qml/components/WelcomeDialog.qml" line="38"/>
+        <location filename="../qml/components/WelcomeDialog.qml" line="40"/>
         <source>Welcome to the inofficial Sailfish OS bug reporting tool.</source>
         <translation>Välkommen till det inofficiella felrapportings-
 ­verktyget för Sailfish OS.</translation>
@@ -710,6 +891,14 @@ Din felrapport öppnas i webbläsaren som ett utkast, så att du kan redigera de
 
 Vi rekommenderar att du har ett webbläsar­fönster öppet och har loggat in på Sailfish OS Forum innan du postar.
 </translation>
+    </message>
+</context>
+<context>
+    <name>harbour-bugger</name>
+    <message>
+        <location filename="../qml/harbour-bugger.qml" line="183"/>
+        <source>DBus service %1 ready</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

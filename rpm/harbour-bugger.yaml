@@ -1,6 +1,6 @@
 Name: harbour-bugger
 Summary: Bug reporting helper
-Version: 0.10.5
+Version: 0.10.6
 Release: 1
 Group: Applications
 License: ASL 2.0
@@ -62,8 +62,9 @@ PkgBR:
   - sailfish-svg2png
   - systemd
   - qml-rpm-macros
-#PkgConfigBR:
-#    - ^^^
+PkgConfigBR:
+  # ensure qmake prfs are present:
+  - sailfishapp
 Configure: none
 Builder: qmake5
 NoIconCache: true
@@ -81,6 +82,11 @@ Files:
   - '%dir %{_datadir}/%{name}'
   - '%{_datadir}/%{name}/translations/*.qm'
   - '%{_datadir}/%{name}/qml/*'
+  # lipstick quick actions:
+  - '%{_datadir}/themes/*/*/*/*/icon-m-new-bug.png'
+  - '%{_datadir}/jolla-settings/entries/%{name}.json'
+  # '%{_datadir}/lipstick/quickactions/%{name}.conf'
+  - '%{_datadir}/translations/%{name}-quickactions*.qm'
   # log config toggle:
   - '%{_unitdir}/*.service'
   - '%{_datadir}/%{name}/99_bugger_full_debug.conf'

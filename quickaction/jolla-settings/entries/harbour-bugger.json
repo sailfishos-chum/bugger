@@ -1,0 +1,23 @@
+{
+    "translation_catalog": "harbour-bugger-quickactions",
+    "entries": [
+        {
+            "path": "system_settings/look_and_feel/topmenu/actions/report_a_bug",
+            "title": "Report a bug!",
+            "translation_id": "harbour-bugger-qa_name",
+            "title_short": "Bug!",
+            "translation_id_short": "harbour-bugger-qa_name_short",
+            "type": "action",
+            "icon": "image://theme/icon-m-new-bug",
+            "order": 75,
+            "params": {
+                "type": "grid",
+                "requires-package": "harbour-bugger",
+                "remote-service": "sailfishos-chum.Bugger",
+                "remote-path": "/sailfishos_chum/Bugger/ui",
+                "remote-interface": "sailfishos_chum.Bugger1.ui",
+                "remote-method": "newBug"
+            }
+        }
+    ]
+}

@@ -21,6 +21,7 @@ limitations under the License.
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
+import Nemo.DBus 2.0
 import "pages"
 import "cover"
 import "components"
@@ -30,6 +31,7 @@ ApplicationWindow {
     id: app
 
     property bool developerMode: false
+    property bool noGreeter: false
 
     allowedOrientations: Orientation.All
 
@@ -127,13 +129,17 @@ ApplicationWindow {
     Component.onCompleted: {
         // for sailjail
         Qt.application.version = "unreleased";
-        console.info("Intialized", Qt.application.name, "version", Qt.application.version, "by", Qt.application.organization );
+        console.info("Initialized", Qt.application.name, "version", Qt.application.version, "by", Qt.application.organization );
         console.debug("Parameters: " + Qt.application.arguments.join(" "))
 
         if (Qt.application.arguments.indexOf("-developermode") > -1) {
             developerMode = true
             console.info("Developer mode enabled!")
             console.debug("Loaded settings:", JSON.stringify(Settings,null, 2))
+        }
+        if (Qt.application.arguments.indexOf("-no-greeter") > -1) {
+            noGreeter = true
+            console.debug("Skipping Greeting banner")
         }
         /* LOAD ALL THE THINGS */
         getInfo(osInfoFile, "os");
@@ -149,6 +155,33 @@ ApplicationWindow {
         smessage.expireTimeout = Math.floor(1000 * s.length/20)
         //smessage.urgency = 0;
         smessage.publish();
+    }
+
+    /*
+     * Dbus listener for Topmenu quick action
+    */
+    readonly property string busname: (Qt.application.name === "QtQmlViewer") ? "Bugger" : Qt.application.name
+    readonly property string ifaceVer: "1"
+    DBusAdaptor { id: listener
+
+        bus: DBus.SessionBus
+        // we need to use the sailjail-registered service
+        //service: "sailfishos-chum." + busname + ".ui"
+        service: "sailfishos-chum." + busname
+        //path:    "/ui"
+        path:    "/sailfishos_chum" + "/" + busname + "/" + "ui"
+        iface:   "sailfishos_chum." + busname + ifaceVer + ".ui"
+        xml: [
+            '<interface name="' + iface + '">',
+            '  <method name="newBug" />',
+            '</interface>',
+            ].join('\n')
+
+        function newBug() {
+            console.info("App opened via Quick Action.")
+            __silica_applicationwindow_instance.activate()
+        }
+        Component.onCompleted: console.debug(qsTr("DBus service %1 ready").arg(service))
     }
 
     initialPage: Component { MainPage{} }

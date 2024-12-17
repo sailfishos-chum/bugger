@@ -5,5 +5,8 @@ firejail-trace.log
 *list
 build.log
 translations/*.qm
+quickaction/translations/*.qm
 Makefile
 icons/*x*
+z?.*
+appicon/icons/

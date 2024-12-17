@@ -30,6 +30,8 @@ import "../js/util.js" as Util
 Page {
     id: page
 
+    allowedOrientations: Orientation.All
+
     /* config constants: */
     readonly property int minTitleLength:   Settings.config.validation.minTitle
     readonly property int minDescLength:    Settings.config.validation.minDesc
@@ -64,7 +66,7 @@ Page {
         1 * text_expres.text.length +
         1 * text_actres.text.length +
         0
-    property string qualityString//: qsTr("incomplete", "State of completeness of a bug report")
+    property string qualityString // : qsTr("incomplete", "State of completeness of a bug report")
 
     /* just to add something of ours to the report */
     readonly property string infoFooter: 'the initial version of this bug report was created using '
@@ -229,6 +231,7 @@ Page {
     function showWelcomeDialog() {
         if (welcomeShown) return;
         if (developerMode) return;
+        if (noGreeter) return;
         var dialog = pageStack.push(Qt.resolvedUrl("../components/WelcomeDialog.qml"))
         dialog.done.connect(function() { page.welcomeShown = true;})
     }
@@ -240,6 +243,7 @@ Page {
         contentHeight: col.height
         Column { id: col
             width: parent.width
+            bottomPadding: Theme.paddingLarge
             PageHeader { id: header ; title: qsTr("Bug Info (%1)").arg(qualityString) }
             /* tap-to-hide information */
             SilicaItem { id: hidetext
@@ -351,6 +355,10 @@ Page {
                 width: parent.width
                 active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
                 sourceComponent: DeviceInfo{}
+                onLoaded:  {
+                    metatags["osversion"] = !!bugInfo.os.version_id ? bugInfo.os.version_id : "?"
+                    metatags["deviceid"]  = !!bugInfo.hw.id         ? bugInfo.hw.id : "?"
+                }
             }
             Separator { color: Theme.primaryColor; horizontalAlignment: Qt.AlignHCenter; width: page.width }
             Item { height: Theme.paddingLarge*2; width: parent.width }
@@ -396,6 +404,7 @@ Page {
                 text: qsTr("Regression (was working in a previous OS release)")
                 property bool hasChanged: false
                 automaticCheck: false
+                onCheckedChanged: { metatags["regression"] = checked ? "true" : "false" }
                 onClicked: {
                     hasChanged = true;
                     checked = !checked;
@@ -430,6 +439,17 @@ Page {
                     filtered: true
                 }
             }
+            Label { id: cbetaLabel
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+                visible: bugInfo && bugInfo.ssu && (bugInfo.ssu.domain == 'cbeta')
+                color: Theme.primaryColor
+                font.bold: true
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.WordWrap
+                text: qsTr("Your device is currently registered as a CBeta device.")
+                    + " " + qsTr("Submissions will go to the CBeta forum per default.")
+            }
         }
         VerticalScrollDecorator {}
     }
@@ -456,6 +476,7 @@ Page {
         }
         MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Cleared."), function() { resetFields() }) } }
         //MenuItem { text: qsTr("Settings"); onClicked: { pageStack.push(Qt.resolvedUrl("SettingsPage.qml")) } }
+        MenuLabel { text: qsTr("To submit, scroll to the bottom") }
     }
     PushUpMenu { id: pum
         flickable: flick
@@ -465,7 +486,7 @@ Page {
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Title"))       ; visible: ( !infoComplete && !titleComplete); }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Description")) ; visible: ( !infoComplete && !descComplete); }
         MenuLabel { text: qsTr("%1 field is incomplete").arg(qsTr("Steps"))       ; visible: ( !infoComplete && !stepsComplete); }
-        MenuItem { text: qsTr("Post Bug Report");
+        MenuItem { text: (bugInfo && bugInfo.ssu && (bugInfo.ssu.domain == 'cbeta')) ? qsTr("Post CBeta Bug Report") : qsTr("Post Bug Report");
             enabled: infoComplete
             onClicked: {
                 if (developerMode) {

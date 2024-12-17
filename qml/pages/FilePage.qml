@@ -11,6 +11,8 @@ import "../config/settings.js" as Settings
 
 Dialog { id: page
 
+    allowedOrientations: Orientation.All
+
     canAccept: false
     property var config: Settings.config
 
@@ -24,6 +26,7 @@ Dialog { id: page
     */
     Component { id: picker
         MultiFilePickerDialog  {
+            allowedOrientations: Orientation.All
             title: qsTr("Select log files to add")
             nameFilters: [ '*.log', '*.txt', '*.json' ]
             // signal is received twice

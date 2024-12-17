@@ -7,7 +7,9 @@ import Sailfish.Silica 1.0
 Page {
     id: page
 
-    property string fileName
+    allowedOrientations: Orientation.All
+
+    property string fileName: ""
     property string fileData: ""
     property bool busy: false
     property bool truncated: false

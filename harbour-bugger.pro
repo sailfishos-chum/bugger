@@ -3,7 +3,7 @@
 ######################################################################
 
 TARGET = harbour-bugger
-CONFIG += sailfishapp sailfishapp_i18n
+CONFIG += sailfishapp_qml
 INCLUDEPATH += .
 
 lupdate_only {
@@ -23,24 +23,26 @@ TRANSLATIONS += translations/$${TARGET}-en.ts \
                 translations/$${TARGET}-de.ts \
                 translations/$${TARGET}-sv.ts \
 
-desktop.files = $${TARGET}.desktop
-desktop.path = /usr/share/applications
-INSTALLS += desktop
+# sailfishapp takes care of this:
+# desktop.files = $${TARGET}.desktop
+# desktop.path = /usr/share/applications
+# INSTALLS += desktop
 
-qml.files = qml
-qml.path = /usr/share/$${TARGET}
+# sailfishapp takes care of this:
+# qml.files = qml
+# qml.path = /usr/share/$${TARGET}
+# INSTALLS += qml
 
-INSTALLS += qml
-
-readme.files = README_logcollect.md
-readme.path = /usr/share/$${TARGET}/scripts
-
-INSTALLS += readme
+lc_readme.files = README_logcollect.md
+lc_readme.path = /usr/share/$${TARGET}/scripts
+INSTALLS += lc_readme
 
 OTHER_FILES += $$files(rpm/*)
 
 include(translations/translations.pri)
 include(systemd/systemd.pri)
 include(contrib/contrib.pri)
-include(icons/icons.pri)
+include(appicon/appicon.pri)
+include(svgs/icons.pri)
+include(quickaction/quickaction.pri)
 include(sailjail/sailjail.pri)
