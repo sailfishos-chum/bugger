@@ -550,9 +550,12 @@ Page {
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
             + "\n\n"
-            + "LOG FILE LINKS:\n"
-            + "=================\n\n"
-            + links.join('\n')
+            + ((links.length > 0)
+              ? "LOG FILE LINKS:\n"
+                + "=================\n\n"
+                + links.join('\n\n')
+              : ""
+            )
             + "\n\n\n\n"
             // add meta tags:
             + metatagsToComment()
