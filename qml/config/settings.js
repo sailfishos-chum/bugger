@@ -1,5 +1,10 @@
 .pragma library
 var config = {
+    "posting": {
+        // discourse default, not sure how to query
+        "maxlength": 150000,
+        "maxurllength": 8000,
+    },
     "sources": {
         "os":  'file:///etc/sailfish-release',
         "hw":  'file:///etc/hw-release',

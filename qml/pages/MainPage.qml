@@ -560,6 +560,9 @@ Page {
             + "----  \n"
             + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
             + "";
+        if (payload.length > config.posting.maxlength) {
+            console.warn("Post content may be too long!")
+        }
         return payload;
     }
     /* just to be consistent */
@@ -570,10 +573,14 @@ Page {
     function formToUrl() {
         // handle case for cbeta users:
         var postCategory = (bugInfo.ssu.domain == 'cbeta') ? postCatBeta : postCatBugs;
-        return postUrl
+        var finalUrl = postUrl
             + postCategory
             + "&title=" + encodeURIComponent(getTitle())
             + "&body="  + encodeURIComponent(getPayload());
+        if (finalUrl.length > config.posting.maxurllength) {
+            console.warn("Post URL may be too long:" finalUrl.length)
+        }
+        return finalUrl;
     }
    /* ****** END POSTING ***** */
 
