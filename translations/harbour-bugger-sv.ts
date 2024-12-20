@@ -6,12 +6,12 @@
     <message id="harbour-bugger-qa_name">
         <location filename="../quickaction/strings.qml" line="4"/>
         <source>Report a Bug! (Using Bugger!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapportera ett fel (Med Bugger!)</translation>
     </message>
     <message id="harbour-bugger-qa_name_short">
         <location filename="../quickaction/strings.qml" line="6"/>
         <source>Report a Bug!</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapportera ett fel!</translation>
     </message>
 </context>
 <context>
@@ -83,12 +83,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <location filename="../qml/components/CatSelect.qml" line="22"/>
         <location filename="../qml/components/CatSelect.qml" line="42"/>
         <source>Bug Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Felkategori</translation>
     </message>
     <message>
         <location filename="../qml/components/CatSelect.qml" line="21"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
 </context>
 <context>
@@ -143,28 +143,28 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="19"/>
         <source>Please review the guidelines and follow the template when creating a bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs igenom riktlinjerna och följ mallen när du skapar en felrapport.</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="23"/>
         <location filename="../qml/components/GuideLabel.qml" line="40"/>
         <source>Forum</source>
-        <translation type="unfinished"></translation>
+        <translation>Forum</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="24"/>
         <source>Guidelines</source>
-        <translation type="unfinished"></translation>
+        <translation>Riktlinjer</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="36"/>
         <source>If you are uncertain about how to fill out the report, we recommend asking about your issue in the General category of the Forum first:</source>
-        <translation type="unfinished"></translation>
+        <translation>Om du är osäker på hur du skall fylla i rapporten rekommenderar vi att du först frågar om ditt problem i kategorin Allmänt i forumet:</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="41"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allmänt</translation>
     </message>
 </context>
 <context>
@@ -180,7 +180,7 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="19"/>
         <source>Logging Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Loggningsdokumentation</translation>
     </message>
 </context>
 <context>
@@ -363,7 +363,7 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
     <message>
         <location filename="../qml/pages/MainPage.qml" line="371"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategori</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="373"/>
@@ -404,7 +404,7 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
     <message>
         <location filename="../qml/pages/MainPage.qml" line="400"/>
         <source>Regression</source>
-        <translation type="unfinished"></translation>
+        <translation>Regression</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="402"/>
@@ -441,12 +441,12 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
     <message>
         <location filename="../qml/pages/MainPage.qml" line="438"/>
         <source>Your device is currently registered as a CBeta device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Din enhet är för närvarande registrerad som en CBeta-enhet.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="439"/>
         <source>Submissions will go to the CBeta forum per default.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bidrag kommer att gå till CBeta-forumet som standard.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="447"/>
@@ -483,7 +483,7 @@ Mjukvaruversioner: Ange versions­nummer istället för aktuellt/senaste, efters
     <message>
         <location filename="../qml/pages/MainPage.qml" line="450"/>
         <source>To submit, scroll to the bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>För att skicka, skrolla till botten</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="455"/>
@@ -584,7 +584,7 @@ Vi rekommenderar att du har ett webbläsar­fönster öppet och har loggat in p�
     <message>
         <location filename="../qml/harbour-bugger.qml" line="181"/>
         <source>DBus service %1 ready</source>
-        <translation type="unfinished"></translation>
+        <translation>DBus-tjänst %1 klar</translation>
     </message>
 </context>
 </TS>
