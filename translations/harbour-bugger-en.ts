@@ -78,14 +78,14 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
 <context>
     <name>CatSelect</name>
     <message>
-        <location filename="../qml/components/CatSelect.qml" line="20"/>
-        <location filename="../qml/components/CatSelect.qml" line="22"/>
-        <location filename="../qml/components/CatSelect.qml" line="42"/>
+        <location filename="../qml/components/CatSelect.qml" line="35"/>
+        <location filename="../qml/components/CatSelect.qml" line="37"/>
+        <location filename="../qml/components/CatSelect.qml" line="57"/>
         <source>Bug Category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/CatSelect.qml" line="21"/>
+        <location filename="../qml/components/CatSelect.qml" line="36"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>

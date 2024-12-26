@@ -79,14 +79,14 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
 <context>
     <name>CatSelect</name>
     <message>
-        <location filename="../qml/components/CatSelect.qml" line="20"/>
-        <location filename="../qml/components/CatSelect.qml" line="22"/>
-        <location filename="../qml/components/CatSelect.qml" line="42"/>
+        <location filename="../qml/components/CatSelect.qml" line="35"/>
+        <location filename="../qml/components/CatSelect.qml" line="37"/>
+        <location filename="../qml/components/CatSelect.qml" line="57"/>
         <source>Bug Category</source>
         <translation>Felkategori</translation>
     </message>
     <message>
-        <location filename="../qml/components/CatSelect.qml" line="21"/>
+        <location filename="../qml/components/CatSelect.qml" line="36"/>
         <source>None</source>
         <translation>Ingen</translation>
     </message>

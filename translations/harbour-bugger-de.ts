@@ -79,14 +79,14 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
 <context>
     <name>CatSelect</name>
     <message>
-        <location filename="../qml/components/CatSelect.qml" line="20"/>
-        <location filename="../qml/components/CatSelect.qml" line="22"/>
-        <location filename="../qml/components/CatSelect.qml" line="42"/>
+        <location filename="../qml/components/CatSelect.qml" line="35"/>
+        <location filename="../qml/components/CatSelect.qml" line="37"/>
+        <location filename="../qml/components/CatSelect.qml" line="57"/>
         <source>Bug Category</source>
         <translation>Fehlerkategorie</translation>
     </message>
     <message>
-        <location filename="../qml/components/CatSelect.qml" line="21"/>
+        <location filename="../qml/components/CatSelect.qml" line="36"/>
         <source>None</source>
         <translation>Keine</translation>
     </message>
