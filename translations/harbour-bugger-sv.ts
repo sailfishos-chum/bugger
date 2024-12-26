@@ -6,12 +6,12 @@
     <message id="harbour-bugger-qa_name">
         <location filename="../quickaction/strings.qml" line="4"/>
         <source>Report a Bug! (Using Bugger!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapportera ett fel (Med Bugger!)</translation>
     </message>
     <message id="harbour-bugger-qa_name_short">
         <location filename="../quickaction/strings.qml" line="6"/>
         <source>Report a Bug!</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapportera ett fel!</translation>
     </message>
 </context>
 <context>
@@ -83,12 +83,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <location filename="../qml/components/CatSelect.qml" line="22"/>
         <location filename="../qml/components/CatSelect.qml" line="42"/>
         <source>Bug Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Felkategori</translation>
     </message>
     <message>
         <location filename="../qml/components/CatSelect.qml" line="21"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
 </context>
 <context>
@@ -119,17 +119,17 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     <message>
         <location filename="../qml/components/FileList.qml" line="34"/>
         <source>No files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga filer.</translation>
     </message>
     <message>
         <location filename="../qml/components/FileList.qml" line="35"/>
         <source>Use &lt;b&gt;%1&lt;/b&gt; to add log files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd &lt;b&gt;%1&lt;/b&gt; för att lägga till loggfiler.</translation>
     </message>
     <message>
         <location filename="../qml/components/FileList.qml" line="35"/>
         <source>Gather Logs</source>
-        <translation type="unfinished"></translation>
+        <translation>Hämta in loggar</translation>
     </message>
 </context>
 <context>
@@ -159,7 +159,7 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     <message>
         <location filename="../qml/pages/FilePage.qml" line="224"/>
         <source>uploading %1 files, %2 done</source>
-        <translation type="unfinished"></translation>
+        <translation>laddar upp %1 filer. %2 klart.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="232"/>
@@ -191,22 +191,22 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     <message>
         <location filename="../qml/pages/FilePage.qml" line="248"/>
         <source>Workflow</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbetsflöde</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="255"/>
         <source>Use the &lt;b&gt;%1&lt;/b&gt; or &lt;b&gt;%2&lt;/b&gt; functions to populate the file list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd &lt;b&gt;%1&lt;/b&gt;- eller &lt;b&gt;%2&lt;/b&gt;-funktionerna för att fylla fillistan.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="256"/>
         <source>Long press on a file in the list to view or remove it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Långtryck på en fil i listan, för att visa eller ta bort den.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="257"/>
         <source>Finally, upload the data to add the links to your Bug Report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Slutligen, ladda upp data för att lägga till länkar till din felrapport.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="273"/>
@@ -216,17 +216,17 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     <message>
         <location filename="../qml/pages/FilePage.qml" line="281"/>
         <source>Share via E-Mail</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela via e-post</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="282"/>
         <source>Send E-Mail</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka e-post</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="285"/>
         <source>Configure Logging</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfigurera loggning</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="264"/>
@@ -236,7 +236,7 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     <message>
         <location filename="../qml/pages/FilePage.qml" line="283"/>
         <source>Help on Collecting Logs</source>
-        <translation type="unfinished"></translation>
+        <translation>Hjälp med att hämta in loggar</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="284"/>
@@ -322,28 +322,28 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="19"/>
         <source>Please review the guidelines and follow the template when creating a bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs igenom riktlinjerna och följ mallen när du skapar en felrapport.</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="23"/>
         <location filename="../qml/components/GuideLabel.qml" line="40"/>
         <source>Forum</source>
-        <translation type="unfinished"></translation>
+        <translation>Forum</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="24"/>
         <source>Guidelines</source>
-        <translation type="unfinished"></translation>
+        <translation>Riktlinjer</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="36"/>
         <source>If you are uncertain about how to fill out the report, we recommend asking about your issue in the General category of the Forum first:</source>
-        <translation type="unfinished"></translation>
+        <translation>Om du är osäker på hur du skall fylla i rapporten rekommenderar vi att du först frågar om ditt problem i kategorin Allmänt i forumet:</translation>
     </message>
     <message>
         <location filename="../qml/components/GuideLabel.qml" line="41"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allmänt</translation>
     </message>
 </context>
 <context>
@@ -351,23 +351,24 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/pages/JournalPage.qml" line="59"/>
         <source>Journal Config</source>
-        <translation type="unfinished"></translation>
+        <translation>Journal-konfiguration</translation>
     </message>
     <message>
         <location filename="../qml/pages/JournalPage.qml" line="69"/>
         <source>Here you can configure various settings regarding logging.</source>
-        <translation type="unfinished"></translation>
+        <translation>Här kan du konfigurera olika inställningar för loggning.</translation>
     </message>
     <message>
         <location filename="../qml/pages/JournalPage.qml" line="75"/>
         <source>Full debug logging</source>
-        <translation type="unfinished"></translation>
+        <translation>Fullständig felsökningsloggning</translation>
     </message>
     <message>
         <location filename="../qml/pages/JournalPage.qml" line="76"/>
         <source>If enabled, the Journal daemon will persist logs, and log at Debug levels. Do remember to turn this off again.
 Authentication may be required on toggle.</source>
-        <translation type="unfinished"></translation>
+        <translation>Om det här alternativet är aktiverat sparar journal-tjänsten loggar på felsökningsnivå. Kom ihåg att avaktivera detta igen.
+Autentisering kan krävas.</translation>
     </message>
 </context>
 <context>
@@ -401,27 +402,27 @@ Authentication may be required on toggle.</source>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="19"/>
         <source>Logging Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Loggningsdokumentation</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="20"/>
         <source>Native log collecting system</source>
-        <translation type="unfinished"></translation>
+        <translation>Inbyggt system för insamling av loggar</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="24"/>
         <source>We provide a systemd Target as well as a Service Template to facilitate log gathering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vi tillhandahåller ett systemd-mål samt en tjänstmall för att underlätta insamling av loggar.</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="25"/>
         <source>App developers have the option ro use a plugin-like system to add their logs to this.</source>
-        <translation type="unfinished"></translation>
+        <translation>Apputvecklare har möjlighet att använda ett insticksliknande system för att lägga till sina loggar till detta.</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="27"/>
         <source>Sailfish OS Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Sailfish OS Dokumentation</translation>
     </message>
 </context>
 <context>
@@ -430,7 +431,7 @@ Authentication may be required on toggle.</source>
         <location filename="../qml/components/LogMailer.qml" line="43"/>
         <location filename="../qml/components/LogMailer.qml" line="44"/>
         <source>New Mail</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt mejl</translation>
     </message>
 </context>
 <context>
@@ -447,7 +448,7 @@ Authentication may be required on toggle.</source>
     <message>
         <location filename="../qml/pages/LogViewPage.qml" line="16"/>
         <source>Log File</source>
-        <translation type="unfinished"></translation>
+        <translation>Loggfil</translation>
     </message>
 </context>
 <context>
@@ -455,32 +456,32 @@ Authentication may be required on toggle.</source>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="46"/>
         <source>uploaded</source>
-        <translation type="unfinished"></translation>
+        <translation>uppladdat</translation>
     </message>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="46"/>
         <source>not uploaded</source>
-        <translation type="unfinished"></translation>
+        <translation>ej uppladdat</translation>
     </message>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="54"/>
         <source>View online</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa online</translation>
     </message>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="55"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa</translation>
     </message>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="56"/>
         <source>Remove from list</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort från listan</translation>
     </message>
     <message>
         <location filename="../qml/components/LogfileDelegate.qml" line="57"/>
         <source>Delete file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort fil</translation>
     </message>
     <message>
         <source>Remove</source>
@@ -667,7 +668,7 @@ Authentication may be required on toggle.</source>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="373"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategori</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="375"/>
@@ -708,7 +709,7 @@ Authentication may be required on toggle.</source>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="402"/>
         <source>Regression</source>
-        <translation type="unfinished"></translation>
+        <translation>Regression</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="404"/>
@@ -750,12 +751,12 @@ Authentication may be required on toggle.</source>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="450"/>
         <source>Your device is currently registered as a CBeta device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Din enhet är för närvarande registrerad som en CBeta-enhet.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="451"/>
         <source>Submissions will go to the CBeta forum per default.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bidrag kommer att gå till CBeta-forumet som standard.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="459"/>
@@ -797,7 +798,7 @@ Authentication may be required on toggle.</source>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="479"/>
         <source>To submit, scroll to the bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>För att skicka, skrolla till botten</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="484"/>
@@ -898,7 +899,7 @@ Vi rekommenderar att du har ett webbläsar­fönster öppet och har loggat in p�
     <message>
         <location filename="../qml/harbour-bugger.qml" line="183"/>
         <source>DBus service %1 ready</source>
-        <translation type="unfinished"></translation>
+        <translation>DBus-tjänst %1 klar</translation>
     </message>
 </context>
 </TS>
