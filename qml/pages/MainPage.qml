@@ -581,7 +581,7 @@ Page {
             + "&title=" + encodeURIComponent(getTitle())
             + "&body="  + encodeURIComponent(getPayload());
         if (finalUrl.length > config.posting.maxurllength) {
-            console.warn("Post URL may be too long:" finalUrl.length)
+            console.warn("Post URL may be too long:", finalUrl.length)
         }
         return finalUrl;
     }
