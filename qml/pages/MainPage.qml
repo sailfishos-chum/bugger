@@ -351,7 +351,7 @@ Page {
              */
             Loader {
                 width: parent.width
-                active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
+                active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined") && (typeof bugInfo.ssu2 !== "undefined")
                 sourceComponent: DeviceInfo{}
                 onLoaded:  {
                     metatags["osversion"] = !!bugInfo.os.version_id ? bugInfo.os.version_id : "?"
@@ -482,7 +482,12 @@ Page {
         var payload =
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
             + "OSVERSION: "     + bugInfo.os.version_id + "  \n"
-            + "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
+            //+ "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
+            + "HARDWARE: "      + bugInfo.ssu2.displayModel + "/" + bugInfo.hw.name
+                                + " - " + bugInfo.hw.id
+                                + " - " + bugInfo.hw.mer_ha_device
+                                + " - " + bugInfo.hw.version_id
+                                + " - " + bugInfo.ssu.arch +  "  \n"
             + "UI LANGUAGE: "   + oslanguage + " (user: " + uilocale + ", os: " + oslocale + ")" + "  \n"
             + "REGRESSION: "    + ((regsw.hasChanged) ? ((regsw.checked) ? "yes" : "no") : "not specified")
             + ( (regsw.checked)

@@ -29,6 +29,7 @@ QtObject { id: bugInfo
     property var hw
     property var os
     property var ssu
+    property var ssu2
     property var mods: QtObject {
         property bool patchmanager: false
         property bool openrepos:    false
@@ -37,6 +38,7 @@ QtObject { id: bugInfo
     function setOs(o) { os = o }
     function setHw(o) { hw = o }
     function setSsu(o) { ssu = o }
+    function setSsu2(o) { ssu2 = o }
     function setMod(s) { mods[s] = true }
 }
 
