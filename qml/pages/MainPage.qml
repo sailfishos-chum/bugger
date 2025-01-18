@@ -512,7 +512,7 @@ Page {
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
             + "OSVERSION: "     + bugInfo.os.version_id + "  \n"
             //+ "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
-            + "HARDWARE: "      + bugInfo.ssu2.displayModel + "/" + bugInfo.hw.name
+            + "HARDWARE: "      + bugInfo.ssu2.displayModel
                                 + " - " + bugInfo.hw.id
                                 + " - " + bugInfo.hw.mer_ha_device
                                 + " - " + bugInfo.hw.version_id
