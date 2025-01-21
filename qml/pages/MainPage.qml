@@ -558,7 +558,7 @@ Page {
             + ((links.length > 0)
               ? "LOG FILE LINKS:\n"
                 + "=================\n\n"
-                + links.join('\n\n')
+                + "  - " + links.join('\n  - "')
               : ""
             )
             + "\n\n\n\n"
