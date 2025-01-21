@@ -353,7 +353,7 @@ Page {
              */
             Loader {
                 width: parent.width
-                active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined")
+                active: (typeof bugInfo.hw !== "undefined") && (typeof bugInfo.os !== "undefined") && (typeof bugInfo.ssu !== "undefined") && (typeof bugInfo.ssu2 !== "undefined")
                 sourceComponent: DeviceInfo{}
                 onLoaded:  {
                     metatags["osversion"] = !!bugInfo.os.version_id ? bugInfo.os.version_id : "?"
@@ -511,7 +511,12 @@ Page {
         var payload =
             "REPRODUCIBILITY: " + repro.sliderValue + "%" + " (" + repro.userText + ")"+ "  \n"
             + "OSVERSION: "     + bugInfo.os.version_id + "  \n"
-            + "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
+            //+ "HARDWARE: "      + bugInfo.hw.name + " - " + bugInfo.hw.id + " - " + bugInfo.hw.mer_ha_device + " - " + bugInfo.hw.version_id + " - " + bugInfo.ssu.arch +  "  \n"
+            + "HARDWARE: "      + bugInfo.ssu2.displayModel
+                                + " - " + bugInfo.hw.id
+                                + " - " + bugInfo.hw.mer_ha_device
+                                + " - " + bugInfo.hw.version_id
+                                + " - " + bugInfo.ssu.arch +  "  \n"
             + "UI LANGUAGE: "   + oslanguage + " (user: " + uilocale + ", os: " + oslocale + ")" + "  \n"
             + "REGRESSION: "    + ((regsw.hasChanged) ? ((regsw.checked) ? "yes" : "no") : "not specified")
             + ( (regsw.checked)
@@ -550,9 +555,12 @@ Page {
             + "Device Owner User: " + userInfo.username + "  \n"
             + "Home Encryption: " + encStr + "  \n"
             + "\n\n"
-            + "LOG FILE LINKS:\n"
-            + "=================\n\n"
-            + links.join('\n')
+            + ((links.length > 0)
+              ? "LOG FILE LINKS:\n"
+                + "=================\n\n"
+                + links.join('\n\n')
+              : ""
+            )
             + "\n\n\n\n"
             // add meta tags:
             + metatagsToComment()
@@ -560,6 +568,9 @@ Page {
             + "----  \n"
             + "<div align='right'><small><i>" + infoFooter + "</i></small></div>\n"
             + "";
+        if (payload.length > config.posting.maxlength) {
+            console.warn("Post content may be too long!")
+        }
         return payload;
     }
     /* just to be consistent */
@@ -570,10 +581,14 @@ Page {
     function formToUrl() {
         // handle case for cbeta users:
         var postCategory = (bugInfo.ssu.domain == 'cbeta') ? postCatBeta : postCatBugs;
-        return postUrl
+        var finalUrl = postUrl
             + postCategory
             + "&title=" + encodeURIComponent(getTitle())
             + "&body="  + encodeURIComponent(getPayload());
+        if (finalUrl.length > config.posting.maxurllength) {
+            console.warn("Post URL may be too long:", finalUrl.length)
+        }
+        return finalUrl;
     }
    /* ****** END POSTING ***** */
 

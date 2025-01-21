@@ -22,6 +22,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
 import Nemo.DBus 2.0
+import Nemo.Ssu 1.1
 import "pages"
 import "cover"
 import "components"
@@ -62,6 +63,19 @@ ApplicationWindow {
 
     /* read fileUrl from filesystem, assign to bugInfo according to what */
     function getInfo(fileUrl, what) {
+
+        if (what == "ssu2" ) {
+            var o = {
+            "family": DeviceInfo.deviceFamily(),
+            "model": DeviceInfo.deviceModel(),
+            "variant": DeviceInfo.deviceVariant(),
+            "mfg": DeviceInfo.displayName(DeviceInfo.DeviceManufacturer),
+            "displayModel": DeviceInfo.displayName(DeviceInfo.DeviceModel),
+            "displayDesc": DeviceInfo.displayName(DeviceInfo.DeviceDesignation)
+            }
+            bugInfo.setSsu2(o);
+            return
+        }
 
         var r = new XMLHttpRequest()
         r.open('GET', fileUrl);
@@ -146,6 +160,7 @@ ApplicationWindow {
         getInfo(hwInfoFile, "hw");
         getInfo(pmInfoFile, "pm");
         getInfo(ssuInfoFile, "ssu");
+        getInfo("", "ssu2");
     }
 
     // Popup messages:
