@@ -248,12 +248,14 @@ Page {
                 width:  parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
                 clip: true
+                focus: true
                 property bool hide: false
                 height: hide ? 0 : (lblcol.height + dismisslbl.height)
                 opacity: hide ? 0 : 1.0
                 visible: height > 0
                 Behavior on opacity { FadeAnimation{ duration: 1000; easing.type: Easing.OutQuart} }
                 Behavior on height { PropertyAnimation{ duration: 600; easing.type: Easing.OutQuad} }
+                onFocusChanged: if (!focus) hide = true
                 Column { id: lblcol
                     width:  parent.width
                     WelcomeLabel { }
