@@ -33,6 +33,9 @@ TRANSLATIONS += translations/$${TARGET}-en.ts \
 # qml.path = /usr/share/$${TARGET}
 # INSTALLS += qml
 
+QMAKE_EXTRA_TARGETS += ts
+ts.commands = lupdate *.pro
+
 OTHER_FILES += $$files(rpm/*)
 
 include(translations/translations.pri)
