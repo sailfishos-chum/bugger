@@ -190,7 +190,7 @@ var data = {
                         "type": "tip",
                         "description":  "Use collectd for per-process monitoring",
                         "text": [
-                            "Install collectd from SailfisOS Chum repository.",
+                            "Install collectd from SailfishOS Chum repository.",
                             "Or better, install SystemDataScope.",
                             "Navigate to /etc/collectd.d",
                             "Read the file processes.conf.example there",
