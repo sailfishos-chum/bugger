@@ -147,7 +147,13 @@ var data = {
         },
         { "name": "media_tracker", "displayName": "Media Indexing",
                 "description": "Music, Image, and Video metadata",
-                "help": []
+                "help": [
+                    {
+                        "type": "link",
+                        "description":  "Tips and Tricks: reset the tracker database",
+                        "link": "https://docs.sailfishos.org/Support/Help_Articles/Tips_and_Tricks/#clearing-the-media-database"
+                    },
+                ]
         },
         { "name": "mobile_data",  "displayName": "Mobile Data",
                 "description": "SIM cards, reception, roaming",
