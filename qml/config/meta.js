@@ -26,7 +26,18 @@ var data = {
         },
         {  "name": "backup",   "displayName": "Backup",
                 "description": "The Sailfish vault system",
-                "help": []
+                "help": [
+                    {
+                        "type": "link",
+                        "description":  "Docs on Backup and Restore",
+                        "link": "https://docs.sailfishos.org/Support/Help_Articles/Backup/Backup_and_Restore/"
+                    },
+                    {
+                        "type": "link",
+                        "description":  "Docs on extracting a backup",
+                        "link": "https://docs.sailfishos.org/Support/Help_Articles/Backup/Backup_Extraction/"
+                    },
+                ]
         },
         {  "name": "bluetooth", "displayName": "Bluetooth",
                 "description": "BT connection or devices",
