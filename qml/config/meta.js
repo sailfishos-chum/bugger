@@ -276,6 +276,11 @@ var data = {
                         "description":  "Help on Update Failure Logs",
                         "link": "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_OS_Update_Failure_Logs/"
                     },
+                    {
+                        "type": "link",
+                        "description":  "Forum Topic on common Update problems",
+                        "link": "https://forum.sailfishos.org/t/10982"
+                    },
                 ]
         },
         { "name": "audio",  "displayName": "Audio",
