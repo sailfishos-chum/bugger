@@ -295,7 +295,7 @@ Page {
                     interval: 500; running: false; repeat: false
                     onTriggered: {
                         if (catSelect.help) {
-                            app.popup(qsTr("There is help available for this category. Swipe right to access."))
+                            app.popup(qsTr("There is help available for this category. Swipe right to view."))
                             pageStack.pushAttached(
                                 Qt.resolvedUrl("help/HelpViewPage.qml"),
                                 { "category": catSelect.category, "title":  catSelect.value, "desc":  catSelect.description }

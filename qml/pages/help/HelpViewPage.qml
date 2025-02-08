@@ -14,9 +14,16 @@ Page { id: root
     property string desc
 
     readonly property var titles: {
-     "tip":   qsTr("Author's Tip"),
+     "tip":   qsTr("Community Tips"),
      "link":   qsTr("Documentation Links"),
      "script": qsTr("Try these commands")
+    }
+
+
+    readonly property var notes: {
+     "tip":    qsTr("some things you may try."),
+     "link":   qsTr("read these first!"),
+     "script": qsTr("but please make sure you know what you're doing. If in doubt, don't.")
     }
 
     onCategoryChanged: {
@@ -24,10 +31,14 @@ Page { id: root
         Meta.data.categories.forEach(function(e) {
             if (e.name == category) {
                 e.help.forEach(function(h) {
-                    console.debug(JSON.stringify(h))
+                    if (h.type == "tip") {
+                        h.text = JSON.stringify(h.text)
+                        h.links = JSON.stringify(h.links)
+                    }
                     if (h.type == "script") {
-                    h.commands = JSON.stringify(h.commands)
-                    h.cleanup = JSON.stringify(h.cleanup)
+                        // avoid stupid model-in-a-model
+                        h.commands = JSON.stringify(h.commands)
+                        h.cleanup = JSON.stringify(h.cleanup)
                     }
                     helpModel.append(h)
                 })
@@ -42,15 +53,75 @@ Page { id: root
         model: helpModel
         header: PageHeader { title: qsTr("Resources on %1").arg(root.title); description: root.desc }
         section.property: "type"
-        section.delegate: SectionHeader { text: root.titles[section] }
-        delegate: ListItem {
-            contentHeight: content.height
+        section.delegate: Column {
+            width: parent.width
+            bottomPadding: Theme.paddingMedium
+            SectionHeader { text: root.titles[section] }
+            Label { text: root.notes[section]
+                width: parent.width*2/3
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.paddingMedium
+                horizontalAlignment: Text.AlignRight
+                wrapMode: Text.Wrap
+                color: Theme.secondaryHighlightColor
+                font.pixelSize: Theme.fontSizeExtraSmall
+            }
+        }
+        delegate: helpItem
+    }
+         Component { id: helpItem
+         ListItem {
+            contentHeight: Math.max(Theme.itemSizeMedium, content.height)
             Column { id: content
                 width: parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
-                Label{ width: parent.width; text: description; color: Theme.secondaryHighlightColor }
-                Label{ width: parent.width; text: link; visible: type == "link"; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor  }
-                Column{ width: parent.width; visible: type == "script"
+                Loader { active: type == "link"
+                    width: parent.width
+                    sourceComponent: Row {
+                        width: parent.width
+                        height: icon.height
+                        spacing: Theme.paddingSmall
+                        Icon { id: icon
+                            source: /sailfishos.org/.test(link)
+                               ? "image://theme/icon-m-sailfish"
+                               : ( /jolla.com/.test(link)
+                                   ? "image://theme/icon-m-jolla"
+                                   : "image://theme/icon-m-website"
+                               )
+                        }
+                        Column {
+                            width: parent.width - (icon.width + Theme.paddingSmall)
+                            anchors.top: icon.top
+                            Label{ width: parent.width; text: description; color: Theme.secondaryHighlightColor }
+                            Label{ width: parent.width; text: link; truncationMode: TruncationMode.Fade; font.pixelSize: Theme.fontSizeTiny; color: Theme.secondaryColor  }
+                        }
+                    }
+                }
+                Loader { active: type == "tip"
+                    width: parent.width
+                    x: Theme.paddingSmall
+                    //height: item.height
+                    sourceComponent: Column { width: parent.width
+                    Label{ width: parent.width; text: description; color: Theme.secondaryHighlightColor }
+                    Repeater {
+                        model: JSON.parse(text)
+                        delegate: Label{ width: parent.width; text: modelData
+                            font.pixelSize: Theme.fontSizeSmall
+                            wrapMode: Text.Wrap
+                        }
+                    }
+                    Repeater {
+                        model: JSON.parse(links)
+                        delegate: LinkedLabel{ width: parent.width; plainText: modelData
+                            font.pixelSize: Theme.fontSizeSmall
+                        }
+                    }
+                }}
+                Loader { active: type == "script"
+                    width: parent.width
+                    //height: item.height
+                    sourceComponent: Column { width: parent.width
+                    Label{ width: parent.width; text: description; color: Theme.secondaryHighlightColor }
                     Label{ width: parent.width; text: qsTr("Run as: %1").arg(needsuser); color: Theme.secondaryColor  }
                     Repeater {
                         model: JSON.parse(commands)
@@ -67,30 +138,41 @@ Page { id: root
                             wrapMode: Text.Wrap
                         }
                     }
+                }}
+            }
+            menu: ContextMenu {
+                MenuItem {
+                    text: qsTr("Copy to clipboard")
+                    onClicked: toClip()
                 }
+            }
+            function toClip() {
+                var clip = ""
+                if (type == "script") {
+                    clip = [
+                        "# " + description,
+                        "# run as %1".arg(needsuser),
+                        "#" + JSON.parse(commands).join("\n#"),
+                        "# to clean up:",
+                        "#" + JSON.parse(cleanup).join("\n#"),
+                        ].join("\n")
+                } else
+                if (type == "tip") {
+                    clip = [
+                        JSON.parse(text).join("\n#"),
+                        JSON.parse(links).join("\n#"),
+                    ].join("\n#")
+                } else
+                if (type == "link") {
+                    clip = link
+                }
+                Clipboard.text = clip
             }
             onClicked: {
                 if (type == "link") { Qt.openUrlExternally(link) }
             }
-            menu: ContextMenu {
-                enabled: (type == "script")
-                MenuItem {
-                    text: qsTr("Copy to clipboard")
-                    onClicked: cmdToClip()
-                }
-            }
-            function cmdToClip() {
-                var script = [
-                    "# " + description,
-                    "# run as %1".arg(needsuser),
-                    "#" + JSON.parse(commands).join("\n#"),
-                    "# to clean up:",
-                    "#" + JSON.parse(cleanup).join("\n#"),
-                    ].join("\n")
-                 Clipboard.text = script
-            }
         }
-    }
+        }
 }
 
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript
