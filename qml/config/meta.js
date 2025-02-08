@@ -156,12 +156,12 @@ var data = {
                         "type": "link",
                         "description":  "Help on resetting oFono settings",
                         "link": "https://docs.sailfishos.org/Support/Help_Articles/Resetting_oFono_Settings/"
-                    }
+                    },
                     {
                         "type": "link",
                         "description":  "Help on collecting oFono logs",
                         "link": "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_oFono_Logs/"
-                    }
+                    },
                     {
                         "type": "script",
                         "description":  "Increase logging level of oFono service.",
@@ -174,8 +174,7 @@ var data = {
                             "rm /var/lib/environment/ofono/debug.conf",
                             "systemctl restart ofonod",
                         ]
-                    },
-
+                    }
                 ]
         },
         { "name": "mpris", "displayName": "MPRIS",
