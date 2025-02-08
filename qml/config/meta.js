@@ -166,7 +166,27 @@ var data = {
         },
         { "name": "oom_killer", "displayName": "OOM",
                 "description": "Out-of-memory conditions",
-                "help": []
+                "help": [
+                    {
+                        "type": "tip",
+                        "description":  "Use collectd for per-process monitoring",
+                        "text": [
+                            "Install collectd from SailfishOS Chum repository.",
+                            "Or better, install SystemDataScope.",
+                            "Navigate to /etc/collectd.d",
+                            "Read the file processes.conf.example there",
+                            "Copy file processes.conf.example to processes.conf",
+                            "Edit processes.conf to monitor suspicious processes",
+                            "Restart collectd.service (as user)",
+                            "Wait for a couple of minutes",
+                            "OpenSystemDataScope, execute Generate Definitions from its settings"
+                        ],
+                        "links": [
+                            "https://sailfishos-chum.github.io/pkgs/collectd/",
+                            "https://sailfishos-chum.github.io/apps/systemdatascope/"
+                        ]
+                    },
+                ]
         },
         { "name": "positioning", "displayName": "Positioning",
                 "description": "GPS and other geolocation methods",
