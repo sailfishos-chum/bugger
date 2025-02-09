@@ -25,10 +25,14 @@ Flow {
     Column {
         width: parent.width /2
         SectionHeader { text: qsTr("Device") }
-        DetailItem { label: "Name" ;            value: bugInfo.hw.name;}
-        DetailItem { label: "Device" ;          value: bugInfo.hw.id;}
+        //DetailItem { label: "Name" ;            value: bugInfo.hw.name;}
+        DetailItem { label: "Name" ;            value: bugInfo.ssu2.displayModel;}
+        //DetailItem { label: "FMV" ;             value: [ bugInfo.ssu2.family, bugInfo.ssu2.model, bugInfo.ssu2.variant ].join("/");}
+        //DetailItem { label: "Device" ;          value: bugInfo.hw.id;}
+        //DetailItem { label: "OEM" ;             value: bugInfo.ssu2.mfg;}
+        DetailItem { label: "OEM Name" ;        value: bugInfo.hw.name;}
         DetailItem { label: "HA Device" ;       value: bugInfo.hw.mer_ha_device;}
-        DetailItem { label: "HA Version" ;      value: bugInfo.hw.version_id;}
+        DetailItem { label: "HA Version" ;      value: bugInfo.hw.version_id + "[" + bugInfo.hw.sailfish_build + "]" ;}
         //DetailItem { label: "Build" ;           value: bugInfo.hw.sailfish_build;}
         //DetailItem { label: "Flavour" ;         value: bugInfo.hw.sailfish_flavour;}
 
@@ -37,11 +41,10 @@ Flow {
         width: parent.width/2
         SectionHeader { text: qsTr("Operating System") }
         DetailItem { label: "Name" ;            value: bugInfo.os.name;}
-        DetailItem { label: "OS Version" ;      value: bugInfo.os.version_id;}
         DetailItem { label: "Code Name" ;       value: bugInfo.os.version.split("(")[1].replace(")","") }
         DetailItem { label: "Arch" ;            value: bugInfo.ssu.arch;}
-        //DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
-        //DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
+        DetailItem { label: "OS Version" ;      value: bugInfo.os.version_id;}
+        DetailItem { label: "Build" ;           value: bugInfo.os.sailfish_build;}
         //DetailItem { label: "Flavour" ;         value: bugInfo.os.sailfish_flavour;}
 
 

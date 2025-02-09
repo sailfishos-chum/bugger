@@ -7,6 +7,7 @@ import "../../components"
 import "../../config/help.js" as DSO
 
 Page {
+    allowedOrientations: Orientation.All
     Component.onCompleted: { DSO.data.forEach(function(e) { helpModel.append(e) }) }
     ListModel { id: helpModel }
     SilicaFlickable {

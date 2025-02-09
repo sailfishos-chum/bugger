@@ -24,6 +24,8 @@ import Sailfish.Silica 1.0
 Page {
   id: about
 
+  allowedOrientations: Orientation.All
+
   readonly property string copyright: "Peter G. (nephros) and other Authors"
   readonly property string email: "mailto:sailfish@nephros.org?bcc=sailfish+app@nephros.org&subject=A%20message%20from%20a%20" + Qt.application.name + "%20user&body=Hello%20nephros%2C%0A"
   readonly property string contriburl: "https://github.com/sailfishos-chum/bugger/graphs/contributors"
