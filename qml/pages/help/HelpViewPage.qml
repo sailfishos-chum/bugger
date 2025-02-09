@@ -75,6 +75,7 @@ Page { id: root
             MenuItem { text: qsTr("Suggest a resource (GitHub)")
                 onClicked: Qt.openUrlExternally("https://github.com/sailfishos-chum/bugger/issues/new?title=New%20Help%20Item:&body=%0A##Title%0A%0A##Description%0A%0A##Links%0A%0A" )
             }
+            MenuItem { text: qsTr("General Help Items"); onClicked: { pageStack.push(Qt.resolvedUrl("LogHelp.qml")) } }
         }
     }
          Component { id: helpItem
