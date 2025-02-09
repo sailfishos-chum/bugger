@@ -128,8 +128,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     </message>
     <message>
         <location filename="../qml/components/FileList.qml" line="35"/>
+        <source>Collect Logs</source>
+        <translation>Samla in loggar</translation>
+    </message>
+    <message>
         <source>Gather Logs</source>
-        <translation>Hämta in loggar</translation>
+        <translation type="vanished">Hämta in loggar</translation>
     </message>
 </context>
 <context>
@@ -384,17 +388,32 @@ Wiki: https://forum.sailfishos.org/t/12751/3
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="125"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (EMail)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
+        <source>Suggest a resource (GitHub)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="78"/>
+        <source>General Help Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="134"/>
         <source>Run as: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="133"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="142"/>
         <source>To clean up:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="145"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="154"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>

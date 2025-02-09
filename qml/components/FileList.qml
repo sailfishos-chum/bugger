@@ -32,7 +32,7 @@ SilicaGridView { id: root
     ViewPlaceholder {
         enabled: (root.count == 0) && showPlaceholder
         text: qsTr("No files.")
-        hintText: qsTr("Use <b>%1</b> to add log files.").arg(qsTr("Gather Logs"))
+        hintText: qsTr("Use <b>%1</b> to add log files.").arg(qsTr("Collect Logs"))
     }
 }
 // vim: expandtab ts=4 st=4 sw=4 filetype=javascript

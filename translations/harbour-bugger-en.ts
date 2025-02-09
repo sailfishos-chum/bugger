@@ -127,7 +127,7 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     </message>
     <message>
         <location filename="../qml/components/FileList.qml" line="35"/>
-        <source>Gather Logs</source>
+        <source>Collect Logs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -291,17 +291,32 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="125"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (EMail)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
+        <source>Suggest a resource (GitHub)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="78"/>
+        <source>General Help Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="134"/>
         <source>Run as: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="133"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="142"/>
         <source>To clean up:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="145"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="154"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>

@@ -128,8 +128,8 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
     </message>
     <message>
         <location filename="../qml/components/FileList.qml" line="35"/>
-        <source>Gather Logs</source>
-        <translation type="unfinished"></translation>
+        <source>Collect Logs</source>
+        <translation>Logdateien sammeln</translation>
     </message>
 </context>
 <context>
@@ -191,7 +191,7 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
     <message>
         <location filename="../qml/pages/FilePage.qml" line="248"/>
         <source>Workflow</source>
-        <translation type="unfinished"></translation>
+        <translation>Workflow</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="255"/>
@@ -340,17 +340,32 @@ Versions­nummern: Bitte gib konkrete Versions­nummern an. Jede Version war mal
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="125"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (EMail)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
+        <source>Suggest a resource (GitHub)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="78"/>
+        <source>General Help Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="134"/>
         <source>Run as: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="133"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="142"/>
         <source>To clean up:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="145"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="154"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
