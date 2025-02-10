@@ -11,10 +11,12 @@ ValueButton { id: root
     property ListModel catModel: ListModel{}
     property int currentIndex: -1
     property string category: (catModel.count > 0 && currentIndex >=0) ? catModel.get(currentIndex).name : "none"
+    property bool help: false
+    onCurrentIndexChanged: { help = catModel.get(currentIndex).help.count > 0 }
 
     Component.onCompleted: {
         // for some reason, using shift() never removes "none", and sorting
-        // never consodered the last element.
+        // never considered the last element.
         // so we [0] and slice(1) instead
         // something something length of original array, shallow copy, yada yada
         const f = Meta.data.categories[0] // "none"

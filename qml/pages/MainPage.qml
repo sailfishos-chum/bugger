@@ -250,12 +250,14 @@ Page {
                 width:  parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
                 clip: true
+                focus: true
                 property bool hide: false
                 height: hide ? 0 : (lblcol.height + dismisslbl.height)
                 opacity: hide ? 0 : 1.0
                 visible: height > 0
                 Behavior on opacity { FadeAnimation{ duration: 1000; easing.type: Easing.OutQuart} }
                 Behavior on height { PropertyAnimation{ duration: 600; easing.type: Easing.OutQuad} }
+                onFocusChanged: if (!focus) hide = true
                 Column { id: lblcol
                     width:  parent.width
                     WelcomeLabel { }
@@ -280,6 +282,27 @@ Page {
                 width: parent.width
                 active: developerMode
                 sourceComponent: DeveloperTool {}
+            }
+            CatSelect { id: catSelect
+                onCategoryChanged: {
+                    metatags["category"] = category
+                    pushTimer.start()
+                    shallSave()
+                }
+                // the CetSelect switch happens in an animation,
+                // which makes the pushAttach not work. So delay it.
+                Timer { id: pushTimer
+                    interval: 500; running: false; repeat: false
+                    onTriggered: {
+                        if (catSelect.help) {
+                            app.popup(qsTr("There is help available for this category. Swipe right to view."))
+                            pageStack.pushAttached(
+                                Qt.resolvedUrl("help/HelpViewPage.qml"),
+                                { "category": catSelect.category, "title":  catSelect.value, "desc":  catSelect.description }
+                            )
+                        } else { pageStack.popAttached() }
+                    }
+                }
             }
             /*****************************
              * Required fields at the top
@@ -370,8 +393,6 @@ Page {
                 description: qsTr("e.g. links to logs or screenshots.")
                 onFocusChanged: shallSave();
             }
-            SectionHeader { text: qsTr("Category") }
-            CatSelect { onCategoryChanged: { metatags["category"] = category; shallSave() }}
             SectionHeader { text: qsTr("Reproducibility") }
             Slider { id: repro;
                 width: parent.width;
@@ -558,7 +579,7 @@ Page {
             + ((links.length > 0)
               ? "LOG FILE LINKS:\n"
                 + "=================\n\n"
-                + links.join('\n\n')
+                + "  - " + links.join('\n  - "')
               : ""
             )
             + "\n\n\n\n"

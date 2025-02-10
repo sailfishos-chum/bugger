@@ -25,18 +25,6 @@ var data = [
     },
     {
         "category": "Article",
-        "title": "Email Logs",
-        "desc":  "",
-        "url": "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Email_Logs/",
-    },
-    {
-        "category": "Article",
-        "title": "oFono Logs",
-        "desc":  "",
-        "url": "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_oFono_Logs/",
-    },
-    {
-        "category": "Article",
         "title": "Android Logs",
         "desc":  "",
         "url": "https://docs.sailfishos.org/Support/Help_Articles/Collecting_Logs/Collect_Logs_with_Logcat/",
