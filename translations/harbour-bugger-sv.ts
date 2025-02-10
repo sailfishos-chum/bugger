@@ -355,67 +355,67 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="17"/>
         <source>Community Tips</source>
-        <translation type="unfinished"></translation>
+        <translation>Gemenskapstips</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="18"/>
         <source>Documentation Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumentationslänkar</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="19"/>
         <source>Try these commands</source>
-        <translation type="unfinished"></translation>
+        <translation>Prova dessa kommandon</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="24"/>
         <source>some things you may try.</source>
-        <translation type="unfinished"></translation>
+        <translation>några saker du kan försöka med.</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="25"/>
         <source>read these first!</source>
-        <translation type="unfinished"></translation>
+        <translation>läs det här först!</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="26"/>
         <source>but please make sure you know what you&apos;re doing. If in doubt, don&apos;t.</source>
-        <translation type="unfinished"></translation>
+        <translation>men se till att du vet vad du gör. Gör det inte, om du är osäker.</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="54"/>
         <source>Resources on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Resurser på %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
         <source>Suggest a resource (EMail)</source>
-        <translation type="unfinished"></translation>
+        <translation>Föreslå en resurs (e-post)</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
         <source>Suggest a resource (GitHub)</source>
-        <translation type="unfinished"></translation>
+        <translation>Föreslå en resurs (GitHub)</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="78"/>
         <source>General Help Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Allmänna hjälpartiklar</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="134"/>
         <source>Run as: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kör som: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="142"/>
         <source>To clean up:</source>
-        <translation type="unfinished"></translation>
+        <translation>Att rensa ut:</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="154"/>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera till urklipp</translation>
     </message>
 </context>
 <context>
@@ -645,7 +645,7 @@ Autentisering kan krävas.</translation>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="298"/>
         <source>There is help available for this category. Swipe right to view.</source>
-        <translation type="unfinished"></translation>
+        <translation>Det finns hjälp att få för den här kategorin. Svep åt höger för att visa.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="314"/>
