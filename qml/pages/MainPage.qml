@@ -68,6 +68,8 @@ Page {
         0
     property string qualityString // : qsTr("incomplete", "State of completeness of a bug report")
 
+    property bool helpPopupShown: false
+
     /* just to add something of ours to the report */
     readonly property string infoFooter: 'the initial version of this bug report was created using '
         + '<a href="' + 'https://github.com/sailfishos-chum/bugger/releases/">'
@@ -293,7 +295,10 @@ Page {
                     interval: 500; running: false; repeat: false
                     onTriggered: {
                         if (catSelect.help) {
-                            app.popup(qsTr("There is help available for this category. Swipe right to view."))
+                            if (!helpPopupShown) {
+                                app.popup(qsTr("There is help available for this category. Swipe right to view."))
+                                helpPopupShown = true
+                            }
                             pageStack.pushAttached(
                                 Qt.resolvedUrl("help/HelpViewPage.qml"),
                                 { "category": catSelect.category, "title":  catSelect.value, "desc":  catSelect.description }
