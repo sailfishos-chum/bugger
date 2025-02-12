@@ -6,8 +6,39 @@
  *
  * please keep 'help' types ordered, i.e. all tips next to each other, then all
  * links etc.  
- * supported help types: "link", "script", "tip"
- */
+ *
+ * Schema description for the "help" section:
+ *
+ * data.categories[N].help[]:  array of objects
+ * objects can be of types  "link", "script", "tip"
+ *
+ *      // ***** LINK *****
+ *      {
+ *          "type": == "link",          // shown as a clickable button which will open the link
+ *          "description":  "",         // the button title
+ *          "link": ""                  // an URL, usually a link to the WWW.
+ *      },
+ *
+ *      // ***** TIP *****
+ *      {
+ *          "type": "tip",              // shown as text with a title
+ *          "description":  "",         // a title sting
+ *          "text": [],                 // array of string, the tip/hint text
+ *          "links": []                 // optional. array of string, will be shown as list of clickable texts
+ *                                      // use e.g. for referenced apps or documentation
+ *      },
+ *
+ *      // ***** SCRIPT *****
+ *      {
+ *          "type": "script",           // shown as a sequence of text snippets
+ *          "description":  "",         // a title sting
+ *          "needsuser": "",            // whether the commands are supposed to be run as a specific user.
+ *                                      // Usually either "root", or "defaultuser/nemo".
+ *                                      // If either "0" or "100000" are given, will be displayed as "root", or "user".
+ *          "commands": [],             // an array of strings. Will be shown as lines of a script.
+ *          "cleanup": []               // optional. array of strings. Will be shown as lines of a script.
+ *      },
+  */
 var data = {
     "categories": [
         {  "name": "none", "displayName": "None",
