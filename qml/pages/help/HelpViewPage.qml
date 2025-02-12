@@ -130,7 +130,15 @@ Page { id: root
                     //height: item.height
                     sourceComponent: Column { width: parent.width
                     Label{ width: parent.width; text: description; color: Theme.secondaryHighlightColor }
-                    Label{ width: parent.width; text: qsTr("Run as: %1").arg(needsuser); color: Theme.secondaryColor  }
+                    Label{ width: parent.width; color: Theme.secondaryColor
+                        visible: username.length > 0
+                        text: qsTr("Run as: %1").arg(username);
+                        property string username: {
+                                if (needsuser == "0")      return "root"
+                                if (needsuser == "100000") return "user"
+                                return username
+                        }
+                    }
                     Repeater {
                         model: JSON.parse(commands)
                         delegate: Label{ width: parent.width; text: "%1: %2".arg(index+1).arg(modelData)
