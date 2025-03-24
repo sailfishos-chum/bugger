@@ -120,6 +120,17 @@ var data = {
                         ],
                         "links": []
                     },
+                    {
+                        "type": "tip",
+                        "description":  "Change the PBAP channel (contact sync issues with car kits)",
+                        "text": [
+                            "Navigate to /etc/obexd",
+                            "Edit the file pbap.conf (keep a backup!)",
+                            "Uncomment the key 'Channel'",
+                            "Restart the phone and retry the car kit connection",
+                        ],
+                        "links": [ "https://github.com/sailfishos/bluez5/commit/d5e6721baed2750cdfec590c4fa7eab7db245271" ]
+                    },
                 ]
         },
         {  "name": "browser",  "displayName": "Browser",
