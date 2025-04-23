@@ -49,7 +49,7 @@ Categories:
  - Utility
 Custom:
   Repo: https://github.com/sailfishos-chum/bugger
-Icon: https://raw.githubusercontent.com/sailfishos-chum/bugger/master/icons/svgs/harbour-bugger.svg
+Icon: https://raw.githubusercontent.com/sailfishos-chum/bugger/master/appicon/svgs/harbour-bugger.svg
 Screenshots:
   - https://github.com/sailfishos-chum/bugger/raw/master/Screenshot_001.png
   - https://github.com/sailfishos-chum/bugger/raw/master/Screenshot_002.png
