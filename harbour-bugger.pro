@@ -21,6 +21,7 @@ SOURCES += \
 
 TRANSLATIONS += translations/$${TARGET}-en.ts \
                 translations/$${TARGET}-de.ts \
+                translations/$${TARGET}-no.ts \
                 translations/$${TARGET}-sv.ts \
 
 # sailfishapp takes care of this:
