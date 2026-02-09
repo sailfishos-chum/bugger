@@ -191,17 +191,17 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Eine Ressource vorschlagen (GitHub)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="133"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="135"/>
         <source>Run as: %1</source>
         <translation>Ausführen als: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="141"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="149"/>
         <source>To clean up:</source>
         <translation>Zum Aufräumen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="153"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="161"/>
         <source>Copy to clipboard</source>
         <translation>In die Zwischenablage</translation>
     </message>

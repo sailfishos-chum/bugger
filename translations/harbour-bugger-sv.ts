@@ -191,17 +191,17 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation>Föreslå en resurs (GitHub)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="133"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="135"/>
         <source>Run as: %1</source>
         <translation>Kör som: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="141"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="149"/>
         <source>To clean up:</source>
         <translation>Att rensa ut:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="153"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="161"/>
         <source>Copy to clipboard</source>
         <translation>Kopiera till urklipp</translation>
     </message>

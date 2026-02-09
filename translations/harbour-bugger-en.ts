@@ -190,17 +190,17 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="133"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="135"/>
         <source>Run as: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="141"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="149"/>
         <source>To clean up:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="153"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="161"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
