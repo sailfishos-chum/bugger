@@ -9,6 +9,7 @@ lupdate_only {
 
 QA_TRANSLATIONS += $$PWD/translations/$${TARGET}-quickactions-en.ts \
                    $$PWD/translations/$${TARGET}-quickactions-de.ts \
+                   $$PWD/translations/$${TARGET}-quickactions-no.ts \
                    $$PWD/translations/$${TARGET}-quickactions-sv.ts
 
 # for updating translations
