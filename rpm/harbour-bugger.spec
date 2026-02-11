@@ -12,7 +12,7 @@ Name:       harbour-bugger
 # << macros
 
 Summary:    Bug reporting helper
-Version:    0.9.16
+Version:    0.9.17
 Release:    0
 Group:      Applications
 License:    ASL 2.0
@@ -74,7 +74,6 @@ Url:
 # << build post
 
 %install
-rm -rf %{buildroot}
 # >> install pre
 # << install pre
 %qmake5_install
@@ -90,7 +89,6 @@ desktop-file-install --delete-original       \
    %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
-%defattr(-,root,root,-)
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/*/apps/%{name}.png
 %config %{_sysconfdir}/sailjail/permissions/%{name}.profile

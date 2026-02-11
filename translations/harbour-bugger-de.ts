@@ -538,16 +538,26 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <source>Copy Report text to Clipboard</source>
+        <translation>Text in die Zwischenablage kopieren</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="490"/>
+        <source>Copied Report text to Clipboard.</source>
+        <translation>Text in die Zwischenablage kopiert.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Post Bug Report</source>
         <translation>Bugreport abschicken</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Post CBeta Bug Report</source>
         <translation>CBeta-Bugreport abschicken</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="673"/>
+        <location filename="../qml/pages/MainPage.qml" line="680"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Gespeicherte Inhalte wurden geladen.</translation>
     </message>

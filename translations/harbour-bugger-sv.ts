@@ -538,16 +538,26 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <source>Copy Report text to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="490"/>
+        <source>Copied Report text to Clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Post Bug Report</source>
         <translation>Posta felrapporten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Post CBeta Bug Report</source>
         <translation>Posta ”cbeta” felrapporten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="673"/>
+        <location filename="../qml/pages/MainPage.qml" line="680"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Återställt rapportinnehåll från sparat tillstånd.</translation>
     </message>

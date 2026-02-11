@@ -537,16 +537,26 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <source>Copy Report text to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="490"/>
+        <source>Copied Report text to Clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Post Bug Report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Post CBeta Bug Report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="673"/>
+        <location filename="../qml/pages/MainPage.qml" line="680"/>
         <source>Restored bug report contents from saved state.</source>
         <translation type="unfinished"></translation>
     </message>
