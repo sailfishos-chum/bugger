@@ -318,7 +318,7 @@ Page {
                 TextField{id: text_title; width: parent.width;
                     placeholderText: qsTr("A New Bug Report");
                     // description wraps the text, label fades it out.
-                    description: qsTr("Please be brief but descriptive");
+                    description: qsTr("Please be brief but descriptive.");
                     acceptableInput: text.length > minTitleLength
                     EnterKey.enabled: text.length > 0
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -329,7 +329,7 @@ Page {
                 TextArea{id: text_desc;
                     width: parent.width;
                     // description wraps the text, label fades it out.
-                    description: qsTr("Describe what is not working");
+                    description: qsTr("Describe what is not working.");
                     // TextField has this, TextArea not:
                     property bool acceptableInput: text.length > minDescLength
                     onFocusChanged: shallSave();
@@ -338,10 +338,10 @@ Page {
                 TextArea{id: text_steps;
                     width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                     // description wraps the text, label fades it out.
-                    //label: qsTr("Provide as much information as you have to reproduce the behavior")
+                    //label: qsTr("Provide as much information as you have to reproduce the behavior.")
                     label: qsTr("How to reproduce");
-                    //description: qsTr("Provide as much information as you have to reproduce the behavior")
-                    description: qsTr("Provide as much information as you have")
+                    //description: qsTr("Provide as much information as you have to reproduce the behavior.")
+                    description: qsTr("Provide as much information as you have.")
                     text: " 1. \n 2. \n 3. ";
                     placeholderText: " 1. \n 2. \n 3. ";
                     // TextField has this, TextArea not:
@@ -353,7 +353,7 @@ Page {
             TextArea{id: text_precons;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Some Context information")
-                description: qsTr("e.g. 'an email account is needed'.")
+                description: qsTr("e.g. 'an email account is needed'")
                 onFocusChanged: shallSave();
             }
 
@@ -395,7 +395,7 @@ Page {
             TextArea{id: text_add;
                 width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
                 label: qsTr("Add any other information")
-                description: qsTr("e.g. links to logs or screenshots.")
+                description: qsTr("e.g. links to logs or screenshots")
                 onFocusChanged: shallSave();
             }
             SectionHeader { text: qsTr("Reproducibility") }
