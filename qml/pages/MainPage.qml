@@ -500,7 +500,7 @@ Page {
                 })
             }
         }
-        MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Cleared."), function() { resetFields() }) } }
+        MenuItem { text: qsTr("Reset all to default"); onDelayedClick: { Remorse.popupAction(page, qsTr("Clearing..."), function() { resetFields() }) } }
         //MenuItem { text: qsTr("Settings"); onClicked: { pageStack.push(Qt.resolvedUrl("SettingsPage.qml")) } }
         MenuLabel { text: qsTr("To submit, scroll to the bottom") }
     }
