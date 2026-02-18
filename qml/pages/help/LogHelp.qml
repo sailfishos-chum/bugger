@@ -22,7 +22,7 @@ Page {
                 width: parent.width - Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("We provide a systemd Target as well as a Service Template to facilitate log gathering.")  + "<br />"
-                    + qsTr("App developers have the option ro use a plugin-like system to add their logs to this.")
+                    + qsTr("App developers have the option to use a plugin-like system to add their logs to this.")
             }
             SectionHeader { text: qsTr("Sailfish OS Documentation") }
             Repeater {
