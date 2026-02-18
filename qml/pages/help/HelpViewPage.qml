@@ -69,7 +69,7 @@ Page { id: root
         }
         delegate: helpItem
         PullDownMenu {
-            MenuItem { text: qsTr("Suggest a resource (EMail)")
+            MenuItem { text: qsTr("Suggest a resource (Email)")
                 onClicked: Qt.openUrlExternally("mailto:sailfish@nephros.org?subject=Bugger!:%20New%20Help%20Item:&body=%0A##Title%0A%0A##Description%0A%0A##Links%0A%0A" )
             }
             MenuItem { text: qsTr("Suggest a resource (GitHub)")
