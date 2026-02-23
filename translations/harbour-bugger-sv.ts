@@ -22,10 +22,9 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
-        <translation>%1 är ett litet verktyg som hjälper dig att rapportera fel på https://forum.sailfishos.org, enligt en mer eller mindre standardiserad mall. 
+        <translation type="vanished">%1 är ett litet verktyg som hjälper dig att rapportera fel på https://forum.sailfishos.org, enligt en mer eller mindre standardiserad mall. 
 Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka upp dem och spåra dem internt. För mer information, se %2</translation>
     </message>
     <message>
@@ -64,6 +63,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>What&apos;s %1?</source>
         <translation>Vad är %1?</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
+Reporting bugs in this way should improve Jolla&apos;s ability to pick them up and track them internally. For more information, see %2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="64"/>
@@ -182,8 +187,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (Email)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Suggest a resource (EMail)</source>
-        <translation>Föreslå en resurs (e-post)</translation>
+        <translation type="vanished">Föreslå en resurs (e-post)</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
@@ -310,14 +319,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation>En ny felrapport</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="319"/>
         <source>Please be brief but descriptive</source>
-        <translation>Håll det kort men beskrivande</translation>
+        <translation type="vanished">Håll det kort men beskrivande</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="330"/>
         <source>Describe what is not working</source>
-        <translation>Beskriv vad som inte fungerar</translation>
+        <translation type="vanished">Beskriv vad som inte fungerar</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="335"/>
@@ -330,9 +337,8 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation>Hur man återskapar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="342"/>
         <source>Provide as much information as you have</source>
-        <translation>Lämna så mycket information som du kan</translation>
+        <translation type="vanished">Lämna så mycket information som du kan</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="350"/>
@@ -345,9 +351,8 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation>Lite information om sammanhanget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="354"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
-        <translation>t.ex. &quot;ett mejlkonto krävs&quot;.</translation>
+        <translation type="vanished">t.ex. &quot;ett mejlkonto krävs&quot;.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="358"/>
@@ -395,9 +400,8 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation>Lägg till valfri annan information</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="396"/>
         <source>e.g. links to logs or screenshots.</source>
-        <translation>t.ex länk till loggar eller skärmklipp.</translation>
+        <translation type="vanished">t.ex länk till loggar eller skärmklipp.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="399"/>
@@ -515,6 +519,31 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation>Postning upplåst! Kvaliteten på din felrapport är %1!</translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="319"/>
+        <source>Please be brief but descriptive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="330"/>
+        <source>Describe what is not working.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="342"/>
+        <source>Provide as much information as you have.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="354"/>
+        <source>e.g. &apos;an email account is needed&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="396"/>
+        <source>e.g. links to logs or screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/MainPage.qml" line="476"/>
         <source>To submit, scroll to the bottom</source>
         <translation>För att skicka, skrolla till botten</translation>
@@ -603,7 +632,6 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
 <context>
     <name>WelcomeLabel</name>
     <message>
-        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
         <source>
 Please fill out the information about your bug in the fields of the main page.
 After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
@@ -612,7 +640,7 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
-        <translation>
+        <translation type="vanished">
 Fyll i informationen om ditt fel i fälten på huvudsidan. 
 
 När detta är klart kan du lägga upp din felrapport via dra-upp-menyn i skärmens underkant 
@@ -621,6 +649,18 @@ Din felrapport öppnas i webbläsaren som ett utkast, så att du kan redigera de
 
 Vi rekommenderar att du har ett webbläsar­fönster öppet och har loggat in på Sailfish OS Forum innan du postar.
 </translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
+        <source>
+Please fill out the information about your bug in the fields of the main page.
+After this is completed, you will be able to post your bug report in the Pulley Menu at the bottom.
+
+Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
+
+We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

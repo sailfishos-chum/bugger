@@ -30,7 +30,7 @@ Label {
     wrapMode: Text.WordWrap
     text: qsTr('
 Please fill out the information about your bug in the fields of the main page.
-After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
+After this is completed, you will be able to post your bug report in the Pulley Menu at the bottom.
 
 Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
 

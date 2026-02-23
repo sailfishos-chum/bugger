@@ -177,7 +177,7 @@ var data = {
                 "description": "Recognition, management, sensor",
                 "help": []
         },
-        {  "name": "mail", "displayName": "EMail",
+        {  "name": "mail", "displayName": "Email",
                 "description": "General mail",
                 "help": [
                     {

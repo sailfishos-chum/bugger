@@ -22,10 +22,9 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
-        <translation type="unfinished">%1 er et lite verktøy som forenkler feilrapportering på https://forum.sailfishos.org ved å følge en mer eller mindre standardisert mal. Ved å rapportere feil på denne måten, blir det lettere for Jolla å fange dem opp og spore dem internt. For mer informasjon, se %2</translation>
+        <translation type="obsolete">%1 er et lite verktøy som forenkler feilrapportering på https://forum.sailfishos.org ved å følge en mer eller mindre standardisert mal. Ved å rapportere feil på denne måten, blir det lettere for Jolla å fange dem opp og spore dem internt. For mer informasjon, se %2</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="58"/>
@@ -63,6 +62,12 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
         <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>What&apos;s %1?</source>
         <translation>Hva er %1?</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
+Reporting bugs in this way should improve Jolla&apos;s ability to pick them up and track them internally. For more information, see %2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="64"/>
@@ -369,8 +374,12 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (Email)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Suggest a resource (EMail)</source>
-        <translation type="unfinished">Foreslå en ressurs (e-post)</translation>
+        <translation type="obsolete">Foreslå en ressurs (e-post)</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
@@ -611,14 +620,12 @@ Autentisering kan kreves.</translation>
         <translation type="unfinished">En ny bug-rapport</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="319"/>
         <source>Please be brief but descriptive</source>
-        <translation type="unfinished">Vær kort, men beskrivende</translation>
+        <translation type="obsolete">Vær kort, men beskrivende</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="330"/>
         <source>Describe what is not working</source>
-        <translation type="unfinished">Beskriv hva som ikke fungerer</translation>
+        <translation type="obsolete">Beskriv hva som ikke fungerer</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="335"/>
@@ -631,9 +638,8 @@ Autentisering kan kreves.</translation>
         <translation type="unfinished">Slik gjenskaper du feilen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="342"/>
         <source>Provide as much information as you have</source>
-        <translation type="unfinished">Oppgi så mye informasjon som du har</translation>
+        <translation type="obsolete">Oppgi så mye informasjon som du har</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="350"/>
@@ -646,9 +652,8 @@ Autentisering kan kreves.</translation>
         <translation type="unfinished">Litt bakgrunnsinformasjon</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="354"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
-        <translation type="unfinished">f.eks. &apos;e-postkonto kreves&apos;.</translation>
+        <translation type="obsolete">f.eks. &apos;e-postkonto kreves&apos;.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="358"/>
@@ -696,9 +701,8 @@ Autentisering kan kreves.</translation>
         <translation type="unfinished">Legg til valgfri annen informasjon</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="396"/>
         <source>e.g. links to logs or screenshots.</source>
-        <translation type="unfinished">f.eks. lenker til logger eller skjermbilder.</translation>
+        <translation type="obsolete">f.eks. lenker til logger eller skjermbilder.</translation>
     </message>
     <message>
         <source>Category</source>
@@ -828,6 +832,31 @@ Autentisering kan kreves.</translation>
         <translation type="unfinished">Utmerkelse låst opp! Kvaliteten på feilrapporten din er %1!&quot;</translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="319"/>
+        <source>Please be brief but descriptive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="330"/>
+        <source>Describe what is not working.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="342"/>
+        <source>Provide as much information as you have.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="354"/>
+        <source>e.g. &apos;an email account is needed&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="396"/>
+        <source>e.g. links to logs or screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/MainPage.qml" line="476"/>
         <source>To submit, scroll to the bottom</source>
         <translation type="unfinished">Gå til bunnen av siden for å sende inn</translation>
@@ -917,7 +946,6 @@ Autentisering kan kreves.</translation>
 <context>
     <name>WelcomeLabel</name>
     <message>
-        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
         <source>
 Please fill out the information about your bug in the fields of the main page.
 After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
@@ -926,13 +954,25 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
-        <translation type="unfinished">
+        <translation type="obsolete">
 Vennligst fyll ut informasjon om feilen i feltene på hovedsiden. 
 Når dette er fullført, kan du sende inn bug-rapporten din via dra-menyen nederst.
 
 Bug-rapporten vil åpnes som et utkast i nettleseren, slik at du kan redigere den før du poster den endelig.
 
 Vi anbefaler at du har et nettleservindu åpent og er logget inn på Sailfish OS-forumet før du sender inn.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
+        <source>
+Please fill out the information about your bug in the fields of the main page.
+After this is completed, you will be able to post your bug report in the Pulley Menu at the bottom.
+
+Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
+
+We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

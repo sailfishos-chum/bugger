@@ -29,7 +29,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
-Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
+Reporting bugs in this way should improve Jolla&apos;s ability to pick them up and track them internally. For more information, see %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -181,7 +181,7 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
-        <source>Suggest a resource (EMail)</source>
+        <source>Suggest a resource (Email)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -304,16 +304,6 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="319"/>
-        <source>Please be brief but descriptive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MainPage.qml" line="330"/>
-        <source>Describe what is not working</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/MainPage.qml" line="335"/>
         <source>Steps to Reproduce</source>
         <translation type="unfinished"></translation>
@@ -324,11 +314,6 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="342"/>
-        <source>Provide as much information as you have</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/MainPage.qml" line="350"/>
         <source>Preconditions</source>
         <translation type="unfinished"></translation>
@@ -336,11 +321,6 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     <message>
         <location filename="../qml/pages/MainPage.qml" line="353"/>
         <source>Some Context information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MainPage.qml" line="354"/>
-        <source>e.g. &apos;an email account is needed&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -386,11 +366,6 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
     <message>
         <location filename="../qml/pages/MainPage.qml" line="395"/>
         <source>Add any other information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MainPage.qml" line="396"/>
-        <source>e.g. links to logs or screenshots.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -514,6 +489,31 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="319"/>
+        <source>Please be brief but descriptive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="330"/>
+        <source>Describe what is not working.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="342"/>
+        <source>Provide as much information as you have.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="354"/>
+        <source>e.g. &apos;an email account is needed&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="396"/>
+        <source>e.g. links to logs or screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/MainPage.qml" line="476"/>
         <source>To submit, scroll to the bottom</source>
         <translation type="unfinished"></translation>
@@ -601,7 +601,6 @@ Reporting bugs in this way should improve Jollas ability to pick them up and tra
 <context>
     <name>WelcomeLabel</name>
     <message>
-        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
         <source>
 Please fill out the information about your bug in the fields of the main page.
 After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
@@ -610,7 +609,7 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
-        <translation>
+        <translation type="vanished">
 Please fill out the information about your bug in the fields of the main page.
 After this is completed, you will be able to post the bug report in the Pulley Menu at the bottom.
 
@@ -618,6 +617,18 @@ The report will be opened in the browser in draft mode so you can make adjustmen
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
+        <source>
+Please fill out the information about your bug in the fields of the main page.
+After this is completed, you will be able to post your bug report in the Pulley Menu at the bottom.
+
+Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
+
+We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

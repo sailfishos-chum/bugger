@@ -27,11 +27,16 @@
         <translation>Was ist %1?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
-        <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehler­meldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
+        <translation type="vanished">%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehler­meldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
 Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgenommen und getrackt werden. Weitere Informationen hierzu unter %2</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
+Reporting bugs in this way should improve Jolla&apos;s ability to pick them up and track them internally. For more information, see %2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="58"/>
@@ -182,8 +187,12 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (Email)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Suggest a resource (EMail)</source>
-        <translation>Eine Ressource vorschlagen (E-Mail)</translation>
+        <translation type="vanished">Eine Ressource vorschlagen (E-Mail)</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
@@ -253,6 +262,11 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Es gibt Hile-REssourcen zu dieser Kategorie. Zum Ansehen nach rechts wischen.</translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="396"/>
+        <source>e.g. links to logs or screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/MainPage.qml" line="418"/>
         <source>unknown</source>
         <comment>Reproducibility</comment>
@@ -315,9 +329,8 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Neuer Bugreport</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="319"/>
         <source>Please be brief but descriptive</source>
-        <translation>Bitte kurz aber aussagekräftig</translation>
+        <translation type="vanished">Bitte kurz aber aussagekräftig</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="179"/>
@@ -340,9 +353,8 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Schritte</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="330"/>
         <source>Describe what is not working</source>
-        <translation>Beschreibe, was nicht funktioniert</translation>
+        <translation type="vanished">Beschreibe, was nicht funktioniert</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="340"/>
@@ -350,9 +362,8 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Wie man das Problem hervorrufen kann</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="342"/>
         <source>Provide as much information as you have</source>
-        <translation>So detalliert wie möglich</translation>
+        <translation type="vanished">So detalliert wie möglich</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="350"/>
@@ -360,9 +371,8 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Vorbedingungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="354"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
-        <translation>z. B.  &apos;ein E-Mailkonto wird benötigt&apos;.</translation>
+        <translation type="vanished">z. B.  &apos;ein E-Mailkonto wird benötigt&apos;.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="353"/>
@@ -373,6 +383,26 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <location filename="../qml/pages/MainPage.qml" line="335"/>
         <source>Steps to Reproduce</source>
         <translation>Erforderliche Schritte</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="319"/>
+        <source>Please be brief but descriptive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="330"/>
+        <source>Describe what is not working.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="342"/>
+        <source>Provide as much information as you have.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="354"/>
+        <source>e.g. &apos;an email account is needed&apos;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="358"/>
@@ -420,9 +450,8 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Füge weitere Informationen hinzu</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="396"/>
         <source>e.g. links to logs or screenshots.</source>
-        <translation>Z. B. Links zu Logdateien oder Screenshots.</translation>
+        <translation type="vanished">Z. B. Links zu Logdateien oder Screenshots.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="399"/>
@@ -602,7 +631,6 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
 <context>
     <name>WelcomeLabel</name>
     <message>
-        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
         <source>
 Please fill out the information about your bug in the fields of the main page.
 After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
@@ -611,7 +639,7 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
-        <translation>
+        <translation type="vanished">
 Bitte fülle die Informationen zu deinem Bug in den Feldern auf der Hauptseite aus
 Wenn das getan ist, kannst du deinen Bugreport im unteren Menü abschicken.
 
@@ -619,6 +647,18 @@ Er wird im Browser als Entwurf geöffnet, du kannst ihn also noch ergänzen oder
 
 Empfehlung: hab bereits ein Browser­fenster offen, bei dem du im Sailfish OS Forum angemeldet bist, bevor du den Report von hier abschickst.
 </translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
+        <source>
+Please fill out the information about your bug in the fields of the main page.
+After this is completed, you will be able to post your bug report in the Pulley Menu at the bottom.
+
+Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
+
+We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
