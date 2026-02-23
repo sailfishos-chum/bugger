@@ -27,11 +27,17 @@
         <translation>Was ist %1?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
-        <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehler­meldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
+        <translation type="vanished">%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehler­meldungen) auf https://forum.sailfishos.org helfen soll, indem ein mehr oder weniger standardisiertes Format verwendet wird.
 Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgenommen und getrackt werden. Weitere Informationen hierzu unter %2</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
+Reporting bugs in this way should improve Jolla&apos;s ability to pick them up and track them internally. For more information, see %2</source>
+        <translation>%1 ist ein kleines Werkzeug das beim Erstellen von Bug Reports (Fehlermeldungen) auf https://forum.sailfishos.org helfen soll, wobei ein mehr oder weniger standardisiertes Format verwendet wird.
+Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgenommen und verfolgt werden. Weitere Informationen hierzu unter %2</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="58"/>
@@ -117,17 +123,17 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
 <context>
     <name>FileList</name>
     <message>
-        <location filename="../qml/components/FileList.qml" line="34"/>
+        <location filename="../qml/components/FileList.qml" line="17"/>
         <source>No files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Dateien.</translation>
     </message>
     <message>
-        <location filename="../qml/components/FileList.qml" line="35"/>
+        <location filename="../qml/components/FileList.qml" line="18"/>
         <source>Use &lt;b&gt;%1&lt;/b&gt; to add log files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/FileList.qml" line="35"/>
+        <location filename="../qml/components/FileList.qml" line="18"/>
         <source>Collect Logs</source>
         <translation>Logdateien sammeln</translation>
     </message>
@@ -214,6 +220,16 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <translation>Liste der Dateien</translation>
     </message>
     <message>
+        <location filename="../qml/pages/FilePage.qml" line="281"/>
+        <source>Share via Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="282"/>
+        <source>Send Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/FilePage.qml" line="285"/>
         <source>Configure Logging</source>
         <translation type="unfinished"></translation>
@@ -222,16 +238,6 @@ Reports, die auf diese Weise erstellt werden, können leichter von Jolla aufgeno
         <location filename="../qml/pages/FilePage.qml" line="264"/>
         <source>Upload Contents</source>
         <translation>Inhalte hinaufladen</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FilePage.qml" line="281"/>
-        <source>Share via E-Mail</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FilePage.qml" line="282"/>
-        <source>Send E-Mail</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="283"/>
@@ -341,8 +347,12 @@ Versions­nummern: Bitte gib konkrete Versions­nummern an. Jede Version war mal
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (Email)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Suggest a resource (EMail)</source>
-        <translation>Eine Ressource vorschlagen (E-Mail)</translation>
+        <translation type="vanished">Eine Ressource vorschlagen (E-Mail)</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
@@ -355,17 +365,17 @@ Versions­nummern: Bitte gib konkrete Versions­nummern an. Jede Version war mal
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="134"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="136"/>
         <source>Run as: %1</source>
         <translation>Ausführen als: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="142"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="150"/>
         <source>To clean up:</source>
         <translation>Zum Aufräumen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="154"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="162"/>
         <source>Copy to clipboard</source>
         <translation>In die Zwischenablage</translation>
     </message>
@@ -373,22 +383,22 @@ Versions­nummern: Bitte gib konkrete Versions­nummern an. Jede Version war mal
 <context>
     <name>JournalPage</name>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="59"/>
+        <location filename="../qml/pages/JournalPage.qml" line="42"/>
         <source>Journal Config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="69"/>
+        <location filename="../qml/pages/JournalPage.qml" line="52"/>
         <source>Here you can configure various settings regarding logging.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="75"/>
+        <location filename="../qml/pages/JournalPage.qml" line="58"/>
         <source>Full debug logging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="76"/>
+        <location filename="../qml/pages/JournalPage.qml" line="59"/>
         <source>If enabled, the Journal daemon will persist logs, and log at Debug levels. Do remember to turn this off again.
 Authentication may be required on toggle.</source>
         <translation type="unfinished"></translation>
@@ -405,17 +415,17 @@ Authentication may be required on toggle.</source>
 <context>
     <name>LogGatherer</name>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="65"/>
+        <location filename="../qml/components/LogGatherer.qml" line="48"/>
         <source>Log gathering successsful!</source>
         <translation>Das Zusammensammeln war erfolgreich!</translation>
     </message>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="68"/>
+        <location filename="../qml/components/LogGatherer.qml" line="51"/>
         <source>Log gathering failed!</source>
         <translation>Das Zusammensammeln ist fehlgeschlagen!</translation>
     </message>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="108"/>
+        <location filename="../qml/components/LogGatherer.qml" line="91"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -439,7 +449,7 @@ Authentication may be required on toggle.</source>
     </message>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="25"/>
-        <source>App developers have the option ro use a plugin-like system to add their logs to this.</source>
+        <source>App developers have the option to use a plugin-like system to add their logs to this.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -555,6 +565,31 @@ Authentication may be required on toggle.</source>
         <translation>Es gibt Hile-REssourcen zu dieser Kategorie. Zum Ansehen nach rechts wischen.</translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="321"/>
+        <source>Please be brief but descriptive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="332"/>
+        <source>Describe what is not working.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="344"/>
+        <source>Provide as much information as you have.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="356"/>
+        <source>e.g. &apos;an email account is needed&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="398"/>
+        <source>e.g. links to logs or screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/MainPage.qml" line="420"/>
         <source>unknown</source>
         <comment>Reproducibility</comment>
@@ -622,9 +657,8 @@ Authentication may be required on toggle.</source>
         <translation>Neuer Bugreport</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="321"/>
         <source>Please be brief but descriptive</source>
-        <translation>Bitte kurz aber aussagekräftig</translation>
+        <translation type="vanished">Bitte kurz aber aussagekräftig</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="181"/>
@@ -655,9 +689,8 @@ Authentication may be required on toggle.</source>
         <translation type="vanished">gut</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="332"/>
         <source>Describe what is not working</source>
-        <translation>Beschreibe, was nicht funktioniert</translation>
+        <translation type="vanished">Beschreibe, was nicht funktioniert</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="342"/>
@@ -665,9 +698,8 @@ Authentication may be required on toggle.</source>
         <translation>Wie man das Problem hervorrufen kann</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="344"/>
         <source>Provide as much information as you have</source>
-        <translation>So detalliert wie möglich</translation>
+        <translation type="vanished">So detalliert wie möglich</translation>
     </message>
     <message>
         <source>Device</source>
@@ -683,9 +715,8 @@ Authentication may be required on toggle.</source>
         <translation>Vorbedingungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="356"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
-        <translation>z. B.  &apos;ein E-Mailkonto wird benötigt&apos;.</translation>
+        <translation type="vanished">z. B.  &apos;ein E-Mailkonto wird benötigt&apos;.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="355"/>
@@ -759,9 +790,8 @@ Authentication may be required on toggle.</source>
         <translation>Füge weitere Informationen hinzu</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="398"/>
         <source>e.g. links to logs or screenshots.</source>
-        <translation>Z. B. Links zu Logdateien oder Screenshots.</translation>
+        <translation type="vanished">Z. B. Links zu Logdateien oder Screenshots.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="401"/>
@@ -892,16 +922,26 @@ Authentication may be required on toggle.</source>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="515"/>
+        <source>Copy Report text to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="519"/>
+        <source>Copied Report text to Clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="522"/>
         <source>Post Bug Report</source>
         <translation>Bugreport abschicken</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="515"/>
+        <location filename="../qml/pages/MainPage.qml" line="522"/>
         <source>Post CBeta Bug Report</source>
         <translation>CBeta-Bugreport abschicken</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="717"/>
+        <location filename="../qml/pages/MainPage.qml" line="724"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Gespeicherte Inhalte wurden geladen.</translation>
     </message>
@@ -954,7 +994,6 @@ Authentication may be required on toggle.</source>
 <context>
     <name>WelcomeLabel</name>
     <message>
-        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
         <source>
 Please fill out the information about your bug in the fields of the main page.
 After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
@@ -963,7 +1002,7 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
-        <translation>
+        <translation type="vanished">
 Bitte fülle die Informationen zu deinem Bug in den Feldern auf der Hauptseite aus
 Wenn das getan ist, kannst du deinen Bugreport im unteren Menü abschicken.
 
@@ -975,6 +1014,18 @@ Empfehlung: hab bereits ein Browser­fenster offen, bei dem du im Sailfish OS Fo
     <message>
         <source>Notice: Even though %1 offers localized versions, please keep your bug report contents in English if at all possible.</source>
         <translation type="vanished">Obwohl %1 in übersetzten Varianten vorliegt, sollte der Inhalt des Bugreports wenn möglich auf Englisch gehalten werden.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
+        <source>
+Please fill out the information about your bug in the fields of the main page.
+After this is completed, you will be able to post your bug report in the Pulley Menu at the bottom.
+
+Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
+
+We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

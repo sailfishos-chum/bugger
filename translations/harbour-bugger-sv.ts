@@ -22,10 +22,9 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
 Reporting bugs in this way should improve Jollas ability to pick them up and track them internally. For more information, see %2</source>
-        <translation>%1 är ett litet verktyg som hjälper dig att rapportera fel på https://forum.sailfishos.org, enligt en mer eller mindre standardiserad mall. 
+        <translation type="vanished">%1 är ett litet verktyg som hjälper dig att rapportera fel på https://forum.sailfishos.org, enligt en mer eller mindre standardiserad mall. 
 Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka upp dem och spåra dem internt. För mer information, se %2</translation>
     </message>
     <message>
@@ -64,6 +63,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>What&apos;s %1?</source>
         <translation>Vad är %1?</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>%1 is a little tool to assist reporting bugs on https://forum.sailfishos.org, following a more or less standardized template.
+Reporting bugs in this way should improve Jolla&apos;s ability to pick them up and track them internally. For more information, see %2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="64"/>
@@ -117,17 +122,17 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
 <context>
     <name>FileList</name>
     <message>
-        <location filename="../qml/components/FileList.qml" line="34"/>
+        <location filename="../qml/components/FileList.qml" line="17"/>
         <source>No files.</source>
         <translation>Inga filer.</translation>
     </message>
     <message>
-        <location filename="../qml/components/FileList.qml" line="35"/>
+        <location filename="../qml/components/FileList.qml" line="18"/>
         <source>Use &lt;b&gt;%1&lt;/b&gt; to add log files.</source>
         <translation>Använd &lt;b&gt;%1&lt;/b&gt; för att lägga till loggfiler.</translation>
     </message>
     <message>
-        <location filename="../qml/components/FileList.qml" line="35"/>
+        <location filename="../qml/components/FileList.qml" line="18"/>
         <source>Collect Logs</source>
         <translation>Samla in loggar</translation>
     </message>
@@ -218,14 +223,12 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <translation>Lista över filer att ladda upp</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="281"/>
         <source>Share via E-Mail</source>
-        <translation>Dela via e-post</translation>
+        <translation type="vanished">Dela via e-post</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FilePage.qml" line="282"/>
         <source>Send E-Mail</source>
-        <translation>Skicka e-post</translation>
+        <translation type="vanished">Skicka e-post</translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="285"/>
@@ -236,6 +239,16 @@ Att rapportera fel på detta sätt bör förbättra Jollas förmåga att plocka 
         <location filename="../qml/pages/FilePage.qml" line="264"/>
         <source>Upload Contents</source>
         <translation>Ladda upp innehåll</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="281"/>
+        <source>Share via Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FilePage.qml" line="282"/>
+        <source>Send Email</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/FilePage.qml" line="283"/>
@@ -389,8 +402,12 @@ Wiki: https://forum.sailfishos.org/t/12751/3
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="72"/>
+        <source>Suggest a resource (Email)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Suggest a resource (EMail)</source>
-        <translation>Föreslå en resurs (e-post)</translation>
+        <translation type="vanished">Föreslå en resurs (e-post)</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/HelpViewPage.qml" line="75"/>
@@ -403,17 +420,17 @@ Wiki: https://forum.sailfishos.org/t/12751/3
         <translation>Allmänna hjälpartiklar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="134"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="136"/>
         <source>Run as: %1</source>
         <translation>Kör som: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="142"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="150"/>
         <source>To clean up:</source>
         <translation>Att rensa ut:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/help/HelpViewPage.qml" line="154"/>
+        <location filename="../qml/pages/help/HelpViewPage.qml" line="162"/>
         <source>Copy to clipboard</source>
         <translation>Kopiera till urklipp</translation>
     </message>
@@ -421,22 +438,22 @@ Wiki: https://forum.sailfishos.org/t/12751/3
 <context>
     <name>JournalPage</name>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="59"/>
+        <location filename="../qml/pages/JournalPage.qml" line="42"/>
         <source>Journal Config</source>
         <translation>Journal-konfiguration</translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="69"/>
+        <location filename="../qml/pages/JournalPage.qml" line="52"/>
         <source>Here you can configure various settings regarding logging.</source>
         <translation>Här kan du konfigurera olika inställningar för loggning.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="75"/>
+        <location filename="../qml/pages/JournalPage.qml" line="58"/>
         <source>Full debug logging</source>
         <translation>Fullständig felsökningsloggning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="76"/>
+        <location filename="../qml/pages/JournalPage.qml" line="59"/>
         <source>If enabled, the Journal daemon will persist logs, and log at Debug levels. Do remember to turn this off again.
 Authentication may be required on toggle.</source>
         <translation>Om det här alternativet är aktiverat sparar journal-tjänsten loggar på felsökningsnivå. Kom ihåg att avaktivera detta igen.
@@ -454,17 +471,17 @@ Autentisering kan krävas.</translation>
 <context>
     <name>LogGatherer</name>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="65"/>
+        <location filename="../qml/components/LogGatherer.qml" line="48"/>
         <source>Log gathering successsful!</source>
         <translation>Logginsamling slutförd!</translation>
     </message>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="68"/>
+        <location filename="../qml/components/LogGatherer.qml" line="51"/>
         <source>Log gathering failed!</source>
         <translation>Logginsamling misslyckades!</translation>
     </message>
     <message>
-        <location filename="../qml/components/LogGatherer.qml" line="108"/>
+        <location filename="../qml/components/LogGatherer.qml" line="91"/>
         <source>Start</source>
         <translation>Starta</translation>
     </message>
@@ -488,8 +505,12 @@ Autentisering kan krävas.</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="25"/>
+        <source>App developers have the option to use a plugin-like system to add their logs to this.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>App developers have the option ro use a plugin-like system to add their logs to this.</source>
-        <translation>Apputvecklare har möjlighet att använda ett insticksliknande system för att lägga till sina loggar till detta.</translation>
+        <translation type="vanished">Apputvecklare har möjlighet att använda ett insticksliknande system för att lägga till sina loggar till detta.</translation>
     </message>
     <message>
         <location filename="../qml/pages/help/LogHelp.qml" line="27"/>
@@ -653,14 +674,12 @@ Autentisering kan krävas.</translation>
         <translation>En ny felrapport</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="321"/>
         <source>Please be brief but descriptive</source>
-        <translation>Håll det kort men beskrivande</translation>
+        <translation type="vanished">Håll det kort men beskrivande</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="332"/>
         <source>Describe what is not working</source>
-        <translation>Beskriv vad som inte fungerar</translation>
+        <translation type="vanished">Beskriv vad som inte fungerar</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="337"/>
@@ -673,9 +692,8 @@ Autentisering kan krävas.</translation>
         <translation>Hur man återskapar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="344"/>
         <source>Provide as much information as you have</source>
-        <translation>Lämna så mycket information som du kan</translation>
+        <translation type="vanished">Lämna så mycket information som du kan</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="352"/>
@@ -688,9 +706,8 @@ Autentisering kan krävas.</translation>
         <translation>Lite information om sammanhanget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="356"/>
         <source>e.g. &apos;an email account is needed&apos;.</source>
-        <translation>t.ex. &quot;ett mejlkonto krävs&quot;.</translation>
+        <translation type="vanished">t.ex. &quot;ett mejlkonto krävs&quot;.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="360"/>
@@ -738,9 +755,8 @@ Autentisering kan krävas.</translation>
         <translation>Lägg till valfri annan information</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="398"/>
         <source>e.g. links to logs or screenshots.</source>
-        <translation>t.ex länk till loggar eller skärmklipp.</translation>
+        <translation type="vanished">t.ex länk till loggar eller skärmklipp.</translation>
     </message>
     <message>
         <source>Category</source>
@@ -872,6 +888,31 @@ Autentisering kan krävas.</translation>
         <translation>Postning upplåst! Kvaliteten på din felrapport är %1!</translation>
     </message>
     <message>
+        <location filename="../qml/pages/MainPage.qml" line="321"/>
+        <source>Please be brief but descriptive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="332"/>
+        <source>Describe what is not working.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="344"/>
+        <source>Provide as much information as you have.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="356"/>
+        <source>e.g. &apos;an email account is needed&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="398"/>
+        <source>e.g. links to logs or screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/MainPage.qml" line="505"/>
         <source>To submit, scroll to the bottom</source>
         <translation>För att skicka, skrolla till botten</translation>
@@ -895,16 +936,26 @@ Autentisering kan krävas.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="515"/>
+        <source>Copy Report text to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="519"/>
+        <source>Copied Report text to Clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="522"/>
         <source>Post Bug Report</source>
         <translation>Posta felrapporten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="515"/>
+        <location filename="../qml/pages/MainPage.qml" line="522"/>
         <source>Post CBeta Bug Report</source>
         <translation>Posta ”cbeta” felrapporten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="717"/>
+        <location filename="../qml/pages/MainPage.qml" line="724"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Återställt rapportinnehåll från sparat tillstånd.</translation>
     </message>
@@ -950,7 +1001,6 @@ Autentisering kan krävas.</translation>
 <context>
     <name>WelcomeLabel</name>
     <message>
-        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
         <source>
 Please fill out the information about your bug in the fields of the main page.
 After this in completed, you will be able to post your bug report in the Pulley Menu at the bottom.
@@ -959,7 +1009,7 @@ Your bug report will be opened in the browser in draft mode so you can edit it b
 
 We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
 </source>
-        <translation>
+        <translation type="vanished">
 Fyll i informationen om ditt fel i fälten på huvudsidan. 
 
 När detta är klart kan du lägga upp din felrapport via dra-upp-menyn i skärmens underkant 
@@ -968,6 +1018,18 @@ Din felrapport öppnas i webbläsaren som ett utkast, så att du kan redigera de
 
 Vi rekommenderar att du har ett webbläsar­fönster öppet och har loggat in på Sailfish OS Forum innan du postar.
 </translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WelcomeLabel.qml" line="31"/>
+        <source>
+Please fill out the information about your bug in the fields of the main page.
+After this is completed, you will be able to post your bug report in the Pulley Menu at the bottom.
+
+Your bug report will be opened in the browser in draft mode so you can edit it before doing the final post.
+
+We recommend having a browser window open and logged into the Sailfish OS Forum before posting.
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
