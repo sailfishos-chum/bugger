@@ -444,10 +444,17 @@ Page {
             VersionSelect { id: regarch; state: "arch";    visible: regsw.checked; anchors.left: regsw.left ; anchors.leftMargin: Theme.itemSizeExtraSmall - Theme.paddingLarge }
             Column {
                 width: parent.width
+                SectionHeader { text: qsTr("Addons"); visible: aasbtsw.visible }
+                TextSwitch { id: aasbtsw; checked: bugInfo.mods.aasbt;     text: "AAS Bluetooth Bridge"; automaticCheck: false; highlighted: false;
+                             visible: bugInfo.mods.aasbt;
+                             description: qsTr("automatically detected") }
                 SectionHeader { text: qsTr("Modifications") }
-                TextSwitch { id: pmsw; checked: bugInfo.mods.patchmanager; text: "Patchmanager" + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
-                TextSwitch { id: orsw; checked: bugInfo.mods.openrepos;    text: "OpenRepos"    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
-                TextSwitch { id: chsw; checked: bugInfo.mods.chum;         text: "Chum"+ " "    + " " + qsTr("(autodetected)"); automaticCheck: false; highlighted: false; }
+                TextSwitch { id: pmsw; checked: bugInfo.mods.patchmanager; text: "Patchmanager"; automaticCheck: false; highlighted: false;
+                             description: qsTr("automatically detected") }
+                TextSwitch { id: orsw; checked: bugInfo.mods.openrepos;    text: "OpenRepos";    automaticCheck: false; highlighted: false;
+                             description: qsTr("automatically detected") }
+                TextSwitch { id: chsw; checked: bugInfo.mods.chum;         text: "Chum"     ;    automaticCheck: false; highlighted: false;
+                             description: qsTr("automatically detected") }
                 TextSwitch { id: othersw; checked: false; text: qsTr("Other (please specify)") }
                 TextArea { id: text_mod_other; enabled: othersw.checked
                     width: parent.width; height: Math.max(implicitHeight, Theme.itemSizeLarge);
@@ -572,6 +579,10 @@ Page {
             + "\n\n"
             + "ACTUAL RESULTS:\n"
             + "===========\n\n" + text_actres.text
+            + "\n\n"
+            + "ADDONS:\n"
+            + "==========\n\n"
+            + " - AAS Bluetooth Bridge: " + (aasbtsw.checked?"yes":"no") + "\n"
             + "\n\n"
             + "MODIFICATIONS:\n"
             + "==========\n\n"

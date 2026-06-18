@@ -584,7 +584,7 @@ Autentisering kan krävas.</translation>
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="484"/>
+        <location filename="../qml/pages/MainPage.qml" line="491"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
@@ -612,20 +612,20 @@ Autentisering kan krävas.</translation>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="175"/>
         <location filename="../qml/pages/MainPage.qml" line="317"/>
-        <location filename="../qml/pages/MainPage.qml" line="512"/>
+        <location filename="../qml/pages/MainPage.qml" line="519"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="181"/>
         <location filename="../qml/pages/MainPage.qml" line="328"/>
-        <location filename="../qml/pages/MainPage.qml" line="513"/>
+        <location filename="../qml/pages/MainPage.qml" line="520"/>
         <source>Description</source>
         <translation>Beskrivning</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="187"/>
-        <location filename="../qml/pages/MainPage.qml" line="514"/>
+        <location filename="../qml/pages/MainPage.qml" line="521"/>
         <source>Steps</source>
         <translation>Steg</translation>
     </message>
@@ -809,70 +809,67 @@ Autentisering kan krävas.</translation>
         <translation>Regression (fungerade i en tidigare OS-version)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="447"/>
+        <location filename="../qml/pages/MainPage.qml" line="451"/>
         <source>Modifications</source>
         <translation>Ändringar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="448"/>
-        <location filename="../qml/pages/MainPage.qml" line="449"/>
-        <location filename="../qml/pages/MainPage.qml" line="450"/>
         <source>(autodetected)</source>
-        <translation>(automatiskt identifierad)</translation>
+        <translation type="vanished">(automatiskt identifierad)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="451"/>
+        <location filename="../qml/pages/MainPage.qml" line="458"/>
         <source>Other (please specify)</source>
         <translation>Annat (specificera)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="454"/>
+        <location filename="../qml/pages/MainPage.qml" line="461"/>
         <source>e.g. WayDroid and GApps installed</source>
         <translation>t.ex. WayDroid och GApps installerat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="455"/>
+        <location filename="../qml/pages/MainPage.qml" line="462"/>
         <source>custom changes, installed packages etc.</source>
         <translation>anpassade ändringar, installerade paket etc.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="461"/>
+        <location filename="../qml/pages/MainPage.qml" line="468"/>
         <source>Links/Attachments (%1)</source>
         <translation>Länkar/Bilagor (%1)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="476"/>
+        <location filename="../qml/pages/MainPage.qml" line="483"/>
         <source>Your device is currently registered as a CBeta device.</source>
         <translation>Din enhet är för närvarande registrerad som en CBeta-enhet.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="477"/>
+        <location filename="../qml/pages/MainPage.qml" line="484"/>
         <source>Submissions will go to the CBeta forum per default.</source>
         <translation>Bidrag kommer att gå till CBeta-forumet som standard.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="485"/>
+        <location filename="../qml/pages/MainPage.qml" line="492"/>
         <source>Help</source>
         <translation>Hjälp</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Add Logfiles</source>
         <translation>Lägg till loggfiler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="503"/>
+        <location filename="../qml/pages/MainPage.qml" line="510"/>
         <source>Reset all to default</source>
         <translation>Återställ allt till standard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="503"/>
+        <location filename="../qml/pages/MainPage.qml" line="510"/>
         <source>Cleared.</source>
         <translation>Rensat.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="169"/>
-        <location filename="../qml/pages/MainPage.qml" line="511"/>
+        <location filename="../qml/pages/MainPage.qml" line="518"/>
         <source>Please fill in the required fields</source>
         <translation>Fyll i obligatoriska fält</translation>
     </message>
@@ -913,49 +910,62 @@ Autentisering kan krävas.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="505"/>
+        <location filename="../qml/pages/MainPage.qml" line="447"/>
+        <source>Addons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="450"/>
+        <location filename="../qml/pages/MainPage.qml" line="453"/>
+        <location filename="../qml/pages/MainPage.qml" line="455"/>
+        <location filename="../qml/pages/MainPage.qml" line="457"/>
+        <source>automatically detected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="512"/>
         <source>To submit, scroll to the bottom</source>
         <translation>För att skicka, skrolla till botten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="510"/>
+        <location filename="../qml/pages/MainPage.qml" line="517"/>
         <source>Bug quality is: %1 </source>
         <translation>Rapportkvalitet: %1 </translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="511"/>
+        <location filename="../qml/pages/MainPage.qml" line="518"/>
         <source>(marked with an asterisk (*))!</source>
         <translation>(markerat med en asterisk (*))!</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="512"/>
-        <location filename="../qml/pages/MainPage.qml" line="513"/>
-        <location filename="../qml/pages/MainPage.qml" line="514"/>
+        <location filename="../qml/pages/MainPage.qml" line="519"/>
+        <location filename="../qml/pages/MainPage.qml" line="520"/>
+        <location filename="../qml/pages/MainPage.qml" line="521"/>
         <source>%1 field is incomplete</source>
         <translation>Fältet %1 är ofullständigt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="515"/>
+        <location filename="../qml/pages/MainPage.qml" line="522"/>
         <source>Copy Report text to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="519"/>
+        <location filename="../qml/pages/MainPage.qml" line="526"/>
         <source>Copied Report text to Clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="522"/>
+        <location filename="../qml/pages/MainPage.qml" line="529"/>
         <source>Post Bug Report</source>
         <translation>Posta felrapporten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="522"/>
+        <location filename="../qml/pages/MainPage.qml" line="529"/>
         <source>Post CBeta Bug Report</source>
         <translation>Posta ”cbeta” felrapporten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="724"/>
+        <location filename="../qml/pages/MainPage.qml" line="735"/>
         <source>Restored bug report contents from saved state.</source>
         <translation>Återställt rapportinnehåll från sparat tillstånd.</translation>
     </message>
@@ -1035,7 +1045,7 @@ We recommend having a browser window open and logged into the Sailfish OS Forum 
 <context>
     <name>harbour-bugger</name>
     <message>
-        <location filename="../qml/harbour-bugger.qml" line="198"/>
+        <location filename="../qml/harbour-bugger.qml" line="211"/>
         <source>DBus service %1 ready</source>
         <translation>DBus-tjänst %1 klar</translation>
     </message>
