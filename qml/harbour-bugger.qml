@@ -56,6 +56,7 @@ ApplicationWindow {
     readonly property url hwInfoFile:  config.sources.hw
     readonly property url pmInfoFile:  config.sources.pm
     readonly property url ssuInfoFile: config.sources.ssu
+    readonly property url aasbtInfoFile: config.sources.aasbt
 
     BugInfo { id: bugInfo }
 
@@ -86,7 +87,17 @@ ApplicationWindow {
                 const mods = {
                     "openrepos":    false,
                     "patchmanager": false,
-                    "chum":         false
+                    "chum":         false,
+                    "aasbt":        false
+                }
+                if (what == "aasbt") {
+                    if (r.status == 200) {
+                        mods.aasbt = true
+                        console.info("AAS Bluetooth bridge detected!")
+                    } else {
+                        console.debug("AAS Bluetooth bridge:", r.status)
+                        mods.aasbt = false
+                    }
                 }
                 r.response.split("\n").forEach(
                     function(line) {
@@ -132,6 +143,7 @@ ApplicationWindow {
                 if (mods.openrepos === true)    bugInfo.setMod("openrepos");
                 if (mods.patchmanager === true) bugInfo.setMod("patchmanager");
                 if (mods.chum === true)         bugInfo.setMod("chum");
+                if (mods.aasbt === true)        bugInfo.setMod("aasbt");
 
             }
         }
@@ -158,6 +170,7 @@ ApplicationWindow {
         getInfo(hwInfoFile, "hw");
         getInfo(pmInfoFile, "pm");
         getInfo(ssuInfoFile, "ssu");
+        getInfo(aasbtInfoFile, "aasbt");
         getInfo("", "ssu2");
     }
 

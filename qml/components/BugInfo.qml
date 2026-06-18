@@ -34,6 +34,7 @@ QtObject { id: bugInfo
         property bool patchmanager: false
         property bool openrepos:    false
         property bool chum:         false
+        property bool aasbt:        false
     }
     function setOs(o) { os = o }
     function setHw(o) { hw = o }

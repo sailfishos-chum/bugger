@@ -247,20 +247,20 @@ Reporting bugs in this way should improve Jolla&apos;s ability to pick them up a
     <message>
         <location filename="../qml/pages/MainPage.qml" line="173"/>
         <location filename="../qml/pages/MainPage.qml" line="315"/>
-        <location filename="../qml/pages/MainPage.qml" line="483"/>
+        <location filename="../qml/pages/MainPage.qml" line="490"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="179"/>
         <location filename="../qml/pages/MainPage.qml" line="326"/>
-        <location filename="../qml/pages/MainPage.qml" line="484"/>
+        <location filename="../qml/pages/MainPage.qml" line="491"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="185"/>
-        <location filename="../qml/pages/MainPage.qml" line="485"/>
+        <location filename="../qml/pages/MainPage.qml" line="492"/>
         <source>Steps</source>
         <translation type="unfinished"></translation>
     </message>
@@ -416,64 +416,70 @@ Reporting bugs in this way should improve Jolla&apos;s ability to pick them up a
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="445"/>
-        <source>Modifications</source>
+        <source>Addons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="446"/>
-        <location filename="../qml/pages/MainPage.qml" line="447"/>
         <location filename="../qml/pages/MainPage.qml" line="448"/>
-        <source>(autodetected)</source>
+        <location filename="../qml/pages/MainPage.qml" line="451"/>
+        <location filename="../qml/pages/MainPage.qml" line="453"/>
+        <location filename="../qml/pages/MainPage.qml" line="455"/>
+        <source>automatically detected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="449"/>
+        <source>Modifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="456"/>
         <source>Other (please specify)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="452"/>
+        <location filename="../qml/pages/MainPage.qml" line="459"/>
         <source>e.g. WayDroid and GApps installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="453"/>
+        <location filename="../qml/pages/MainPage.qml" line="460"/>
         <source>custom changes, installed packages etc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="464"/>
+        <location filename="../qml/pages/MainPage.qml" line="471"/>
         <source>Your device is currently registered as a CBeta device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="465"/>
+        <location filename="../qml/pages/MainPage.qml" line="472"/>
         <source>Submissions will go to the CBeta forum per default.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="472"/>
+        <location filename="../qml/pages/MainPage.qml" line="479"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="473"/>
+        <location filename="../qml/pages/MainPage.qml" line="480"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="474"/>
+        <location filename="../qml/pages/MainPage.qml" line="481"/>
         <source>Reset all to default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="474"/>
+        <location filename="../qml/pages/MainPage.qml" line="481"/>
         <source>Cleared.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="167"/>
-        <location filename="../qml/pages/MainPage.qml" line="482"/>
+        <location filename="../qml/pages/MainPage.qml" line="489"/>
         <source>Please fill in the required fields</source>
         <translation type="unfinished"></translation>
     </message>
@@ -514,49 +520,49 @@ Reporting bugs in this way should improve Jolla&apos;s ability to pick them up a
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="476"/>
+        <location filename="../qml/pages/MainPage.qml" line="483"/>
         <source>To submit, scroll to the bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="481"/>
+        <location filename="../qml/pages/MainPage.qml" line="488"/>
         <source>Bug quality is: %1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="482"/>
+        <location filename="../qml/pages/MainPage.qml" line="489"/>
         <source>(marked with an asterisk (*))!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="483"/>
-        <location filename="../qml/pages/MainPage.qml" line="484"/>
-        <location filename="../qml/pages/MainPage.qml" line="485"/>
+        <location filename="../qml/pages/MainPage.qml" line="490"/>
+        <location filename="../qml/pages/MainPage.qml" line="491"/>
+        <location filename="../qml/pages/MainPage.qml" line="492"/>
         <source>%1 field is incomplete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="486"/>
+        <location filename="../qml/pages/MainPage.qml" line="493"/>
         <source>Copy Report text to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="490"/>
+        <location filename="../qml/pages/MainPage.qml" line="497"/>
         <source>Copied Report text to Clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="493"/>
+        <location filename="../qml/pages/MainPage.qml" line="500"/>
         <source>Post Bug Report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="493"/>
+        <location filename="../qml/pages/MainPage.qml" line="500"/>
         <source>Post CBeta Bug Report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="680"/>
+        <location filename="../qml/pages/MainPage.qml" line="691"/>
         <source>Restored bug report contents from saved state.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -634,7 +640,7 @@ We recommend having a browser window open and logged into the Sailfish OS Forum 
 <context>
     <name>harbour-bugger</name>
     <message>
-        <location filename="../qml/harbour-bugger.qml" line="196"/>
+        <location filename="../qml/harbour-bugger.qml" line="209"/>
         <source>DBus service %1 ready</source>
         <translation type="unfinished"></translation>
     </message>

@@ -5,6 +5,7 @@ var config = {
         "hw":  'file:///etc/hw-release',
         "ssu": 'file:///etc/ssu/ssu.ini',
         "pm":  'file:///etc/patchmanager2.conf',
+        "aasbt":  'file:///usr/lib/systemd/system/appsupport-bridge-bt.service',
         "useruid": 100000
     },
     "submit": {
