@@ -43,6 +43,7 @@ For more information, see Help link in the description
 %if "%{?vendor}" == "chum"
 PackageName: Bugger!
 Type: desktop-application
+AIRating: H
 Categories:
  - Utility
 Custom:
