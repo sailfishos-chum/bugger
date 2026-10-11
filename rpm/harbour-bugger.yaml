@@ -21,6 +21,7 @@ Description: |
     %if "%{?vendor}" == "chum"
     PackageName: Bugger!
     Type: desktop-application
+    AIRating: H
     Categories:
      - Utility
     Custom:
